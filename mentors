@@ -13,6 +13,7 @@
 # Sort by mentee login name.
 
 # Mentee	Mentor		Optional comment
+bar		flo		Co-mentor: rene
 gblach		crees		Co-mentor: tabthorpe
 gjb		eadler		Co-mentor: crees
 jsa		wxs		Co-mentor: kwm
