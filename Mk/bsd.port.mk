@@ -902,10 +902,10 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 # 				  Note: that should only be used on 64-bit architectures.
 #
 # DOCSDIR		- Name of the directory to install the packages docs in.
-#				  Default: ${PREFIX}/share/doc/${PORTNAME}
+#				  Default: ${PREFIX}/share/doc/${PKGBASE}
 # DOCSDIR_REL	- The DOCSDIR relative to ${PREFIX}
 # EXAMPLESDIR	- Name of the directory to install the packages examples in.
-#				  Default: ${PREFIX}/share/examples/${PORTNAME}
+#				  Default: ${PREFIX}/share/examples/${PKGBASE}
 # EXAMPLESDIR_REL
 #				- The EXAMPLESDIR relative to ${PREFIX}
 # DATADIR		- Name of the directory to install the packages shared data in.
@@ -1303,8 +1303,8 @@ DISTNAME?=	${PORTNAME}-${DISTVERSIONFULL}
 
 INDEXFILE?=		INDEX-${OSVERSION:C/([0-9]*)[0-9]{5}/\1/}
 
-DOCSDIR?=		${PREFIX}/share/doc/${PORTNAME}
-EXAMPLESDIR?=		${PREFIX}/share/examples/${PORTNAME}
+DOCSDIR?=		${PREFIX}/share/doc/${PKGBASE}
+EXAMPLESDIR?=		${PREFIX}/share/examples/${PKGBASE}
 DATADIR?=		${PREFIX}/share/${PORTNAME}
 WWWDIR?=		${PREFIX}/www/${PORTNAME}
 ETCDIR?=		${PREFIX}/etc/${PORTNAME}
