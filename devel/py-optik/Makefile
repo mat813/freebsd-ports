@@ -13,8 +13,6 @@ COMMENT=	Command-line parsing library for Python
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 PORTEXAMPLES=	*
 

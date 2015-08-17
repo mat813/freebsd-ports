@@ -16,7 +16,7 @@ USE_EMACS=	yes
 
 LISPDIR=	${PREFIX}/${EMACS_VERSION_SITE_LISPDIR}/${PORTNAME}
 ELS=		connection.el dictionary.el link.el
-DOCSDIR=	README
+PORTDOCS=	README
 
 do-build:
 	cd ${WRKSRC}; ${EMACS_CMD} -batch -l lpath.el -f batch-byte-compile ${ELS}

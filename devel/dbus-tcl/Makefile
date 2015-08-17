@@ -16,7 +16,6 @@ LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus
 BUILD_DEPENDS=	dtplite:${PORTSDIR}/devel/tcllib
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	${PREFIX}/share/doc/dbus
 PORTDOCS=	*
 
 USES=		pkgconfig tcl:85+

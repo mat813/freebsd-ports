@@ -15,7 +15,6 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 OPTIONS_DEFINE=	EXAMPLES
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 PORTEXAMPLES=	emailtrainer.py readme.txt
 
 post-install:

@@ -31,7 +31,6 @@ TOOLBOX_CONFIGURE_ON=	-with-toolbox
 
 MAKE_JOBS_UNSAFE=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/ocaml/${PORTNAME}
 PORTDOCS=	*
 
 post-patch:

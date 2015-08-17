@@ -15,8 +15,6 @@ NO_BUILD=	yes
 
 EXTRACT_AFTER_ARGS=	'${DISTNAME}/doc'
 
-DOCSDIR=	${PREFIX}/share/doc/qt4
-
 EXTRA_PATCHES=	# empty
 
 do-install:

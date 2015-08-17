@@ -22,7 +22,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	${PREFIX}/share/doc/kmfl/${PORTNAME}
 PORTDOCS=	AUTHORS COPYING ChangeLog
 
 PLIST_FILES=	include/kmfl/libkmfl.h \

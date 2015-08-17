@@ -24,7 +24,6 @@ USE_LDCONFIG=	yes
 ALL_TARGET=	gcc-rel gcc-dat
 INSTALL_TARGET=	gcc-install
 
-DOCSDIR=	${PREFIX}/share/doc/ja/${PORTNAME}
 PORTDOCS=	README_j.txt
 
 .endif

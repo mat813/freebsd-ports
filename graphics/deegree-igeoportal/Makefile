@@ -20,7 +20,6 @@ TOMCATDIR=	${PREFIX}/${TOMCATVER}
 APPHOME=	${LOCALBASE}/${TOMCATVER}
 WEBAPPDIR=	${TOMCATDIR}/webapps
 PORTDOCS=	README.txt README_owswatch.txt deegree_igeoportal_documentation_en.pdf
-DOCSDIR=	${PREFIX}/share/doc/deegree-igeoportal
 PLIST_SUB=	TOMCATDIR=${TOMCATDIR:S|^${PREFIX}/||} WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 SUB_FILES=	pkg-message
 SUB_LIST=	TCPORT=${TCPORT}

@@ -20,7 +20,6 @@ USES=		pkgconfig
 USE_LDCONFIG=	yes
 MAKE_ARGS=	CC="${CC}" CFLAGS="${CFLAGS}"
 DATADIR=	${PREFIX}/share/irssi
-DOCSDIR=	${PREFIX}/share/doc/irssi
 CFLAGS_aarch64=	-fPIC
 CFLAGS_amd64=	-fPIC
 

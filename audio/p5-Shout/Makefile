@@ -16,7 +16,6 @@ LIB_DEPENDS=	libshout.so:${PORTSDIR}/audio/libshout
 USES=		perl5 pkgconfig shebangfix
 USE_PERL5=	configure
 
-DOCSDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 SHEBANG_FILES=	*.pl
 
 MAKE_ENV+=	DESTDIR="${STAGEDIR}"

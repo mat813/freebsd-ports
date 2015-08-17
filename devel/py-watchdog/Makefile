@@ -18,7 +18,6 @@ RUN_DEPENDS=	${PKGNAMEPREFIX}argh>=0.24.1:${PORTSDIR}/devel/py-argh \
 
 DOCS_BUILD_DEPENDS=	${PKGNAMEPREFIX}pathtools>=0.1.2:${PORTSDIR}/devel/py-pathtools \
 		${PKGNAMEPREFIX}sphinx>=1.1.3:${PORTSDIR}/textproc/py-sphinx
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 
 GH_ACCOUNT=	gorakhargosh
 

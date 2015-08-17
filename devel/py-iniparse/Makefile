@@ -16,7 +16,6 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	Changelog README
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

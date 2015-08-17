@@ -18,7 +18,6 @@ PRE_=		${DISTVERSION:C/.*rc.*/pre-/:N*[0-9]*}
 LLVM_SUFFIX=	${DISTVERSION:R:S/.//}
 
 LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
 USES=		cmake:outsource compiler:c++11-lib libedit ninja perl5 tar:xz

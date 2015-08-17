@@ -21,8 +21,6 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 PORTDOCS=	README.rst
 
-DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	dcramer
 

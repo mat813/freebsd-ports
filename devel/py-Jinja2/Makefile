@@ -23,8 +23,6 @@ USES=		python
 USE_PYTHON=	autoplist distutils
 .endif
 
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
-
 OPTIONS_DEFINE?=	BABEL EXAMPLES
 OPTIONS_DEFAULT?=	BABEL
 BABEL_DESC=		Enable Babel extension
@@ -34,13 +32,10 @@ BABEL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Babel>=1.3:${PORTSDIR}/devel/py-babel
 PY2TO3_CMD=	${LOCALBASE}/bin/2to3-${PYTHON_VER}
 PY2TO3_ARGS=	--fix=all --no-diffs --nobackups --verbose --write
 
-.include <bsd.port.options.mk>
-
 .include <bsd.port.pre.mk>
 
 .if ${PKGNAMESUFFIX} == "-doc"
 BUILD_DEPENDS+=	${PKGNAMEPREFIX}sphinx>=1.1.3:${PORTSDIR}/textproc/py-sphinx
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 PORT_OPTIONS:=	${PORT_OPTIONS:NEXAMPLES}
 .endif
@@ -55,19 +50,17 @@ do-install:
 		"! -name .buildinfo")
 .endif
 
-.if ${PORT_OPTIONS:MEXAMPLES}
 PORTEXAMPLES=	*
-post-build:
+post-build-EXAMPLES-on:
 .	if ${PYTHON_REL} >= 3000
 	${PY2TO3_CMD} ${PY2TO3_ARGS} ${WRKSRC}/examples
 .	endif
 	${PYTHON_CMD} -m compileall ${WRKSRC}/examples ; \
 	${PYTHON_CMD} -O -m compileall ${WRKSRC}/examples
 
-post-install:
+post-install-EXAMPLES-on::
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	(cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
-.endif
 
 check regression-test test: build
 .if empty(PKGNAMESUFFIX)

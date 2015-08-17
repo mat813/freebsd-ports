@@ -18,8 +18,6 @@ USES=		python zip
 USE_PYTHON=	distutils
 PYDISTUTILS_PKGNAME=	akismet
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-
 OPTIONS_DEFINE=	DOCS
 
 post-install:

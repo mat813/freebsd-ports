@@ -16,7 +16,6 @@ LICENSE_FILE=	${WRKSRC}/README
 
 USES=		uidfix
 USE_XORG=	x11 xt sm ice
-DOCSDIR=	${PREFIX}/share/doc/ssh-askpass
 PLIST_FILES=	bin/x11-ssh-askpass \
 		bin/ssh-askpass \
 		lib/X11/app-defaults/SshAskpass \

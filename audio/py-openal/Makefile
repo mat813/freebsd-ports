@@ -20,8 +20,6 @@ OPTIONS_DEFINE=	DOCS EXAMPLES
 
 USES=		openal:al,alut python
 USE_PYTHON=	distutils autoplist
-WRKSRC=		${WRKDIR}/PyOpenAL-${PORTVERSION}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PYTHON_PKGNAMEPREFIX}openal
 PORTEXAMPLES=	*
 
 post-patch:

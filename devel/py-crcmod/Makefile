@@ -17,7 +17,6 @@ LICENSE=	MIT
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 
 post-install:

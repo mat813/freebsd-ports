@@ -14,7 +14,6 @@ LICENSE=	LGPL21
 
 SLAVEDIRS=	mail/gmime26-sharp
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}26
 USES=		gmake iconv libtool pathfix pkgconfig tar:xz
 USE_GNOME+=	glib20
 USE_LDCONFIG=	yes

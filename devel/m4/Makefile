@@ -18,8 +18,6 @@ CONFIGURE_ENV=	MAKEINFO="makeinfo --no-split"
 
 INFO=	m4
 
-EXAMPLESDIR=	share/examples/gm4
-
 OPTIONS_DEFINE=			LIBSIGSEGV EXAMPLES
 LIBSIGSEGV_DESC=		Use alternative page fault handler (GNU libsigsegv)
 LIBSIGSEGV_LIB_DEPENDS=		libsigsegv.so:${PORTSDIR}/devel/libsigsegv

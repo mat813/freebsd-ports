@@ -15,7 +15,6 @@ BUILD_DEPENDS=	icmake:${PORTSDIR}/devel/icmake \
 		yodl>=3.0:${PORTSDIR}/textproc/yodl \
 		libbobcat>=3.18:${PORTSDIR}/devel/libbobcat
 
-DOCSDIR=	${PREFIX}/share/doc/bisonc++
 PORTDOCS=	*
 
 WRKSRC=		${WRKDIR}/bisonc++-${PORTVERSION}

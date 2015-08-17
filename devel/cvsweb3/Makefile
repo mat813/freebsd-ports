@@ -94,9 +94,9 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/enscript/*.st ${STAGEDIR}${PREFIX}/share/enscript/hl/
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ChangeLog INSTALL NEWS README TODO
-	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}/
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${INSTALL_DATA} ${WRKSRC}/samples/* ${STAGEDIR}${EXAMPLESDIR}/
+	${INSTALL_DATA} ${WRKSRC}/samples/* ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.post.mk>

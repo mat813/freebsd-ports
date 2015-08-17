@@ -42,7 +42,6 @@ USE_GNOME=		glib20 pygtk2
 
 PLIST_SUB+=		PORTVERSION="${PORTVERSION}"
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
 pre-install:
 	${REINPLACE_CMD} 's|libvorbis.so.0|libvorbis.so|' \
 		${WRKSRC}/python/format.py

@@ -10,8 +10,6 @@ BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/libxml++-2.6.pc:${PORTSDIR}/textpr
 USES=		gmake pkgconfig
 GNU_CONFIGURE=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/libxml++-2.6
-
 do-install:
 	@cd ${WRKSRC} && ${MAKE_CMD} ${MAKE_ARGS} install-data-local install-dist_referenceDATA
 

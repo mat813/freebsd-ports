@@ -16,8 +16,6 @@ NO_WRKSUBDIR=	yes
 USES=		python tar:tgz
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-rxp
-EXAMPLESDIR=	${PREFIX}/share/examples/py-rxp
 PORTDOCS=	*
 PORTEXAMPLES=	*
 

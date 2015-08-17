@@ -20,7 +20,6 @@ DOS2UNIX_FILES=	GrkPolyCompv${PORTVERSION:S|.||}.KMN
 NO_BUILD=	yes
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	${PREFIX}/share/doc/kmfl/${PORTNAME}
 DOCSLIST=	Greek\ Poly\ Comp\ Kbrd\ Layout.pdf \
 		welcome.htm
 

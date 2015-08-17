@@ -19,9 +19,6 @@ USE_LDCONFIG=	yes
 
 PORTDOCS=	AUTHORS README.md RELEASE_NOTES
 
-# Set ${DOCSDIR} to avoid conflict with benchmarks/iperf ${DOCSDIR}
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
-
 post-patch:
 # Don't build stuff that we're not going to install.  Among other
 # things this means we're not going to try to build profiled objects

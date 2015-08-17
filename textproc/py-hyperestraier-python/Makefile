@@ -17,16 +17,11 @@ USES=		python
 USE_PYTHON=	distutils
 
 PORTEXAMPLES=	example.py asyn_example.py
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}${PKGNAMESUFFIX}
 OPTIONS_DEFINE=	EXAMPLES
 
-.include <bsd.port.options.mk>
-
-post-install:
-.if ${PORT_OPTIONS:MEXAMPLES}
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/example.py ${STAGEDIR}${EXAMPLESDIR}/
 	${INSTALL_DATA} ${WRKSRC}/asyn_example.py ${STAGEDIR}${EXAMPLESDIR}/
-.endif
 
 .include <bsd.port.mk>

@@ -14,24 +14,19 @@ LIB_DEPENDS=	libgloox.so:${PORTSDIR}/net-im/gloox \
 		libboost_regex.so:${PORTSDIR}/devel/boost-libs
 
 USES=		cmake pkgconfig
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 
 DOCFILES=	README
-PLIST_FILES=	lib/licq/protocol_jabber.so \
-		%%PORTDOCS%%%%DOCSDIR%%/README
+PLIST_FILES=	lib/licq/protocol_jabber.so
+DOCS_PLIST_FILES=	${DOCSDIR}/README
 
 LICQ_PORT?=	net-im/licq
 
 OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.options.mk>
-
 .include "${PORTSDIR}/${LICQ_PORT}/Makefile.inc"
 
-.if ${PORT_OPTIONS:MDOCS}
-post-install:
+post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}/
-.endif
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

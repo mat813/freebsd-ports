@@ -28,35 +28,17 @@ OPTIONS_DEFAULT=MYSQL PGSQL SQLITE
 
 SYBASE_DESC=	Sybase support
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-
 post-patch:
 	@${SED} -I.bak -e "s:/usr:${PREFIX}:" ${WRKSRC}/sqlkit.desktop
 
 ALL_PORTDOCS=	*.html *.js
 ALL_PORTDOCS_SUBDIR=	_images _static debug layout misc printing sqlkit
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MMSSQL}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}mssql>0:${PORTSDIR}/databases/py-mssql
-.endif
-
-.if ${PORT_OPTIONS:MMYSQL}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}MySQLdb>=1.2.2:${PORTSDIR}/databases/py-MySQLdb
-.endif
-
-.if ${PORT_OPTIONS:MPGSQL}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}psycopg2>=2.0.8:${PORTSDIR}/databases/py-psycopg2
-.endif
-
-.if ${PORT_OPTIONS:MSQLITE}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
-.endif
-
-.if ${PORT_OPTIONS:MSYBASE}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}sybase>0:${PORTSDIR}/databases/py-sybase
-.endif
+MSSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mssql>0:${PORTSDIR}/databases/py-mssql
+MYSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MySQLdb>=1.2.2:${PORTSDIR}/databases/py-MySQLdb
+PGSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>=2.0.8:${PORTSDIR}/databases/py-psycopg2
+SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
+SYBASE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sybase>0:${PORTSDIR}/databases/py-sybase
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DESKTOPDIR}

@@ -16,8 +16,6 @@ LICENSE=	GPLv3
 USES=		python:2
 USE_PYTHON=	distutils
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-pytemplate
-
 EXAMPLES=	daemonexample.py example.py threadexample.py
 
 OPTIONS_DEFINE=	EXAMPLES

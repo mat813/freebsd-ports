@@ -18,8 +18,6 @@ RUN_DEPENDS=	${SQUIRRELDIR}/index.php:${PORTSDIR}/mail/squirrelmail
 USES=		tar:bzip2
 NO_BUILD=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/squirrelmail/decode
-
 # if you were using WITHOUT_WWWDIR, use SQUIRRELDIR=${PREFIX}/squirrelmail
 SQUIRRELDIR?=	${PREFIX}/www/squirrelmail
 PLIST_SUB=	SQUIRRELDIR="${SQUIRRELDIR:S,^${PREFIX}/,,}"

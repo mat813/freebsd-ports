@@ -19,7 +19,6 @@ USES=		python shebangfix tar:bzip2
 SHEBANG_FILES=	src/resources/torrcOverride/override.py
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}
 PORTDOCS=	armrc.sample
 
 OPTIONS_DEFINE=	TOR \

@@ -16,7 +16,6 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 NO_ARCH=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	PKG-INFO
 
 OPTIONS_DEFINE=	DOCS

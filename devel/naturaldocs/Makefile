@@ -18,8 +18,6 @@ USE_PERL5=	run
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/NaturalDocs
-
 OPTIONS_DEFINE=	DOCS
 
 do-configure:

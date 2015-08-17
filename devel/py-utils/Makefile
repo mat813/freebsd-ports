@@ -14,7 +14,6 @@ COMMENT=	General utility modules that simplify common programming in Python
 USES=		python zip
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 PORTDOCS=	*
 
 OPTIONS_DEFINE=	DOCS

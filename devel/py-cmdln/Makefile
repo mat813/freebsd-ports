@@ -16,9 +16,6 @@ LICENSE=	MIT
 USES=		python:2 zip
 USE_PYTHON=	distutils
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 PORTDOCS=	README.txt
 
 post-install:

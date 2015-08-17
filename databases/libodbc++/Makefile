@@ -24,7 +24,6 @@ INSTALL_TARGET=	install-strip
 LIB_DEPENDS=	libodbc.so:${PORTSDIR}/databases/unixODBC
 CONFIGURE_ARGS+=	--with-odbc=${LOCALBASE}
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
 PORTDOCS=	progref
 
 post-extract:

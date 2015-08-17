@@ -18,7 +18,6 @@ CONFLICTS=	ocaml-[0-3]* ocaml-nox11-[0-3]*
 USES=		tar:tgz
 HAS_CONFIGURE=	yes
 USE_OCAML=	yes
-DOCSDIR=	${PREFIX}/share/doc/ocaml/${PORTNAME}
 MAKE_ENV+=	DESTDIR="${STAGEDIR}"
 
 pre-install:

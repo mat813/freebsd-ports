@@ -12,24 +12,19 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libboost_regex.so:${PORTSDIR}/devel/boost-libs
 
 USES=		cmake
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 
 DOCFILES=	README
 PLIST_FILES=	lib/licq/protocol_icq.so \
-		%%PORTDOCS%%%%DOCSDIR%%/README
+DOCS_PLIST_FILES=	${DOCSDIR}/README
 
 LICQ_PORT?=	net-im/licq
 
 OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.options.mk>
-
 .include "${PORTSDIR}/${LICQ_PORT}/Makefile.inc"
 
-.if ${PORT_OPTIONS:MDOCS}
-post-install:
+post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}/
-.endif
+	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

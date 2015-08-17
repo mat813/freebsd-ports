@@ -13,7 +13,6 @@ LLVM_SUFFIX=	-cheri
 LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 COMMAND_PREFIX=	cheri-unknown-freebsd-
 COMMAND_SUFFIX=
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
 USES=		cmake:outsource compiler:c++11-lib libedit ninja perl5

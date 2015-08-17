@@ -12,7 +12,6 @@ COMMENT=	Reference manual of BOUML
 
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/doc
-DOCSDIR=	${PREFIX}/share/doc/bouml
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

@@ -15,7 +15,6 @@ LICENSE=	MIT
 USES=		python:2
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 PORTDOCS=	README
 
 OPTIONS_DEFINE=	DOCS

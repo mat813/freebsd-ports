@@ -32,9 +32,6 @@ USE_LDCONFIG=	${PREFIX}/lib/compat/pkg
 MAKE_ARGS=	PREFIX="${PREFIX}" RUBY="${RUBY}" \
 		RUBY_SITELIBDIR="${RUBY_SITELIBDIR}" MKDIR="${MKDIR}"
 
-EXAMPLESDIR=	${PREFIX}/share/examples/pkgtools
-DOCSDIR=	${PREFIX}/share/doc/pkgtools
-
 .include <bsd.port.pre.mk>
 
 INSTALL_TARGET=		install

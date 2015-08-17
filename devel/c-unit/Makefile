@@ -20,7 +20,6 @@ USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 
 DATADIR=	${PREFIX}/share/CUnit
-EXAMPLESDIR=	${PREFIX}/share/examples/CUnit
 
 PATHFIX_MAKEFILEIN=	Makefile.am
 

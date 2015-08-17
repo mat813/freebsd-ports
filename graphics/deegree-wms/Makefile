@@ -20,7 +20,6 @@ TOMCATDIR=	${PREFIX}/${TOMCATVER}
 APPHOME=	${LOCALBASE}/${TOMCATVER}
 WEBAPPDIR=	${TOMCATDIR}/webapps
 PORTDOCS=	README.txt deegree_charts_documentation_en.pdf deegree_wms_documentation_en.pdf
-DOCSDIR=	${PREFIX}/share/doc/deegree-wms
 PLIST_SUB=	TOMCATDIR=${TOMCATDIR:S|^${PREFIX}/||} WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 SUB_FILES=	pkg-message
 SUB_LIST=	TCPORT=${TCPORT}

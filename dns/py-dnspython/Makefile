@@ -18,11 +18,9 @@ OPTIONS_DEFINE=	DOCS EXAMPLES PYCRYPTO
 PYCRYPTO_DESC=	Enable pycrypto (part of dnssec needs it)
 
 PORTDOCS=	ChangeLog README
-DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 
 PORTEXAMPLES=	ddns.py e164.py mx.py name.py reverse.py reverse_name.py \
 		xfr.py zonediff.py
-EXAMPLESDIR=	${PREFIX}/share/examples/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 
 PYCRYPTO_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycrypto>0:${PORTSDIR}/security/py-pycrypto
 
@@ -32,7 +30,6 @@ PYCRYPTO_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycrypto>0:${PORTSDIR}/security/py-
 PORTVERSIONSUFFIX=
 .else
 PORTVERSIONSUFFIX=	3
-EXAMPLESDIR:=	${EXAMPLESDIR}3
 .endif
 
 post-install:

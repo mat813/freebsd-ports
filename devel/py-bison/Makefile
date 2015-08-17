@@ -22,9 +22,6 @@ OPTIONS_DEFINE=	DOCS EXAMPLES
 USES=		bison:both python
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 PORTDOCS=	*
 PORTEXAMPLES=	*
 

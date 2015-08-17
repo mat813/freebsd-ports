@@ -18,7 +18,6 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}altgraph>=0.9:${PORTSDIR}/math/py-altgraph \
 USES=		python:2 zip
 USE_PYTHON=	autoplist distutils
 
-DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 
 post-patch:

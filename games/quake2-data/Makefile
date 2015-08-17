@@ -17,7 +17,6 @@ USES=		zip:infozip
 NO_WRKSUBDIR=	yes
 
 DATADIR=	${Q2DIR}
-DOCSDIR=	${PREFIX}/share/doc/${PKGBASE}
 
 Q2_DEMO=	q2-314-demo-x86.exe
 Q2_SRC=		q2src${PORTVERSION:S|.||}.shar.Z

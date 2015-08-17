@@ -18,9 +18,6 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}distorm>0:${PORTSDIR}/devel/py-distorm
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 PORTDOCS=	AUTHORS ChangeLog PKG-INFO README README.cptrace TODO
 PORTEXAMPLES=	itrace.py simple_dbg.py
 

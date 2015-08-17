@@ -16,8 +16,6 @@ DISTINFO_FILE=	${PYQT4_DISTINFO_FILE}
 
 USES=		python
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-qt4
-
 .include "${.CURDIR}/../../devel/py-qt4/bsd.pyqt.mk"
 
 .for component in ${PYQT4_COMPONENTS:Ndemo}

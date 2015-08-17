@@ -14,8 +14,6 @@ LICENSE=	BSD2CLAUSE
 USES=		cmake:outsource compiler:c11 ninja pkgconfig tar:xz
 USE_LDCONFIG=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/waffle1
-
 OPTIONS_DEFINE=	DOCS
 
 USE_XORG=	x11 xcb

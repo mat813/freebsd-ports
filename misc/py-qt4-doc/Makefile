@@ -17,8 +17,6 @@ NO_BUILD=	yes
 
 USES=		python
 
-DOCSDIR=	${PREFIX}/share/doc/py-qt4
-
 do-install:
 	cd ${WRKSRC} &&\
 		${MKDIR} ${STAGEDIR}${DOCSDIR} &&\

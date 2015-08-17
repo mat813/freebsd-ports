@@ -39,7 +39,6 @@ CONFIGURE_SCRIPT+=	Makefile.PL INSTALLSITESCRIPT=${PREFIX}/libexec/dnscheck
 
 WRKSRC=		${WRKDIR}/engine
 
-DOCSDIR=	${PREFIX}/share/doc/DNSCheck
 DOCS=		data-flow-batch.png DNSCheck.graffle data-flow-web.png \
 		call-flow.png database-schema.pdf
 DOCSDB=		indexes.sql schema.sql drop.sql

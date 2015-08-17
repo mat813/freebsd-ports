@@ -65,7 +65,6 @@ CONFIGURE_ARGS=	--with-w32-path=${LOCALBASE}/lib/win32 \
 OPTIONS_DEFINE=	CACA ESOUND JACK GNOMEVFS2 PULSEAUDIO XVMC SMB AALIB \
 		IMAGEMAGICK PIXBUF WAVPACK VAAPI LIBBLURAY
 
-DOCSDIR=	${PREFIX}/share/doc/xine-lib
 # Please sync with XINE_PLUGINSDIR in multimedia/xine
 # and multimedia/vdr-plugin-xineliboutput
 PLUGINSDIR=	lib/xine/plugins/2.5

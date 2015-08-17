@@ -10,7 +10,6 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Text file to postscript converter (with Japanese support)
 
 USES=		tar:bzip2
-DOCSDIR=	${PREFIX}/share/doc/${PKGBASE}
 
 PLIST_FILES=	bin/e2ps bin/e2lpr
 PORTDOCS=	README.euc README.english

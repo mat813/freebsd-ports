@@ -45,11 +45,8 @@ CONFLICTS=	ja-groff-[0-9]*
 INFO=	groff
 
 DATADIR=	${PREFIX}/share/${PORTNAME}/${PORTVERSION}
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
-EXAMPLESDIR=	${DOCSDIR}/examples
 
 .include <bsd.port.pre.mk>
-.include <bsd.port.options.mk>
 
 .if ! ${PORT_OPTIONS:MX11}
 CONFIGURE_ARGS+=--without-x

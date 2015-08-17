@@ -24,7 +24,6 @@ USE_PYTHON=	distutils autoplist pythonprefix
 CPE_VENDOR=	jean-paul_calderone
 CPE_PRODUCT=	py${PORTNAME}
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 PORTEXAMPLES=	*
 
 post-install:

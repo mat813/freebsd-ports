@@ -19,8 +19,6 @@ LIBYAML_DESC=	Use textproc/libyaml for faster parsing
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MEXAMPLES}

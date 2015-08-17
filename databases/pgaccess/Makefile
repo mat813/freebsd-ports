@@ -22,8 +22,6 @@ PGACCESSDIR=	${PREFIX}/share/postgresql/${PORTNAME}
 
 OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.options.mk>
-
 post-patch:
 	@${REINPLACE_CMD} -e "s,/usr/bin,${PREFIX}/bin,g ; " ${WRKSRC}/lib/mainlib.tcl
 	@${RM} ${WRKSRC}/lib/mainlib.tcl.bak

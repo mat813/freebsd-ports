@@ -29,7 +29,6 @@ USE_PYTHON=	distutils autoplist
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
-DOCSDIR=			${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 PYDISTUTILS_BUILD_TARGET+=	build_sphinx -a -E
 
 post-patch:

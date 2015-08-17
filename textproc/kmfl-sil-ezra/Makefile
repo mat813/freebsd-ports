@@ -24,7 +24,6 @@ DOS2UNIX_FILES=	Keyman/EZRAUNI24.KMN
 NO_BUILD=	yes
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	${PREFIX}/share/doc/kmfl/${PORTNAME}
 DOCSLIST=	${WRKSRC}/Licenses.txt ${WRKSRC}/README.txt \
 		${WRKSRC}/WordDocs/Ezra\ SIL\ Keyboard\ Chart.doc \
 		${DISTDIR}/${DIST_SUBDIR}/Keying+in+Hebrew.pdf \

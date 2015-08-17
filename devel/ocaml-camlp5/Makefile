@@ -47,13 +47,12 @@ CONFIGURE_ARGS+=	--strict
 .endif
 ALL_TARGET=	world.opt
 
-post-install:
-.if ${PORT_OPTIONS:MDOCS}
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
-.endif
+post-install:
 	${INSTALL_DATA} ${WRKSRC}/etc/META \
 		${STAGEDIR}${PREFIX}/lib/ocaml/camlp5
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/camlp5*.opt

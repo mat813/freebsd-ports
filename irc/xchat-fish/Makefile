@@ -19,7 +19,6 @@ RUN_DEPENDS=	xchat:${PORTSDIR}/irc/xchat
 
 USES=		zip dos2unix
 NO_WRKSUBDIR=	yes
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 CCFLAGS+=	-Wall -O2 -I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 MAKE_ENV+=	CCFLAGS="${CCFLAGS}"

@@ -24,9 +24,6 @@ USE_PYTHON=	autoplist distutils
 
 SDLNOX11=	sdl-nox11-[0-9]*
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 post-patch:

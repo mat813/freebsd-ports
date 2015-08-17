@@ -23,7 +23,6 @@ DOS2UNIX_FILES=	IPAUni12.kmn
 NO_BUILD=	yes
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	share/doc/kmfl/${PORTNAME}
 DOCSLIST=	${WRKSRC}/welcome.htm \
 		${DISTDIR}/${DIST_SUBDIR}/IPA+Unicode+5.1_ver+1.2_KMN.pdf
 

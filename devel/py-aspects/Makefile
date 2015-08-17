@@ -22,8 +22,6 @@ SUB_FILES=	pkg-message
 PORTEXAMPLES=	httpget_example.py timeout_advice.py timeout_example.py \
 		tracer_advice.py tracer_example.py typecheck_advice.py \
 		typecheck_example.py
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 OPTIONS_DEFINE=	EXAMPLES
 
 #regression-test: extract

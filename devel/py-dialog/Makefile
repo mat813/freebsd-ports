@@ -20,8 +20,6 @@ USES=		python tar:bzip2
 USE_PYTHON=	distutils
 PYDISTUTILS_PKGNAME=	pythondialog
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-dialog
-
 post-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/demo.py ${STAGEDIR}${EXAMPLESDIR}

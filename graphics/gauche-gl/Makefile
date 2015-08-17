@@ -1,4 +1,4 @@
-# Created by: Kimura Fuyuki <fuyuki@hadaly.org>
+# Cggreated by: Kimura Fuyuki <fuyuki@hadaly.org>
 # $FreeBSD$
 
 PORTNAME=	gl
@@ -26,9 +26,6 @@ MAKE_JOBS_UNSAFE=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-
-DOCSDIR=	${PREFIX}/share/doc/gauche/${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/gauche/${PORTNAME}
 
 PLIST_SUB=	TARGET="${CONFIGURE_TARGET}"
 

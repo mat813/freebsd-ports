@@ -29,8 +29,6 @@ PLIST_FILES=	include/GL/glfw.h lib/libglfw.a lib/libglfw.so \
 
 PORTDOCS=	*
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
-
 DOCSRCDIR1=	${WRKSRC}
 DOC_FILES1=	*.html
 
@@ -39,8 +37,6 @@ DOCSDIR2=	${DOCSDIR}/docs
 DOC_FILES2=	*.pdf *.sty *.tex *.txt
 
 PORTEXAMPLES=	*
-
-EXAMPLESDIR=	${PREFIX}/share/examples/${PORTNAME}${PKGNAMESUFFIX}
 
 EXAMPLESSRCDIR1=	${WRKSRC}/examples
 EXAMPLES_FILES1=	boing gears heightmap listmodes mipmaps mtbench \

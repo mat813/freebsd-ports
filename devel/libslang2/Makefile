@@ -24,7 +24,6 @@ CONFIGURE_ARGS+=--with-pkgconfigdir=${PREFIX}/libdata/pkgconfig
 ALL_TARGET=	all static
 INSTALL_TARGET=	install install-static
 
-DOCSDIR=	${PREFIX}/share/doc/slang
 DATADIR=	${PREFIX}/share/slsh
 
 OPTIONS_DEFINE=	PCRE PNG ICONV ONIG DOCS

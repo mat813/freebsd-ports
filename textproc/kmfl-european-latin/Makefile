@@ -21,7 +21,6 @@ USES=		dos2unix zip
 DOS2UNIX_FILES=	european.kmn
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	${PREFIX}/share/doc/kmfl/${PORTNAME}
 DOCSLIST=	EuroLatin\ Keyman\ Desktop\ Keyboard\ Files/eurolatin1.6.pdf \
 		EuroLatin\ KeymanWeb\ Keyboard\ Files/european.html \
 		licence.txt

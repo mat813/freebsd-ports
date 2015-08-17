@@ -20,8 +20,6 @@ BUILD_DEPENDS=	p5-POE>=0.37:${PORTSDIR}/devel/p5-POE \
 		p5-Crypt-Blowfish_PP>=1.12:${PORTSDIR}/security/p5-Crypt-Blowfish_PP
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
-
 USES=		perl5 shebangfix
 USE_PERL5=	configure
 
@@ -29,8 +27,6 @@ OPTIONS_DEFINE=	EXAMPLES
 
 PORTEXAMPLES=	synopsis.pl
 SHEBANG_FILES=	examples/synopsis.pl
-
-.include <bsd.port.options.mk>
 
 post-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}

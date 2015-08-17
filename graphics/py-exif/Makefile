@@ -15,7 +15,6 @@ COMMENT=	Python library to extract EXIF metadata from JPEG and TIFF image files
 USES=		python
 WRKSRC=		${WRKDIR}/pyexif
 DATADIR=	${PREFIX}/share/py-exif
-DOCSDIR=	${PREFIX}/share/doc/py-exif
 
 OPTIONS_DEFINE=	DOCS
 

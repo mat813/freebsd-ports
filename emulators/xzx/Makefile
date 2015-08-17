@@ -20,8 +20,6 @@ USE_XORG=	x11 ice sm xext xpm xt xxf86vm
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-oss
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-pro
-
 OPTIONS_DEFINE=	DOCS
 
 pre-configure:

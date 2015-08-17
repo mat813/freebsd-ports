@@ -19,8 +19,6 @@ ONLY_FOR_ARCHS=	i386
 USES=		dos2unix python
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
-
 PORTDOCS=	usage.txt
 
 OPTIONS_DEFINE=	DOCS

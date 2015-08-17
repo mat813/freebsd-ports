@@ -27,7 +27,6 @@ OPTIONS_DEFINE=	DOCS
 
 DATADIR=	${PREFIX}/share/py-${PORTNAME}
 PORTDOCS=	AUTHORS.txt CHANGELOG.txt CREDITS.txt LEGAL.txt README.txt
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 
 .include <bsd.port.pre.mk>
 

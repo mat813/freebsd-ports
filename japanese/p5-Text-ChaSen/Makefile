@@ -21,7 +21,6 @@ WRKSRC=		${WRKDIR}/chasen-${CHASEN_VERSION}/perl
 USES=		perl5
 USE_PERL5=	configure
 CONFIGURE_ENV=	PREFIX="${PREFIX}"
-DOCSDIR=	${PREFIX}/share/doc/chasen
 
 OPTIONS_DEFINE=	DOCS
 

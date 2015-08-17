@@ -17,7 +17,6 @@ LARGS=	-largs ${.CURDIR}/obj/link.o \
 
 GENDIR=		gen_src
 GEN_SRCS=	${GENDIR}/snames.adb ${GENDIR}/snames.ads
-DOCSDIR=	${PREFIX}/share/doc/gprbuild
 
 all: gprbuild
 

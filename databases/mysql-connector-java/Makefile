@@ -28,37 +28,29 @@ DESTJARFILE=	${PORTNAME}.jar
 EXTRADOCS=	CHANGES docs/connector-j.html docs/connector-j.pdf
 JARFILE=	${DISTNAME}-bin.jar
 JDCLASSPATH=	${SRCDIR}:${CLASSPATH}
+NO_BUILD=	yes
 
 PLIST_FILES=	%%JAVAJARDIR%%/${DESTJARFILE}
 
 OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MDOCS}
 PORTDOCS=	*
-.endif
 
-do-build:
-.if ${PORT_OPTIONS:MDOCS}
+do-build-DOCS-on:
 	@${MKDIR} ${JAVADOCDIR} && (cd ${SRCDIR};               \
 	    ${JAVADOC} -quiet -breakiterator -encoding utf8     \
 	    -d ${JAVADOCDIR} -package -classpath ${JDCLASSPATH}	\
 	    com.mysql.jdbc org.gjt.mm.mysql)
-.endif
 
-do-install: do-install-jar do-install-apidocs
-
-do-install-jar:
+do-install:
 	@${ECHO_MSG} -n ">> Installing .jar files..."
-	@${INSTALL_DATA} ${BUILDDIR}/${JARFILE} ${STAGEDIR}${JAVAJARDIR}/${DESTJARFILE}
+	${INSTALL_DATA} ${BUILDDIR}/${JARFILE} ${STAGEDIR}${JAVAJARDIR}/${DESTJARFILE}
 	@${ECHO_MSG} " [ DONE ]"
 
-do-install-apidocs:
-.if ${PORT_OPTIONS:MDOCS}
+do-install-DOCS-on:
 	@${ECHO_MSG} -n ">> Installing documentation in ${DOCSDIR}..."
-	@${MKDIR} ${APIDOCSDIR}
-	@cd ${JAVADOCDIR} && for src in $$( ${FIND} . ) ; do \
+	${MKDIR} ${APIDOCSDIR}
+	cd ${JAVADOCDIR} && for src in $$( ${FIND} . ) ; do \
 	    dst=${APIDOCSDIR}$${src#.} ; \
 	    if ${TEST} -d $$src ; then \
 	        ${MKDIR} $$dst ; \
@@ -66,10 +58,9 @@ do-install-apidocs:
 	        ${INSTALL_DATA} $$src $$dst ; \
 	    fi \
 	done
-	@for extradoc in ${EXTRADOCS} ; do                          \
+	for extradoc in ${EXTRADOCS} ; do                          \
 	  ${INSTALL_DATA} ${INSTALL_WRKSRC}/$$extradoc ${STAGEDIR}${DOCSDIR} ; \
 	done
 	@${ECHO_MSG} " [ DONE ]"
-.endif
 
 .include <bsd.port.mk>

@@ -16,7 +16,6 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 
 PORTEXAMPLES=	*
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 
 post-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR} && \

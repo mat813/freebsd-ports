@@ -20,8 +20,6 @@ USES=		cmake:outsource iconv tar:bzip2
 USE_LDCONFIG=	yes
 WRKSRC=		${WRKDIR}/libwbxml-${PORTVERSION}
 
-DOCSDIR=	${PREFIX}/share/doc/libwbxml
-
 OPTIONS_DEFINE=	DOCS
 
 post-install:

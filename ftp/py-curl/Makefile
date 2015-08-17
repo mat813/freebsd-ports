@@ -22,8 +22,6 @@ USE_PYTHON=	autoplist distutils
 USES=		python
 
 DATADIR=	${PREFIX}/share/py-curl
-DOCSDIR=	${PREFIX}/share/doc/py-curl
-EXAMPLESDIR=	${PREFIX}/share/examples/py-curl
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/pycurl.so

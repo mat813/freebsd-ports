@@ -24,8 +24,6 @@ MAKE_JOBS_UNSAFE=	yes
 
 CONFLICTS=	libslang2-[0-9]* libslang-1.*[^j]*
 
-DOCSDIR=	${PREFIX}/share/doc/slang
-
 OPTIONS_DEFINE=	DOCS
 
 VERSION=	1.4.5

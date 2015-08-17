@@ -20,7 +20,6 @@ RUN_DEPENDS:=	p5-POE>=0:${PORTSDIR}/devel/p5-POE \
 		p5-POE-Component-Client-DNSBL>=0.06:${PORTSDIR}/dns/p5-POE-Component-Client-DNSBL \
 		p5-Net-IP>=1.25:${PORTSDIR}/net-mgmt/p5-Net-IP
 
-PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 USES=		perl5 shebangfix
 USE_PERL5=	configure
 

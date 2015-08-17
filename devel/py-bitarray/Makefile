@@ -16,9 +16,6 @@ LICENSE=	PSFL
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 PORTDOCS=	AUTHORS CHANGE_LOG LICENSE README.rst
 PORTEXAMPLES=	*
 

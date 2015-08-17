@@ -15,7 +15,6 @@ BUILD_DEPENDS=	p5-POE>=0:${PORTSDIR}/devel/p5-POE \
 		p5-POE-Component-IRC>=0:${PORTSDIR}/irc/p5-POE-Component-IRC
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-#PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 USES=		perl5
 USE_PERL5=	configure
 

@@ -24,8 +24,6 @@ OPENSSL_DESC=		Enable FTP over SSL/TLS (RFC4217)
 SENDFILE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pysendfile>0:${PORTSDIR}/net/py-pysendfile
 OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 post-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${CP} -R ${WRKSRC}/demo/ ${STAGEDIR}${EXAMPLESDIR}

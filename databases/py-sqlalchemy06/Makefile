@@ -30,11 +30,6 @@ MSSQL_DESC=	MS SQL Server backend
 NOSE_DESC=	Use Nose for unit tests
 SYBASE_DESC=	Sybase backend
 
-.include <bsd.port.options.mk>
-
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
-
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MCEXTENSIONS} && ${PYTHON_REL} < 3000

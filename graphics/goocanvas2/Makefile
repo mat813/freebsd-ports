@@ -22,25 +22,15 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 PORTDOCS=	*
-DOCSDIR=	${PREFIX}/share/gtk-doc/html/goocanvas2
 
 OPTIONS_DEFINE=	DOCS NLS
+OPTIONS_SUB=	yes
 
-.include <bsd.port.options.mk>
+NLS_USES=		gettext
 
-.if ${PORT_OPTIONS:MNLS}
-USES+=		gettext
-PLIST_SUB+=	NLS=""
-.else
-PLIST_SUB+=	NLS="@comment "
-.endif
-
-post-patch:
-.if ! ${PORT_OPTIONS:MDOCS}
+post-patch-DOCS-off:
 	@${REINPLACE_CMD} -e '/^SUBDIRS/s|docs||g' ${WRKSRC}/Makefile.in
-.endif
-.if ! ${PORT_OPTIONS:MNLS}
+post-patch-NLS-off:
 	@${REINPLACE_CMD} -e '/^SUBDIRS/s|po||g' ${WRKSRC}/Makefile.in
-.endif
 
 .include <bsd.port.mk>

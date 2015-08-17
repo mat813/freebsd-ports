@@ -16,7 +16,6 @@ LICENSE_FILE=	${WRKSRC}/license.terms
 
 USES+=		tcl
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-tcl=${TCL_LIBDIR} \
 		--exec-prefix=${PREFIX}
@@ -32,12 +31,8 @@ GDBM_DESC=	Persistent shared variables using GDBM
 
 PORTDOCS=	*
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MGDBM}
-LIB_DEPENDS+=	libgdbm.so:${PORTSDIR}/databases/gdbm
-CONFIGURE_ARGS+=--with-gdbm
-.endif
+GDBM_LIB_DEPENDS=	libgdbm.so:${PORTSDIR}/databases/gdbm
+GDBM_CONFIGURE_ENABLE=	gdbm
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \

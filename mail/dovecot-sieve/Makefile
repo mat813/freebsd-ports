@@ -30,8 +30,6 @@ USE_LDCONFIG=	${PREFIX}/lib/dovecot/lda
 
 SUB_FILES=	pkg-message
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME:S/-/\//}
-
 PORTDOCS=	AUTHORS COPYING COPYING.LGPL INSTALL NEWS README TODO spamtest-virustest.txt
 
 post-patch:

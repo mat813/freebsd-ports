@@ -25,15 +25,8 @@ OPTIONS_DEFINE=	BYTEA_CONN EXAMPLES DOCS
 OPTIONS_DEFAULT=	BYTEA_CONN
 BYTEA_CONN_DESC=	Apply Bytea connection patch
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MBYTEA_CONN}
-PATCH_SITES=	http://sourceforge.net/tracker/download.php?group_id=16528&atid=316528&file_id=273956&aid=1939119/
-PATCHFILES=	pyPgSQL-patch_byteaconn
-.endif
-
-DOCSDIR=	${PREFIX}/share/doc/py-pyPgSQL
-EXAMPLESDIR=	${PREFIX}/share/examples/py-pyPgSQL
+BYTEA_CONN_PATCH_SITES=	http://sourceforge.net/tracker/download.php?group_id=16528&atid=316528&file_id=273956&aid=1939119/
+BYTEA_CONN_PATCHFILES=	pyPgSQL-patch_byteaconn
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

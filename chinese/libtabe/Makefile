@@ -20,7 +20,6 @@ GNU_CONFIGURE=	yes
 USE_BDB=	yes
 OBSOLETE_BDB_VAR=	USE_DB2
 DATADIR=	${PREFIX}/share/tabe
-DOCSDIR=	${PREFIX}/share/doc/tabe
 CONFIGURE_ARGS=	--includedir=${PREFIX}/include/tabe \
 		--with-db-name=${BDB_LIB_NAME} \
 		--with-db-inc=${BDB_INCLUDE_DIR} \

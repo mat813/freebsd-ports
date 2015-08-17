@@ -51,7 +51,7 @@ post-install:
 	${CHMOD} ${BINMODE} ${STAGEDIR}${RUBY_SITEARCHLIBDIR}/${PORTNAME}/ocaml/camlexer
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${PORTDOCS}
-	${INSTALL_DATA} ${INSTALL_WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}/
+	${INSTALL_DATA} ${INSTALL_WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
 
 x-generate-plist:

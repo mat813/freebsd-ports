@@ -16,7 +16,6 @@ BUILD_DEPENDS=	p5-Math-Random>=0.69:${PORTSDIR}/math/p5-Math-Random \
 		p5-POE>=0:${PORTSDIR}/devel/p5-POE
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 USES=		perl5 shebangfix
 USE_PERL5=	configure
 

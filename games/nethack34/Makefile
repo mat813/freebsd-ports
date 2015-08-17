@@ -27,7 +27,6 @@ HACKNAME?=	nethack
 HACKDIR?=	share/${HACKNAME}
 
 DATADIR=	${PREFIX}/${HACKDIR}
-DOCSDIR=	${PREFIX}/share/doc/${HACKNAME}
 PKGDEINSTALL=	${WRKDIR}/pkg-deinstall
 
 .if !defined(PKGNAMESUFFIX)
@@ -80,8 +79,6 @@ pre-everything::
 	${ECHO_MSG} "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" ; \
 	fi
 
-.include <bsd.port.options.mk>
-
 post-patch:
 .for f in include/config.h sys/unix/Makefile.top
 	@${REINPLACE_CMD} -e 's|%%HACKNAME%%|${HACKNAME}|g' \
@@ -106,9 +103,8 @@ pre-install:
 post-install:
 	@cd ${WRKSRC}/doc; ${SETENV} ${MAKE_ENV} ${MAKE} ${MAKE_ARGS} manpages
 	@${MKDIR} ${STAGEDIR}${DATADIR}/save
-.if ${PORT_OPTIONS:MDOCS}
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/Guidebook.txt ${STAGEDIR}${DOCSDIR}
-.endif
 
 .include <bsd.port.post.mk>

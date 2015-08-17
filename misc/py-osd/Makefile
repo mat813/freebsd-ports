@@ -18,7 +18,6 @@ USES=		python twisted:run
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	AUTHORS ChangeLog ChangeLog.old README README.daemon pyosd.html
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 
 OPTIONS_DEFINE=	DOCS
 

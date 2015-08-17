@@ -20,9 +20,8 @@ USE_ANT=	yes
 USE_JAVA=	yes
 NO_ARCH=	yes
 
-PLIST_FILES=	%%JAVAJARDIR%%/postgresql.jar
+PLIST_FILES=	${JAVAJARDIR}/postgresql.jar
 PORTDOCS=	*
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
 SUB_FILES=	pkg-message
 
 OPTIONS_DEFINE=	DOCS

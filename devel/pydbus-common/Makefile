@@ -27,23 +27,16 @@ INSTALL_TARGET=	install-strip
 .if ${SLAVE_PORT} == no
 USES+=		python:2,build
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	HTMLDOCS
 HTMLDOCS_DESC=	build html documentation
 HTMLDOCS_CONFIGURE_OFF=	--disable-html-docs
 HTMLDOCS_BUILD_DEPENDS=	rst2html:${PORTSDIR}/textproc/py-docutils
 
-.include <bsd.port.options.mk>
-
-post-patch:
-.if ! ${PORT_OPTIONS:MDOCS}
+post-patch-DOCS-off:
 	@${REINPLACE_CMD} -e 's|HEADERS install-dist_docDATA|HEADERS|g ; \
 		s|PYTHON install-nodist_docDATA|PYTHON|g' \
 			${WRKSRC}/Makefile.in
-.endif
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/include/dbus-1.0/dbus/
@@ -60,10 +53,9 @@ do-install:
 		${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR} && \
 		${INSTALL_DATA} ${WRKSRC}/NEWS ${STAGEDIR}${DOCSDIR}
 
-.if ${PORT_OPTIONS:MHTMLDOCS}
+post-install-HTMLDOCS-on:
 	${INSTALL_DATA} ${WRKSRC}/*.html ${STAGEDIR}${DOCSDIR} && \
 	${INSTALL_DATA} ${WRKSRC}/doc/*.html ${STAGEDIR}${DOCSDIR}
-.endif
 .else # slave is defined
 LIB_DEPENDS+=	libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib
 RUN_DEPENDS+=	pydbus-common>=0:${PORTSDIR}/devel/pydbus-common

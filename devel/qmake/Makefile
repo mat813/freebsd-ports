@@ -30,8 +30,6 @@ OPTIONS_DEFINE=	DOCS
 
 .if ${PORT_OPTIONS:MDOCS}
 EXTRACT_AFTER_ARGS+='${DISTNAME}/doc/html/qmake*'
-DOCSDIR=	${PREFIX}/share/doc/qt
-PLIST_SUB+=	DOCSDIR="${DOCSDIR}"
 post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${CP} -Rp ${WRKSRC:H}/doc/html ${STAGEDIR}${DOCSDIR}

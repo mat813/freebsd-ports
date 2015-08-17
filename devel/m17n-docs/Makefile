@@ -16,8 +16,6 @@ JAPANESE_DESC=	Japanese documentation (HTML and PDF)
 
 OPTIONS_SUB=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/m17n
-
 do-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/en
 	${INSTALL_MAN} ${WRKSRC}/man/man1/* ${STAGEDIR}${MAN1PREFIX}/man/man1

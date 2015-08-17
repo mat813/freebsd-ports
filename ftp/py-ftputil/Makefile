@@ -14,12 +14,9 @@ COMMENT=	High-level FTP client library
 USES=		python
 USE_PYTHON=	distutils
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 PORTDOC_FILES=	README.html README.txt ftputil.html ftputil.txt ftputil_ru_utf8.txt
 
 OPTIONS_DEFINE=	DOCS
-
-.include <bsd.port.pre.mk>
 
 do-fetch:
 .if !exists(${DISTDIR}/${DISTNAME}${EXTRACT_SUFX})
@@ -32,4 +29,4 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -15,7 +15,6 @@ USE_XORG=	x11 xext
 USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	${PREFIX}/share/doc/ja/lfview
 
 .include <bsd.port.options.mk>
 

@@ -15,7 +15,6 @@ LICENSE=	GPLv3
 BUILD_DEPENDS=	bash:${PORTSDIR}/shells/bash \
 		gsed:${PORTSDIR}/textproc/gsed
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
 PORTDOCS=	*
 
 PLIST_SUB+=	PORTVERSION="${PORTVERSION}"
@@ -26,8 +25,6 @@ REINPLACE_ARGS=	-I ""
 
 USES=		shebangfix
 SHEBANG_FILES=	icm_bootstrap icm_install icm_prepare scripts/convert
-
-.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|sed|gsed|g' \

@@ -34,9 +34,6 @@ ZOPE_USES=	zope
 DATETIME_DEP=	${PYTHON_SITELIBDIR}/mx/DateTime/__init__.py
 DATETIME_INC=	${PYTHON_SITELIBDIR}/mx/DateTime/mxDateTime/
 
-DOCSDIR=	${PREFIX}/share/doc/py-psycopg
-EXAMPLESDIR=	${PREFIX}/share/examples/py-psycopg
-
 EXAMPLES=	binary.py bool.py bounded.py commit.py copy_from.py \
 		copy_from2.py copy_to.py dictfetch.py dt.py first.py \
 		integrity.py interval.py notify.py oid.py somehackers.jpg \
@@ -46,21 +43,16 @@ DOCS=		AUTHORS COPYING CREDITS ChangeLog FAQ INSTALL NEWS \
 		README RELEASE-1.0 SUCCESS TODO
 
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MZOPE}
-post-build:
+post-build-ZOPE-on:
 	${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py ${WRKSRC}/ZPsycopgDA
-.endif
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PYTHON_SITELIBDIR}
 	${INSTALL_PROGRAM} ${WRKSRC}/psycopgmodule.so \
 		${STAGEDIR}${PYTHON_SITELIBDIR}
-.if ${PORT_OPTIONS:MZOPE}
+do-install-ZOPE-on:
 	${MKDIR} ${STAGEDIR}${ZOPEBASEDIR}/${ZOPEPRODUCTDIR}/ZPsycopgDA
 	${CP} -R ${WRKSRC}/ZPsycopgDA ${STAGEDIR}${ZOPEBASEDIR}/${ZOPEPRODUCTDIR}/
-.endif
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
@@ -71,7 +63,8 @@ post-install:
 .for f in ${DOCS}
 	@${INSTALL_MAN} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
-.if !defined(BATCH) && ${PORT_OPTIONS:MZOPE}
+.if !defined(BATCH)
+post-install-ZOPE-on:
 	@${ECHO} ""
 	@${ECHO} "To complete the installation of ZPsycopgDA:"
 	@${ECHO} ""

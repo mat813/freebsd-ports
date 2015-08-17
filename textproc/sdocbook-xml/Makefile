@@ -23,7 +23,6 @@ XMLCATMGR=	bin/xmlcatmgr
 XMLCAT=		share/xml/catalog.ports
 SGMLCAT=	share/sgml/catalog.ports
 CATALOG_FILES=	catalog catalog.xml
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}/${PORTVERSION}
 DTD_NAME=	sdocbook
 DTD_VERSION=	${PORTVERSION}
 DTD_SUBDIR=	/dtd

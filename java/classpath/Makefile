@@ -55,9 +55,7 @@ ECJ_JAR=		ecj-${ECJ_VERSION}.jar
 CONFIGURE_ARGS+=	--with-ecj-jar=${DISTDIR}/${ECJ_JAR}
 .endif
 
-.if ${PORT_OPTIONS:MEXAMPLES}
-EXAMPLESDIR=		${DATADIR}/examples
-.else
+.if ! ${PORT_OPTIONS:MEXAMPLES}
 CONFIGURE_ARGS+=	--disable-examples
 .endif
 

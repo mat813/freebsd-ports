@@ -23,7 +23,6 @@ USE_FPC=	cairo fcl-base fcl-image fcl-json fcl-process fcl-xml hash \
 USE_GNOME=	#
 _PORTNAME=	${PORTNAME:tl}
 DATADIR=	${PREFIX}/share/${_PORTNAME}
-DOCSDIR=	${PREFIX}/share/doc/${_PORTNAME}
 INSTALLS_ICONS=	yes
 
 DESKTOP_ENTRIES=	"${PORTNAME}"	\

@@ -20,7 +20,6 @@ PLIST=		${WRKDIR}/pkg-plist
 WRKSRC=		${WRKDIR}/glest_game
 
 DATADIR=	${PREFIX}/share/${PKGNAMEPREFIX:S/-//}
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX:S/-//}
 GLESTDATADIRE=	data maps scenarios techs tilesets tutorials
 
 PORTDATA=	*

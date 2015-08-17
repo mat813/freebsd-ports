@@ -21,7 +21,6 @@ USES=		python:2
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	README.txt README-guido.txt
-DOCSDIR=	${PREFIX}/share/doc/py-dns
 
 OPTIONS_DEFINE=	DOCS
 

@@ -22,7 +22,6 @@ USE_PYTHON=	distutils autoplist
 
 OPTIONS_DEFINE=	DOCS
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 PORTDOCS=	README
 
 post-patch:

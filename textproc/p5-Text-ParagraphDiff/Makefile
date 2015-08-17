@@ -24,7 +24,6 @@ WRKSRC=		${WRKDIR}/${PORTNAME}
 
 SCRIPTS=	tdiff
 EXAMPLES=	diff.html new.txt old.txt
-EXAMPLESDIR=	${PREFIX}/share/examples/p5-Text-ParagraphDiff
 
 OPTIONS_DEFINE=	EXAMPLES
 

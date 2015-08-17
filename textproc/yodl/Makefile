@@ -42,7 +42,6 @@ SHEBANG_FILES=	${WRKSRC}/macros/rawmacros/create \
 		${WRKSRC}/scripts/yodl2whatever.in \
 		${WRKSRC}/build
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
 PORTDOCS=	*
 
 PLIST_SUB+=	PORTVERSION="${PORTVERSION}"
@@ -51,11 +50,7 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MDOCS}
-USE_TEX=	latex:build dvipsk:build
-.endif
+DOCS_USE=	TEX=latex:build,dvipsk:build
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|"/usr"|"${PREFIX}"| ; \
@@ -83,17 +78,15 @@ do-build:
 	@cd ${WRKSRC} && ./build programs strip
 	@cd ${WRKSRC} && ./build macros
 	@cd ${WRKSRC} && ./build man
-.if ${PORT_OPTIONS:MDOCS}
+post-build-DOCS-on:
 	@cd ${WRKSRC} && ./build manual
-.endif
 
 do-install:
 	@cd ${WRKSRC} && ./build install programs ${STAGEDIR}
 	@cd ${WRKSRC} && ./build install macros ${STAGEDIR}
 	@cd ${WRKSRC} && ./build install man ${STAGEDIR}
-.if ${PORT_OPTIONS:MDOCS}
+post-install-DOCS-on:
 	@cd ${WRKSRC} && ./build install manual ${STAGEDIR}
 	@cd ${WRKSRC} && ./build install docs ${STAGEDIR}
-.endif
 
 .include <bsd.port.mk>

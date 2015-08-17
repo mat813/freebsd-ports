@@ -70,7 +70,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/icons/* ${STAGEDIR}${PREFIX}/${ICONSDIR}/cvsweb/
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ChangeLog INSTALL README README.FreeBSD TODO TODO.FreeBSD
-	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}/
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 .endfor
 
 .include <bsd.port.post.mk>

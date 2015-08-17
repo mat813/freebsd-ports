@@ -41,7 +41,6 @@ USE_LDCONFIG=	yes
 # since it is still used by legacy drivers.
 MAKE_ENV=	NVIDIA_ROOT=${WRKSRC} X11BASE=${LOCALBASE}
 SUB_FILES=	pkg-deinstall pkg-install pkg-message
-DOCSDIR=	${PREFIX}/share/doc/NVIDIA_GLX-1.0
 MODULESDIR=	lib/xorg/modules
 PORTDOCS=	*
 

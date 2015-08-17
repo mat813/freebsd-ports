@@ -20,7 +20,6 @@ USE_PERL5=	modbuild
 
 MAN3=		Net::DNS::Resolver::Programmable.3
 PORTDOCS=	CHANGES README TODO
-DOCSDIR=	${PREFIX}/share/doc/p5-Net-DNS-Resolver-Programmable
 
 OPTIONS_DEFINE=	DOCS
 

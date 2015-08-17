@@ -18,9 +18,6 @@ USES+=		python
 CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc \
 		--with-python=${PYTHON_CMD}
 
-DOCSDIR=	${PREFIX}/share/doc/py-libxslt
-EXAMPLESDIR=	${PREFIX}/share/examples/py-libxslt
-
 post-install:
 	@cd ${STAGEDIR}${PREFIX} && ${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py \
 		-d ${PYTHONPREFIX_SITELIBDIR} -f ${PYTHONPREFIX_SITELIBDIR:S;${PREFIX}/;;}

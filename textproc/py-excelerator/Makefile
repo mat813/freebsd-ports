@@ -15,8 +15,6 @@ COMMENT=	Python library for generating Excel 97/2000/XP/2003 files
 USES=		python:2 zip
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-excelerator
-EXAMPLESDIR=	${PREFIX}/share/examples/py-excelerator
 PORTDOCS=	*
 PORTEXAMPLES=	*
 

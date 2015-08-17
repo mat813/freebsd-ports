@@ -22,7 +22,6 @@ USE_OCAML=		yes
 USE_OCAML_FINDLIB=	yes
 USE_OCAMLFIND_PLIST=	yes
 USE_OCAML_LDCONFIG=	yes
-DOCSDIR=	${PREFIX}/share/doc/pcre-ocaml
 
 CONFIGURE_ARGS=		--destdir="${DESTDIRNAME}"
 

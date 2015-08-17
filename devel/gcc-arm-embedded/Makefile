@@ -58,8 +58,6 @@ INFO=		annotate as bfd binutils configure cpp cppinternals gcc \
 		gccinstall gccint gdb gprof ld stabs standards
 
 MANPREFIX=	${PREFIX}/${PORTNAME}-${FULL_VERSION}/${DOCS_SUFFIX}
-DOCSDIR=	${PREFIX}/${PORTNAME}-${FULL_VERSION}/${DOCS_SUFFIX}
-EXAMPLESDIR=	${PREFIX}/${PORTNAME}-${FULL_VERSION}/share/gcc-${TARGET}/samples
 
 PLIST_SUB+=	TARGET=${TARGET} FULL_VERSION=${FULL_VERSION} \
 		GCC_VERSION=${GCC_VERSION}

@@ -25,13 +25,11 @@ NO_ARCH=	yes
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 PORTDOCS_1=	commands_header.txt index.rst changes.rst
 PORTDOCS_2=	topics/advanced.rst topics/commands.rst \
 		topics/getting-started.rst topics/logging.rst
 PORTDOCS_3=	generate_command_reference.py
 PORTDOCS=	${PORTDOCS_1} ${PORTDOCS_2} ${PORTDOCS_3}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 PORTEXAMPLES_1=	errorhandling.py helloworld.py idle.py locking.py logger.py \
 		multitags.py randomqueue.py stats.py stickers.py
 PORTEXAMPLES_2=	summary.txt

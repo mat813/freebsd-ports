@@ -21,7 +21,6 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--htmldir=${DOCSDIR}/html
 
 DATADIR=	${PREFIX}/share/${PORTNAME:S/+/p/g}
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME:S/+/p/g}
 
 OPTIONS_DEFINE=	DOCS
 

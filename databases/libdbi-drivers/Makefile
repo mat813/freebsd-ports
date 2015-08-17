@@ -17,7 +17,6 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-static \
 		--with-dbi-incdir=${LOCALBASE}/include \
 		--with-dbi-dbdir=/var/lib/libdbi
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${DISTVERSION}
 INSTALL_TARGET=	install-strip
 
 PORTDOCS=	*

@@ -84,8 +84,6 @@ DEBUG_CONFIGURE_WITH=	debug
 
 OPTIONS_SUB=yes
 
-.include <bsd.port.options.mk>
-
 post-extract:
 	@${MKDIR} ${WIDEC_WRKSRC}
 	@${MKDIR} ${NOWIDEC_WRKSRC}
@@ -114,17 +112,17 @@ post-install:
 .for i in ${EXAMPLES_TARGETS}
 	@${MKDIR} ${STAGEDIR}${${i}_EXAMPLESDIR}/c++
 . for f in ${EXAMPLES}
-	${INSTALL_DATA} ${${i}_WRKSRC}/test/${f} ${STAGEDIR}${${i}_EXAMPLESDIR}/
+	${INSTALL_DATA} ${${i}_WRKSRC}/test/${f} ${STAGEDIR}${${i}_EXAMPLESDIR}
 . endfor
-	${INSTALL_SCRIPT} ${${i}_WRKSRC}/test/tracemunch ${STAGEDIR}${${i}_EXAMPLESDIR}/
+	${INSTALL_SCRIPT} ${${i}_WRKSRC}/test/tracemunch ${STAGEDIR}${${i}_EXAMPLESDIR}
 . for f in ${EXAMPLES_CPP}
-	${INSTALL_DATA} ${${i}_WRKSRC}/c++/${f} ${STAGEDIR}${${i}_EXAMPLESDIR}/c++/
+	${INSTALL_DATA} ${${i}_WRKSRC}/c++/${f} ${STAGEDIR}${${i}_EXAMPLESDIR}/c++
 . endfor
 .endfor
 
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 . for f in ${DOCS}
-	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}/
+	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}${DOCSDIR}
 . endfor
 .if ${OPSYS} != FreeBSD || ${OSVERSION} > 900000
 	${RM} -f ${STAGEDIR}${PREFIX}/lib/libncurses.so \

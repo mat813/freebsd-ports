@@ -22,7 +22,6 @@ LIB_DEPENDS=	libc-client4.so.9:${PORTSDIR}/mail/cclient
 
 CONFLICTS_INSTALL=	panda-imap-20*
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
 SUB_FILES=	pkg-message
 
 MAKE_JOBS_UNSAFE=	yes

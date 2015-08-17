@@ -18,9 +18,6 @@ USE_PYTHON=	distutils autoplist
 WRKSRC=		${WRKDIR}/genshi
 CONFLICTS=	py-genshi-[0-9]*
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
-
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 post-install:

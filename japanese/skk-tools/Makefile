@@ -15,8 +15,6 @@ LICENSE=	GPLv2
 
 GNU_CONFIGURE=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/skk
-
 PORTDOCS=	README.skktools
 PLIST_FILES=	bin/skkdic-count bin/skkdic-expr bin/skkdic-sort
 

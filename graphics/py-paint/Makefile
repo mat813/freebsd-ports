@@ -26,7 +26,6 @@ CFLAGS+=	-I${LOCALBASE}/include -I${LOCALBASE}/include/libart-2.0 \
 		-I${LOCALBASE}/include/freetype1
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 PORTEXAMPLES=	*
 
 post-patch:

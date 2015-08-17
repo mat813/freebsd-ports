@@ -20,8 +20,6 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/librtlsdr
-
 OPTIONS_DEFINE=	DOCS
 
 DOCS_BUILD_DEPENDS=	doxygen:${PORTSDIR}/devel/doxygen

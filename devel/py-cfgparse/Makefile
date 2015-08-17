@@ -14,7 +14,6 @@ USES=		dos2unix python zip
 DOS2UNIX_FILES=	cfgparse.py
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 PORTDOCS=	*
 
 post-install:

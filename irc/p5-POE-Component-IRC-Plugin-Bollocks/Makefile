@@ -16,7 +16,6 @@ BUILD_DEPENDS=	p5-Dev-Bollocks>=0.06:${PORTSDIR}/textproc/p5-Dev-Bollocks \
 		p5-POE>=0:${PORTSDIR}/devel/p5-POE
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 USES=		perl5
 USE_PERL5=	configure
 

@@ -21,8 +21,6 @@ USE_PYTHON=	distutils autoplist
 
 OPTIONS_DEFINE=	DOCS
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
-
 post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}

@@ -9,8 +9,6 @@ BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/glibmm-2.4.pc:${PORTSDIR}/devel/gl
 GNU_CONFIGURE=	yes
 USES=		gmake pkgconfig
 
-DOCSDIR=	${PREFIX}/share/doc/glibmm-2.4
-
 post-patch:
 	@${FIND} ${WRKSRC}/examples -name Makefile.in \
 		| ${XARGS} ${REINPLACE_CMD} -e '/^install-am:/ s| all-am||'

@@ -17,7 +17,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 PROJECTHOST=	gperftools
 
 WRKSRC=		${WRKDIR}/gperftools-${PORTVERSION}
-DOCSDIR=	${PREFIX}/share/doc/gperftools
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes

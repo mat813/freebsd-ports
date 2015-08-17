@@ -17,9 +17,7 @@ USES=		charsetfix makeinfo gmake
 PATCH_SUBDIRS=	. doc lib sed
 DATADIR=	${PREFIX}/share/${PKGBASE}
 SAMP_FILES=	binary*.sed dc.sed
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGBASE}
 PORTDOCS=	AUTHORS BUGS COPYING COPYING.DOC NEWS README THANKS
-DOCSDIR=	${PREFIX}/share/doc/${PKGBASE}
 INFO=		sed
 
 OPTIONS_DEFINE=	NLS DOCS

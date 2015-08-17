@@ -21,8 +21,6 @@ USE_LDCONFIG=	yes
 CPPFLAGS+=	$$(${PCRE_CONFIG} --cflags)
 LDFLAGS+=	$$(${PCRE_CONFIG} --libs)
 
-DOCSDIR=	${PREFIX}/share/doc/lib${PORTNAME}-${PORTVERSION}
-
 PCRE_CONFIG?=	${LOCALBASE}/bin/pcre-config
 
 OPTIONS_DEFINE=	DOCS

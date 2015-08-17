@@ -22,7 +22,6 @@ DOCS_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx>=0:${PORTSDIR}/textproc/py-sph
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 PYDISTUTILS_BUILD_TARGET+=	build_sphinx
 

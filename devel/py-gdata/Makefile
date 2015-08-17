@@ -23,25 +23,13 @@ GMPY_DESC=	Multiprecision arithmetic
 M2CRYPTO_DESC=	Cryptography and SSL toolkit
 PYCRYPTO_DESC=	Cryptography toolkit
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
+M2CRYPTO_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}m2crypto>=0.20:${PORTSDIR}/security/py-m2crypto
+PYCRYPTO_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycrypto>0:${PORTSDIR}/security/py-pycrypto
+GMPY_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gmpy>0:${PORTSDIR}/math/py-gmpy
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MM2CRYPTO}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}m2crypto>=0.20:${PORTSDIR}/security/py-m2crypto
-.endif
-.if ${PORT_OPTIONS:MPYCRYPTO}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}pycrypto>0:${PORTSDIR}/security/py-pycrypto
-.endif
-.if ${PORT_OPTIONS:MGMPY}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}gmpy>0:${PORTSDIR}/math/py-gmpy
-.endif
-
-post-install:
-.if ${PORT_OPTIONS:MEXAMPLES}
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
+post-install-EXAMPLES-on:
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	@cd ${WRKSRC}/samples && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
-.endif
 
 .include <bsd.port.mk>

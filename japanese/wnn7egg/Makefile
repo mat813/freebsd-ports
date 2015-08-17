@@ -16,7 +16,6 @@ EMACSDIR=	${STAGEDIR}${PREFIX}/share/emacs/site-lisp
 ELISPDIR=	${EMACSDIR}/wnn7egg
 SITEPKGDIR=	${STAGEDIR}${PREFIX}/lib/xemacs/site-packages
 XELISPDIR=	${SITEPKGDIR}/lisp/wnn7egg
-DOCSDIR=	${PREFIX}/share/doc/wnn7egg
 MANIFEST=	MANIFEST.wnn7egg
 WRKSRC=		${WRKDIR}/wnn7/elisp
 

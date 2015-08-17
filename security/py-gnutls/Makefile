@@ -19,8 +19,6 @@ USES=		python
 USE_PYTHON=	autoplist distutils
 PYDISTUTILS_PKGNAME=	python_gnutls
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 OPTIONS_DEFINE=	EXAMPLES
 
 post-patch:

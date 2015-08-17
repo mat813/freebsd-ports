@@ -54,8 +54,6 @@ RUN_DEPENDS=	${XMLTV_DEPENDS}
 USES=		perl5 tar:bzip2
 USE_PERL5=	configure
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
-
 OPTIONS_DEFINE=	DOCS
 
 DOCS_EXTRA_PATCHES_OFF=	${FILESDIR}/extra-noportdocs-patch-Makefile.PL

@@ -22,7 +22,6 @@ USES+=			makeinfo
 ALL_TARGET+=		doc
 INSTALL_TARGET+=	install-doc
 PORTDOCS=		htick.html
-DOCSDIR=		${PREFIX}/share/doc/husky
 INFO=			htick
 
 post-patch:

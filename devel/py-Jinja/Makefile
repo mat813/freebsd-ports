@@ -17,7 +17,6 @@ LICENSE=	BSD3CLAUSE
 USES=		python:2
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 
 post-install:

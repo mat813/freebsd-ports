@@ -19,10 +19,7 @@ RUN_DEPENDS+=	dot:${PORTSDIR}/graphics/graphviz
 USES=		python
 USE_PYTHON=	distutils
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 OPTIONS_DEFINE=	EXAMPLES
-
 
 post-install:
 	${INSTALL_MAN} ${WRKSRC}/man/pycallgraph.1 ${STAGEDIR}${MAN1PREFIX}/man/man1

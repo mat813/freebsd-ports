@@ -19,8 +19,6 @@ NO_WRKSUBDIR=	yes
 BUILD_WRKSRC=	${WRKSRC}/${PORTNAME}/src
 ALL_TARGET=	release
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGBASE}
-
 OPTIONS_DEFINE=	DOCS
 
 post-patch:

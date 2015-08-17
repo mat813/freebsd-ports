@@ -26,7 +26,6 @@ GH_ACCOUNT=	pypa
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MDOCS}
-DOCSDIR=			${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=			*
 PYDISTUTILS_BUILD_TARGET+=	build_sphinx
 

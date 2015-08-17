@@ -19,7 +19,6 @@ COMPONENT_SUBDIR=       fidoconf
 # Settings below are required to handle texi output (html, INFO page)
 USES+=		makeinfo
 PORTDOCS=	fidoconfig.html
-DOCSDIR=	${PREFIX}/share/doc/husky
 INFO=		fidoconfig
 
 post-patch:

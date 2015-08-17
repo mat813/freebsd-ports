@@ -13,7 +13,6 @@ COMMENT=	Extracts files from .adf-files used by Amiga emulators
 
 LICENSE=	GPLv2
 
-DOCSDIR=	${PREFIX}/share/doc/adflib
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--includedir=${PREFIX}/include/adflib
 INSTALL_TARGET=	install-strip

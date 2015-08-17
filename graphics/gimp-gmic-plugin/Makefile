@@ -44,10 +44,7 @@ PLIST_FILES=	bin/gmic \
 		%%BASH%%etc/bash_completion.d/gmic_bashcompletion.sh \
 		%%PLUGIN_DIR%%/gmic_gimp
 
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 PORTEXAMPLES=	gmic_in_script.scm gmic_use_lib.cpp
-
-.include <bsd.port.options.mk>
 
 post-patch:
 	@${REINPLACE_CMD} -e 's#/usr/X11R6#${PREFIX}#g' \
@@ -60,10 +57,9 @@ do-install:
 	${INSTALL_MAN} ${WRKSRC}/../man/gmic.1.gz ${STAGEDIR}${MAN1PREFIX}/man/man1
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${PORTEXAMPLES:S|^|${WRKSRC}/|} ${STAGEDIR}${EXAMPLESDIR}
-.if ${PORT_OPTIONS:MBASH}
+do-install-BASH-on:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
 	${INSTALL_SCRIPT} ${WRKSRC}/../resources/gmic_bashcompletion.sh \
 		${STAGEDIR}${PREFIX}/etc/bash_completion.d
-.endif
 
 .include <bsd.port.mk>

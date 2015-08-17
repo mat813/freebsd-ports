@@ -22,7 +22,6 @@ LIB_DEPENDS=	libportaudio.so:${PORTSDIR}/audio/portaudio \
 		libsndfile.so:${PORTSDIR}/audio/libsndfile
 
 PLIST_FILES=	%%PYTHON_SITELIBDIR%%/fastaudio.so
-EXAMPLESDIR=	${LOCALBASE}/share/examples/py-${PORTNAME}
 
 USES=		python zip:infozip
 USE_PYTHON=	distutils
@@ -51,7 +50,7 @@ post-patch:
 post-install:
 .if !defined(WITHOUT_EXAMPLES)
 	( ${MKDIR} ${STAGEDIR}${EXAMPLESDIR} && \
-		${INSTALL_DATA} ${WRKSRC}/demo.py ${STAGEDIR}${EXAMPLESDIR}/ )
+		${INSTALL_DATA} ${WRKSRC}/demo.py ${STAGEDIR}${EXAMPLESDIR} )
 .endif
 
 .include <bsd.port.mk>

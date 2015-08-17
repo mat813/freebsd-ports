@@ -21,6 +21,4 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
-DOCSDIR=	${PREFIX}/share/doc/gnome-mag-${PORTVERSION}
-
 .include <bsd.port.mk>

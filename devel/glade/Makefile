@@ -29,8 +29,6 @@ CPPFLAGS+=	-I${LOCALBASE}/include -Wno-error=format-nonliteral
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
-DOCSDIR=	${PREFIX}/share/doc/gladeui-2
-
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	PYTHON
 OPTIONS_DEFAULT=PYTHON

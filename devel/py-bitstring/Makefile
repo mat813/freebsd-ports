@@ -15,7 +15,6 @@ LICENSE=	MIT
 USES=		python zip
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 PORTDOCS=	PKG-INFO README.txt release_notes.txt
 
 OPTIONS_DEFINE=	DOCS

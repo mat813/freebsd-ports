@@ -38,12 +38,9 @@ SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sq
 SYBASE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sybase>0:${PORTSDIR}/databases/py-sybase
 TESTS_BUILD_DEPENDS:=	${TEST_DEPENDS}
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 PORTEXAMPLES=	*
 
-.include <bsd.port.options.mk>
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

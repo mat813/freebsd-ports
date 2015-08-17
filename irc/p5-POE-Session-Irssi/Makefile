@@ -23,7 +23,6 @@ RUN_DEPENDS=	p5-POE>=1.003:${PORTSDIR}/devel/p5-POE \
 		p5-POE-Loop-Glib>=0.036:${PORTSDIR}/devel/p5-POE-Loop-Glib \
 		irssi:${PORTSDIR}/irc/irssi
 
-PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 CONFIGURE_ARGS+=	INSTALLDIRS=site
 USES=		perl5 shebangfix
 SHEBANG_FILES=	samples/clean-backlog.pl

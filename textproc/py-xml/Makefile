@@ -16,8 +16,6 @@ USES=		python shebangfix
 SHEBANG_FILES=	demo/dom/html2html
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 PLIST_SUB+=	PACKAGE_DIR=_xmlplus
 
 PORTEXAMPLES=	*

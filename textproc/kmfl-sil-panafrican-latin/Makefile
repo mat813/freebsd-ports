@@ -23,7 +23,6 @@ DOS2UNIX_FILES=	PanAfricaMnemonic/AfricaDeadKey.kmn \
 NO_BUILD=	yes
 
 OPTIONS_DEFINE=	DOCS
-DOCSDIR=	share/doc/kmfl/${PORTNAME}
 DOCSLIST=	PanAfricaMnemonic/SIL\ Unicode\ Keyboard\ Chart\ for\ Africa\ using\ deadkeys.pdf \
 		PanAfricaUSlayout/SIL\ Unicode\ Keyboard\ Chart\ for\ Africa\ using\ shiftkeys.pdf
 

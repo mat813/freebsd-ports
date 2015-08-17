@@ -17,7 +17,6 @@ RUN_DEPENDS=	tuc:${PORTSDIR}/converters/tuc
 OPTIONS_DEFINE=	DOCS
 
 DATADIR=	${PREFIX}/share/i18n
-DOCSDIR=	${PREFIX}/share/doc/i18n
 
 BINARIES=	hutrans mbm ptrans uhtrans utrans
 CHARMAPS=	ANSI_X3.110-1983 ANSI_X3.4-1968 ASMO_449 BALTIC BS_4730 \
@@ -71,9 +70,9 @@ do-install:
 	(cd ${WRKSRC}/charmaps && ${INSTALL_DATA} ${f} \
 		${STAGEDIR}${DATADIR}/charmaps/binary)
 .endfor
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}/tools
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for f in ${DOCFILES}
-	(cd ${WRKSRC} && ${INSTALL_DATA} ${f} ${STAGEDIR}${DOCSDIR}/tools)
+	(cd ${WRKSRC} && ${INSTALL_DATA} ${f} ${STAGEDIR}${DOCSDIR})
 .endfor
 
 .include <bsd.port.mk>

@@ -16,7 +16,6 @@ BUILD_DEPENDS=	p5-Filter>=0:${PORTSDIR}/devel/p5-Filter \
 		p5-Crypt-CBC>=0:${PORTSDIR}/security/p5-Crypt-CBC
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 USES=		perl5 shebangfix
 SHEBANG_FILES=	examples/*.pl
 USE_PERL5=	configure

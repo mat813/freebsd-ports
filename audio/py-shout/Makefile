@@ -16,8 +16,6 @@ LICENSE=	LGPL20
 
 LIB_DEPENDS=	libshout.so:${PORTSDIR}/audio/libshout
 
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
-
 USES=		pkgconfig python:2
 USE_PYTHON=	distutils autoplist
 

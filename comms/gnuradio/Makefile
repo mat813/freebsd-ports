@@ -43,7 +43,6 @@ CMAKE_ARGS+=	-DICONV_PREFIX:STRING="${ICONV_PREFIX}" \
 # for detailed debugging uncomment the next two lines as needed
 #CMAKE_ARGS+=	--debug-output --trace
 MAJOR_SUB_VER=	3.7.7
-DOCSDIR=	share/doc/${PORTNAME}-${MAJOR_SUB_VER}
 USE_GNOME=	pygtk2
 USE_WX=		3.0+
 USE_QT4=	gui xml qmake moc rcc uic

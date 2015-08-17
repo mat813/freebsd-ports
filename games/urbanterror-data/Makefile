@@ -19,7 +19,6 @@ NO_BUILD=	yes
 NO_CDROM=	The mod files may not be sold or distributed on physical media unless with permission from id Software.
 
 DATADIR=	${PREFIX}/share/quake3
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 
 URT_VER=	${PORTVERSION:C/([0-9]+).([0-9]+).*/\1\2/}
 URT_REV=	${PORTVERSION:C/([0-9]+\.[0-9]+).*\.([0-9]+)/\2/}
@@ -32,20 +31,17 @@ UTDOCS=		readme${URT_VER}.txt \
 		How_To_Install.txt \
 		QIIIA_Game_Source_License.doc
 
-.include <bsd.port.options.mk>
-
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/q3ut4
 	${TAR} ${EXTRACT_BEFORE_ARGS} ${DISTDIR}/${DISTFILES} \
 		${EXTRACT_AFTER_ARGS} -C ${STAGEDIR}${DATADIR} --strip-components 1 \
 		UrbanTerror${URT_VER}/q3ut4
-.if ${PORT_OPTIONS:MDOCS}
+do-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for utdoc in ${UTDOCS}
 	${MV} ${STAGEDIR}${DATADIR}/q3ut4/${utdoc} ${STAGEDIR}${DOCSDIR}
 .endfor
-.else
+do-install-DOCS-off:
 	${RM} ${STAGEDIR}${DATADIR}/q3ut4/readme${URT_VER}.txt
-.endif
 
 .include <bsd.port.mk>

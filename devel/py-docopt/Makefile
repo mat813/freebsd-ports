@@ -16,10 +16,8 @@ USES=		python
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	README.rst
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 
 PORTEXAMPLES=	*
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 

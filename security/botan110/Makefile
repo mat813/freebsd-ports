@@ -27,7 +27,6 @@ USE_LDCONFIG=	yes
 PLIST_FILES=	bin/botan-config-1.10 lib/libbotan-1.10.a lib/libbotan-1.10.so lib/libbotan-1.10.so.0 \
 		lib/libbotan-1.10.so.0.9 libdata/pkgconfig/botan-1.10.pc
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${PORTVERSION}
 PORTDOCS=	*
 
 .include <bsd.port.options.mk>

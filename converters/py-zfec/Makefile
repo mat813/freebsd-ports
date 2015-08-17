@@ -21,8 +21,6 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-
 OPTIONS_DEFINE=	DOCS
 
 post-patch:

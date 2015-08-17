@@ -26,9 +26,6 @@ CONFIGURE_ARGS=	--with-iconv=${ICONV_PREFIX} \
 		--with-html-subdir=${PORTNAME} \
 		--with-python=${PYTHON_CMD}
 
-DOCSDIR=	${PREFIX}/share/doc/py-libxml2
-EXAMPLESDIR=	${PREFIX}/share/examples/py-libxml2
-
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/libxml2mod.so
 

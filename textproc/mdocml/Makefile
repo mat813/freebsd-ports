@@ -12,8 +12,6 @@ COMMENT=	mdoc macro compiler
 
 LIB_DEPENDS=	libsqlite3.so:${PORTSDIR}/databases/sqlite3
 
-EXAMPLESDIR=	${PREFIX}/share/examples/mandoc
-
 HAS_CONFIGURE=	yes
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib

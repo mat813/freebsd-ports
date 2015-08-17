@@ -34,8 +34,6 @@ SUB_FILES=	mdoc.local
 SUB_LIST=	OSREL=${OSREL}
 PORTDOCS=	*
 PORTEXAMPLES=	*
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}/${PORTVERSION}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PORTNAME}/${PORTVERSION}
 INFO=		groff
 
 CONFLICTS=	groff-[0-9]* mdocml-[0-9]*

@@ -20,7 +20,6 @@ USES=		python shebangfix
 SHEBANG_FILES=	tools/*.py
 USE_PYTHON=	autoplist distutils
 
-DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	CHANGES.txt README.txt
 TOOLS=		cmpdump.py crldump.py crmfdump.py ocspclient.py ocspreqdump.py \
 		ocsprspdump.py pkcs10dump.py pkcs1dump.py pkcs7dump.py \

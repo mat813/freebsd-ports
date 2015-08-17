@@ -16,7 +16,6 @@ LICENSE=	GPLv2
 USES=		python
 USE_PYTHON=	autoplist distutils
 
-DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
 
 post-patch:

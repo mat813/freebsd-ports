@@ -34,9 +34,6 @@ INSTALL_TARGET=	install-strip
 CPPFLAGS+=	-I${LUA_INCDIR} -I${LOCALBASE}/include -DBSD
 LDFLAGS+=	-L${LUA_LIBDIR} -L${LOCALBASE}/lib
 
-DOCSDIR=	${PREFIX}/share/doc/lua-${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/lua-${PORTNAME}
-
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 post-patch:

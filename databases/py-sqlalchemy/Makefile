@@ -32,11 +32,6 @@ MSSQL_DESC=	MS SQL Server backend
 TESTS_DESC=	Include nose for unit tests
 SYBASE_DESC=	Sybase backend
 
-.include <bsd.port.options.mk>
-
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
-
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MDOCS}

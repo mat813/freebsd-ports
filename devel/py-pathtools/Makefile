@@ -17,16 +17,12 @@ OPTIONS_DEFINE=	DOCS
 USES=		python
 USE_PYTHON=	distutils autoplist
 
-.include <bsd.port.options.mk>
+DOCS_BUILD_DEPENDS=	${PKGNAMEPREFIX}sphinx>=1.1.3:${PORTSDIR}/textproc/py-sphinx
 
-.if ${PORT_OPTIONS:MDOCS}
-BUILD_DEPENDS+=	${PKGNAMEPREFIX}sphinx>=1.1.3:${PORTSDIR}/textproc/py-sphinx
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-
-post-build:
+post-build-DOCS-on:
 	@(cd ${WRKSRC}/docs ; ${MAKE} html)
 
-post-install:
+post-install-DOCS-on:
 	@(cd ${WRKSRC}/docs/build/html ; ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR} \
 		"! -name .buildinfo -and ! -name objects.inv")
 .endif

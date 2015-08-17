@@ -21,7 +21,6 @@ APPHOME=	${LOCALBASE}/${TOMCATVER}
 WEBAPPDIR=	${TOMCATDIR}/webapps
 PORTDOCS=	README.txt deegree_csw_2.0.2_documentation_en.pdf \
 		deegree_csw_documentation_de.pdf deegree_csw_documentation_en.pdf
-DOCSDIR=	${PREFIX}/share/doc/${DISTNAME}
 PLIST_SUB=	TOMCATDIR=${TOMCATDIR:S|^${PREFIX}/||} WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 SUB_FILES=	pkg-message
 SUB_LIST=	TCPORT=${TCPORT}

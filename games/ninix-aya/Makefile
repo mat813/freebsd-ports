@@ -31,17 +31,14 @@ OPTIONS_SUB=	yes
 
 NLS_USES=	gettext
 
-.include <bsd.port.options.mk>
-
 do-build:
 	@(cd ${WRKSRC}/bin && ${SED} -e \
 		's|@python|${PYTHON_CMD}| ; \
 		 s|@libdir|${PREFIX}/libexec/ninix|' ninix.in > ninix)
-.if ${PORT_OPTIONS:MNLS}
+do-build-NLS-on:
 .for i in ja zh_TW
 	(cd ${WRKSRC}/locale && ${LOCALBASE}/bin/msgfmt -o ${i}.mo ${i}.po)
 .endfor
-.endif
 
 do-install:
 	(cd ${WRKSRC}/bin && ${INSTALL_SCRIPT} ninix \
@@ -51,13 +48,6 @@ do-install:
 		${STAGEDIR}${PREFIX}/libexec/ninix)
 	@(cd ${STAGEDIR}${PREFIX} && ${PYTHON_CMD} -m compileall \
 		-d ${PREFIX}/libexec/ninix -f libexec/ninix)
-.if ${PORT_OPTIONS:MNLS}
-.for i in ja zh_TW
-	@${MKDIR} ${STAGEDIR}${PREFIX}/share/locale/${i}/LC_MESSAGES
-	(cd ${WRKSRC}/locale && ${INSTALL_DATA} ${i}.mo \
-		${STAGEDIR}${PREFIX}/share/locale/${i}/LC_MESSAGES/ninix.mo)
-.endfor
-.endif
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ChangeLog README README.ninix TODO.ninix KNOWN_ISSUES
 	(cd ${WRKSRC} && ${INSTALL_DATA} ${i} \
@@ -66,6 +56,12 @@ do-install:
 .for i in extension.txt kawari.txt saori.txt
 	(cd ${WRKSRC}/doc && ${INSTALL_DATA} ${i} \
 		${STAGEDIR}${DOCSDIR})
+.endfor
+do-install-NLS-on:
+.for i in ja zh_TW
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/locale/${i}/LC_MESSAGES
+	(cd ${WRKSRC}/locale && ${INSTALL_DATA} ${i}.mo \
+		${STAGEDIR}${PREFIX}/share/locale/${i}/LC_MESSAGES/ninix.mo)
 .endfor
 
 .include <bsd.port.mk>

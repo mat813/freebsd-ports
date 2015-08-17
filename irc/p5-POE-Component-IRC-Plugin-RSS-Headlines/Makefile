@@ -18,7 +18,6 @@ BUILD_DEPENDS=	p5-POE>=1.004:${PORTSDIR}/devel/p5-POE \
 		p5-HTTP-Message>=0:${PORTSDIR}/www/p5-HTTP-Message
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
-PLIST_SUB=	EXAMPLESDIR="share/examples/${PORTNAME}"
 USES=		perl5
 USE_PERL5=	configure
 

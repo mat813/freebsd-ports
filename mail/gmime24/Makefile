@@ -17,7 +17,6 @@ CONFLICTS=	gmime-1.0.*
 
 SLAVEDIRS=	mail/gmime2-sharp
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}24
 USES+=		gmake iconv libtool pathfix pkgconfig tar:xz
 USE_GNOME?=	glib20
 USE_LDCONFIG=	yes

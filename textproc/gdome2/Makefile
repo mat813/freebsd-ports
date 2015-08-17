@@ -15,7 +15,6 @@ USE_GNOME=	glib20 libxml2
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	GLIB_CONFIG="${LOCALBASE}/bin/pkg-config glib-2.0"
 CPPFLAGS+=	-I${LOCALBASE}/include
-DOCSDIR=	${PREFIX}/share/doc/${DISTNAME}
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 

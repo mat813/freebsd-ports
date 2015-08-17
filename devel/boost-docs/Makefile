@@ -4,7 +4,6 @@
 PORTNAME=	boost-docs
 COMMENT=	Documentation for libraries from boost.org
 
-DOCSDIR=	${PREFIX}/share/doc/boost
 UNIQ=		/usr/bin/uniq
 
 NO_BUILD=	yes

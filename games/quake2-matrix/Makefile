@@ -16,8 +16,6 @@ WRKSRC=		${WRKDIR}/${PORTNAME}
 BUILD_WRKSRC=	${WRKSRC}/MatrixFixSource
 ALL_TARGET=	release
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGBASE}
-
 OPTIONS_DEFINE=	DOCS
 
 .include "${.CURDIR}/../quake2-data/Makefile.include"

@@ -23,7 +23,6 @@ PLIST=	${.CURDIR}/pkg-plist
 
 COMMIT_HASH=	e677df0
 DATADIR=	${PREFIX}/share/games/xboard
-DOCSDIR=	${PREFIX}/share/doc/xboard
 XBOARDCONF=	${WRKSRC}/xboard.conf.in
 
 USES=		autoreconf gettext-tools gmake shebangfix

@@ -16,7 +16,6 @@ USES=		python:2.7-3.3
 USE_PYTHON=	distutils autoplist
 
 PORTDOCS=	*
-DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

@@ -31,11 +31,10 @@ PORTEXAMPLES=	bigtext.py \
 		subproc.py \
 		tour.py \
 		treesample.py
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 
 post-install:
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
-	(cd ${WRKSRC}/examples && ${INSTALL_DATA} ${PORTEXAMPLES} ${STAGEDIR}${EXAMPLESDIR}/)
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	(cd ${WRKSRC}/examples && ${INSTALL_DATA} ${PORTEXAMPLES} ${STAGEDIR}${EXAMPLESDIR})
 
 regression-test: build
 	@cd ${WRKSRC} && ${PYTHON_CMD} -m urwid.tests

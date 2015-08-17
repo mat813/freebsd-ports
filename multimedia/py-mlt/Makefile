@@ -17,7 +17,6 @@ BUILD_DEPENDS=	swig:${PORTSDIR}/devel/swig13
 USES=		python:2
 MASTERDIR=	${.CURDIR:H:H}/multimedia/mlt
 
-EXAMPLESDIR=	${PREFIX}/share/examples/${PORTNAME}/python
 PORTEXAMPLES=	*
 
 PLIST=		${.CURDIR}/pkg-plist

@@ -22,8 +22,6 @@ CFLAGS+=	-fPIC
 USE_LDCONFIG=	yes
 
 WRKSRC=		${WRKDIR}/src/xchat/
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 
 PLIST_FILES=	lib/xchat/plugins/mircryption.so
 
@@ -31,8 +29,6 @@ PORTDOCS=	README.txt
 PORTEXAMPLES=	mcps_masterkey_on_start.pl
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
-
-.include <bsd.port.options.mk>
 
 post-patch:
 	${REINPLACE_CMD} -E \
@@ -48,16 +44,12 @@ do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/xchat/plugins
 	${INSTALL_PROGRAM} ${WRKSRC}/mircryption.so \
 		${STAGEDIR}${PREFIX}/lib/xchat/plugins
-.if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README.txt \
 		${STAGEDIR}${DOCSDIR}/
-.endif
-.if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_SCRIPT} \
 		${WRKSRC}/extras/mcps_masterkey_on_start.pl \
 		${STAGEDIR}${EXAMPLESDIR}/
-.endif
 
 .include <bsd.port.mk>

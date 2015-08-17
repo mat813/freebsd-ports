@@ -33,101 +33,42 @@ USE_RC_SUBR=	perdition perdition.pop3 perdition.pop3s \
 OPTIONS_DEFINE=		BDB DAEMON_MAP DOCS GDBM LDAP MYSQL NIS ODBC \
 			OPENSSL PGSQL POSIX_REGEX
 OPTIONS_DEFAULT=	GDBM OPENSSL POSIX_REGEX
+OPTIONS_SUB=	yes
 
 DAEMON_MAP_DESC=	Daemon Map support
 GDBM_DESC=		GDBM database
 POSIX_REGEX_DESC=	Native regex support
 
-.include <bsd.port.options.mk>
+OPENSSL_CONFIGURE_ENABLE=	ssl
+OPENSSL_USE=			OPENSSL=yes
 
-.if ${PORT_OPTIONS:MOPENSSL}
-CONFIGURE_ARGS+=	--enable-ssl
-USE_OPENSSL=		yes
-.else
-CONFIGURE_ARGS+=	--disable-ssl
-.endif
+POSIX_REGEX_CONFIGURE_ENABLE=	posix_regex
 
-.if ${PORT_OPTIONS:MPOSIX_REGEX}
-CONFIGURE_ARGS+=	--enable-posix_regex
-PLIST_SUB+=		POSIXREGEX=""
-.else
-CONFIGURE_ARGS+=	--disable-posix_regex
-PLIST_SUB+=		POSIXREGEX="@comment "
-.endif
+DAEMON_MAP_CONFIGURE_ENABLE=	daemon-map
+DAEMON_MAP_LIB_DEPENDS=		libgdbm.so:${PORTSDIR}/databases/gdbm
 
-.if ${PORT_OPTIONS:MDAEMON_MAP}
-CONFIGURE_ARGS+=	--enable-daemon-map
-PLIST_SUB+=		DAEMONMAP=""
-LIB_DEPENDS+=		libgdbm.so:${PORTSDIR}/databases/gdbm
-.else
-CONFIGURE_ARGS+=	--disable-daemon-map
-PLIST_SUB+=		DAEMONMAP="@comment "
-.endif
+BDB_CPPFLAGS=		-I${BDB_INCLUDE_DIR}
+BDB_CONFIGURE_ENABLE=	bdb
+BDB_USE=		BDB=yes
 
-.if ${PORT_OPTIONS:MBDB}
-CPPFLAGS+=		-I${BDB_INCLUDE_DIR}
-CONFIGURE_ARGS+=	--enable-bdb
-PLIST_SUB+=		BDB=""
-USE_BDB=		yes
-.else
-CONFIGURE_ARGS+=	--disable-bdb
-PLIST_SUB+=		BDB="@comment "
-.endif
+NIS_CONFIGURE_ENABLE=	nis
 
-.if ${PORT_OPTIONS:MNIS}
-CONFIGURE_ARGS+=	--enable-nis
-PLIST_SUB+=		NIS=""
-.else
-CONFIGURE_ARGS+=	--disable-nis
-PLIST_SUB+=		NIS="@comment "
-.endif
+GDBM_CONFIGURE_ENABLE=	gdbm
+GDBM_LIB_DEPENDS=	libgdbm.so:${PORTSDIR}/databases/gdbm
 
-.if ${PORT_OPTIONS:MGDBM}
-CONFIGURE_ARGS+=	--enable-gdbm
-LIB_DEPENDS+=		libgdbm.so:${PORTSDIR}/databases/gdbm
-PLIST_SUB+=		GDBM=""
-.else
-CONFIGURE_ARGS+=	--disable-gdbm
-PLIST_SUB+=		GDBM="@comment "
-.endif
+MYSQL_USE=		MYSQL=yes
+MYSQL_CONFIGURE_ENABLE=	mysql
 
-.if ${PORT_OPTIONS:MMYSQL}
-USE_MYSQL=		yes
-CONFIGURE_ARGS+=	--enable-mysql
-PLIST_SUB+=		MYSQL=""
-.else
-CONFIGURE_ARGS+=	--disable-mysql
-PLIST_SUB+=		MYSQL="@comment "
-.endif
+PGSQL_CONFIGURE_ENABLE=	pg
+PGSQL_USES=		pgsql
 
-.if ${PORT_OPTIONS:MPGSQL}
-CONFIGURE_ARGS+=	--enable-pg
-USES+=			pgsql
-PLIST_SUB+=		PGSQL=""
-.else
-CONFIGURE_ARGS+=	--disable-pg
-PLIST_SUB+=		PGSQL="@comment "
-.endif
-
-.if ${PORT_OPTIONS:MLDAP}
-USE_OPENLDAP=		yes
-CONFIGURE_ARGS+=	--enable-ldap \
-			--with-ldap-schema-directory=${LOCALBASE}/etc/openldap/schema/ \
+LDAP_USE=		OPENLDAP=yes
+LDAP_CONFIGURE_ENABLE=	ldap
+LDAP_CONFIGURE_ON=	--with-ldap-schema-directory=${LOCALBASE}/etc/openldap/schema/ \
 			--disable-ldap-doc
-PLIST_SUB+=		LDAP=""
-.else
-CONFIGURE_ARGS+=	--disable-ldap
-PLIST_SUB+=		LDAP="@comment "
-.endif
 
-.if ${PORT_OPTIONS:MODBC}
-CONFIGURE_ARGS+=	--enable-odbc
-LIB_DEPENDS+=		libodbc.so:${PORTSDIR}/databases/unixODBC
-PLIST_SUB+=		ODBC=""
-.else
-CONFIGURE_ARGS+=	--disable-odbc
-PLIST_SUB+=		ODBC="@comment "
-.endif
+ODBC_CONFIGURE_ENABLE=	odbc
+ODBC_LIB_DEPENDS=	libodbc.so:${PORTSDIR}/databases/unixODBC
 
 post-patch:
 	cd ${WRKSRC} && ${REINPLACE_CMD} -e 's|-ldb|-l${BDB_LIB_NAME}|g' \
@@ -135,8 +76,7 @@ post-patch:
 		makebdb/Makefile.in \
 		perdition/db/bdb/Makefile.in
 
-post-install:
-.if ${PORT_OPTIONS:MDOCS}
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@${INSTALL_DATA} ${WRKSRC}/etc/pam.d/perdition ${STAGEDIR}${DOCSDIR}/perdition-pam.sample
 	@${ECHO_MSG} ""
@@ -145,6 +85,5 @@ post-install:
 	@${ECHO_MSG} " ${DOCSDIR}/perdition-pam.sample"
 	@${ECHO_MSG} "/********************************************************/"
 	@${ECHO_MSG} ""
-.endif
 
 .include <bsd.port.mk>

@@ -20,8 +20,6 @@ NO_ARCH=	yes
 USES=		python
 USE_PYTHON=	autoplist distutils
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
-EXAMPLESDIR=	${PREFIX}/share/examples/${PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	AUTHORS ChangeLog README.rst
 PORTEXAMPLES=	*
 

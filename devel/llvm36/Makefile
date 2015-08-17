@@ -14,7 +14,6 @@ COMMENT=	Low Level Virtual Machine
 LLVM_SUFFIX=	${PORTVERSION:C/([0-9]\.[0-9]).*/\1/:S/.//g:C/r.//}
 LLVM_RELEASE=	${PORTVERSION:C/([0-9]\.[0-9].[0-9]).*/\1/}
 LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
 WRKSRC=		${WRKDIR}/llvm-${DISTVERSION}.src

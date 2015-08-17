@@ -20,7 +20,6 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyro>=0:${PORTSDIR}/devel/py-pyro
 USE_GNOME=	pygtk2
 USE_PYTHON=	distutils
 USES=		python tar:bzip2
-DOCSDIR=	${PREFIX}/share/doc/sndcs
 DATADIR=	${PREFIX}/share/sndcs
 SUB_FILES=	pkg-message
 NO_ARCH=	yes

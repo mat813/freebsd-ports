@@ -29,7 +29,6 @@ DOS2UNIX_FILES=	src/system/love_system.cpp
 
 PLIST_FILES=	bin/love5
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}5
 PORTDOCS=	*
 
 OPTIONS_DEFINE=	DOCS

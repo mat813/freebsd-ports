@@ -21,8 +21,6 @@ CPPFLAGS+=	-I${LOCALBASE}/include -DGLIB_COMPILATION
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-doc-${PORTVERSION}
-
 post-patch:
 	@${REINPLACE_CMD} -e 's|glib/.*\.h>|glib.h>|g' \
 		${WRKSRC}/samples/*.c ${WRKSRC}/src/*.[ch]

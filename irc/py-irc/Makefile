@@ -22,7 +22,6 @@ USE_PYTHON=	distutils autoplist
 
 PORTEXAMPLES=	irccat.py irccat2.py servermap.py testbot.py \
 		dccreceive.py dccsend.py ssl-cat.py
-EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 
 OPTIONS_DEFINE=	EXAMPLES
 

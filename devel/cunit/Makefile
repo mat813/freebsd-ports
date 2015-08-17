@@ -33,8 +33,6 @@ USE_LDCONFIG=	yes
 USES=		autoreconf gmake libtool pathfix tar:bzip2
 
 DATADIR=	${PREFIX}/share/CUnit
-DOCSDIR=	${PREFIX}/share/doc/CUnit
-EXAMPLESDIR=	${PREFIX}/share/examples/CUnit
 PORTDATA=	*
 PORTDOCS=	*
 PORTEXAMPLES=	*

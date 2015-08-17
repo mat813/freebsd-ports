@@ -17,7 +17,6 @@ USES+=		python
 USE_PYTHON=	distutils
 PYDISTUTILS_PKGNAME=	EditObj
 WRKSRC=		${WRKDIR}/EditObj-${PORTVERSION}
-EXAMPLESDIR=	${PREFIX}/share/examples/py-editobj
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}

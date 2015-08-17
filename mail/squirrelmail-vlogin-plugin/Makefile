@@ -12,8 +12,6 @@ COMMENT=	Adds multi-site-hosting capabilities to SquirrelMail
 
 USE_SM_COMPAT=	yes
 
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
-
 OPTIONS_DEFINE=	DOCS
 
 # We need to rearrange, install and cleanup documentation pre-install

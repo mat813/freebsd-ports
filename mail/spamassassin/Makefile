@@ -32,7 +32,6 @@ USE_LDCONFIG=	yes
 
 DATADIR=	${PREFIX}/share/spamassassin
 DBDIR?=		/var/db
-DOCSDIR=	${PREFIX}/share/doc/${PKGNAMEPREFIX}${PORTNAME}
 ETCDIR?=	${PREFIX}/etc/mail/spamassassin
 
 SPAMASSASSIN_CONTACT_ADDRESS?=	The administrator of that system

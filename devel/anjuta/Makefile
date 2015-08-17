@@ -47,7 +47,6 @@ CONFIGURE_ARGS=	--with-symbol-db-shm=/tmp \
 		--disable-packagekit \
 		--enable-compile-warnings=minimum \
 		--enable-introspection=yes
-DOCSDIR=	share/doc/libanjuta
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.gnome.anjuta.cvs.gschema.xml \

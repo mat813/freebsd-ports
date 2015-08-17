@@ -22,14 +22,13 @@ USES=		gmake mono pkgconfig
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 DATADIR=	${PREFIX}/share/NAnt
-DOCSDIR=	${PREFIX}/share/doc/NAnt
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|lib/pkgconfig|libdata/pkgconfig|' ${WRKSRC}/NAnt.build
 
-post-install:
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
-	cd ${WRKSRC}/examples/ && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}/
+post-install-EXAMPLES-on:
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	cd ${WRKSRC}/examples/ && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
 regression-test test: build
 	cd ${WRKSRC}/ && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} run-test
