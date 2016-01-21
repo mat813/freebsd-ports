@@ -22,8 +22,7 @@
 #
 # Reminder
 # Don't forget to disable post-patch targets before regenerating patches
-# if those targets modify source files (e.g. with sed).  You may also
-# want to disable EXTRA_PATCHES as well if that is being used.
+# if those targets modify source files (e.g. with sed).
 
 [ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_SMART_MAKEPATCH}" ] && set -x
 
@@ -71,6 +70,11 @@ patchdir_files_list() {
 		(cd ${PATCHDIR} && \
 			find ./* -type f -name "patch-*" -maxdepth 0 \
 			2>/dev/null | sed -e 's,^\./,,; /\.orig$/d'
+		for i in ${EXTRA_PATCHES}; do
+			if [ -f ${i##*/} ]; then
+				echo ${i##*/}
+			fi
+		done
 		)
 	fi;
 }
