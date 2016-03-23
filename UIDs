@@ -163,7 +163,7 @@ drizzle:*:213:213::0:0:Drizzle daemon:/var/db/drizzle:/usr/sbin/nologin
 # free: 214
 opendnssec:*:215:215::0:0:Opendnssec Pseudo User:/nonexistent:/usr/sbin/nologin
 nsd:*:216:216::0:0:NSD DNS Server:/nonexistent:/usr/sbin/nologin
-# free: 217
+acme:*:217:217::0:0:Let's encrypt Pseudo User:/usr/local/acme:/bin/sh
 # free: 218
 # free: 219
 bs:*:220:220::0:0:Big Sister:/usr/local/bigsister:/bin/sh

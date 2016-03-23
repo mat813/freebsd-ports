@@ -1,0 +1,5 @@
+acme ALL = NOPASSWD : /usr/sbin/service apache22 reload
+acme ALL = NOPASSWD : /usr/sbin/service apache24 reload
+acme ALL = NOPASSWD : /usr/sbin/service nginx reload
+acme ALL = NOPASSWD : /usr/sbin/service dovecot reload
+acme ALL = NOPASSWD : /usr/sbin/service postfix reload

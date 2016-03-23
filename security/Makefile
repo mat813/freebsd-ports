@@ -8,6 +8,7 @@
     SUBDIR += R-cran-ROAuth
     SUBDIR += R-cran-digest
     SUBDIR += R-cran-openssl
+    SUBDIR += acme-tiny-scripts
     SUBDIR += aescrypt
     SUBDIR += aespipe
     SUBDIR += afl

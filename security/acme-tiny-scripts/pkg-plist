@@ -1,0 +1,8 @@
+acme/check_expire.sh
+@sample(acme,acme,) acme/config.sh.sample
+acme/gen_csr.sh
+acme/gen_key.sh
+acme/gen_one.sh
+acme/lets_path.sh
+acme/regen.sh
+etc/sudoers.d/acme-tiny-scripts
