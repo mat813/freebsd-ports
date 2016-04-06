@@ -14,7 +14,7 @@ _INCLUDE_USES_LOCALBASE_MK=	yes
 CPPFLAGS+=	-isystem ${LOCALBASE}/include
 CFLAGS+=	-isystem ${LOCALBASE}/include
 CXXFLAGS+=	-isystem ${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+LDFLAGS+=	-L${LOCALBASE}/lib -Wl,-rpath=${LOCALBASE}/lib -Wl,--enable-new-dtags
 
 # Use CONFIGURE_ENV instead of CMAKE_ARGS because devel/cmake itself also needs
 # this, and CMAKE_ARGS is not used when bootstrapping CMake.

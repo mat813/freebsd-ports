@@ -59,6 +59,8 @@ PYTHON2_DEFAULT?=	2.7
 PYTHON3_DEFAULT?=	3.4
 # Possible values: 2.0, 2.1, 2.2, 2.3
 RUBY_DEFAULT?=		2.2
+# Possible values: openssl, libressl, libressl-devel
+SSL_DEFAULT?=		openssl
 # Possible values: 8.4, 8.5, 8.6
 TCLTK_DEFAULT?=		8.6
 

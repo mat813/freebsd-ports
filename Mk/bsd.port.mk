@@ -1352,7 +1352,7 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 .endif
 
 .if defined(USE_OPENSSL)
-.include "${PORTSDIR}/Mk/bsd.openssl.mk"
+USES+=	ssl
 .endif
 
 .if defined(USE_EMACS)
