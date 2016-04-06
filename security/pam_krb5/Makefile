@@ -20,14 +20,12 @@ USES=			gmake libtool perl5
 USE_PERL5=		build
 
 OPTIONS_SINGLE=		LINK
-OPTIONS_SINGLE_LINK=	MIT HEIMDAL_BASE HEIMDAL_PORT
+OPTIONS_SINGLE_LINK=	MIT HEIMDAL_PORT
 OPTIONS_DEFAULT=	MIT
 MIT_DESC=		Link against MIT Kerberos
 MIT_USES=		gssapi:mit
 HEIMDAL_PORT_DESC=	Link against Heimdal in ports Kerberos
 HEIMDAL_PORT_USES=	gssapi:heimdal
-HEIMDAL_BASE_DESC=	Link against Heimdal in base Kerberos
-HEIMDAL_BASE_USES=	gssapi:base
 
 CONFIGURE_ARGS+=	--with-krb5="${GSSAPIBASEDIR}" \
 			--with-krb5-include="${GSSAPIINCDIR}" \

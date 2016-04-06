@@ -94,15 +94,7 @@ OSMAJOR=	${UNAMER:C/[.-].*//}
 
 OPTIONS_RADIO=			GSSAPI
 OPTIONS_RADIO_GSSAPI=		GSSAPI_HEIMDAL GSSAPI_MIT
-.if exists(/usr/lib/libkrb5.a)
-OPTIONS_RADIO_GSSAPI+=		GSSAPI_BASE
-.if ${OSMAJOR} >= 9
-OPTIONS_DEFAULT+=		GSSAPI_BASE
-.endif
-.endif
-GSSAPI_BASE_USES=		gssapi
-GSSAPI_BASE_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
-				--with-gss_impl=heimdal
+OPTIONS_DEFAULT=		GSSAPI_MIT
 GSSAPI_HEIMDAL_USES=		gssapi:heimdal,flags
 GSSAPI_HEIMDAL_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
 				--with-gss_impl=heimdal
@@ -164,8 +156,7 @@ IGNORE=		DRAC is not available
 USES+=	sqlite
 .endif
 
-.if !${PORT_OPTIONS:MGSSAPI_BASE} && !${PORT_OPTIONS:MGSSAPI_HEIMDAL} && \
-    !${PORT_OPTIONS:MGSSAPI_MIT}
+.if !${PORT_OPTIONS:MGSSAPI_HEIMDAL} && !${PORT_OPTIONS:MGSSAPI_MIT}
 CONFIGURE_ARGS+=--disable-gssapi
 .endif
 

@@ -35,8 +35,8 @@ DOCSDIR=	${PREFIX}/share/doc/mysql
 
 OPTIONS_DEFINE=		FASTMTX
 OPTIONS_SINGLE=		GSSAPI
-OPTIONS_SINGLE_GSSAPI=	GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
-OPTIONS_DEFAULT=	GSSAPI_BASE
+OPTIONS_SINGLE_GSSAPI=	GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
+OPTIONS_DEFAULT=	GSSAPI_MIT
 
 FASTMTX_DESC=		Replace mutexes with spinlocks
 
@@ -58,7 +58,6 @@ SPIDER_DESC=	Partitioning and XA-transactions engine
 TOKUDB_DESC=	Fractal tree index tree data structure engine
 .endif
 
-GSSAPI_BASE_USES=	gssapi
 GSSAPI_HEIMDAL_USES=	gssapi:heimdal
 GSSAPI_MIT_USES=	gssapi:mit
 
@@ -146,10 +145,6 @@ post-install:
 	${RM} ${STAGEDIR}/${PREFIX}/bin/maria_add_gis_sp.sql
 .endif # defined(CLIENT_ONLY)
 
-.if defined(WITH_OPENSSL_PORT)
-GSSAPI_BASE_IGNORE=	BASE_GSSAPI is not compatible with OpenSSL from ports. Use other GSSAPI options or OpenSSL from base system
-.endif
-
 .include <bsd.port.pre.mk>
 
 .if ${OPSYS} == DragonFly
@@ -160,9 +155,6 @@ CMAKE_ARGS+=	-DWITHOUT_TOKUDB
 CMAKE_ARGS+=	-DWITH_JEMALLOC="system"
 .else
 CMAKE_ARGS+=	-DWITH_JEMALLOC="no"
-.if ${PORT_OPTIONS:MGSSAPI_BASE}
-IGNORE=	requires a Kerberos implementation from ports on FreeBSD < 10. Select GSSAPI_HEIMDAL or GSSAPI_MIT option
-.endif
 .endif
 
 post-patch:

@@ -61,16 +61,15 @@ OPTIONS_SINGLE=		KERBEROS
 
 OPTIONS_RADIO_ASYNCDNS=	ADNS CARES
 OPTIONS_RADIO_GUI=	GTK2 GTK3 QT5
-OPTIONS_SINGLE_KERBEROS=KRB_BASE KRB_HEIMDAL KRB_MIT KRB_NONE
+OPTIONS_SINGLE_KERBEROS=KRB_HEIMDAL KRB_MIT KRB_NONE
 
-OPTIONS_DEFAULT?=	SNMP ADNS IPV6 GEOIP KRB_BASE GTK3
+OPTIONS_DEFAULT?=	SNMP ADNS IPV6 GEOIP KRB_MIT GTK3
 
 RTP_DESC=		Enable support for playing back RTP streams
 DECRYPT_DESC=		Decryption support for SSL and IPSec
 ASYNCDNS_DESC=		Asynchronous DNS lookup support
 ADNS_DESC=		Asynchronous DNS resolution via GNU adns
 KERBEROS_DESC=		Kerberos dissection support
-KRB_BASE_DESC=		Kerberos support via base system
 KRB_HEIMDAL_DESC=	Kerberos support via security/heimdal
 KRB_MIT_DESC=		Kerberos support via security/krb5
 KRB_NONE_DESC=		Disable Kerberos support
@@ -80,7 +79,6 @@ GTK3_USE=	GNOME=gtk30
 QT5_USE=	QT5=core,gui,widgets,printsupport,buildtools_build
 
 LUA_USES=		lua:5[1-2]
-KRB_BASE_USES=		gssapi
 KRB_HEIMDAL_USES=	gssapi:heimdal
 KRB_MIT_USES=		gssapi:mit
 
@@ -130,11 +128,6 @@ PLIST_SUB+=		GUI="@comment "
 USES+=			desktop-file-utils shared-mime-info
 INSTALLS_ICONS=		yes
 PLIST_SUB+=		GUI=""
-.endif
-
-.if ${PORT_OPTIONS:MKRB_BASE} && exists(${LOCALBASE}/include/krb5.h)
-IGNORE=			cannot build with base Kerberos if krb5 port is installed. \
-			Use ``make config'' to choose a different option
 .endif
 
 .if empty(PORT_OPTIONS:MGTK2) && empty(PORT_OPTIONS:MGTK3) && \

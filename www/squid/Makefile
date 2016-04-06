@@ -53,12 +53,12 @@ OPTIONS_DEFINE=	ARP_ACL CACHE_DIGESTS DEBUG DELAY_POOLS ECAP ESI \
 		TP_IPF TP_IPFW TP_PF VIA_DB WCCP WCCPV2 DOCS EXAMPLES
 
 OPTIONS_SINGLE=	GSSAPI
-OPTIONS_SINGLE_GSSAPI=	GSSAPI_NONE GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT
+OPTIONS_SINGLE_GSSAPI=	GSSAPI_NONE GSSAPI_HEIMDAL GSSAPI_MIT
 
 OPTIONS_DEFAULT=ARP_ACL AUTH_NIS CACHE_DIGESTS DELAY_POOLS DOCS EXAMPLES FOLLOW_XFF \
 		FS_AUFS FS_DISKD FS_ROCK HTCP ICAP ICMP IDENT IPV6 KQUEUE LARGEFILE \
 		LAX_HTTP SNMP SSL SSL_CRTD TP_IPF TP_IPFW TP_PF VIA_DB WCCP WCCPV2 \
-		GSSAPI_BASE
+		GSSAPI_MIT
 
 ARP_ACL_CONFIGURE_ENABLE=	eui
 AUTH_LDAP_CFLAGS=		-I${LOCALBASE}/include
@@ -112,9 +112,6 @@ GSSAPI_NONE_CONFIGURE_ON=	--without-heimdal-krb5 \
 				--without-mit-krb5 \
 				--without-gss
 
-GSSAPI_BASE_USES=		gssapi
-GSSAPI_BASE_CONFIGURE_ON=	--with-heimdal-krb5=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
-
 GSSAPI_HEIMDAL_USES=		gssapi:heimdal
 GSSAPI_HEIMDAL_CONFIGURE_ON=	--with-heimdal-krb5=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
 
@@ -128,7 +125,6 @@ ARP_ACL_DESC=		ARP/MAC/EUI based authentification
 AUTH_DESC=		Authentication helpers
 GSSAPI_DESC=		Install Kerberos authentication helpers
 GSSAPI_NONE_DESC=	Build without Kerberos support
-GSSAPI_BASE_DESC=	Build with Kerberos support from base
 GSSAPI_HEIMDAL_DESC=	Build with Kerberos support from security/heimdal
 GSSAPI_MIT_DESC=	Build with Kerberos support from security/krb5
 AUTH_LDAP_DESC=		Install LDAP authentication helpers
@@ -254,11 +250,6 @@ external_acl+=	kerberos_ldap_group
 . endif
 negotiate_auth=	kerberos wrapper
 PLIST_SUB+=	AUTH_KERB=""
-.endif
-
-# Make it build on FreeBSD < 10
-.if ${PORT_OPTIONS:MGSSAPI_BASE}
-EXTRA_PATCHES+=		${FILESDIR}/extra-patch-build-8-9
 .endif
 
 CONFIGURE_ARGS+=	--enable-auth-basic="${basic_auth}" \
