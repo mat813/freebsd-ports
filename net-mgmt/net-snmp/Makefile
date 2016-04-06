@@ -52,7 +52,7 @@ CONFIGURE_ARGS+=--enable-shared --enable-internal-md5 \
 		--with-logfile="${NET_SNMP_LOGFILE}" \
 		--with-persistent-directory="${NET_SNMP_PERSISTENTDIR}" \
 		--with-gnu-ld --with-libwrap \
-		--with-ldflags="-lm -lkvm -ldevstat -L${PKG_PREFIX}/lib -L${LOCALBASE}/lib ${LCRYPTO}"
+		--with-ldflags="-lm -lkvm -ldevstat -L${PKG_PREFIX}/lib -L${LOCALBASE}/lib -lcrypto"
 SUB_FILES=	pkg-message
 
 .if !defined(WITHOUT_SSP)
@@ -209,12 +209,6 @@ DOC_FILES=	AGENT.txt COPYING FAQ NEWS README \
 CONFLICTS=	ucd-snmp-4.* net-snmp-5.3.*
 
 .include <bsd.port.pre.mk>
-
-.if defined(WITH_OPENSSL_PORT) || defined(OPENSSL_PORT)
-LCRYPTO=	-lcrypto
-.else
-LCRYPTO=
-.endif
 
 pre-everything::
 	@${ECHO_MSG}
