@@ -4,11 +4,11 @@
 #
 # Feature:	gssapi
 # Usage:	USES=gssapi or USES=gssapi:ARGS
-# Valid ARGS:	base (default, implicit), heimdal, mit.
+# Valid ARGS:	heimdal, mit (default).
 #		"bootstrap" is a special prefix only for krb5 or heimdal ports.
 #		("bootstrap,mit")
 #		flags is a special suffix to define CFLAGS, LDFLAGS, and LDADD.
-#		("base,flags")
+#		("mit,flags")
 #
 # MAINTAINER:	hrs@FreeBSD.org
 #
@@ -41,11 +41,7 @@
 #  A typical example:
 #
 #   OPTIONS_SINGLE= GSSAPI
-#   OPTIONS_SINGLE_GSSAPI= GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
-#
-#   GSSAPI_BASE_USES=	gssapi
-#   GSSAPI_BASE_CONFIGURE_ON= \
-#	--with-gssapi=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
+#   OPTIONS_SINGLE_GSSAPI= GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
 #
 #   GSSAPI_HEIMDAL_USES=gssapi:heimdal
 #   GSSAPI_HEIMDAL_CONFIGURE_ON= \
@@ -81,23 +77,11 @@ _HEADERS=	sys/types.h sys/stat.h stdint.h
 
 .undef _FIXUP_KRB5CONFIG
 .if empty(gssapi_ARGS)
-gssapi_ARGS=	base
+gssapi_ARGS=	mit
 .endif
 .for _A in ${gssapi_ARGS}
 _local:=	${_A}
-.if ${_local} == "base"
-HEIMDAL_HOME=	/usr
-GSSAPIBASEDIR=	${HEIMDAL_HOME}
-GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib
-GSSAPIINCDIR=	${GSSAPIBASEDIR}/include
-_HEADERS+=	gssapi/gssapi.h gssapi/gssapi_krb5.h krb5.h
-GSSAPICPPFLAGS=	-I"${GSSAPIINCDIR}"
-GSSAPILIBS=	-lkrb5 -lgssapi -lgssapi_krb5
-GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
-.if empty(OSREL:N9.3)
-_FIXUP_KRB5CONFIG=	yes
-.endif
-.elif ${_local} == "heimdal"
+.if ${_local} == "heimdal"
 HEIMDAL_HOME?=	${LOCALBASE}
 GSSAPIBASEDIR=	${HEIMDAL_HOME}
 GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib/heimdal
