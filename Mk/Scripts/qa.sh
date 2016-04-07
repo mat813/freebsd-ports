@@ -115,6 +115,22 @@ baselibs() {
 		*NEEDED*\[libcrypto.so.*]|*NEEDED*\[libssl.so.*])
 			found_openssl=1
 			;;
+		*NEEDED*\[libasn1.so.1[01]] |
+		*NEEDED*\[libcom_err.so.5] |
+		*NEEDED*\[libgssapi.so.10] |
+		*NEEDED*\[libhdb.so.1[01]] |
+		*NEEDED*\[libheimbase.so.11] |
+		*NEEDED*\[libheimntlm.so.1[01]] |
+		*NEEDED*\[libhx509.so.1[01]] |
+		*NEEDED*\[libkadm5clnt.so.1[01]] |
+		*NEEDED*\[libkadm5srv.so.10[1]] |
+		*NEEDED*\[libkdc.so.11] |
+		*NEEDED*\[libkrb5.so.1[01] |]
+		*NEEDED*\[libroken.so.1[01]] |
+		*NEEDED*\[libwind.so.11])
+			err "Bad linking on ${f##* } please add USES=gssapi"
+			rc=1
+			;;
 		esac
 	done <<-EOF
 	$(find ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/sbin \
