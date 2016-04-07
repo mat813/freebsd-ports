@@ -49,6 +49,8 @@ MDNS_DESC=	Enable Bonjour/Rendezvous support
 USES+=		fam
 .endif
 
+# Does this mean it always has krb5 support but only uses it from ports if
+# already there ?
 .if exists(${LOCALBASE}/lib/libkrb5.so)
 LIB_DEPENDS+=	libkrb5.so:security/heimdal
 .endif

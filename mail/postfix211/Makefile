@@ -55,6 +55,7 @@ LMDB_LIB_DEPENDS=	liblmdb.so:databases/lmdb
 MYSQL_USE=		MYSQL=yes
 PCRE_LIB_DEPENDS=	libpcre.so:devel/pcre
 PGSQL_USES=		pgsql
+# pretty sure here is missing a SASLKRB5_LIB_DEPENDS line
 SASLKMIT_LIB_DEPENDS=	libkrb5.so:security/krb5
 SASL_LIB_DEPENDS=	libsasl2.so:security/cyrus-sasl2
 SPF_LIB_DEPENDS=	libspf2.so:mail/libspf2

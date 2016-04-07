@@ -127,13 +127,8 @@ CONFIGURE_ARGS+=	--with-curses=${NCURSESBASE}
 CFLAGS+=	-I${NCURSESINC}
 .endif
 .if ${PORT_OPTIONS:MGSSAPI}
-.if exists(${LOCALBASE}/bin/gss-client)
 LIB_DEPENDS+=		libgssapi_krb5.so:security/krb5
 CONFIGURE_ARGS+=	--with-gss=${LOCALBASE}
-.elif (defined(MAKE_KERBEROS5)) || exists(/usr/lib/libkrb5.a)
-CONFIGURE_ARGS+=	--with-gss
-WITH_MUTT_KRB5_SYS=YES
-.endif
 .endif
 
 post-patch:

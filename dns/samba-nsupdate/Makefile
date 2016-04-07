@@ -57,8 +57,6 @@ CONFIGURE_ARGS+=	--with-openssl=${OPENSSLBASE}
 CONFIGURE_ARGS+=	--with-gssapi="${KRB5_HOME}"
 .elif defined(HEIMDAL_HOME) && exists(${HEIMDAL_HOME}/lib/libgssapi.so)
 CONFIGURE_ARGS+=	--with-gssapi="${HEIMDAL_HOME}"
-.elif exists(/usr/lib/libkrb5.so) && exists(/usr/bin/krb5-config)
-CONFIGURE_ARGS+=	--with-gssapi="/usr"
 .else
 LIB_DEPENDS+=		libkrb5.so:security/heimdal
 CONFIGURE_ARGS+=	--with-gssapi="${LOCALBASE}"

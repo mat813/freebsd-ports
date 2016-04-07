@@ -42,6 +42,7 @@ KRB5_DIR?=	${LOCALBASE}
 .endif
 .else
 LIB_DEPENDS+=	libss.so.2:devel/e2fsprogs-libss
+# I think this is wrong.
 KRB5_DIR?=	${DESTDIR}/usr
 .endif
 

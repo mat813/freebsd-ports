@@ -80,15 +80,14 @@ GROUPS=		${RADIUS_GROUP}
 # Default requirements for rc script
 _REQUIRE=	NETWORKING SERVERS
 
-OPTIONS_DEFINE=	USER KERBEROS HEIMDAL HEIMDAL_PORT LDAP MYSQL \
+OPTIONS_DEFINE=	USER KERBEROS HEIMDAL LDAP MYSQL \
 		PGSQL UNIXODBC FIREBIRD PERL PYTHON OCI8 RUBY DHCP \
 		EXPERIMENTAL UDPFROMTO DEVELOPER EDIR SSL_PORT DOCS
 OPTIONS_DEFAULT=USER PERL PYTHON
 
 DHCP_DESC=		With DHCP support (EXPERIMENTAL)
 USER_DESC=		Run as user freeradius, group freeradius
-HEIMDAL_DESC=		With Heimdal Kerberos support
-HEIMDAL_PORT_DESC=	With Heimdal Kerberos from ports
+HEIMDAL_DESC=		With Heimdal Kerberos from ports
 UNIXODBC_DESC=		With unixODBC database support
 FIREBIRD_DESC=		With Firebird database support (EXPERIMENTAL)
 OCI8_DESC=		With Oracle support (currently experimental)
@@ -108,22 +107,14 @@ SUB_LIST+=	RUN_AS_USER="no"
 
 .if ${PORT_OPTIONS:MKERBEROS} || ${PORT_OPTIONS:MHEIMDAL}
 .if ${PORT_OPTIONS:MHEIMDAL}
-.if ${PORT_OPTIONS:MHEIMDAL_PORT}
 LIB_DEPENDS+=	libkrb5.so:security/heimdal
-.endif
 CONFIGURE_ARGS+=--enable-heimdal-krb5
 .else
 LIB_DEPENDS+=	libkrb5support.so:security/krb5
 .endif
 CONFIGURE_ARGS+=--with-rlm_krb5
-.if ${PORT_OPTIONS:MHEIMDAL} && empty(PORT_OPTIONS:MHEIMDAL_PORT)
-CONFIGURE_ARGS+=--with-rlm-krb5-lib-dir=/usr/lib
-CONFIGURE_ARGS+=--with-rlm-krb5-include-dir=/usr/include
-CONFIGURE_ENV+=	KRB5LIBS="$$(${KRB5_CONFIG})"
-.else
 CONFIGURE_ARGS+=--with-rlm-krb5-lib-dir=${LOCALBASE}/lib
 CONFIGURE_ARGS+=--with-rlm-krb5-include-dir=${LOCALBASE}/include
-.endif
 PLIST_SUB+=	KRB5=""
 .else
 CONFIGURE_ARGS+=--without-rlm_krb5
@@ -315,13 +306,6 @@ post-patch:
 	@${REINPLACE_CMD} -E \
 		-e "s:^([[:space:]])+openssl:\1${OPENSSLBASE}/bin/openssl:g" \
 		${WRKSRC}/raddb/certs/Makefile
-# If we're using Heimdal from base, alter the LIBS variable
-# XXX Should patch configure.in instead of configure because it is regenerated
-.if ${PORT_OPTIONS:MHEIMDAL} && empty(PORT_OPTIONS:MHEIMDAL_PORT)
-	@${REINPLACE_CMD} -e 's|LIBS|KRB5LIBS|g' ${WRKSRC}/src/modules/rlm_krb5/configure
-	@${REINPLACE_CMD} -e 's|-lkrb5|$$(${KRB5_CONFIG})|g' \
-		${WRKSRC}/src/modules/rlm_krb5/configure
-.endif
 # If DHCP is enabled, enable the DHCP dictionary
 .if ${PORT_OPTIONS:MDHCP}
 	@${REINPLACE_CMD} -Ee 's:^#(.+ dictionary\.dhcp)$$:\1:g' \

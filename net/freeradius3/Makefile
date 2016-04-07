@@ -41,15 +41,14 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 PLIST_SUB=	PORTVERSION=${DISTVERSION} LIBVER=0${PORTVERSION:C/\./0/g}
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	USER KERBEROS HEIMDAL HEIMDAL_PORT LDAP MYSQL \
+OPTIONS_DEFINE=	USER KERBEROS HEIMDAL LDAP MYSQL \
 		PGSQL UNIXODBC FIREBIRD REDIS PYTHON RUBY \
 		EXPERIMENTAL UDPFROMTO DEVELOPER EDIR PERL REST \
 		FREETDS IDN SSL_PORT DOCS SQLITE3
 OPTIONS_DEFAULT=USER PERL
 
 USER_DESC=		Run as user freeradius, group freeradius
-HEIMDAL_DESC=		With Heimdal Kerberos support
-HEIMDAL_PORT_DESC=	With Heimdal Kerberos from ports
+HEIMDAL_DESC=		With Heimdal Kerberos from ports
 UNIXODBC_DESC=		With unixODBC database support
 FIREBIRD_DESC=		With Firebird database support (EXPERIMENTAL)
 EXPERIMENTAL_DESC=	Build experimental modules
@@ -82,22 +81,14 @@ GROUPS=		${RADIUS_GROUP}
 
 .if ${PORT_OPTIONS:MKERBEROS} || ${PORT_OPTIONS:MHEIMDAL}
 .if ${PORT_OPTIONS:MHEIMDAL}
-.if ${PORT_OPTIONS:MHEIMDAL_PORT}
 LIB_DEPENDS+=	libkrb5.so:security/heimdal
-.endif
 CONFIGURE_ARGS+=--enable-heimdal-krb5 --enable-pthread-support
 .else
 LIB_DEPENDS+=	libkrb5support.so:security/krb5
 .endif
 CONFIGURE_ARGS+=--with-rlm_krb5
-.if ${PORT_OPTIONS:MHEIMDAL} && empty(PORT_OPTIONS:MHEIMDAL_PORT)
-CONFIGURE_ARGS+=--with-rlm-krb5-lib-dir=/usr/lib
-CONFIGURE_ARGS+=--with-rlm-krb5-include-dir=/usr/include
-CONFIGURE_ENV+=	KRB5LIBS="$$(${KRB5_CONFIG})"
-.else
 CONFIGURE_ARGS+=--with-rlm-krb5-lib-dir=${LOCALBASE}/lib
 CONFIGURE_ARGS+=--with-rlm-krb5-include-dir=${LOCALBASE}/include
-.endif
 PLIST_SUB+=	KRB5=""
 .else
 CONFIGURE_ARGS+=--without-rlm_krb5
@@ -355,12 +346,6 @@ post-patch:
 	@${REINPLACE_CMD} -Ee 's: ..R...sbindir./rc.radiusd : :' \
 		${WRKSRC}/scripts/all.mk
 
-# If we're using Heimdal from base, alter the LIBS variable
-.if ${PORT_OPTIONS:MHEIMDAL} && empty(PORT_OPTIONS:MHEIMDAL_PORT)
-	@${REINPLACE_CMD} -e 's|LIBS|KRB5LIBS|g' ${WRKSRC}/src/modules/rlm_krb5/configure
-	@${REINPLACE_CMD} -e 's|-lkrb5|$$(${KRB5_CONFIG})|g' \
-		${WRKSRC}/src/modules/rlm_krb5/configure
-.endif
 .if empty(PORT_OPTIONS:MRUBY)
 	@${RM} -fr ${WRKSRC}/src/modules/rlm_ruby/
 .endif

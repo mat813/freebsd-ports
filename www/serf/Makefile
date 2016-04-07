@@ -21,10 +21,9 @@ USE_LDCONFIG=	yes
 
 OPTIONS_DEFINE=	DOCS
 OPTIONS_RADIO=	KERBEROS
-OPTIONS_RADIO_KERBEROS= MIT HEIMDAL HEIMDAL_BASE
+OPTIONS_RADIO_KERBEROS= MIT HEIMDAL
 
 HEIMDAL_DESC=		Heimdal Kerberos (security/heimdal)
-HEIMDAL_BASE_DESC=	Heimdal Kerberos (base)
 MIT_DESC=		MIT Kerberos (security/krb5)
 MIT_LIB_DEPENDS=	libkrb5.so.3:security/krb5
 HEIMDAL_LIB_DEPENDS=	libkrb5.so.26:security/heimdal
@@ -39,9 +38,6 @@ INSTALL_TARGET=	install --install-sandbox=${STAGEDIR}
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MHEIMDAL_BASE}
-SCONS_ARGS+=	GSSAPI="/usr"
-.endif
 .if ${PORT_OPTIONS:MMIT} || ${PORT_OPTIONS:MHEIMDAL}
 SCONS_ARGS+=    GSSAPI="${LOCALBASE}"
 .endif

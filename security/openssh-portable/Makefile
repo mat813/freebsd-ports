@@ -31,7 +31,7 @@ OPTIONS_DEFINE=		PAM TCP_WRAPPERS LIBEDIT BSM \
 			OVERWRITE_BASE SCTP LDNS NONECIPHER
 OPTIONS_DEFAULT=	LIBEDIT PAM TCP_WRAPPERS HPN LDNS
 OPTIONS_RADIO=		KERBEROS
-OPTIONS_RADIO_KERBEROS=	MIT HEIMDAL HEIMDAL_BASE
+OPTIONS_RADIO_KERBEROS=	MIT HEIMDAL
 TCP_WRAPPERS_DESC=	tcp_wrappers support
 BSM_DESC=		OpenBSM Auditing
 KERB_GSSAPI_DESC=	Kerberos/GSSAPI patch (req: GSSAPI)
@@ -41,7 +41,6 @@ X509_DESC=		x509 certificate patch
 SCTP_DESC=		SCTP support
 OVERWRITE_BASE_DESC=	EOL, No longer supported.
 HEIMDAL_DESC=		Heimdal Kerberos (security/heimdal)
-HEIMDAL_BASE_DESC=	Heimdal Kerberos (base)
 MIT_DESC=		MIT Kerberos (security/krb5)
 NONECIPHER_DESC=	NONE Cipher support
 
@@ -138,28 +137,11 @@ BROKEN=		X509 patch incompatible with KERB_GSSAPI patch
 
 .endif
 
-.if ${PORT_OPTIONS:MHEIMDAL_BASE} && ${PORT_OPTIONS:MKERB_GSSAPI}
-BROKEN=		KERB_GSSAPI Requires either MIT or HEMIDAL, does not build with base Heimdal currently
-.endif
-
-.if ${PORT_OPTIONS:MHEIMDAL_BASE} && !exists(/usr/lib/libkrb5.so)
-IGNORE=		you have selected HEIMDAL_BASE but do not have heimdal installed in base
-.endif
-
-.if ${PORT_OPTIONS:MMIT} || ${PORT_OPTIONS:MHEIMDAL} || ${PORT_OPTIONS:MHEIMDAL_BASE}
-.	if ${PORT_OPTIONS:MHEIMDAL_BASE}
-CONFIGURE_LIBS+=	-lgssapi_krb5
-CONFIGURE_ARGS+=	--with-kerberos5=/usr
-.	else
+.if ${PORT_OPTIONS:MMIT} || ${PORT_OPTIONS:MHEIMDAL}
 CONFIGURE_ARGS+=	--with-kerberos5=${LOCALBASE}
-.	endif
-.	if ${OPENSSLBASE} == "/usr"
-CONFIGURE_ARGS+=	--without-rpath
-LDFLAGS=		# empty
-.	endif
 .else
 .	if ${PORT_OPTIONS:MKERB_GSSAPI}
-IGNORE=	KERB_GSSAPI requires one of MIT HEIMDAL or HEIMDAL_BASE
+IGNORE=	KERB_GSSAPI requires one of MIT or HEIMDAL
 .	endif
 .endif
 

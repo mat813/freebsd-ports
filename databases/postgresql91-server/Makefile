@@ -181,6 +181,7 @@ CONFIGURE_ARGS+=--without-gssapi
 .endif
 
 .  if ${PORT_OPTIONS:MMIT_KRB5}
+# Not sure this is right.
 .   if defined(IGNORE_WITH_SRC_KRB5) && (exists(/usr/lib/libkrb5.so) || exists(/usr/bin/krb5-config))
 IGNORE=	requires that you remove heimdal's /usr/bin/krb5-config and /usr/lib/libkrb5.so*, and set NO_KERBEROS=true in /etc/src.conf to build successfully with MIT-KRB
 .   else
