@@ -96,6 +96,7 @@ shebang() {
 
 baselibs() {
 	local rc
+	local found_openssl
 	[ "${PKGBASE}" = "pkg" -o "${PKGBASE}" = "pkg-devel" ] && return
 	while read f; do
 		case ${f} in
@@ -107,12 +108,24 @@ baselibs() {
 			err "Bad linking on ${f##* } please add USES=libedit"
 			rc=1
 			;;
+		*NEEDED*\[libcrypto.so.[67]]|*NEEDED*\[libssl.so.[67]])
+			err "Bad linking on ${f##* } please add USES=ssl"
+			rc=1
+			;;
+		*NEEDED*\[libcrypto.so.*]|*NEEDED*\[libssl.so.*])
+			found_openssl=1
+			;;
 		esac
 	done <<-EOF
 	$(find ${STAGEDIR}${PREFIX}/bin ${STAGEDIR}${PREFIX}/sbin \
 		${STAGEDIR}${PREFIX}/lib ${STAGEDIR}${PREFIX}/libexec \
 		-type f -exec readelf -d {} + 2>/dev/null)
 	EOF
+	if [ -z "${USESSSL}" -a -n "${found_openssl}" ]; then
+		warn "you need USES=nssl"
+	elif [ -n "${USESSSL}" -a -z "${found_openssl}" ]; then
+		warn "you may not need USES=ssl"
+	fi
 	return ${rc}
 }
 

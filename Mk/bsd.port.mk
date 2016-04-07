@@ -1505,6 +1505,9 @@ QA_ENV+=		STAGEDIR=${STAGEDIR} \
 				"STRIP=${STRIP}" \
 				TMPPLIST=${TMPPLIST} \
 				PKGBASE=${PKGBASE}
+.if !empty(USES:Mssl)
+QA_ENV+=		USESSSL=yes
+.endif
 .if !empty(USES:Mdesktop-file-utils)
 QA_ENV+=		USESDESKTOPFILEUTILS=yes
 .endif
