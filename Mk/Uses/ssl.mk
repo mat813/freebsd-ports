@@ -6,22 +6,23 @@ _INCLUDE_USES_SSL_MK=	yes
 .include "${USESDIR}/localbase.mk"
 .include "${PORTSDIR}/Mk/bsd.default-versions.mk"
 
-.if exists(${LOCALBASE}/lib/libcrypto.so.37)
-_HAVE_LIBRESSL_DEVEL=	yes
-.elif exists(${LOCALBASE}/lib/libcrypto.so.35)
-_HAVE_LIBRESSL=	yes
+# If you add another SSL flavor, remember to add it to bsd.default-versions.mk.
+.if ${SSL_DEFAULT} == libressl-devel
+OPENSSL_SHLIBVER=	37
+OPENSSL_PORT=		security/libressl-devel
+.elif ${SSL_DEFAULT} == libressl
+OPENSSL_SHLIBVER=	35
+OPENSSL_PORT=		security/libressl
 .else
-_HAVE_OPENSSL=	yes
+OPENSSL_SHLIBVER=	8
+OPENSSL_PORT=		security/openssl
+.if exists(${LOCALBASE}/lib/libcrypto.so) && !exists(${LOCALBASE}/lib/libcrypto.so.${OPENSSL_SHLIBVER})
+.error You seem not to be using OpenSSL for your crypto. You must set \
+	DEFAULT_VERSIONS+=ssl=libressl or libressl-devel in your make.conf
+.endif
 .endif
 
-# If you add another SSL flavor, remember to add it to bsd.default-versions.mk.
-.if defined(_HAVE_LIBRESSL_DEVEL) || (${SSL_DEFAULT} == libressl-devel)
-LIB_DEPENDS=	libcrypto.so.37:${PORTSDIR}/security/libressl-devel
-.elif defined(_HAVE_LIBRESSL) || (${SSL_DEFAULT} == libressl)
-LIB_DEPENDS=	libcrypto.so.35:${PORTSDIR}/security/libressl
-.else
-LIB_DEPENDS+=	libcrypto.so.8:${PORTSDIR}/security/openssl
-.endif
+LIB_DEPENDS+=	libcrypto.so.${OPENSSL_SHLIBVER}:${PORTSDIR}/${OPENSSL_PORT}
 
 # Those are DEPRECATED but still here for compat reasons
 OPENSSLBASE=		${LOCALBASE}
