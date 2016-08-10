@@ -28,7 +28,6 @@ CPE_VENDOR=	apache
 CPE_PRODUCT=	http_server
 
 PORTDOCS=	*
-SUB_FILES=	pkg-install pkg-deinstall
 
 # Fallback MPM after switching from static to modular MPM
 SUB_LIST+=	MPMF="000_mpm_prefork_fallback.conf"
@@ -227,8 +226,10 @@ post-configure:
 		${WRKSRC}/docs/conf/httpd.conf
 	${REINPLACE_CMD} -e "s,%%PREFIX%%,${PREFIX}," ${WRKSRC}/support/envvars-std
 
-post-install:
+pre-install:
 	@${MKDIR} ${ETC_SUBDIRS:S|^|${STAGEDIR}${ETCDIR}/|}
+
+post-install:
 	${INSTALL_DATA} ${FILESDIR}/no-accf.conf ${STAGEDIR}${ETCDIR}/Includes/
 # place for 3rd party module configuration
 	${INSTALL_DATA} ${FILESDIR}/README_modules.d ${STAGEDIR}${ETCDIR}/modules.d/
@@ -236,6 +237,11 @@ post-install:
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/* 2>/dev/null
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/libexec/apache24/mod_*.so
+	@${MKDIR} ${STAGEDIR}${DATADIR}/modules.d
+	mv ${STAGEDIR}${ETCDIR}/modules.d/*.conf.sample ${STAGEDIR}${DATADIR}/modules.d
+	(cd ${STAGEDIR}${DATADIR}; \
+		${FIND} modules.d -name '*.sample' | \
+		sed -e 's|\(.*\)\(.sample\)|@sample ${DATADIR_REL}/\1\2 ${ETCDIR_REL}/\1 |' >> ${TMPPLIST})
 
 post-install-LOG_FORENSIC-on:
 	${INSTALL_SCRIPT} ${WRKSRC}/support/check_forensic ${STAGEDIR}${PREFIX}/sbin
