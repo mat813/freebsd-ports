@@ -34,8 +34,8 @@ post-patch:
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/pd-externals/cyclone
 	${FIND} ${WRKSRC} -name "*.pd" -exec ${INSTALL_DATA} {} \
-		${STAGEDIR}${PREFIX}/lib/pd-externals/cyclone \;
+		${STAGEDIR}${PREFIX}/lib/pd-externals/cyclone +
 	${FIND} ${WRKSRC} -name "*.pd_linux" -exec ${INSTALL_PROGRAM} {} \
-		${STAGEDIR}${PREFIX}/lib/pd-externals/cyclone \;
+		${STAGEDIR}${PREFIX}/lib/pd-externals/cyclone +
 
 .include <bsd.port.mk>
