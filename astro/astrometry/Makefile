@@ -38,8 +38,8 @@ post-install:
 	@${REINPLACE_CMD} -i '' -e 's|${STAGEDIR}||' \
 		${STAGEDIR}${PREFIX}/${PORTNAME}/etc/${PORTNAME}.cfg
 	@${FIND} ${STAGEDIR}${PREFIX}/${PORTNAME}/bin \
-		-type f -not -name "*.py" -exec ${STRIP_CMD} {} \;
+		-type f -not -name "*.py" -exec ${STRIP_CMD} {} +
 	@${FIND} ${STAGEDIR}${PREFIX}/${PORTNAME}/lib \
-		-type f -name "*.so" -exec ${STRIP_CMD} {} \;
+		-type f -name "*.so" -exec ${STRIP_CMD} {} +
 
 .include <bsd.port.mk>
