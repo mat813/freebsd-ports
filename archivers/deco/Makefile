@@ -44,6 +44,6 @@ do-install:
 	${RM} -r ${WRKSRC}/../${PORTNAME}-archive-1.7/${i}
 .endfor
 	@cd ${WRKDIR}/${PORTNAME}-archive-1.7/x/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
-	@${FIND} ${STAGEDIR}${DATADIR} -type f -exec ${CHMOD} +x {} \;
+	@${FIND} ${STAGEDIR}${DATADIR} -type f -exec ${CHMOD} +x {} +
 
 .include <bsd.port.mk>
