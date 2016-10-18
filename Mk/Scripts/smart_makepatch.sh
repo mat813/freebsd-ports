@@ -247,7 +247,7 @@ install_regenerated_patches() {
 	local testdir=$(find ${DESTDIR} -empty)
 	if [ -z "${testdir}" ]; then
 		mkdir -p ${PATCHDIR}
-		find ${DESTDIR} -type f -exec mv {} ${PATCHDIR}/ \;
+		find ${DESTDIR} -type f -exec mv {} ${PATCHDIR}/ +
 	fi
 }
 
