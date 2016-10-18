@@ -28,14 +28,14 @@ post-patch:
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/include/tkgeomap
-	${FIND} ${WRKSRC}/.. -name "*.h" -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/include/tkgeomap \;
+	${FIND} ${WRKSRC}/.. -name "*.h" -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/include/tkgeomap +
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/tkgeomap
 	${INSTALL_DATA} ${WRKSRC}/../library/tkgeomap_procs.tcl ${STAGEDIR}${PREFIX}/lib/tkgeomap
 	${INSTALL_DATA} ${WRKSRC}/../library/wdgeomap.tcl ${STAGEDIR}${PREFIX}/lib/tkgeomap
 	${INSTALL_DATA} ${WRKSRC}/pkgIndex.tcl ${STAGEDIR}${PREFIX}/lib/tkgeomap
 	${INSTALL_DATA} ${WRKSRC}/libtkgeomap.so ${STAGEDIR}${PREFIX}/lib/libtkgeomap.so.0
 	${LN} -sf libtkgeomap.so.0 ${STAGEDIR}${PREFIX}/lib/libtkgeomap.so
-	${FIND} ${WRKSRC}/../doc -name "*.n" -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/man/mann \;
+	${FIND} ${WRKSRC}/../doc -name "*.n" -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/man/mann +
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libtkgeomap.so.0
 
 .include <bsd.port.mk>
