@@ -86,7 +86,7 @@ do-install:
 #	@ cd ${DATADIR} && ${INSTALL} -c -o ${WWWOWN} -g ${WWWGRP} \
 #	  ${EXCEPTFILES} ${PREFIX}/${PHPBBDIR}
 	@ ${MKDIR} ${STAGEDIR}${DOCSDIR}
-	@ cd ${WRKSRC}/docs && ${FIND} * -type f -maxdepth 0 \! -name \*.bak \
-	  \! -name COPYING -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR} \;
+	@ cd ${WRKSRC}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR} \
+		'! -name *\.bak ! -name COPYING'
 
 .include <bsd.port.mk>
