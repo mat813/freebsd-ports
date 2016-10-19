@@ -81,29 +81,21 @@ do-install:
 .endfor
 	@${MKDIR} ${STAGEDIR}${DATADIR}/lang
 	(cd ${WRKSRC}/include && \
-	${FIND} lang -type f ! -iregex ".*Makefile" -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/{}" \;)
+		${COPYTREE_SHARE} lang ${STAGEDIR}${DATADIR} '-type f -not -iregex .*Makefile')
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/textlogs
 	(cd ${WRKSRC}/data && \
-	${FIND} textlogs -type f -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${EXAMPLESDIR}/{}" \;)
+		${COPYTREE_SHARE} textlogs ${STAGEDIR}${EXAMPLESDIR} '-type f')
 	@${MKDIR} ${STAGEDIR}${DATADIR}/sql
 	(cd ${WRKSRC}/data && \
-	${FIND} sql -type f -iregex ".*\.sql" -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/{}" \;)
+		${COPYTREE_SHARE} sql ${STAGEDIR}${DATADIR} '-type f -iregex .*\.sql')
 	${INSTALL_SCRIPT} ${WRKSRC}/data/sql/install-sql.pl ${STAGEDIR}${DATADIR}/sql
 	@${MKDIR} ${STAGEDIR}${PREFIX}/libexec/${PORTNAME}
-	(cd ${WRKSRC}/libexec && \
-	${FIND} -E . -type f ! -iregex ".*\.(sh|orig)" -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${PREFIX}/libexec/${PORTNAME}/{}" \;)
+	(cd ${WRKSRC}/libexec && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/libexec/${PORTNAME} \
+		'-type f -not -iregex .*\.sh -not -iregex .*\.orig')
 	${INSTALL_SCRIPT} ${WRKSRC}/libexec/genindex.sh ${STAGEDIR}${PREFIX}/libexec/${PORTNAME}
-
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
-	cd ${WRKSRC}/www && \
-	${FIND} . -type d ! -empty -exec \
-		${MKDIR} "${STAGEDIR}${WWWDIR}/{}" \; && \
-	${FIND} -E . -type f ! -iregex "(.*Makefile|.*\.orig)" -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${WWWDIR}/{}" \;
+	(cd ${WRKSRC}/www && \
+		${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR} '-not -iregex .*\Makefile -not -iregex .*\.orig')
 	${MV} ${STAGEDIR}${WWWDIR}/include/config.inc.php.default ${STAGEDIR}${WWWDIR}/include/config.inc.php.sample
 
 do-install-DOCS-on:
