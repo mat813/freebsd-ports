@@ -60,7 +60,7 @@ post-patch:
 do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR})
-	@${FIND} ${STAGEDIR}${WWWDIR} -name '*.cgi' -exec ${CHMOD} 755 {} \;
-	@${FIND} ${STAGEDIR}${WWWDIR} -name '*.xml.sample' -exec ${CHMOD} 664 {} \;
+	@${FIND} ${STAGEDIR}${WWWDIR} -name '*.cgi' -exec ${CHMOD} 755 {} +
+	@${FIND} ${STAGEDIR}${WWWDIR} -name '*.xml.sample' -exec ${CHMOD} 664 {} +
 
 .include <bsd.port.mk>
