@@ -33,7 +33,7 @@ CONFIGURE_ARGS+=	--with-curses-dir=${NCURSESBASE}
 .endif
 
 post-patch:
-	@${FIND} ${WRKSRC}/samples/ -type f -exec ${REINPLACE_CMD} -i "" "s|dialog|cdialog|g" {} \;
+	@${FIND} ${WRKSRC}/samples/ -type f -exec ${REINPLACE_CMD} -i "" "s|dialog|cdialog|g" {} +
 	@${REINPLACE_CMD} -e 's|$$(INSTALL_DATA) $$(LIB)|$$(INSTALL_DATA) -s $$(LIB)|'\
 		${WRKSRC}/${MAKEFILE}.in
 
