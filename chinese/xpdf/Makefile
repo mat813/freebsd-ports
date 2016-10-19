@@ -52,10 +52,10 @@ do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/chinese-traditional/CMap
 	cd ${STAGEDIR}${DATADIR}/chinese-traditional/CMap && \
 	    ${FIND} ${ADOBECMAPDIR}/ac15/CMap \
-		-type f -exec ${LN} -s -f {} . \;
+		-type f -exec ${LN} -s -f {} . +
 	${MKDIR} ${STAGEDIR}${DATADIR}/chinese-simplified/CMap
 	cd ${STAGEDIR}${DATADIR}/chinese-simplified/CMap && \
 	    ${FIND} ${ADOBECMAPDIR}/ag15/CMap \
-		-type f -exec ${LN} -s -f {} . \;
+		-type f -exec ${LN} -s -f {} . +
 
 .include <bsd.port.mk>
