@@ -12,7 +12,7 @@ usage(){
 DIR=${1-/usr/ports}
 [ -d ${DIR} ] || usage
 
-find ${DIR}/ -name pkg-descr -exec md5 -r {} \; 2>/dev/null | 	\
+find ${DIR}/ -name pkg-descr -exec md5 -r {} + 2>/dev/null | 	\
 	sort | 							\
 	xargs -L 9999999999 |					\
 	awk '							\
