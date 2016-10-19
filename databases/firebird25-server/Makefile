@@ -114,7 +114,7 @@ MAKE_ENV+=	FIREBIRD_TMP="${WRKDIR}" FIREBIRD_LOCK="${WRKDIR}"
 MAKE_ARGS+=	PREFIX="${STAGEDIR}${PREFIX}"
 
 post-patch:
-	${FIND} ${WRKSRC} -name "*.sh" -exec ${CHMOD} +x {} \+
+	${FIND} ${WRKSRC} -name "*.sh" -exec ${CHMOD} +x {} +
 	${REINPLACE_CMD} -e \
 			's|/isql|/isql-fb|g' -e \
 			's|/gstat|/fbstat|g' -e \
