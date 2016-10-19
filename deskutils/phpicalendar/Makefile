@@ -33,7 +33,7 @@ OPTIONS_DEFINE=	DOCS
 
 do-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}
-	@${FIND} ${WRKSRC} -name \*.orig -exec ${RM} {} \;
+	@${FIND} ${WRKSRC} -name \*.orig -delete
 	@${MV} ${WRKSRC}/config.inc.php ${WRKSRC}/config.inc.php.sample
 .for dir in admin calendars functions images includes languages lib nicetitle rss templates
 	@${CP} -Rv ${WRKSRC}/${dir} ${STAGEDIR}${WWWDIR}
