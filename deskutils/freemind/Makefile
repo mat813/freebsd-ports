@@ -35,9 +35,7 @@ do-build:
 	${ZIP_CMD} -u lib/freemind.jar freemind.properties)
 
 do-install:
-	cd ${WRKSRC} \
-	  && ${FIND} ${DATAFILES} -type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \; \
-	  && ${FIND} ${DATAFILES} -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	cd ${WRKSRC} && ${COPYTREE_SHARE} "${DATAFILES}" ${STAGEDIR}${DATADIR}
 	${INSTALL_SCRIPT} ${WRKDIR}/freemind.sh ${STAGEDIR}${PREFIX}/bin/freemind
 
 .include <bsd.port.mk>
