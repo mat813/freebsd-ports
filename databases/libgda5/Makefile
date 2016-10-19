@@ -114,7 +114,7 @@ post-patch:
 	@${FIND} ${WRKSRC} -name Makefile.in -exec ${REINPLACE_CMD} \
 		-e 's|$$(top_builddir)/libgda/libgda-5.0.la|-lgda-5.0|g' \
 		-e 's|../libgda/libgda-5.0.la|-lgda-5.0|g' \
-		{} \;
+		{} +
 .endif
 
 .if ${LIBGDA5_SLAVE} == jdbc
