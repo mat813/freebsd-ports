@@ -27,7 +27,7 @@ OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${RM} ${WRKSRC}/example/.cvsignore
-	@${FIND} -d ${WRKSRC} -type d -and -name CVS -exec ${RM} -r {} \;
+	@${FIND} -d ${WRKSRC} -type d -and -name CVS -exec ${RM} -r {} +
 	@${REINPLACE_CMD} -e 's|/usr/bin/tclsh|${TCLSH}|; \
 		s|/doc/|/share/doc/|; \
 		s|-$$(VERSION)||;' \
