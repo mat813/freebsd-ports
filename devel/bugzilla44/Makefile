@@ -108,7 +108,7 @@ post-patch:
 	${FIND} ${WRKSRC} -type f \( -name \*.cgi -o -name \*.html -o -name \*.pl -o -name \*.pm -o -name \*.t -o -name \*.txt -o -name \*.xml \) \
 		-exec ${SED} -i '' -e "s=/usr/bin/perl=${PERL}=g; \
 			s!/usr/lib/sendmail!/usr/sbin/sendmail!g; \
-			s!/var/www/html/bugzilla!${WWWDIR}!" {} \+
+			s!/var/www/html/bugzilla!${WWWDIR}!" {} +
 .if ${PORT_OPTIONS:MPGSQL} && ! ${PORT_OPTIONS:MMYSQL}
 	${REINPLACE_CMD} -e "s/'mysql'/'Pg'/" ${WRKSRC}/Bugzilla/Install/Localconfig.pm
 .endif
@@ -119,7 +119,7 @@ pre-install:
 do-install:	.SILENT
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	${FIND} ${WRKSRC} \! -type d -maxdepth 1 \! -name "UPGRADING*" -exec \
-		${INSTALL_SCRIPT} {} ${STAGEDIR}${WWWDIR} \;
+		${INSTALL_SCRIPT} {} ${STAGEDIR}${WWWDIR} +
 	@${MKDIR} ${DATA_DIRS_LIST:S!^!${STAGEDIR}${WWWDIR}/!}
 .for D in ${DATA_DIRS_LIST}
 	(cd ${WRKSRC}/${D} && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}/${D})
