@@ -81,9 +81,9 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/userguide
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/reference
 	@${FIND} ${WRKSRC}/doc/userguide \( -type f -o -type l \) \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/userguide ';'
+		-exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/userguide +
 	@${FIND} ${WRKSRC}/doc/reference \( -type f -o -type l \) \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/reference ';'
+		-exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/reference +
 	@cd ${WRKSRC}/doc && \
 		${COPYTREE_SHARE} images ${STAGEDIR}${DOCSDIR}
 
