@@ -4522,7 +4522,7 @@ compress-man:
 	done ; \
 	for dir in $$mdirs; do \
 		${FIND} $$dir -type f \! -name "*.gz" -links 1 -exec ${GZIP_CMD} {} + ; \
-		${FIND} $$dir -type f \! -name "*.gz" \! -links 1 -exec ${STAT} -f '%i' {} \; | \
+		${FIND} $$dir -type f \! -name "*.gz" \! -links 1 -exec ${STAT} -f '%i' {} + | \
 			${SORT} -u | while read inode ; do \
 				unset ref ; \
 				for f in $$(${FIND} $$dir -type f -inum $${inode} -print); do \
