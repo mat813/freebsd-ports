@@ -61,7 +61,7 @@ do-install:
 		-not -name "*.bat" \
 		-not -name "*.bak" \
 		-not -name "*.dll" \
-		-exec ${INSTALL_DATA} \{} ${STAGEDIR}/${DATADIR}/\{} \;
+		-exec ${INSTALL_DATA} {} ${STAGEDIR}/${DATADIR} +
 	@${ECHO_MSG} " [ DONE ]"
 .endfor
 
