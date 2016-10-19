@@ -4521,7 +4521,7 @@ compress-man:
 		[ -d $$dir ] && mdirs="$$mdirs $$dir" ;\
 	done ; \
 	for dir in $$mdirs; do \
-		${FIND} $$dir -type f \! -name "*.gz" -links 1 -exec ${GZIP_CMD} {} \; ; \
+		${FIND} $$dir -type f \! -name "*.gz" -links 1 -exec ${GZIP_CMD} {} + ; \
 		${FIND} $$dir -type f \! -name "*.gz" \! -links 1 -exec ${STAT} -f '%i' {} \; | \
 			${SORT} -u | while read inode ; do \
 				unset ref ; \
