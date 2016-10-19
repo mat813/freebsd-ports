@@ -21,7 +21,7 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 OPTIONS_DEFINE=		CDDA2WAV
 
-OPTIONS_MULTI=		ENCODER ENGINE
+#OPTIONS_MULTI=		ENCODER ENGINE
 
 OPTIONS_MULTI_ENCODER=	LAME VORBIS FLAC
 OPTIONS_MULTI_ENGINE=	MPLAYER XINE
@@ -60,8 +60,7 @@ do-install:
 .for file in ${INSTALL_FILES}
 	${INSTALL_DATA} ${WRKSRC}/${file} ${STAGEDIR}${DATADIR}/${file}
 .endfor
-	@(cd ${WRKSRC} && ${FIND} lib -type f -name "*.jar" -exec ${INSTALL_DATA} {} \
-		${STAGEDIR}${DATADIR}/{} \;)
+	@(cd ${WRKSRC} && ${COPYTREE_SHARE} lib ${STAGEDIR}${DATADIR} '-type f -name *\.jar')
 	@(cd ${WRKSRC} && ${COPYTREE_SHARE} settings ${STAGEDIR}${DATADIR}/)
 .for file in ${PIXMAPS}
 	${INSTALL_DATA} ${WRKSRC}/${file} ${STAGEDIR}${PREFIX}/share/pixmaps
