@@ -24,8 +24,6 @@ JINJAR=	${PORTNAME}.jar
 
 WRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
-FIND_DIRS=	. -type d
-FIND_DATA=	. -type f
 RM_FILES=	${PORTNAME} README changelog.txt gpl.txt
 
 post-extract:
@@ -35,8 +33,7 @@ post-extract:
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
-	@cd ${WRKSRC} && ${FIND} ${FIND_DIRS} -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} ";"
-	@cd ${WRKSRC} && ${FIND} ${FIND_DATA} -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} ";"
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 	@${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>
