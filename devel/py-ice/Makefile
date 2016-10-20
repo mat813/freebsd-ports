@@ -34,7 +34,7 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYSITEDIR}/Ice/*.so.*
 	${ECHO} "Ice" > ${STAGEDIR}${PYSITEDIR}/Ice.pth
 	@${FIND} ${STAGEDIR}${PYSITEDIR}/Ice \( -name "*.pyc" -or -name "*.pyo" \) \
-		-exec ${CHMOD} u+w {} \;
+		-exec ${CHMOD} u+w {} +
 	@${PYTHON_CMD} -m compileall -d ${PYSITEDIR}/Ice ${STAGEDIR}${PYSITEDIR}/Ice
 	@${PYTHON_CMD} -O -m compileall -d ${PYSITEDIR}/Ice ${STAGEDIR}${PYSITEDIR}/Ice
 
