@@ -53,7 +53,7 @@ do-install:
 .endfor
 	${INSTALL_SCRIPT} ${WRKSRC}/BubBob.py ${STAGEDIR}${DATADIR}
 	# build different colors
-	@${FIND} ${STAGEDIR}${DATADIR} -name "*.ppm" -exec ${CHMOD} u+w {} \;
+	@${FIND} ${STAGEDIR}${DATADIR} -name "*.ppm" -exec ${CHMOD} u+w {} +
 	@${PYTHON_CMD} ${STAGEDIR}${DATADIR}/bubbob/images/buildcolors.py
 	${LN} -sf ${DATADIR}/http2/data/bob.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/${PORTNAME}.png
