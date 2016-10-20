@@ -51,17 +51,11 @@ post-configure:
 post-install:
 .if ${PORT_OPTIONS:MEXAMPLES}
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/${PORTVERSION}
-	cd ${WRKSRC}/Examples && ${FIND} . -type d \
-		-exec ${INSTALL} -d ${STAGEDIR}${EXAMPLESDIR}/${PORTVERSION}/{} \;
-	cd ${WRKSRC}/Examples && ${FIND} . -type f \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${EXAMPLESDIR}/${PORTVERSION}/{} \;
+	cd ${WRKSRC}/Examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}/${PORTVERSION}
 .endif
 .if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/${PORTVERSION}
-	cd ${WRKSRC}/Doc && ${FIND} . -type d \
-		-exec ${INSTALL} -d ${STAGEDIR}${DOCSDIR}/${PORTVERSION}/{} \;
-	cd ${WRKSRC}/Doc && ${FIND} . -type f \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/${PORTVERSION}/{} \;
+	cd ${WRKSRC}/Doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}/${PORTVERSION}
 .endif
 
 regression-test: build
