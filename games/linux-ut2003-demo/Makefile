@@ -56,11 +56,9 @@ pre-install:
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/ut2003-demo ${STAGEDIR}${PREFIX}/bin
 
-	cd ${WRKSRC} && \
-	${FIND} ${LIBDIRS} -type d ! -empty -exec \
-		${MKDIR} "${STAGEDIR}${UTDIR}/{}" \; && \
-	${FIND} ${LIBDIRS} -type f -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${UTDIR}/{}" \;
+.for d in ${LIBDIRS}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} ${d} "${STAGEDIR}${UTDIR}"
+.endfor
 	${CHMOD} ${BINMODE} ${STAGEDIR}${UTDIR}/Benchmark/*.sh ${STAGEDIR}${UTDIR}/System/*-bin
 	${CHMOD} ${LIBMODE} ${STAGEDIR}${UTDIR}/System/*.so*
 	@${MKDIR} ${STAGEDIR}${DATADIR}
