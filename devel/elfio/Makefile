@@ -39,7 +39,7 @@ post-install-DOCS-on:
 
 post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	@${FIND} ${WRKSRC}/Examples/ -name "*.cpp" -exec ${INSTALL_DATA} {} \
-		${STAGEDIR}${EXAMPLESDIR}/ \;
+	${FIND} ${WRKSRC}/Examples -name "*.cpp" -exec ${INSTALL_DATA} {} \
+		${STAGEDIR}${EXAMPLESDIR} \;
 
 .include <bsd.port.mk>
