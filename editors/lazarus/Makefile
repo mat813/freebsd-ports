@@ -149,9 +149,7 @@ do-install:
 .for DIRE in components converter debugger designer doceditor ide images install languages lazarus.app lcl \
 	packager tools units
 		@${MKDIR} ${STAGEDIR}${DATADIR}/${DIRE}
-		@cd ${WRKSRC}/${DIRE} && \
-			${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${DATADIR}/${DIRE}/{}" \; && \
-				${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/${DIRE}/{}" \;
+		@cd ${WRKSRC}/${DIRE} && ${COPYTREE_SHARE} . "${STAGEDIR}${DATADIR}/${DIRE}"
 .endfor
 	@${CHMOD} +x ${STAGEDIR}${DATADIR}/tools/svn2revisioninc ${STAGEDIR}${DATADIR}/tools/lazres ${STAGEDIR}${DATADIR}/tools/lrstolfm \
 		${STAGEDIR}${DATADIR}/tools/updatepofiles
@@ -160,14 +158,10 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${FILE} ${STAGEDIR}${DATADIR}
 .endfor
 
-	@cd ${WRKDIR}/docs && \
-		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${DOCSDIR}/{}" \; && \
-			${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${DOCSDIR}/{}" \;
+	@cd ${WRKDIR}/docs && ${COPYTREE_SHARE} . "${STAGEDIR}${DOCSDIR}"
 	@${LN} -s ${DOCSDIR} ${STAGEDIR}${DATADIR}/docs
 
-	@cd ${WRKDIR}/examples && \
-		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${EXAMPLESDIR}/{}" \; && \
-			${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${EXAMPLESDIR}/{}" \;
+	@cd ${WRKDIR}/examples && ${COPYTREE_SHARE} . "${STAGEDIR}${EXAMPLESDIR}"
 	@${LN} -s ${EXAMPLESDIR} ${STAGEDIR}${DATADIR}/examples
 
 	${INSTALL_SCRIPT} ${WRKSRC}/localize.sh ${STAGEDIR}${DATADIR}
