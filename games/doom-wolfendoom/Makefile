@@ -22,9 +22,7 @@ DATADIR=	${DMDIR}/${PORTNAME}
 .include <bsd.port.pre.mk>
 
 do-install:
-	${FIND} ${WRKSRC}/${PORTNAME} ! -type d -exec ${CHMOD} 0644 {} +
-	${FIND} ${WRKSRC}/${PORTNAME} -type d -exec ${CHMOD} 0755 {} +
 	@${MKDIR} ${STAGEDIR}${DATADIR}
-	${TAR} -cf - -C ${WRKSRC}/${PORTNAME} . | ${TAR} -xpvf - -C ${STAGEDIR}${DATADIR}
+	cd ${WRKSRC}/${PORTNAME} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 
 .include <bsd.port.post.mk>
