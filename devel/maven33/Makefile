@@ -32,8 +32,7 @@ post-extract:
 	${ECHO_CMD} "${DATADIR}" > ${WRKSRC}/${INSTANCE_FILE}
 
 do-install:
-	cd ${WRKSRC} && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \;
-	cd ${WRKSRC} && ${FIND} . -type f -not -path "\./bin/" -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR} '-not -path \./bin/'
 	${INSTALL_DATA} ${WRKSRC}/bin/m2.conf ${STAGEDIR}${DATADIR}/bin/
 	${INSTALL_SCRIPT} ${WRKDIR}/mvn.sh ${STAGEDIR}${DATADIR}/bin/mvn
 	${MKDIR} ${STAGEDIR}${PREFIX}/${INSTANCES_DIR}
