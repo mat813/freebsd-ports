@@ -28,6 +28,6 @@ USES=		perl5
 USE_PERL5=	configure
 
 post-patch:
-	${FIND} ${WRKSRC} -name "*.orig" -a -exec ${RM} {} \;
+	${FIND} ${WRKSRC} -name "*.orig" -delete
 
 .include <bsd.port.mk>
