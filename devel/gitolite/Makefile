@@ -36,10 +36,10 @@ GITUSER_VARS=	USERS=git GROUPS=git
 post-patch:
 	@${FIND} ${WRKSRC} \
 		-exec ${GREP} -qs \#\!/usr/bin/perl {} \; \
-		-exec ${REINPLACE_CMD} -Ee 's|#!/usr/bin/perl|#!${PERL}|' {} \;
-	@${FIND} ${WRKSRC} \
+		-exec ${REINPLACE_CMD} -Ee 's|#!/usr/bin/perl|#!${PERL}|' {} +
+	@cd ${WRKSRC} && ${FIND} . \
 		-exec ${GREP} -qs \#\!/bin/bash {} \; \
-		-exec ${REINPLACE_CMD} -Ee 's|#!/bin/bash|#!${LOCALBASE}/bin/bash|' {} \;
+		-exec ${REINPLACE_CMD} -Ee 's|#!/bin/bash|#!${LOCALBASE}/bin/bash|' {} +
 
 do-build:
 	echo "${GH_TAGNAME}" > ${WRKSRC}/src/VERSION
