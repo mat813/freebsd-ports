@@ -35,6 +35,6 @@ do-configure:
 
 post-install:
 	${FIND} ${STAGEDIR}${PYTHON_SITELIBDIR}/${PORTNAME} -name '*.so' \
-	    -exec ${STRIP_CMD} {} \;
+	    -exec ${STRIP_CMD} {} +
 
 .include <bsd.port.mk>
