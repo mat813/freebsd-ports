@@ -65,10 +65,7 @@ do-install:
 	${INSTALL_DATA} "${CDROM_MOUNT}/Install/Mods/SecondEncounterTbn.tex" ${STAGEDIR}${DATADIR}/Mods/SecondEncounterTbn.tex
 .for dir in Controls Data Scripts VirtualTrees Worlds Demos
 	@cd ${CDROM_MOUNT}/Install && \
-		${FIND} ${dir} -type d -exec \
-			${MKDIR} "${STAGEDIR}${DATADIR}/{}" \; && \
-		${FIND} ${dir} -type f -exec \
-			${INSTALL_DATA} "${CDROM_MOUNT}/Install/{}" "${STAGEDIR}${DATADIR}/{}" \;
+		${COPYTREE_SHARE} ${dir} "${STAGEDIR}${DATADIR}"
 .endfor
 	@${MKDIR} ${STAGEDIR}${DATADIR}/Help
 .for i in ${PORTDOCS:NREADME.liflg}
@@ -76,15 +73,11 @@ do-install:
 .endfor
 .for dir in Data/Var Levels
 	@cd ${WRKSRC} && \
-		${FIND} ${dir} -type d -exec \
-			${MKDIR} "${STAGEDIR}${DATADIR}/{}" \; && \
-		${FIND} ${dir} -type f -exec \
-			${INSTALL_DATA} "${WRKSRC}/{}" "${STAGEDIR}${DATADIR}/{}" \;
+		${COPYTREE_SHARE} ${dir} "${STAGEDIR}${DATADIR}"
 .endfor
 	@${MKDIR} ${STAGEDIR}${DATADIR}/Bin
 	@cd ${WRKSRC}/Data && \
-		${FIND} Bin -type f -exec \
-			${INSTALL_PROGRAM} "${WRKSRC}/Data/{}" "${STAGEDIR}${DATADIR}/{}" \;
+		${COPYTREE_BIN} Bin "${STAGEDIR}${DATADIR}"
 	${BRANDELF} -t Linux ${STAGEDIR}${DATADIR}/Bin/ssam_*
 	${INSTALL_DATA} ${WRKSRC}/ModExt.txt ${STAGEDIR}${DATADIR}
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
