@@ -28,6 +28,6 @@ do-build:
 do-install:
 	${MKDIR} ${STAGEDIR}${PYTHON_SITELIBDIR}
 	@cd ${WRKSRC}; \
-	${FIND} . \( -name "*.py" -or -name "*.pyc" \) -exec ${INSTALL_SCRIPT} \{\} ${STAGEDIR}${PYTHON_SITELIBDIR} \;
+	${FIND} . \( -name "*.py" -or -name "*.pyc" \) -exec ${INSTALL_SCRIPT} {} ${STAGEDIR}${PYTHON_SITELIBDIR} +
 
 .include <bsd.port.mk>
