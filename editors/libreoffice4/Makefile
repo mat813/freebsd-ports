@@ -361,7 +361,7 @@ do-install:
 	@cd ${WRKSRC} && ${MAKE_CMD} ${MAKE_ARGS} distro-pack-install
 	@${RM} ${PLISTD} ${PLISTF}
 	@cd ${STAGEDIR}${PREFIX} && ${FIND} -d lib/libreoffice -type d \
-	    -empty -exec ${ECHO_CMD} "@dir {}" \; >> ${PLISTD}
+	    -empty | ${SED} -e 's,^,@dir ,' >> ${PLISTD}
 	@cd ${STAGEDIR}${PREFIX} && ${FIND} -H -s bin etc lib man \
 	    \( -type f -o -type l \) -print >> ${PLISTF}
 .for subdir in application-registry applications icons mime mime-info mimelnk
