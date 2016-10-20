@@ -30,10 +30,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/libopenal.so ${STAGEDIR}${PREFIX}/lib/${PKGNAMEPREFIX}${PORTNAME}
 
 .for DIRE in common nero
-	@${MKDIR} ${STAGEDIR}${PREFIX}/${DATADIR}/${DIRE}
-	@cd ${WRKSRC}/${DIRE} && \
-		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${PREFIX}/${DATADIR}/${DIRE}/{}" \; && \
-			${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${PREFIX}/${DATADIR}/${DIRE}/{}" \;
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} ${DIRE} ${STAGEDIR}${PREFIX}/${DATADIR}
 .endfor
 	${INSTALL_DATA} ${WRKSRC}/main.cs ${STAGEDIR}${PREFIX}/${DATADIR}
 
