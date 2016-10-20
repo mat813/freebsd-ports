@@ -49,9 +49,10 @@ post-patch:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/gtklife ${STAGEDIR}${PREFIX}/bin
+.for d in ${DATA_SUBDIRS}
 	cd ${WRKSRC} && \
-	${FIND} ${DATA_SUBDIRS} -type d ! -empty -exec ${MKDIR} "${STAGEDIR}${DATADIR}/{}" \; && \
-	${FIND} ${DATA_SUBDIRS} ! -type d -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/{}" \;
+		${COPYTREE_SHARE} ${d} ${STAGEDIR}${DATADIR}
+.endfor
 .for s in ${ICON_SIZES}
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/${s}/apps
 	${INSTALL_DATA} ${WRKSRC}/icon_${s}.png \
