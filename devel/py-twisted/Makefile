@@ -20,7 +20,7 @@ USES=		python:2 tar:bzip2
 USE_PYTHON=	distutils
 
 post-install:
-	${FIND} ${STAGEDIR}${PREFIX}/lib -name "*.c" -and -exec ${RM} {} \;
+	${FIND} ${STAGEDIR}${PREFIX}/lib -name "*.c" -delete
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/twisted/python/_sendmsg.so
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/twisted/test/raiser.so
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/twisted/runner/portmap.so
