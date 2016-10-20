@@ -29,12 +29,8 @@ do-install:
 
 	${MKDIR} ${STAGEDIR}${DATADIR}
 .for d in Recordings data
-	${CP} -R ${WRKSRC}/${d} ${STAGEDIR}${DATADIR}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} ${d} ${STAGEDIR}${DATADIR}
 .endfor
-
-	-${CHOWN} -R ${SHAREOWN}:${SHAREGRP} ${STAGEDIR}${DATADIR}/*
-	${FIND} ${STAGEDIR}${DATADIR}/* -type f -exec ${CHMOD} ${SHAREMODE} {} \;
-	${FIND} ${STAGEDIR}${DATADIR}/* -type d -exec ${CHMOD} ${BINMODE} {} \;
 
 .if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
