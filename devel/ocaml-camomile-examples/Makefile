@@ -19,6 +19,6 @@ EXAMPLESDIR=	${PREFIX}/share/examples/ocaml/${PORTNAME}
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>
