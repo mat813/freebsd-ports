@@ -77,19 +77,15 @@ do-install:
 .endfor
 .for dir in Controls Data Levels Demos Mods Scripts VirtualTrees
 	@cd ${CDROM_MOUNT}/Install && \
-		${COPYTREE_SHARE} ${dir} ${STAGEDIR}${DATADIR}
+		${COPYTREE_SHARE} ${dir} "${STAGEDIR}${DATADIR}"
 .endfor
 .for dir in Controls Data Help Players SaveGame Scripts Temp
 	@cd ${WRKSRC}/Data && \
-		${FIND} ${dir} -type d -exec \
-			${MKDIR} "${STAGEDIR}${DATADIR}/{}" \; && \
-		${FIND} ${dir} -type f -exec \
-			${INSTALL_DATA} "${WRKSRC}/Data/{}" "${STAGEDIR}${DATADIR}/{}" \;
+		${COPYTREE_SHARE} ${dir} "${STAGEDIR}${DATADIR}"
 .endfor
 	@${MKDIR} ${STAGEDIR}${DATADIR}/Bin
 	@cd ${WRKSRC}/Data && \
-		${FIND} Bin -type f -exec \
-			${INSTALL_PROGRAM} "${WRKSRC}/Data/{}" "${STAGEDIR}${DATADIR}/{}" \;
+		${COPYTREE_BIN} Bin "${STAGEDIR}${DATADIR}"
 	${BRANDELF} -t Linux ${STAGEDIR}${DATADIR}/Bin/ssam_*
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 .if ${PORT_OPTIONS:MVORBIS}
