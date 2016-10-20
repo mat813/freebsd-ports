@@ -24,8 +24,7 @@ OPTIONS_DEFINE=	DOCS
 post-install:
 	@${RM} ${WRKSRC}/doc/Makefile
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${INSTALL_WRKSRC} \
-	  && ${FIND} ${PORTDOCS} -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/\{} \; \
-	  && ${FIND} ${PORTDOCS} -type f -exec ${INSTALL_DATA} \{} ${STAGEDIR}${DOCSDIR}/\{} \;
+	${INSTALL_DATA} ${INSTALL_WRKSRC}/README ${STAGEDIR}${DOCSDIR}
+	cd ${INSTALL_WRKSRC} && ${COPYTREE_SHARE} doc ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
