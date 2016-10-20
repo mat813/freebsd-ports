@@ -29,11 +29,11 @@ do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/${SCALA_HOME}/lib
 	${INSTALL_DATA} ${INSTALL_WRKSRC}/scalatest-${PORTVERSION}.jar ${STAGEDIR}${PREFIX}/${SCALA_HOME}/lib/scalatest.jar
 	${INSTALL_DATA} ${INSTALL_WRKSRC}/scalatest-${PORTVERSION}-tests.jar ${STAGEDIR}${PREFIX}/${SCALA_HOME}/lib/scalatest-tests.jar
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${INSTALL_WRKSRC}/src/examples \
-	  && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/\{} \; \
-	  && ${FIND} . -type f -exec ${INSTALL_DATA} \{} ${STAGEDIR}${EXAMPLESDIR}/\{} \;
+	  && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 	cd ${INSTALL_WRKSRC} \
-	  && ${FIND} ${PORTDOCS} -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/\{} \; \
-	  && ${FIND} ${PORTDOCS} -type f -exec ${INSTALL_DATA} \{} ${STAGEDIR}${DOCSDIR}/\{} \;
+	  && ${INSTALL_DATA} ${PORTDOCS:Ndoc} ${STAGEDIR}${DOCSDIR} \
+	  && ${COPYTREE_SHARE} doc ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
