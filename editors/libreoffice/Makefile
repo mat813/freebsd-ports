@@ -293,8 +293,8 @@ post-configure:
 
 post-install:
 	@cd ${STAGEDIR}${PREFIX} && \
-	${FIND} -s lib/libreoffice -type d -empty \
-	    -exec ${ECHO_CMD} "@dir {}" \; >> ${TMPPLIST}
+	${FIND} -s lib/libreoffice -type d -empty | \
+	     ${SED} -e 's/^/@dir ' >> ${TMPPLIST}
 	@cd ${STAGEDIR}${PREFIX} && \
 	${FIND} -s bin etc lib man -not -type d >> ${TMPPLIST}
 .for subdir in application-registry applications icons mime mime-info mimelnk
