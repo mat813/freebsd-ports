@@ -31,9 +31,6 @@ PLIST_FILES+=	%%JAVAJARDIR%%/${PORTNAME}.jar
 do-install:
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}-${PORTVERSION}.jar \
 		${STAGEDIR}${JAVAJARDIR}/${PORTNAME}.jar
-	cd ${WRKSRC}/apidocs && ${FIND} . -type d -exec ${MKDIR} \
-		${STAGEDIR}${DOCSDIR}/{} \;
-	cd ${WRKSRC}/apidocs && ${FIND} . -type f -exec ${INSTALL_DATA} {} \
-		${STAGEDIR}${DOCSDIR}/{} \;
+	cd ${WRKSRC}/apidocs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
