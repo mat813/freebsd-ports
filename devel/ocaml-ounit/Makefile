@@ -30,7 +30,6 @@ post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/doc/style.css ${STAGEDIR}${DOCSDIR}
-	${FIND} ${WRKSRC}/doc -type f -name "*.html" -exec \
-		${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR} \;
+	cd ${WRKSRC}/doc  && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR} '-name *\.html'
 
 .include <bsd.port.mk>
