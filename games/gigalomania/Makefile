@@ -24,7 +24,7 @@ post-patch:
 		-e 's|/usr/X11R6|${LOCALBASE}|' \
 		${WRKSRC}/Makefile
 	@${FIND} ${WRKSRC} -exec ${GREP} -q "__linux" {} \; \
-		-exec ${REINPLACE_CMD} 's|__linux|__${OPSYS}__|' {} \;
+		-exec ${REINPLACE_CMD} 's|__linux|__${OPSYS}__|' {} +
 	@${REINPLACE_CMD} 's|/opt/gigalomania/||g' \
 		${WRKSRC}/gigalomania.desktop
 	@${REINPLACE_CMD} 's|/usr/share|${LOCALBASE}/share|g' \
