@@ -410,7 +410,7 @@ do-install:
 			${TAR} -s '|./[^/]*/||' -xz -f $$i \
 				-C ${STAGEDIR}${PRINSTALLATION_BASEDIR} ; \
 		done
-	${FIND} ${STAGEDIR}${PRINSTALLATION_BASEDIR} -type d -exec ${CHMOD} 755 {} \;
+	${FIND} ${STAGEDIR}${PRINSTALLATION_BASEDIR} -type d -exec ${CHMOD} 755 {} +
 	${REINPLACE_CMD} \
 		-e '/^UserInstallation/s/=.*/=$$SYSUSERCONFIG\/${AOOUDIR}/' \
 		${STAGEDIR}${OOPATH}/program/bootstraprc
