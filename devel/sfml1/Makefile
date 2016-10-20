@@ -40,7 +40,7 @@ post-extract:
 	@${FIND} ${WRKSRC}/samples/bin/ -type f -maxdepth 1 -delete
 
 post-install:
-	${FIND} ${STAGEDIR}${PREFIX}/include/SFML -name "*.hpp" -exec ${REINPLACE_CMD} -i '' -e '/#include/ s|SFML|&1|' {} \;
+	${FIND} ${STAGEDIR}${PREFIX}/include/SFML -name "*.hpp" -exec ${REINPLACE_CMD} -i '' -e '/#include/ s|SFML|&1|' {} +
 	${MV} ${STAGEDIR}${PREFIX}/include/SFML ${STAGEDIR}${PREFIX}/include/SFML${PKGNAMESUFFIX}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/*.so
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
