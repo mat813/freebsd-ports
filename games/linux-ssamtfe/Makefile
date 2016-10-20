@@ -77,10 +77,7 @@ do-install:
 .endfor
 .for dir in Controls Data Levels Demos Mods Scripts VirtualTrees
 	@cd ${CDROM_MOUNT}/Install && \
-		${FIND} ${dir} -type d -exec \
-			${MKDIR} "${STAGEDIR}${DATADIR}/{}" \; && \
-		${FIND} ${dir} -type f -exec \
-			${INSTALL_DATA} "${CDROM_MOUNT}/Install/{}" "${STAGEDIR}${DATADIR}/{}" \;
+		${COPYTREE_SHARE} ${dir} ${STAGEDIR}${DATADIR}
 .endfor
 .for dir in Controls Data Help Players SaveGame Scripts Temp
 	@cd ${WRKSRC}/Data && \
