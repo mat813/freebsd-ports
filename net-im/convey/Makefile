@@ -26,7 +26,6 @@ SUB_FILES=	convey.sh
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/convey.sh ${STAGEDIR}${PREFIX}/bin/convey
-	cd ${WRKSRC} && ${FIND} ${FIND_DIRS} -type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \;
-	cd ${WRKSRC} && ${FIND} ${FIND_DIRS} -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	cd ${WRKSRC} && ${COPYTREE_SHARE} "${FIND_DIRS}" ${STAGEDIR}${DATADIR}
 
 .include <bsd.port.mk>
