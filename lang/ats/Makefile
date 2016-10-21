@@ -62,7 +62,7 @@ post-install:
 	cd ${WRKSRC}/doc/EXAMPLE && \
 	${COPYTREE_SHARE} "${PORTEXAMPLES}" ${STAGEDIR}${EXAMPLESDIR}
 	${FIND} ${STAGEDIR}${EXAMPLESDIR} -name Makefile \
-	    -exec ${SED} -i '' -e 's|^ATSUSRQ=.*|ATSUSRQ="${PREFIX}"|' {} \;
+	    -exec ${SED} -i '' -e 's|^ATSUSRQ=.*|ATSUSRQ="${PREFIX}"|' {} +
 
 .include "bsd.ats.mk"
 .include <bsd.port.post.mk>
