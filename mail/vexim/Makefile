@@ -48,21 +48,12 @@ post-patch:
 do-install:
 	@${ECHO} "Installing in ${VEXIMDIR}"
 	${MKDIR} ${STAGEDIR}${PREFIX}/${VEXIMDIR}
-	cd ${WRKSRC}/vexim && ${FIND} . \
-		-type d -exec ${MKDIR} ${STAGEDIR}${PREFIX}/${VEXIMDIR}/{} \;  \
-		-o -type f \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/${VEXIMDIR}/{} \;
+	cd ${WRKSRC}/vexim && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/${VEXIMDIR}
 	${MKDIR} ${STAGEDIR}${DATADIR}
-	cd ${WRKSRC}/setup && ${FIND} . \
-		-type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \; \
-		-o -type f \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	cd ${WRKSRC}/setup && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 .if ${PORT_OPTIONS:MDOCS}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${FIND} docs \
-		-type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \; \
-		-o -type f \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	cd ${WRKSRC} && ${COPYTREE_SHARE} docs ${STAGEDIR}${DOCSDIR}
 .for i in INSTALL README TODO
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
