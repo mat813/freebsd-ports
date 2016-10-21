@@ -97,9 +97,8 @@ pre-build:
 post-build:
 .if ${PORT_OPTIONS:MHTML} || ${PORT_OPTIONS:MHTML_SPLIT}
 	${FIND} ${WRKSRC} -name "*.html" -exec \
-		${REINPLACE_CMD} -e 's,img src=\"${WRKSRC}.*share/images,img src=\"../..,g' {} \;
-	${FIND} ${WRKSRC} -name "*.html" -exec \
-		${REINPLACE_CMD} -e 's,img src=\"${WRKSRC}.*imagelib,img src=\"imagelib,g' {} \;
+		${REINPLACE_CMD} -e 's,img src=\"${WRKSRC}.*share/images,img src=\"../..,g' \
+				 -e 's,img src=\"${WRKSRC}.*imagelib,img src=\"imagelib,g' {} +
 .endif
 
 .include <bsd.port.mk>
