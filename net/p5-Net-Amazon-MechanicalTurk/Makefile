@@ -35,7 +35,6 @@ SHEBANG_FILES=	mturk_install.pl
 
 post-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	@cd ${WRKSRC}/samples && ${FIND} . -type d -exec ${INSTALL} -d ${STAGEDIR}${EXAMPLESDIR}/{} \;
-	@cd ${WRKSRC}/samples && ${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${EXAMPLESDIR}/{} \;
+	@cd ${WRKSRC}/samples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>
