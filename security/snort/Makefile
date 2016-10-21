@@ -110,7 +110,7 @@ post-patch:
 .endif
 
 post-build:
-	@${FIND} ${WRKSRC}/src -name '*.0' -type f -exec ${STRIP_CMD} {} \;
+	@${FIND} ${WRKSRC}/src -name '*.0' -type f -exec ${STRIP_CMD} {} +
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${ETCDIR} ${STAGEDIR}${RULES_DIR} ${STAGEDIR}${LOGS_DIR} \
