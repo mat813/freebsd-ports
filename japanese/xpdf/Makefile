@@ -38,6 +38,6 @@ do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/japanese/CMap
 	cd ${STAGEDIR}${DATADIR}/japanese/CMap && \
 	    ${FIND} ${ADOBECMAPDIR}/aj16/CMap ${ADOBECMAPDIR}/aj20/CMap \
-		-type f -exec ${LN} -s -f {} . \;
+		-type f -exec ${LN} -s -f {} . +
 
 .include <bsd.port.mk>
