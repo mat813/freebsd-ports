@@ -42,8 +42,7 @@ PLIST_FILES=	%%JAVAJARDIR%%/colt.jar
 do-install:
 .if ${PORT_OPTIONS:MDOCS}
 	@${ECHO_MSG} -n ">> Installing documentation in ${STAGEDIR}${DOCSDIR}..."
-	@cd ${WRKSRC}/doc && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \;
-	@cd ${WRKSRC}/doc && ${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	@cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 	@${ECHO_MSG} " [DONE]"
 .endif
 
