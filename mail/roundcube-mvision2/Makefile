@@ -25,6 +25,6 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	cd ${WRKDIR}/mvision2_en && ${PAX} -r -w . \
 		${STAGEDIR}${WWWDIR}
-	${FIND} ${STAGEDIR}${WWWDIR} -type f -exec ${CHMOD} 0644 {} \;
+	${FIND} ${STAGEDIR}${WWWDIR} -type f -exec ${CHMOD} 0644 {} +
 
 .include <bsd.port.mk>
