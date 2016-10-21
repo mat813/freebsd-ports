@@ -175,7 +175,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|share/OpenCV/doc|${DOCSDIR_REL}|g' \
 		-e 's|share/OpenCV/samples|${EXAMPLESDIR_REL}|g' \
 		${WRKSRC}/CMakeLists.txt
-	@${FIND} ${WRKSRC} -name '*.orig' -exec ${RM} {} \;
+	@${FIND} ${WRKSRC} -name '*.orig' -delete
 .if defined(OCV_CORE)
 	@${REINPLACE_CMD} -e 's|opencv.pc|opencv-core.pc|g' \
 		${WRKSRC}/cmake/OpenCVGenPkgconfig.cmake
