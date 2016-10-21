@@ -53,8 +53,7 @@ do-install:
 	@${ECHO_MSG} " [DONE]"
 .if ${PORT_OPTIONS:MDOCS}
 	@${ECHO_MSG} -n ">> Installing documentation in ${DOCSDIR}..."
-	@cd ${WRKSRC}/javadoc && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \;
-	@cd ${WRKSRC}/javadoc && ${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	@cd ${WRKSRC}/javadoc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 	@${ECHO_MSG} " [DONE]"
 .endif
 
