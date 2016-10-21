@@ -30,7 +30,7 @@ NLS_USES=		gettext
 NLS_CONFIGURE_ENABLE=	nls
 
 post-patch:
-	@${FIND} ${WRKSRC} -type f -exec ${REINPLACE_CMD} -i '' -e 's|/usr/local/share/geomorph|${DATADIR}|' {} \;
+	@${FIND} ${WRKSRC} -type f -exec ${REINPLACE_CMD} -i '' -e 's|/usr/local/share/geomorph|${DATADIR}|' {} +
 	@${REINPLACE_CMD} -e 's|\$$HOME/geomorph|\$$HOME/.geomorph|' \
 		${WRKSRC}/install-step* ${WRKSRC}/install-user ${WRKSRC}/update-rc
 	@${REINPLACE_CMD} -e '/DEF_DIR_NAME/ s|geomorph|.geomorph|' \
