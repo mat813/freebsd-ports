@@ -32,13 +32,9 @@ do-install:
 .endfor
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	cd ${WRKSRC} && \
-	${FIND} . -type d ! -empty -exec \
-		${MKDIR} "${STAGEDIR}${DATADIR}/{}" \;
+	${COPYTREE_SHARE} "filterscripts gamemodes include npcmodes scriptfiles" "${STAGEDIR}${DATADIR}"
 .for i in filterscripts gamemodes include npcmodes scriptfiles
-	cd ${WRKSRC} && \
-	${FIND} ${i} -type f -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/{}" \;
-	${LN} -sf ${DATADIR}/${i} ${STAGEDIR}${SAMPDIR}/${i}
+	${LN} -sf ../../${DATADIR_REL}/${i} ${STAGEDIR}${SAMPDIR}/${i}
 .endfor
 	${INSTALL_DATA} ${WRKSRC}/server.cfg \
 		${STAGEDIR}${PREFIX}/etc/${PORTNAME}.cfg.sample
