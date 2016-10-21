@@ -68,7 +68,7 @@ do-install:
 	@(cd ${STAGEDIR}${PREFIX} && ${PYTHON_CMD} -m compileall \
 		-d ${PREFIX} -f ${PYTHONPREFIX_SITELIBDIR:S;${PREFIX}/;;})
 	@${FIND} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/Britefury \
-		-name "*.so" -exec ${STRIP_CMD} {} \;
+		-name "*.so" -exec ${STRIP_CMD} {} +
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/gSculpt/*.so
 
 .include <bsd.port.post.mk>
