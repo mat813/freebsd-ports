@@ -32,7 +32,7 @@ PYTHON_USES=	pkgconfig python:2.7
 PYTHON_QMAKE_OFF=	DISABLE_PYTHON_PLUGIN=yes
 
 post-patch:
-	@${FIND} ${WRKSRC} -name "*.pro" -exec ${REINPLACE_CMD} -e 's|share/man|man|' {} \;
+	@${FIND} ${WRKSRC} -name "*.pro" -exec ${REINPLACE_CMD} -e 's|share/man|man|' {} +
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
