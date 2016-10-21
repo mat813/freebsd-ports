@@ -51,10 +51,10 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-clang
 post-patch:
 .if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000
 	@${FIND} ${WRKSRC} \( -name '*.h' -o -name '*.cc' \) -type f \
-		-exec ${REINPLACE_CMD} -e 's/tr1::/std::/g' {} \; \
-		-exec ${REINPLACE_CMD} -e 's/std::std::/std::/g' {} \; \
-		-exec ${REINPLACE_CMD} -e '/namespace tr1/d' {} \; \
-		-exec ${REINPLACE_CMD} -e '/include/s,tr1/,,' {} \;
+		-exec ${REINPLACE_CMD} -e 's/tr1::/std::/g' \
+				       -e 's/std::std::/std::/g' \
+				       -e '/namespace tr1/d' \
+				       -e '/include/s,tr1/,,' {} +
 	@${REINPLACE_CMD} -e 's/\.assign/.fill/' \
 		${WRKSRC}/src/torrent/utils/extents.h \
 		${WRKSRC}/src/torrent/utils/log.cc
