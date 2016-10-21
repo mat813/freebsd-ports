@@ -30,7 +30,7 @@ PLIST_FILES+=	man/man1/primes.1.gz man/man1/primegaps.1.gz \
 
 post-patch:
 	@${FIND} ${WRKSRC} -type f -exec \
-		${REINPLACE_CMD} -E -e 's!(primegen.a)!lib\1!' {} \;
+		${REINPLACE_CMD} -E -e 's!(primegen.a)!lib\1!' {} +
 
 do-configure:
 	@${ECHO_CMD} '${CC} ${CFLAGS} -fsigned-char -fPIC' > ${WRKSRC}/conf-cc
