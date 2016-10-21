@@ -23,7 +23,7 @@ INFO=		jacal
 
 do-configure:
 	cd ${WRKSRC}; \
-	${FIND} . -type f -exec ${PERL} -spi -e 's|%%PREFIX%%|${PREFIX}|' {} ';'
+	${FIND} . -type f -exec ${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|' {} +
 	cd ${WRKSRC}; \
 	./configure
 
