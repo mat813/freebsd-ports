@@ -30,7 +30,7 @@ PLIST_SUB=	VER=${PLIST_VER} \
 post-patch:
 .for _task in ${PATCH_TASKS}
 	@${FIND} ${WRKDIR} -name build.xml -exec ${REINPLACE_CMD} -E \
-		-e 's|<(${_task})(.*)/>|<!--\1\2/-->|1' \{} \;
+		-e 's|<(${_task})(.*)/>|<!--\1\2/-->|1' {} +
 .endfor
 
 do-build:
