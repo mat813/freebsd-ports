@@ -11,7 +11,7 @@ COMMENT=	SquirrelMail plugin for Server-Side Mail Filtering management
 pre-install:
 	${RM} -R ${WRKSRC}/${SQUIRREL_PLUGIN_NAME}/po
 	${FIND} ${WRKSRC}/${SQUIRREL_PLUGIN_NAME} -type f \
-		\( -name '.cvsignore' -o -name '*.bak' -o -name '*.orig' \) -exec ${RM} {} \;
+		\( -name '.cvsignore' -o -name '*.bak' -o -name '*.orig' \) -delete
 
 .include "${.CURDIR}/../squirrelmail/bsd.squirrelmail.mk"
 .include <bsd.port.mk>
