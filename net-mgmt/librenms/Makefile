@@ -109,10 +109,10 @@ do-install:
 # Create empty rrd dir writable by www
 	@${MKDIR} ${STAGEDIR}/${WWWDIR}/rrd
 # Files in scripts dir should be executable
-	@${FIND} ${STAGEDIR}/${WWWDIR}/scripts -type f -exec ${CHMOD} +x {} \;
+	@${FIND} ${STAGEDIR}/${WWWDIR}/scripts -type f -exec ${CHMOD} +x {} +
 # Ensure PHP and Python scripts are executable
 	@${FIND} ${STAGEDIR}/${WWWDIR} -type f -name '*.py' -or -type f -name \
-	       '*.php' -exec ${CHMOD} +x {} \;
+	       '*.php' -exec ${CHMOD} +x {} +
 
 do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}/${DOCSDIR}
