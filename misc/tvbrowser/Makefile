@@ -25,10 +25,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}.desktop \
 		${STAGEDIR}${PREFIX}/share/applications/
 	@${RM} ${WRKSRC}/${PORTNAME}.desktop ${WRKSRC}/${PORTNAME}.desktop.bak
-	@cd ${WRKSRC} && ${FIND} . -type d -exec \
-		${MKDIR} "${STAGEDIR}${DATADIR}/{}" \;
-	@cd ${WRKSRC} && ${FIND} . -type f -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/{}" \;
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 	${INSTALL_SCRIPT} ${WRKDIR}/tvbrowser ${STAGEDIR}${PREFIX}/bin
 
 .include <bsd.port.mk>
