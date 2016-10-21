@@ -36,9 +36,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/embeddable/${PORTNAME}-all-${DISTVERSION:tu}.jar ${STAGEDIR}${JAVAJARDIR}/${PORTNAME}.jar
 	@${ECHO_MSG} " [ DONE ]"
 	@${ECHO_MSG} -n ">> Staging data files in ${DATADIR}..."
-	cd ${WRKSRC} \
-	  && ${FIND} ${DATAFILES} -type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \; \
-	  && ${FIND} ${DATAFILES} -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	cd ${WRKSRC} && ${COPYTREE_SHARE} "${DATAFILES}" ${STAGEDIR}${DATADIR}
 	@${ECHO_MSG} " [ DONE ]"
 	@${ECHO_MSG} -n ">> Staging executables in ${PREFIX}/bin..."
 	@${REINPLACE_CMD} -f ${WRKDIR}/set-groovy_home.sed ${WRKSRC}/bin/startGroovy
@@ -50,9 +48,7 @@ do-install:
 
 do-install-DOCS-on:
 	@${ECHO_MSG} -n ">> Staging documentation in ${DOCSDIR}..."
-	@cd ${WRKSRC} \
-	  && ${FIND} ${PORTDOCS} -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \; \
-	  && ${FIND} ${PORTDOCS} -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} "${PORTDOCS}" ${STAGEDIR}${DOCSDIR}
 	@${ECHO_MSG} " [ DONE ]"
 
 post-install:
