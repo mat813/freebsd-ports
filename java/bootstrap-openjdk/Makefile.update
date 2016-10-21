@@ -81,7 +81,7 @@ all:
 	@${CP} -p "${FT2_IMAGEDIR}/lib/libfreetype.so.6" \
 	    "${JDK_IMAGEDIR}/jre/lib/${ARCH}"
 	@${FIND} "${JDK_IMAGEDIR}" -type f \
-	    -exec ${STRIP_CMD} -s {} \; 2> /dev/null
+	    -exec ${STRIP_CMD} -s {} + 2> /dev/null
 .endif
 	@cd "${JDK_IMAGEDIR}" && \
 	${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} ${PLIST} | \
