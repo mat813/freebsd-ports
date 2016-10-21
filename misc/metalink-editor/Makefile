@@ -63,7 +63,7 @@ post-install:
 		${STAGEDIR}${DATADIR} \
 		${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/Metalink_editor \
 		-type f -exec \
-		${CHMOD} ${SHAREMODE} {} \;
+		${CHMOD} ${SHAREMODE} {} +
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
