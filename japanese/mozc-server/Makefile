@@ -100,7 +100,7 @@ post-patch:
 	${REINPLACE_CMD} 's,-liconv,${ICONV_LIB},g' \
 	    ${BUILD_WRKSRC}/gui/qt_libraries.gypi
 	${FIND} ${BUILD_WRKSRC} \( -name '*.gyp' -o -name '*.gypi' \) -exec \
-	    ${REINPLACE_CMD} "s,'python','${PYTHON_CMD}',g" {} \;
+	    ${REINPLACE_CMD} "s,'python','${PYTHON_CMD}',g" {} +
 .if ${BUILD_MOZC_LIST:Mfcitx_mozc} == "fcitx_mozc"
 	${REINPLACE_CMD} 's,/po/mo},%po}mo,g' \
 	    ${BUILD_WRKSRC}/unix/fcitx/gen_fcitx_mozc_i18n.sh
