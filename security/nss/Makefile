@@ -89,7 +89,7 @@ post-patch:
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/include/nss/nss ${STAGEDIR}${PREFIX}/lib/nss
 	${FIND} ${DIST}/public/nss -type l \
-		-exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/include/nss/nss \;
+		-exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/include/nss/nss +
 	${INSTALL_LIB} ${BINS}/lib/*.so \
 		${STAGEDIR}${PREFIX}/lib/nss
 	${INSTALL_DATA} ${BINS}/lib/libcrmf.a \
