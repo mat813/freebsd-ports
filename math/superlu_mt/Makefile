@@ -91,10 +91,10 @@ do-build:
 	${RM} -r ${WRKDIR}/tmp_static
 	${MKDIR} ${WRKDIR}/tmp_static
 	cd ${WRKDIR}/tmp_static
-	${FIND} ${WRKSRC} -name "*\.a" -exec ${CP} {} ${WRKDIR}/tmp_static \;
+	${FIND} ${WRKSRC} -name "*\.a" -exec ${CP} {} ${WRKDIR}/tmp_static +
 	${RM} -r ${WRKDIR}/tmp_shared
 	${MKDIR} ${WRKDIR}/tmp_shared
-	${FIND} ${WRKSRC_SHARED} -name "*\.a" -exec ${CP} {} ${WRKDIR}/tmp_shared \;
+	${FIND} ${WRKSRC_SHARED} -name "*\.a" -exec ${CP} {} ${WRKDIR}/tmp_shared +
 	@cd ${WRKDIR}/tmp_shared ; for i in `ls *.a | ${SED}  's/\.a//' `; do \
 	${RM} $${i}.so.* $${i}.so ; \
 	${FC} ${CFLAGS} ${FPIC} ${LDFLAGS} -shared -o $${i}.so.${SVERSION} \
