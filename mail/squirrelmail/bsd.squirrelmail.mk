@@ -95,12 +95,8 @@ _SMSRCDIR?=	${SQUIRREL_PLUGIN_NAME}
 
 .if !target(do-install)
 do-install:
-	(cd ${WRKSRC}/${_SMSRCDIR} && ${FIND} -d . | \
-		${CPIO} -dump ${STAGEDIR}${SQUIRRELDIR}/plugins/${SQUIRREL_PLUGIN_NAME} >/dev/null 2>&1 && \
-	${FIND} ${STAGEDIR}${SQUIRRELDIR}/plugins/${SQUIRREL_PLUGIN_NAME} \
-		-type d -exec chmod 755 {} \; && \
-	${FIND} ${STAGEDIR}${SQUIRRELDIR}/plugins/${SQUIRREL_PLUGIN_NAME} \
-		-type f -exec chmod 644 {} \;)
+	(cd ${WRKSRC}/${_SMSRCDIR} && \
+		${COPYTREE_SHARE} . ${STAGEDIR}${SQUIRRELDIR}/plugins/${SQUIRREL_PLUGIN_NAME})
 .endif
 
 .if !target(post-install)
