@@ -36,6 +36,6 @@ do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/korean/CMap
 	cd ${STAGEDIR}${DATADIR}/korean/CMap && \
 	    ${FIND} ${ADOBECMAPDIR}/ak12/CMap \
-		-type f -exec ${LN} -s -f {} . \;
+		-type f -exec ${LN} -s -f {} . +
 
 .include <bsd.port.mk>
