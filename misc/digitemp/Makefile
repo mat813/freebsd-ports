@@ -42,9 +42,6 @@ do-install:
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOCFILES:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
-.for dir in perl python/gui python/mysql rrdb
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}/${dir}
-	${FIND} ${WRKSRC}/${dir}/ -maxdepth 1 -type f -exec ${INSTALL_DATA} \{\} ${STAGEDIR}${DOCSDIR}/${dir} \;
-.endfor
+	cd ${WRKSRC} && ${COPYTREE_SHARE} "perl python/gui python/mysql rrdb" ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
