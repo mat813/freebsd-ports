@@ -25,10 +25,8 @@ do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/src && \
 		${INSTALL_PROGRAM} pongix ${STAGEDIR}${PREFIX}/bin
-	cd ${WRKSRC}/data && ${FIND} * -type d \
-		-exec ${MKDIR} "${STAGEDIR}${DATADIR}/{}" \; && \
-		${FIND} -E * -type f -iregex ".*\.(jpg|bmp)" \
-		-exec ${INSTALL_DATA} "{}" "${STAGEDIR}${DATADIR}/{}" \;
+	cd ${WRKSRC}/data && ${COPYTREE_SHARE} .  ${STAGEDIR}${DATADIR} \
+		'-iregex .*\.(jpg|bmp)'
 	cd ${WRKSRC} && ${INSTALL_DATA} \
 		AUTHORS ChangeLog README ${STAGEDIR}${DOCSDIR}
 
