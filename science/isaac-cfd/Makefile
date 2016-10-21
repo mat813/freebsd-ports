@@ -39,7 +39,7 @@ pre-configure:
 	${WRKSRC}/makefile
 	${FIND} ${WRKSRC} -name "*.mk" -exec	\
 		${REINPLACE_CMD} -e 's|SRC= $$(HOME)/ISAAC/src|SRC= ${WRKSRC}|; \
-			s|$$(FFLAGS)|${FFLAGS} -I.|' {} \;
+			s|$$(FFLAGS)|${FFLAGS} -I.|' {} +
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/isaac ${STAGEDIR}${PREFIX}/bin/isaac
