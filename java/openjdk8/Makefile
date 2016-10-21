@@ -426,14 +426,14 @@ do-install:
 .if !defined(BUILD_JRE)
 	@cd ${JDK_IMAGEDIR} && ${COPYTREE_SHARE} . ${STAGEDIR}${INSTALLDIR}
 	@cd ${STAGEDIR}${INSTALLDIR} && \
-	${FIND} bin jre/bin -type f -exec ${CHMOD} ${BINMODE} {} \; && \
+	${FIND} bin jre/bin -type f -exec ${CHMOD} ${BINMODE} {} + && \
 	${CHMOD} ${BINMODE} jre/${JDK_JVMDIR}/jexec \
 	    jre/${JDK_JVMDIR}/jspawnhelper ${JDK_JVMDIR}/jexec
 	@${ECHO} "@dir ${INSTALLDIR}/jre/lib/applet" >> ${TMPPLIST}
 .else
 	@cd ${JRE_IMAGEDIR} && ${COPYTREE_SHARE} . ${STAGEDIR}${INSTALLDIR}
 	@cd ${STAGEDIR}${INSTALLDIR} && \
-	${FIND} bin -type f -exec ${CHMOD} ${BINMODE} {} \; && \
+	${FIND} bin -type f -exec ${CHMOD} ${BINMODE} {} + && \
 	${CHMOD} ${BINMODE} ${JDK_JVMDIR}/jexec ${JDK_JVMDIR}/jspawnhelper
 	@${ECHO} "@dir ${INSTALLDIR}/lib/applet" >> ${TMPPLIST}
 .endif
