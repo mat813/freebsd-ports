@@ -21,7 +21,7 @@ OPTIONS_DEFINE=	DOCS
 
 post-extract:
 	@${FIND} ${FILESDIR} -name "*.h" -not -name "patch-*" -exec \
-		${INSTALL_DATA} {} ${WRKSRC} \;
+		${INSTALL_DATA} {} ${WRKSRC} +
 
 do-install:
 	${INSTALL_DATA} ${WRKSRC}/libgctpc.a ${STAGEDIR}${PREFIX}/lib
