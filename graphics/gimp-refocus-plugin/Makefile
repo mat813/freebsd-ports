@@ -37,7 +37,7 @@ PLIST_FILES=	${GIMP_PLUGIN_DIR}/${PORTNAME}
 
 post-patch:
 	@${FIND} ${WRKSRC} -name Makefile.am \
-		-exec ${REINPLACE_CMD} -e "s|; make|; ${MAKE_CMD}|" {} \;
+		-exec ${REINPLACE_CMD} -e "s|; make|; ${MAKE_CMD}|" {} +
 	@${REINPLACE_CMD} -e "s|%%WRKSRC%%|${WRKSRC}|" \
 		${WRKSRC}/configure.in
 
