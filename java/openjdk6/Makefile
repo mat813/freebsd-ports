@@ -225,7 +225,7 @@ post-extract:
 	@${SED} "s|%%LOCALBASE%%|${LOCALBASE}|" ${FILESDIR}/Makefile.test.in > \
 	    ${WRKSRC}/jdk/test/Makefile
 	@${FIND} ${WRKSRC}/jdk/test -type f -name \*.sh -exec ${SED} -i "" \
-	    -e s/Linux/FreeBSD/g {} \;
+	    -e s/Linux/FreeBSD/g {} +
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|%%CXX_LDFLAGS%%|${CXX_LDFLAGS}|" \
