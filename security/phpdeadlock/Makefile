@@ -37,7 +37,7 @@ post-extract:
 	@cd ${WRKDIR} && ${MV} "Deadlock v1.01" Deadlock-1.01
 
 post-patch:
-	@${FIND} ${WRKSRC} -name \*.orig -exec ${RM} {} \;
+	@${FIND} ${WRKSRC} -name \*.orig -delete
 
 do-install:
 	@cd ${WRKSRC}/deadlock && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}
