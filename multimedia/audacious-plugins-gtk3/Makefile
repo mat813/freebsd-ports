@@ -127,6 +127,6 @@ post-patch:
 
 post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/lib/audacious/ -name "*.so" \
-		-exec ${STRIP_CMD} {} \;
+		-exec ${STRIP_CMD} {} +
 
 .include <bsd.port.mk>
