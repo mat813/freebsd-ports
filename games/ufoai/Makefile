@@ -127,17 +127,13 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/radiant/${FILE} ${STAGEDIR}${UFO_DIR}/radiant
 .endfor
 
-.for DIRE in ${RADIANT_DIRS}
-	${MKDIR} ${STAGEDIR}${UFO_DIR}/radiant/${DIRE}
-	cd ${WRKSRC}/radiant/${DIRE} && \
-		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${UFO_DIR}/radiant/${DIRE}/{}" \; && \
-		${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${UFO_DIR}/radiant/${DIRE}/{}" \;
-.endfor
+	${MKDIR} ${STAGEDIR}${UFO_DIR}/radiant
+	cd ${WRKSRC}/radiant && \
+		${COPYTREE_SHARE} "${RADIANT_DIRS}" ${STAGEDIR}${UFO_DIR}/radiant
 .endif
 
-	cd ${WRKSRC}/base/i18n && \
-		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${PREFIX}/${DATADIR}/base/i18n/{}" \; && \
-			${FIND} * -type f -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${PREFIX}/${DATADIR}/base/i18n/{}" \;
+	cd ${WRKSRC}/base && \
+		${COPYTREE_SHARE} i18n ${STAGEDIR}${PREFIX}/${DATADIR}/base
 	${LN} -s ${PREFIX}/${DATADIR}/base ${STAGEDIR}${UFO_DIR}/base
 
 .include <bsd.port.post.mk>
