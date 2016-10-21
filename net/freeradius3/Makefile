@@ -376,8 +376,8 @@ post-patch:
 .endif
 
 post-build:
-	@${FIND} ${WRKSRC}/build/lib -type f -name '*.so' -exec ${STRIP_CMD} {} \;
-	@${FIND} ${WRKSRC}/build/bin -type f -exec ${STRIP_CMD} {} \;
+	@${FIND} ${WRKSRC}/build/lib -type f -name '*.so' -exec ${STRIP_CMD} {} +
+	@${FIND} ${WRKSRC}/build/bin -type f -exec ${STRIP_CMD} {} +
 
 post-install:
 	${MKDIR} ${STAGEDIR}/var/run/radiusd
