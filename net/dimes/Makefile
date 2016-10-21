@@ -59,17 +59,13 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/Classes/Start.class \
 	  ${STAGEDIR}${DATADIR}/Classes/Start.class
 	cd ${WRKSRC}/Classes/ && \
-	  ${FIND} . -type f -and \( -name "*.jpg" -or -name "*.gif" \
-	    -or -name "*.dll" -or -name "*.ico" \
-	    -or -name "*.zip"  -or -name "*.GIF" -or -name "*.txt" \
-	    -or -name "*.properties" \) \
-	    -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/Classes/{} \;
+	  ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/Classes \
+	    '-iregex .*\.(jpg|gif|dll|ico|zip|txt|properties)'
 	cd ${WRKSRC}/Classes/Base/bin_linux && \
-	  ${FIND} . -type f  -exec ${INSTALL_DATA} -m 0555 {} ${STAGEDIR}${DATADIR}/Classes/Base/bin_linux/{} \;
+	  ${COPYTREE_BIN} . ${STAGEDIR}${DATADIR}/Classes/Base/bin_linux
 	cd ${WRKSRC}/Classes/Base/resources/ && \
-	  ${FIND} . -type f -and \( -name "*.jar" -or -name "*.txt" \
-	    -or -name "*.keystore" \) \
-	    -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/Classes/Base/resources/{} \;
+	  ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/Classes/Base/resources \
+	  '-iregex .*\.(jar|txt|keystore)'
 	${INSTALL_DATA} -m 0666 ${WRKSRC}/Classes/Base/resources/layouts.bin \
 	  ${STAGEDIR}${DATADIR}/Classes/Base/resources/layouts.bin
 	${INSTALL_DATA} -m 0666 ${WRKSRC}/Classes/Base/resources/layouts.meta \
@@ -90,8 +86,7 @@ do-install:
 	  ${STAGEDIR}${DATADIR}/Classes/JARs/10.jar
 	${INSTALL_DATA} ${WRKSRC}/Classes/JARs/dimesAgent.keystore \
 	  ${STAGEDIR}${DATADIR}/Classes/JARs/dimesAgent.keystore
-	cd ${WRKSRC}/Licences/ &&  ${FIND} . -type f -name "*.txt" \
-	  -exec ${INSTALL_MAN} {} ${STAGEDIR}${DATADIR}/Licences/{} \;
+	cd ${WRKSRC}/Licences/ &&  ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/Licences  '-name *\.txt'
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts_linux/agent.sh ${STAGEDIR}${DATADIR}/scripts_linux/agent.sh
 	${INSTALL_SCRIPT} ${WRKSRC}/scripts_linux/colors.sh ${STAGEDIR}${DATADIR}/scripts_linux/colors.sh
 	${INSTALL_DATA} ${WRKSRC}/scripts_linux/Makefile ${STAGEDIR}${DATADIR}/scripts_linux/Makefile
