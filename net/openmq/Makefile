@@ -67,8 +67,8 @@ post-build:
 			${MV} imqbrokerd.conf imqbrokerd.conf.sample
 pre-install:
 .ifndef IMQ_CLIENT
-		@cd ${WRKSRC}/dist/mq && ${FIND} bin lib -type f -exec \
-			${ECHO_CMD} "imq/{}" \; > ${PLIST}
+		@cd ${WRKSRC}/dist/mq && ${FIND} bin lib -type f | \
+			${SED} -e 's,^,imq/,' > ${PLIST}
 		@cd ${WRKSRC}/dist/mq && ${FIND} etc -depth 1 -type f -print | \
 			${SED} -e "\-/-s--/mq/-" >> ${PLIST}
 .else
