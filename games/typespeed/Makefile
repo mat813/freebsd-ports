@@ -29,7 +29,7 @@ NLS_CONFIGURE_ENABLE=	nls
 post-patch:
 	@${FIND} ${WRKSRC} -name "Makefile.in" -exec \
 		${REINPLACE_CMD} -e 's|^\(CC =\).*|\1 @CC@|; \
-			/chmod/ d; /chgrp/ d' {} \;
+			/chmod/ d; /chgrp/ d' {} +
 	@${REINPLACE_CMD} -e \
 		's|\(/etc\)|${PREFIX}\1|' ${WRKSRC}/src/pathnames.h
 
