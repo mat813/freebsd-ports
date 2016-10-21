@@ -56,6 +56,6 @@ do-install:
 		&& ${TAR} -C ${STAGEDIR}${JAVA_HOME} \
 			-xf ${WRKSRC}/build/bundles/javafx-sdk-overlay.zip)
 
-	@${FIND} ${STAGEDIR}${JAVA_HOME}/jre -name '*.so' -exec ${STRIP_CMD} \{\} \;
+	@${FIND} ${STAGEDIR}${JAVA_HOME}/jre -name '*.so' -exec ${STRIP_CMD} {} +
 
 .include <bsd.port.mk>
