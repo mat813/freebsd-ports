@@ -23,8 +23,6 @@ SUB_FILES=	starlogo.sh
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/starlogo.sh ${STAGEDIR}${PREFIX}/bin/starlogo
-	cd ${WRKSRC} \
-	  && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \; \
-	  && ${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 
 .include <bsd.port.mk>
