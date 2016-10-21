@@ -43,7 +43,7 @@ do-install:
 	${FIND} ${ATS_CTRBEXAMPLEDIR} -name Makefile \
 	    -exec ${SED} -i '' \
 	                 -e 's|^ATSUSRQ=.*|ATSUSRQ="${ATS_LIBDIR}"|' \
-	                 -e 's|^ATSLIBQ=.*|ATSLIBQ="${ATS_LIBDIR}"|' {} \;
+	                 -e 's|^ATSLIBQ=.*|ATSLIBQ="${ATS_LIBDIR}"|' {} +
 .endif
 
 post-install-script:
