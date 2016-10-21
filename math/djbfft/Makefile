@@ -22,7 +22,7 @@ LIB_FILES=	libdjbfft.a
 
 post-patch:
 	@${FIND} ${WRKSRC} -type f -exec \
-		${REINPLACE_CMD} -E -e 's!(djbfft.a)!lib\1!' {} \;
+		${REINPLACE_CMD} -E -e 's!(djbfft.a)!lib\1!' {} +
 	@${REINPLACE_CMD} -E 's|("include)|\1/${PORTNAME}|' ${WRKSRC}/hier.c
 
 do-configure:
