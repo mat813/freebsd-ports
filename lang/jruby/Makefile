@@ -43,10 +43,10 @@ pre-patch:
 
 post-patch:
 	@${ECHO_MSG} -n ">> Adjusting shebangs to use /usr/bin/env ..."
-	@${FIND} ${WRKSRC}/bin -type f -exec ${GREP} -q '^#!/bin/bash' {} \; -exec ${REINPLACE_CMD} -e 's|^#!/bin/bash|#!/usr/bin/env bash|' {} \;
-	@${FIND} ${WRKSRC} -type f -name '*.rb' -exec ${GREP} -q '^#!/usr/local/bin/ruby' {} \; -exec ${REINPLACE_CMD} -e 's|^#!/usr/local/bin/ruby|#!/usr/bin/env jruby|' {} \;
+	@${FIND} ${WRKSRC}/bin -type f -exec ${GREP} -q '^#!/bin/bash' {} \; -exec ${REINPLACE_CMD} -e 's|^#!/bin/bash|#!/usr/bin/env bash|' {} +
+	@${FIND} ${WRKSRC} -type f -name '*.rb' -exec ${GREP} -q '^#!/usr/local/bin/ruby' {} \; -exec ${REINPLACE_CMD} -e 's|^#!/usr/local/bin/ruby|#!/usr/bin/env jruby|' {} +
 .for target in ${SHEBANG_FILES}
-	@${FIND} ${WRKSRC} -type f -name ${target} -exec ${GREP} -q '^#!/usr/bin/env ruby' {} \; -exec ${REINPLACE_CMD} -e 's|^#!/usr/bin/env ruby|#!/usr/bin/env jruby|' {} \;
+	@${FIND} ${WRKSRC} -type f -name ${target} -exec ${GREP} -q '^#!/usr/bin/env ruby' {} \; -exec ${REINPLACE_CMD} -e 's|^#!/usr/bin/env ruby|#!/usr/bin/env jruby|' {} +
 .endfor
 	@${ECHO_MSG} " [ DONE ]"
 
@@ -63,12 +63,8 @@ post-patch:
 do-install:
 	@${ECHO_MSG} -n ">> Installing JRuby files..."
 
-	@cd ${WRKSRC}/bin \
-	  && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${JRUBY_HOME}/bin/{} \; \
-	  && ${FIND} . -type f -exec ${INSTALL_SCRIPT} {} ${STAGEDIR}${JRUBY_HOME}/bin/{} \;
-	@cd ${WRKSRC}/lib \
-	  && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${JRUBY_HOME}/lib/{} \; \
-	  && ${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${JRUBY_HOME}/lib/{} \;
+	@cd ${WRKSRC}/bin && ${COPYTREE_BIN} . ${STAGEDIR}${JRUBY_HOME}/bin
+	@cd ${WRKSRC}/lib && ${COPYTREE_SHARE} . ${STAGEDIR}${JRUBY_HOME}/lib
 
 	@${ECHO_MSG} " [ DONE ]"
 
@@ -79,7 +75,7 @@ do-install:
 	@${ECHO_MSG} " [ DONE ]"
 
 	@${ECHO_MSG} -n ">> Stripping shared libraries for jnr-ffi"
-	@${FIND} ${STAGEDIR}${JRUBY_HOME}/lib/jni/x86_64-FreeBSD -type f -name '*\.so' -exec ${STRIP_CMD} {} \;
+	@${FIND} ${STAGEDIR}${JRUBY_HOME}/lib/jni/x86_64-FreeBSD -type f -name '*\.so' -exec ${STRIP_CMD} {} +
 	@${ECHO_MSG} " [ DONE ]"
 
 .if ${PORT_OPTIONS:MDOCS}
