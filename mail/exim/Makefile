@@ -522,7 +522,7 @@ pre-everything::
 	@${ECHO} ''
 	@${ECHO} 'Included extra patches:'
 	@${FIND} ${PATCHDIR} -name 'wishlist-*.patch' \
-	    -exec ${SED} -ne 's,^# , ,p' {} \;
+	    -exec ${SED} -ne 's,^# , ,p' {} +
 	@${ECHO} ''
 .endif
 
