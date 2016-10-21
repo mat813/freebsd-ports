@@ -42,7 +42,7 @@ post-extract:
 
 post-install:
 	@${FIND} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/Numeric -name "*.so" -exec \
-		${STRIP_CMD} {} \;
+		${STRIP_CMD} {} +
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
