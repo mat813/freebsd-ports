@@ -43,9 +43,7 @@ PORTDOCS=	${APIDOCS} ${OTHERDOCS}
 do-install:
 	${INSTALL_DATA} ${WRKSRC}/dist/${PORTNAME}-${PORTVERSION}.jar ${STAGEDIR}${JAVALIBDIR}/${JARFILE}
 .if ${PORT_OPTIONS:MDOCS}
-	cd ${WRKSRC}/dist/docs \
-	  && ${FIND} ${APIDOCS} -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \; \
-	  && ${FIND} ${APIDOCS} -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	cd ${WRKSRC}/dist/docs && ${COPYTREE_SHARE} ${APIDOCS} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${OTHERDOCS:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}/
 .endif
 
