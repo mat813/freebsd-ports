@@ -90,8 +90,7 @@ do-install:
 	@${INSTALL_DATA} ${WRKSRC}/installer/resources/readme/readme*.html ${STAGEDIR}${DOCSDIR}
 # line taken from textproc/xerces-j maintained by hq@FreeBSD.org
 	@cd ${JAVADOC_WRKSRC} && \
-		${FIND} * -type d -exec ${MKDIR} "${STAGEDIR}${DOCSDIR}/{}" \; && \
-		${FIND} * -not -type d -exec ${INSTALL_DATA} "{}" "${STAGEDIR}${DOCSDIR}/{}" \;
+		${COPYTREE_SHARE} . "${STAGEDIR}${DOCSDIR}"
 .endif
 
 .include <bsd.port.post.mk>
