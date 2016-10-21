@@ -39,7 +39,7 @@ post-patch:
 post-install:
 	${FIND} -d ${STAGEDIR}${PREFIX}/lib/io/addons -type d -empty -delete
 	${FIND} ${STAGEDIR}${PREFIX}/lib/io/addons -type f -name "*.so" -exec \
-		${STRIP_CMD} {} \;
+		${STRIP_CMD} {} +
 	${MKDIR}  ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 	${MKDIR}  ${STAGEDIR}${EXAMPLESDIR}
