@@ -30,6 +30,6 @@ CONFIGURE_ENV=	IM_CFLAGS="${CFLAGS}" \
 
 post-install:
 	@${FIND} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Imager \
-		-name "*.so" -exec ${STRIP_CMD} {} \;
+		-name "*.so" -exec ${STRIP_CMD} {} +
 
 .include <bsd.port.mk>
