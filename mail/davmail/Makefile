@@ -38,20 +38,8 @@ post-patch:
 		${WRKSRC}/build.xml
 
 do-install:
-	@cd ${WRKSRC}/dist && ${FIND} . -type d \
-		-exec ${MKDIR} ${STAGEDIR}${DATADIR}/\{} \;
-	@cd ${WRKSRC}/dist && ${FIND} . -type f \
-		-not -name "*.deb" \
-		-not -name "*.md5" \
-		-not -name "*.MD5" \
-		-not -name "*.tgz" \
-		-not -name "*.exe" \
-		-not -name "swt-*.jar" \
-		-not -name "*.zip" \
-		-not -name "*.war" \
-		-not -name "*.rpm" \
-		-not -name "*.desktop" \
-		-exec ${INSTALL_DATA} \{} ${STAGEDIR}${DATADIR}/\{} \;
+	@cd ${WRKSRC}/dist && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR} \
+		'-not -iregex .*\.(deb|md5|tgz|exe|zip|war|rpm|desktop) -not -name swt-*\.jar'
 	@${FIND} ${STAGEDIR}/${DATADIR} -depth -empty -type d -delete
 	${INSTALL_SCRIPT} ${WRKDIR}/davmail.sh ${STAGEDIR}${PREFIX}/bin/davmail
 	${INSTALL_DATA} ${WRKSRC}/src/etc/davmail.properties \
