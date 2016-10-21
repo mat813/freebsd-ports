@@ -30,7 +30,7 @@ post-extract:
 	${RM} -r ${WRKSRC}/java
 	${MV} ${WRKSRC}/processing ${WRKSRC}/start-processing
 	${LN} -s ${JAVA_HOME} ${WRKSRC}/java
-	${FIND} ${WRKSRC}/modes/java/reference/ -exec ${CHMOD} 555 {} \;
+	${FIND} ${WRKSRC}/modes/java/reference/ -exec ${CHMOD} 555 {} +
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/libexec/processing
