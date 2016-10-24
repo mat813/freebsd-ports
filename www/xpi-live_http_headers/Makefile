@@ -35,7 +35,7 @@ USES=		dos2unix
 DOS2UNIX_REGEX=	.*\.(js|rdf|txt)
 
 post-patch:
-	@${FIND} ${WRKSRC} -name \*.orig -exec ${RM} \{} \;
+	@${FIND} ${WRKSRC} -name \*.orig -delete
 
 .include "../xpi-adblock/Makefile.xpi"
 .include <bsd.port.mk>
