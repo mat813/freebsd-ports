@@ -35,16 +35,16 @@ DOCS_BUILD_DEPENDS=	sphinx-build:textproc/py-sphinx
 DOCS_ALL_TARGET=	gen-docs
 
 FIND1=	cd ${WRKSRC}/unicode && ${FIND} -s * \( -name "unicode*.ad[bs]" \
-	-a ! -name "unicode.ads" \) -exec ${PRINTF} ', "%s"' {} \;
+	-a ! -name "unicode.ads" \) -exec ${PRINTF} ', "%s"' {} +
 FIND2=	cd ${WRKSRC}/input_sources && ${FIND} -s * \( -name "input*.ad[bs]" \
-	-a ! -name "input_sources.ads" \) -exec ${PRINTF} ', "%s"' {} \;
+	-a ! -name "input_sources.ads" \) -exec ${PRINTF} ', "%s"' {} +
 FIND3=	cd ${WRKSRC}/sax && \
-	${FIND} -s * -name "sax-*.ad[bs]" -exec ${PRINTF} ', "%s"' {} \;
+	${FIND} -s * -name "sax-*.ad[bs]" -exec ${PRINTF} ', "%s"' {} +
 FIND4=	cd ${WRKSRC}/dom && \
-	${FIND} -s * -name "dom-*.ad[bs]" -exec ${PRINTF} ', "%s"' {} \;
+	${FIND} -s * -name "dom-*.ad[bs]" -exec ${PRINTF} ', "%s"' {} +
 FIND5=	cd ${WRKSRC}/schema && ${FIND} -s * \( -name "schema*.ad[bs]" \
 	-a ! -name "schema.ads" \) -depth 0 -maxdepth 0 \
-	-exec ${PRINTF} ', "%s"' {} \;
+	-exec ${PRINTF} ', "%s"' {} +
 
 post-patch: dummy-unicode dummy-input_sources dummy-sax dummy-dom dummy-schema
 	@${CP} ${FILESDIR}/Makefile.bsd ${WRKSRC}
