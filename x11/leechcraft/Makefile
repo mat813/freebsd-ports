@@ -414,6 +414,6 @@ USE_GCC=	yes
 
 post-install:
 	@${FIND} -d ${STAGEDIR}${PREFIX}/include/leechcraft \
-		-type d -empty -exec ${RMDIR} {} \;
+		-type d -empty -exec ${RMDIR} {} +
 
 .include <bsd.port.mk>
