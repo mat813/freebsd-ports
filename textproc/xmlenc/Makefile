@@ -40,9 +40,7 @@ do-install:
 
 do-install-DOCS-on:
 	@${ECHO_MSG} -n ">> Installing documentation in ${DOCSDIR}/..."
-	@cd ${WRKSRC}/build/javadoc/ \
-	  && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \; \
-	  && ${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	@cd ${WRKSRC}/build/javadoc/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 	@${ECHO_MSG} " [ DONE ]"
 
 .include <bsd.port.post.mk>
