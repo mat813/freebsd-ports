@@ -31,7 +31,7 @@ MAKE_ARGS=	INSTALL_PROG="${INSTALL_PROGRAM}" \
 OPTIONS_DEFINE=	DOCS
 
 post-extract:
-	${FIND} ${WRKSRC} -name CVS -type d -exec ${RM} -r {} ';' -prune
+	${FIND} ${WRKSRC} -name CVS -type d -exec ${RM} -r {} + -prune
 
 post-patch:
 	${RUBY} -i -pe 'gsub /%%PREFIX%%/, "${PREFIX}"' ${WRKSRC}/lib/wget.rb
