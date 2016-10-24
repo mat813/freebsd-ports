@@ -19,17 +19,14 @@ WX_COMPS=	python:run
 
 DATADIR=	${PYTHON_SITELIBDIR}
 
-FIND_DIRS=	-type d \! -empty
-FIND_DATA=	-type f
 FIND_DELETE=	\( -name "*.txt" -and -maxdepth 2 \)
 OPTIONS_DEFINE=	EXAMPLES
 
 .include <bsd.port.options.mk>
 
 do-install:
-	@cd ${WRKSRC} && ${FIND} . ${FIND_DIRS} -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \;
 	@cd ${WRKSRC} && ${FIND} . ${FIND_DELETE} -delete
-	@cd ${WRKSRC} && ${FIND} . ${FIND_DATA} -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 .if ${PORT_OPTIONS:MEXAMPLES}
 	${MV} ${STAGEDIR}${DATADIR}/${PORTNAME}/examples ${STAGEDIR}${EXAMPLESDIR}
 .else
