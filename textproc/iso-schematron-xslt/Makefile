@@ -25,8 +25,8 @@ PLIST_SUB+=	INSTDIR="${INSTDIR}"
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/${INSTDIR}/xslt1
-	( ${FIND} ${WRKDIR}/xslt1 -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/${INSTDIR}/xslt1/ \; )
+	${FIND} ${WRKDIR}/xslt1 -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/${INSTDIR}/xslt1/ +
 	${MKDIR} ${STAGEDIR}${PREFIX}/${INSTDIR}/xslt2
-	( ${FIND} ${WRKDIR}/xslt2 -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/${INSTDIR}/xslt2/ \; )
+	${FIND} ${WRKDIR}/xslt2 -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/${INSTDIR}/xslt2/ +
 
 .include <bsd.port.mk>
