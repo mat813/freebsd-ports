@@ -26,13 +26,6 @@ WRKSRC=		${WRKDIR}/equinox-${PORTVERSION}
 
 DATADIR=	${PREFIX}/share/themes
 
-SUBDIRS=	"Equinox Evolution" "Equinox Evolution Dawn" \
-		"Equinox Evolution Dawn" "Equinox Evolution Dusk" \
-		"Equinox Evolution Light" "Equinox Evolution Midnight" \
-		"Equinox Evolution Rounded" "Equinox Evolution Squared"
-EXAMPLES=	"Equinox Evolution.crx" "Equinox Evolution Dawn.crx" \
-		"Equinox Evolution Dusk.crx" "Equinox Evolution Midnight.crx"
-
 OPTIONS_DEFINE=	ANIMATION EXAMPLES DOCS
 OPTIONS_DEFAULT=	ANIMATION
 ANIMATION_DESC=	Enable animation support
@@ -41,23 +34,17 @@ ANIMATION_CONFIGURE_ENABLE=	animation
 post-patch:
 	@${FIND} ${WRKDIR} -name 'gtkrc' -exec \
 	    ${REINPLACE_CMD} -e 's!^include "apps/nautilus\.rc"!#&!' {} +
-	@${FIND} ${WRKDIR} -type f -name 'gtkrc.bak' -exec ${RM} {} +
+	@${FIND} ${WRKDIR} -type f -name 'gtkrc.bak' -delete
 	@${REINPLACE_CMD} -e 's|glib/.*\.h>|glib.h>|g' \
 		${WRKSRC}/src/animation.c
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
-.for i in ${SUBDIRS}
-	${CP} -R ${WRKDIR}/${i} ${STAGEDIR}${DATADIR}
-.endfor
-	${FIND} ${STAGEDIR}${DATADIR} -type d -exec ${CHMOD} 755 {} +
-	${FIND} ${STAGEDIR}${DATADIR} -type f -exec ${CHMOD} ${SHAREMODE} {} +
+	cd ${WRKDIR} && ${COPYTREE_SHARE} "Equinox*/" ${STAGEDIR}${DATADIR}
 
 post-install-EXAMPLES-on:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-.for i in ${EXAMPLES}
-	${INSTALL_DATA} ${WRKDIR}/$i ${STAGEDIR}${EXAMPLESDIR}
-.endfor
+	${INSTALL_DATA} ${WRKDIR}/*.crx ${STAGEDIR}${EXAMPLESDIR}
 
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

@@ -68,6 +68,24 @@ lib/gtk-2.0/%%GTK2_VERSION%%/engines/libequinox.so
 %%DATADIR%%/Equinox Evolution Dawn/README
 %%DATADIR%%/Equinox Evolution Dawn/index.theme
 %%DATADIR%%/Equinox Evolution Dawn/ChangeLog
+%%DATADIR%%/Equinox Evolution Dawn Squared/ChangeLog
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button2_inactive.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button2_normal.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button2_prelight.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button2_pressed.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button_inactive.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button_normal.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button_prelight.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/button_pressed.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/close.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/close_inactive.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/max.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/max_inactive.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/menu.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/menu_inactive.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/metacity-theme-1.xml
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/min.png
+%%DATADIR%%/Equinox Evolution Dawn Squared/metacity-1/min_inactive.png
 %%DATADIR%%/Equinox Evolution Dusk/gtk-2.0/apps/globalmenu.rc
 %%DATADIR%%/Equinox Evolution Dusk/gtk-2.0/apps/softwarecenter.rc
 %%DATADIR%%/Equinox Evolution Dusk/gtk-2.0/apps/gnome-system-monitor.rc
