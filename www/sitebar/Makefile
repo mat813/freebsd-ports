@@ -18,10 +18,7 @@ DATADIR=	${PREFIX}/www/${PORTNAME}
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
-	@cd ${WRKSRC} && \
-		${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \;
-	@cd ${WRKSRC} && \
-		${FIND} . ! -type d -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 	@${FIND} ${STAGEDIR}${DATADIR} ! -type d | \
 		${SED} 's,^${STAGEDIR}${PREFIX}/,,' >> ${TMPPLIST}
 
