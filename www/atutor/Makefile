@@ -34,7 +34,7 @@ pre-install:
 
 do-install:
 	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR}
-	@${FIND} ${STAGEDIR}${WWWDIR} -type d -exec ${CHMOD} a+x {} \;
+	@${FIND} ${STAGEDIR}${WWWDIR} -type d -exec ${CHMOD} a+x {} +
 	${INSTALL_DATA} -d ${STAGEDIR}${ATUTDATDIR}
 	@${CHMOD} 777 ${STAGEDIR}${ATUTDATDIR}
 	@${CHMOD} 666 ${STAGEDIR}${WWWDIR}/${ATUTCONFIG}
