@@ -52,12 +52,10 @@ post-patch:
 do-install:
 	${MKDIR} ${STAGEDIR}/${DATADIR}/lang
 	cd ${WRKSRC}/lang && \
-	${FIND} . -type f -regex '.*\.lng' -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}/${DATADIR}/lang/{}" \;
+		${COPYTREE_SHARE} . ${STAGEDIR}/${DATADIR}/lang '-regex .*\.lng'
 	${MKDIR} ${STAGEDIR}/${PREFIX}/libexec/${PORTNAME}
 	cd ${WRKSRC}/ip2name && \
-	${FIND} . -type f -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}/${PREFIX}/libexec/${PORTNAME}/{}" \;
+		${COPYTREE_SHARE} . ${STAGEDIR}/${PREFIX}/libexec/${PORTNAME}
 	${MKDIR} ${STAGEDIR}/${ETCDIR}
 .for i in ${CONFIGS}
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}/${ETCDIR}/${i}.sample
@@ -65,14 +63,10 @@ do-install:
 	${MKDIR} ${STAGEDIR}/${WWWDIR}/report
 	${MKDIR} ${STAGEDIR}/${WWWDIR}/tpl
 	cd ${WRKSRC}/tpl && \
-	${FIND} . -type d ! -empty -exec \
-		${MKDIR} "${STAGEDIR}/${WWWDIR}/tpl/{}" \; && \
-	${FIND} . -type f -exec \
-		${INSTALL_DATA} "{}" "${STAGEDIR}/${WWWDIR}/tpl/{}" \;
+		${COPYTREE_SHARE} . ${STAGEDIR}/${WWWDIR}/tpl
 	cd ${WRKSRC} && \
-	${FIND} -E . -maxdepth 1 -regex '.*\.(cgi|pl)' -exec \
-		${INSTALL_SCRIPT} "{}" "${STAGEDIR}/${WWWDIR}/{}" \; && \
-		${INSTALL_DATA} .htaccess ${STAGEDIR}/${WWWDIR}/
+		${INSTALL_SCRIPT} *.cgi *.pl ${STAGEDIR}/${WWWDIR} && \
+		${INSTALL_DATA} .htaccess ${STAGEDIR}/${WWWDIR}
 
 do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}/${DOCSDIR}
