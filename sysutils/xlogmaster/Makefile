@@ -21,7 +21,7 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 post-patch:
 	@${FIND} ${WRKSRC} -name Makefile.in -exec ${REINPLACE_CMD} -E \
-	'/(SHELL|cp -f|mkinstalldirs)/ s,XLM_(DB|HOME|LIB),DESTDIR)$$(&,g' {} \;
+	'/(SHELL|cp -f|mkinstalldirs)/ s,XLM_(DB|HOME|LIB),DESTDIR)$$(&,g' {} +
 	@${REINPLACE_CMD} -e \
 		's|getopt_long_only|getopt_long|g' ${WRKSRC}/src/xlogmaster.cc
 
