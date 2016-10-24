@@ -18,7 +18,8 @@ RUN_DEPENDS=	p5-Net-SSLeay>=0:security/p5-Net-SSLeay \
 		p5-IO-Tty>=0:devel/p5-IO-Tty \
 		p5-Authen-PAM>=0:security/p5-Authen-PAM
 
-USES=		cpe perl5 python
+USES=		cpe perl5 python shebangfix
+SHEBANG_GLOB=	*.cgi *.pl
 USE_RC_SUBR=	webmin
 SUB_LIST=	PERL=${PERL}
 SUB_FILES=	pkg-message
@@ -38,11 +39,10 @@ post-patch:
 	@${REINPLACE_CMD} -e "s@%%PREFIX%%@${PREFIX}@g" ${WRKSRC}/setup.sh
 
 	@${FIND} ${WRKSRC} \( -type f -and \( -name config-freebsd\* -or -name config \) \) \
-		-exec ${REINPLACE_CMD} -e "s@/usr/local@${PREFIX}@g" {} \; \
-		-exec ${REINPLACE_CMD} -e "s@%%PREFIX%%@${PREFIX}@g" {} \;
+		-exec ${REINPLACE_CMD} -e "s@/usr/local@${PREFIX}@g" \
+				       -e "s@%%PREFIX%%@${PREFIX}@g" {} +
 
-	@${FIND} ${WRKSRC} \( -name "*.cgi" -or -name "*.pl" -or -name "*.sh" \) -exec \
-		${REINPLACE_CMD} -e "s@%%PERL%%@${PERL}@g; s@#!/usr/bin/perl@#!${PERL}@; s@#!/usr/local/bin/perl@#!${PERL}@" {} \;
+	@${REINPLACE_CMD} -e "s@%%PERL%%@${PERL}@g" ${WRKSRC}/setup.sh
 
 	@${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" -or -name "*.pyc" \) -delete
 
