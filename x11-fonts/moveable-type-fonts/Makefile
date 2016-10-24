@@ -27,7 +27,6 @@ post-extract:
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${FONTSDIR}
-	${FIND} ${WRKDIR} -name \*.ttf -exec ${INSTALL_DATA} {} ${STAGEDIR}${FONTSDIR} \;
-	${FIND} ${WRKDIR} -name \*.otf -exec ${INSTALL_DATA} {} ${STAGEDIR}${FONTSDIR} \;
+	${FIND} ${WRKDIR} \( -name \*.ttf -o -name \*.otf \) -exec ${INSTALL_DATA} {} ${STAGEDIR}${FONTSDIR} +
 
 .include <bsd.port.mk>
