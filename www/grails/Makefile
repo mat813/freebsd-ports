@@ -31,9 +31,7 @@ SUB_FILES=	edit-startGrails.sed pkg-message
 
 do-install:
 	@${ECHO_MSG} -n ">> Installing data files in ${DATADIR}..."
-	@cd ${WRKSRC} \
-	  && ${FIND} ${DATAFILES} -type d -exec ${MKDIR} ${STAGEDIR}${DATADIR}/{} \; \
-	  && ${FIND} ${DATAFILES} -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DATADIR}/{} \;
+	@cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}
 	@${ECHO_MSG} " [ DONE ]"
 	@${ECHO_MSG} -n ">> Installing and symlinking executables..."
 	@${MKDIR} ${STAGEDIR}${DATADIR}/bin
@@ -47,9 +45,7 @@ do-install:
 
 do-install-DOCS-on:
 	@${ECHO_MSG} -n ">> Installing documentation in ${DOCSDIR}..."
-	@cd ${WRKSRC}/doc \
-	  && ${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \; \
-	  && ${FIND} . -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	@cd ${WRKSRC}/doc && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 	@${ECHO_MSG} " [ DONE ]"
 
 post-install:
