@@ -27,8 +27,7 @@ CONFIGURE_ARGS=	--enable-default-catalog=${PREFIX}/share/sgml/catalog
 MAKE_JOBS_UNSAFE=	yes
 
 pre-install:
-	@${FIND} ${WRKSRC} \( -name \*.orig -o -name \*~ \) \
-		-exec ${RM} \{} \;
+	@${FIND} ${WRKSRC} \( -name \*.orig -o -name \*~ \) -delete
 
 post-install:
 .for i in jade nsgmls sgmlnorm spam spent sx
