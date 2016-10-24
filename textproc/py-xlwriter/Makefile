@@ -18,6 +18,6 @@ PORTEXAMPLES=	*
 
 post-install:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${FIND} ${WRKSRC}/examples -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${EXAMPLESDIR} \;
+	${FIND} ${WRKSRC}/examples -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${EXAMPLESDIR} +
 
 .include <bsd.port.mk>
