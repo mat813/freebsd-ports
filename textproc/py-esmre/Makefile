@@ -17,6 +17,6 @@ USES=		python:-2.7
 USE_PYTHON=	autoplist distutils
 
 post-install:
-	@${FIND} ${STAGEDIR}${PREFIX}/lib -name "*.so" -and -exec ${STRIP_CMD} {} \;
+	@${FIND} ${STAGEDIR}${PREFIX}/lib -name "*.so" -and -exec ${STRIP_CMD} {} +
 
 .include <bsd.port.mk>
