@@ -31,7 +31,7 @@ do-build:
 
 do-install:
 	${MKDIR} ${STAGEDIR}${INSTDIR}
-	${FIND} ${WRKDIR} -name '*.orig' -exec ${RM} {} \;
+	${FIND} ${WRKDIR} -name '*.orig' -delete
 	cd ${WRKSRC} && ${PAX} -rw . ${STAGEDIR}${INSTDIR}
 
 .include <bsd.port.mk>
