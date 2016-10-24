@@ -36,11 +36,6 @@ post-extract:
 	@${RM} ${WRKSRC}/webapps/*.war
 
 do-install:
-.for i in ${SYSTEM_DIR}
-	cd ${WRKSRC}/${i} && ${FIND} . -type d \
-		-exec ${INSTALL} -d ${STAGEDIR}${TOMCAT_DIR}/${i}/{} \;
-	cd ${WRKSRC}/${i} && ${FIND} . -type f \
-		-exec ${INSTALL} -m 644 {} ${STAGEDIR}${TOMCAT_DIR}/${i}/{} \;
-.endfor
+	cd ${WRKSRC} && ${COPYTREE_SHARE} "${SYSTEM_DIR}" ${STAGEDIR}${TOMCAT_DIR}
 
 .include <bsd.port.mk>
