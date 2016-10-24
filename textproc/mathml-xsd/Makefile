@@ -16,7 +16,7 @@ NO_BUILD=	yes
 PORTDATA=	*
 
 post-extract:
-	@${FIND} ${WRKSRC} -name "CVS" -type d -exec rm -rf {} +;
+	@${FIND} ${WRKSRC} -name "CVS" -type d -exec ${RM} -r {} +
 	@${RM} ${WRKSRC}/content/tokens.xsd.~1.3.~
 
 do-install:
