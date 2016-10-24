@@ -9,9 +9,4 @@ REASON=	Themes may contain artwork not done by the author. \
 
 do-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/themes/${PORTNAME}
-	cd ${WRKSRC} && ${FIND} . -type d ! -empty \
-		-exec ${MKDIR} -m 0755 \
-		${STAGEDIR}${PREFIX}/share/themes/${PORTNAME}/"{}" \;
-	cd ${WRKSRC} && ${FIND} . -type f \
-		-exec ${INSTALL_DATA} ${WRKSRC}/"{}" \
-		${STAGEDIR}${PREFIX}/share/themes/${PORTNAME}/"{}" \;
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/themes/${PORTNAME} '! -empty'
