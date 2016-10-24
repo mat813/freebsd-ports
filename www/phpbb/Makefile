@@ -76,7 +76,6 @@ do-install:
 	@cd ${WRKSRC} && ${INSTALL_DATA} ${EXCEPTFILES} ${STAGEDIR}${DATADIR}
 	@cd ${WRKSRC}/contrib && ${INSTALL_DATA} * ${STAGEDIR}${DATADIR}/contrib
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	@cd ${WRKSRC}/docs && ${FIND} * -type f -maxdepth 0 \
-	  \! -name COPYING -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR} \;
+	@cd ${WRKSRC}/docs && ${INSTALL_DATA} * ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
