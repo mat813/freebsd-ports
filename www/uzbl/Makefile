@@ -49,7 +49,7 @@ post-patch:
 		${WRKSRC}/bin/uzbl-tabbed
 
 post-build:
-	@${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" \) -exec ${RM} {} \;
+	@${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" \) -delete
 
 post-install:
 .if ${PORT_OPTIONS:MDOCS}
