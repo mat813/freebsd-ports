@@ -67,7 +67,7 @@ XPI_DIRS=	chrome/content/bindings \
 		defaults
 
 post-patch:
-		@${FIND} ${WRKSRC} -name \*.orig -exec ${RM} \{} \;
+		@${FIND} ${WRKSRC} -name \*.orig -delete
 
 .include "../xpi-adblock/Makefile.xpi"
 .include <bsd.port.mk>
