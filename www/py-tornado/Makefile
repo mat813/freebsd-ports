@@ -27,7 +27,7 @@ RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}backports_abc>=0.4:devel/py-backports_abc
 .endif
 
 post-build:
-	@${FIND} ${WRKSRC}/build -name speedups.so -exec ${STRIP_CMD} {} \;
+	@${FIND} ${WRKSRC}/build -name speedups.so -exec ${STRIP_CMD} {} +
 
 regression-test: build
 	@cd ${WRKSRC} && ${PYTHON_CMD} -m tornado.test.runtests
