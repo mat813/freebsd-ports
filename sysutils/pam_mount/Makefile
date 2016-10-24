@@ -32,7 +32,7 @@ post-patch:
 	${REINPLACE_CMD} -e '/dist_security_DATA/s|\.xml$$|.xml.sample|' \
 	   ${WRKSRC}/config/Makefile.am ${WRKSRC}/config/Makefile.in
 	${MV} ${WRKSRC}/config/pam_mount.conf.xml ${WRKSRC}/config/pam_mount.conf.xml.sample
-	${FIND} ${WRKSRC} -name "*.c" -exec ${REINPLACE_CMD} -e 's|HXformat2_aprintf|HXformat_aprintf|g' {} \;
+	${FIND} ${WRKSRC} -name "*.c" -exec ${REINPLACE_CMD} -e 's|HXformat2_aprintf|HXformat_aprintf|g' {} +
 
 post-install:
 	@${RMDIR} ${STAGEDIR}${PREFIX}/share/xml/pam_mount/dtd
