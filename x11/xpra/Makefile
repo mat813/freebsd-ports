@@ -100,6 +100,6 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/build/etc/xpra/xpra.conf \
 	    ${STAGEDIR}${ETCDIR}/xpra.conf.sample
 	${FIND} ${STAGEDIR}${PYTHON_SITELIBDIR}/${PORTNAME} -name '*.so' \
-	    -exec ${STRIP_CMD} {} \;
+	    -exec ${STRIP_CMD} {} +
 
 .include <bsd.port.post.mk>
