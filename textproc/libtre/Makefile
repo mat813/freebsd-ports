@@ -63,7 +63,7 @@ pgo-pre-build:
 			-e 's,^((C|LD)FLAGS[[:space:]]*=.*)-fprofile-generate,\1,' \
 			-e 's,^(CFLAGS[[:space:]]*=.*)-fprofile-use,\1,' \
 			-e 's,^((C|LD)FLAGS[[:space:]]*=.*)$$,\1 -fprofile-generate,' \
-			{} \;
+			{} +
 
 pgo-build:
 	@(cd ${BUILD_WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} ${_MAKE_JOBS} ${MAKE_ARGS} ${ALL_TARGET})
@@ -78,7 +78,7 @@ pgo-post-run:
 			-e 's,^((C|LD)FLAGS[[:space:]]*=.*)-fprofile-generate,\1,' \
 			-e 's,^(CFLAGS[[:space:]]*=.*)-fprofile-use,\1,' \
 			-e 's,^(CFLAGS[[:space:]]*=.*)$$,\1 -fprofile-use,' \
-			{} \;
+			{} +
 	@${REINPLACE_CMD} -E \
 		-e 's,-fprofile-generate,-fprofile-use,g' \
 		${CONFIGURE_WRKSRC}/config.status \
@@ -93,8 +93,7 @@ pgo-clean:
 	@(cd ${BUILD_WRKSRC}/${dir} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} clean)
 . endfor
 # Only remove some files from lib to preserve profiling information.
-	@${FIND} -E ${BUILD_WRKSRC}/lib -iregex ".*\.(a|la|lai|lo|o|so|so\..*)$$" \
-		-exec ${RM} {} \;
+	@${FIND} -E ${BUILD_WRKSRC}/lib -iregex ".*\.(a|la|lai|lo|o|so|so\..*)$$" -delete
 .endif # if ${PORT_OPTIONS:MPGO}
 
 .include <bsd.port.mk>
