@@ -30,10 +30,7 @@ PKGMESSAGE=	${WRKSRC}/pkg-message
 
 OPTIONS_DEFINE=	DOCS
 
-PORTDOCS=	configuration.html credits.html images index.html \
-		installation.html license.txt multiblog.html screen.css \
-		screenshots.html security.html upgrading1x.html \
-		upgrading2x.html
+PORTDOCS=	.
 PLIST_FILES=	${WEBAPP_SUBDIR}/${PORTNAME}.war
 PLIST_SUB=	WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 PEBBLE_CONTEXT=	WEB-INF/applicationContext-pebble.xml
@@ -48,7 +45,6 @@ do-install:
 	${INSTALL_DATA} ${WRKDIR}/pebble.properties ${STAGEDIR}${PEBBLE_PROPERTIES}.sample
 	@${MKDIR} ${STAGEDIR}${WEBAPP_DIR}
 	${INSTALL_DATA} ${WRKSRC}/pebble.war ${STAGEDIR}${WEBAPP_DIR}/${PORTNAME}.war
-	cd ${WRKSRC}/docs && ${FIND} ${PORTDOCS} -type d -exec ${MKDIR} ${STAGEDIR}${DOCSDIR}/{} \;
-	cd ${WRKSRC}/docs && ${FIND} ${PORTDOCS} -type f -exec ${INSTALL_DATA} {} ${STAGEDIR}${DOCSDIR}/{} \;
+	cd ${WRKSRC}/docs && ${COPYTREE_SHARE} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
