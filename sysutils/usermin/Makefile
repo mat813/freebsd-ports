@@ -20,7 +20,8 @@ RUN_DEPENDS=	p5-Net-SSLeay>=0:security/p5-Net-SSLeay \
 
 NO_ARCH=	yes
 NO_BUILD=	yes
-USES=		cpe perl5
+USES=		cpe perl5 shebangfix
+SHEBANG_GLOB=	*.cgi *.pl
 CPE_VENDOR=	webmin
 USE_RC_SUBR=	usermin
 SUB_LIST=	PERL=${PERL}
@@ -44,11 +45,10 @@ post-patch:
 .endfor
 
 	@${FIND} ${WRKSRC} \( -name config-freebsd\* -or -name config \)  \
-		-exec ${REINPLACE_CMD} -e "s@/usr/local@${PREFIX}@g" {} \; \
-		-exec ${REINPLACE_CMD} -e "s@%%PREFIX%%@${PREFIX}@g" {} \;
+		-exec ${REINPLACE_CMD} -e "s@/usr/local@${PREFIX}@g" \
+				       -e "s@%%PREFIX%%@${PREFIX}@g" {} +
 
-	@${FIND} ${WRKSRC} \( -name "*.cgi" -or -name "*.pl" -or -name "*.sh" \) -exec \
-		${REINPLACE_CMD} -e "s@%%PERL%%@${PERL}@g; s@#!/usr/bin/perl@#!${PERL}@; s@#!/usr/local/bin/perl@#!${PERL}@" {} \;
+	@${REINPLACE_CMD} -e "s@%%PERL%%@${PERL}@g" ${WRKSRC}/setup.sh
 
 	@${FIND} ${WRKSRC} \( -name "*.orig" -or -name "*.bak" -or -name "*.pyc" \) -delete
 
