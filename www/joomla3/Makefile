@@ -34,11 +34,9 @@ WWWDIR=		${PREFIX}/www/${PORTNAME}${PORTVERSION:R:R}
 do-install:
 	@${MKDIR} ${STAGEDIR}${WWWDIR}
 	@(cd ${WRKSRC} && \
-		${FIND} . -type d -exec ${MKDIR} ${STAGEDIR}${WWWDIR}/{} \;)
-	@(cd ${WRKSRC} && \
-		${FIND} . \! -type d -and \! \( -name .gitignore -or -name .travis.yml \
+		${COPYTREE_SHARE} . ${STAGEDIR}${WWWDIR} \
+		'-not ( -name .gitignore -or -name .travis.yml \
 			-or -name travisci-phpunit.xml -or -name LICENSE.txt \
-			-or -name README.md \) \
-			-exec ${INSTALL_DATA} {} ${STAGEDIR}${WWWDIR}/{} \;)
+			-or -name README.md )')
 
 .include <bsd.port.mk>
