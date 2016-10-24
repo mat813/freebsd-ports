@@ -93,8 +93,7 @@ do-patch:
 	${REINPLACE_CMD} -e 's|##FIX_SITEPACKAGEDIR##|${PREFIX}/${SITEPACKAGEDIR}|' ${WRKSRC}/*.template
 	${REINPLACE_CMD} -e 's|##PYTHON_VERSION##|${PYTHON_VERSION}|g' ${WRKSRC}/*.template
 	${REINPLACE_CMD} -e 's|##FIX_LOCALBASE##|${LOCALBASE}|' ${WRKSRC}/*.template
-	${FIND} ${WRKSRC} -name "*.bak" -exec ${RM} {} \;
-	${FIND} ${WRKSRC} -name "*.orig" -exec ${RM} {} \;
+	${FIND} ${WRKSRC} \( -name "*.bak" -o -name "*.orig" \) -delete
 	(cd ${WRKSRC}; (for file in run-seahub.sh.template \
 		send_user_notifications.sh.template setenv.sh.template; do \
 		${CP} $$file $${file%%.template}; \
