@@ -34,6 +34,6 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|<iostream.h>|<iostream>|' ${WRKSRC}/style/MultiLineInlineNote.cxx
 
 post-install:
-	@${FIND} ${WRKSRC}/dsssl -type f -depth 1 -exec ${INSTALL_DATA} {} ${STAGEDIR}/${DATADIR} \;
+	@${FIND} ${WRKSRC}/dsssl -type f -depth 1 -exec ${INSTALL_DATA} {} ${STAGEDIR}/${DATADIR} +
 
 .include <bsd.port.mk>
