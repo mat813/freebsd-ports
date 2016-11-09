@@ -15,7 +15,7 @@ _INCLUDE_BSD_DEFAULT_VERSIONS_MK=	yes
 
 LOCALBASE?=	/usr/local
 
-.for lang in APACHE BDB FIREBIRD FPC GCC GHOSTSCRIPT LINUX LUA MYSQL PERL5 \
+.for lang in APACHE BDB FIREBIRD FPC GCC GHOSTSCRIPT GSSAPI LINUX LUA MYSQL PERL5 \
 	PGSQL PHP PYTHON PYTHON2 PYTHON3 RUBY SSL TCLTK
 .if defined(${lang}_DEFAULT)
 WARNING+=	"The variable ${lang}_DEFAULT is set and it should only be defined through DEFAULT_VERSIONS+=${lang:tl}=${${lang}_DEFAULT} in /etc/make.conf"
@@ -41,6 +41,8 @@ FPC_DEFAULT?=		3.0.0
 GCC_DEFAULT?=		4.8
 # Possible values: 7, 8, 9, agpl
 GHOSTSCRIPT_DEFAULT?=	agpl
+# Possible values: base, heimdal, mit
+GSSAPI_DEFAULT?=	base
 # Possible values: f10, c6, c6_64, c7, c7_64
 LINUX_DEFAULT?=		c6
 .if defined(OVERRIDE_LINUX_BASE_PORT)
