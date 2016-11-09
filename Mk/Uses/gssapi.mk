@@ -4,8 +4,7 @@
 #
 # Feature:	gssapi
 # Usage:	USES=gssapi or USES=gssapi:ARGS
-# Valid ARGS:	base (default, implicit), heimdal, mit.
-#		"bootstrap" is a special prefix only for krb5 or heimdal ports.
+# Valid ARGS:	"bootstrap" is a special prefix only for krb5 or heimdal ports.
 #		("bootstrap,mit")
 #		flags is a special suffix to define CFLAGS, LDFLAGS, and LDADD.
 #		("base,flags")
@@ -85,7 +84,19 @@ gssapi_ARGS=	base
 .endif
 .for _A in ${gssapi_ARGS}
 _local:=	${_A}
-.if ${_local} == "base"
+.if ${_local} == "bootstrap"
+_KRB_BOOTSTRAP=	1
+.elif ${_local} == "flags"
+_KRB_USEFLAGS=	1
+.elif defined(_KRB_BOOTSTRAP)
+# If using bootstrap, the next argument overrides the default GSSAPI vendor.
+GSSAPI_DEFAULT:=	${_local}
+.else
+IGNORE=	USES=gssapi - invalid args: [${_local}] specified
+.endif
+.endfor
+
+.if ${GSSAPI_DEFAULT} == "base"
 .  if ${SSL_DEFAULT} != base
 IGNORE=	You are using OpenSSL from ports and have selected GSSAPI from base, please select another GSSAPI value
 .  endif
@@ -100,7 +111,7 @@ GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 .if empty(OSREL:N9.3)
 _FIXUP_KRB5CONFIG=	yes
 .endif
-.elif ${_local} == "heimdal"
+.elif ${GSSAPI_DEFAULT} == "heimdal"
 HEIMDAL_HOME?=	${LOCALBASE}
 GSSAPIBASEDIR=	${HEIMDAL_HOME}
 GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib/heimdal
@@ -116,7 +127,7 @@ GSSAPICPPFLAGS=	-I"${GSSAPIINCDIR}"
 GSSAPILIBS=	-lkrb5 -lgssapi
 GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 _RPATH=		${GSSAPILIBDIR}
-.elif ${_local} == "mit"
+.elif ${GSSAPI_DEFAULT} == "mit"
 KRB5_HOME?=	${LOCALBASE}
 GSSAPIBASEDIR=	${KRB5_HOME}
 GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib
@@ -132,14 +143,7 @@ GSSAPILIBS=	-lkrb5 -lgssapi_krb5
 GSSAPICPPFLAGS=	-I"${GSSAPIINCDIR}"
 GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 _RPATH=		${GSSAPILIBDIR}
-.elif ${_local} == "bootstrap"
-_KRB_BOOTSTRAP=	1
-.elif ${_local} == "flags"
-_KRB_USEFLAGS=	1
-.else
-IGNORE=	USES=gssapi - invalid args: [${_local}] specified
 .endif
-.endfor
 
 # Fix up krb5-config if broken.  This script included in 9.X prior to
 # r271474 and in 10.X prior to r271473 are broken because
