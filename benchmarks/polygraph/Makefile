@@ -27,7 +27,7 @@ OPTIONS_DEFAULT=	SSL ZLIB
 
 GNUPLOT_DESC=		GNUPlot for full reporting functionality
 GNUPLOT_RUN_DEPENDS=	gnuplot:math/gnuplot
-GSSAPI_USES=		gssapi:mit
+GSSAPI_USES=		gssapi
 GSSAPI_CONFIGURE_ON=	--with-kerberos=${KRB5CONFIG} ${GSSAPI_CONFIGURE_ARGS}
 GSSAPI_CONFIGURE_OFF=	--without-kerberos
 LDNS_DESC=		DNS zone file support via libldns
