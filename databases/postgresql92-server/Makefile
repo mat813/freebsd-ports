@@ -96,14 +96,9 @@ OPTIONS_DEFAULT+=	XML TZDATA INTDATE
 
 .if !defined(SLAVE_ONLY)
 OPTIONS_DEFINE+=	NLS PAM GSSAPI OPTIMIZED_CFLAGS DEBUG
-OPTIONS_RADIO= KRB5
-OPTIONS_RADIO_KRB5= MIT_KRB5 HEIMDAL_KRB5
 
-KRB5_DESC=       Build with kerberos provider support
 NLS_DESC=	Use internationalized messages
 PAM_DESC=	Build with PAM Support
-MIT_KRB5_DESC=	Build with MIT kerberos support
-HEIMDAL_KRB5_DESC=	Builds with Heimdal kerberos
 GSSAPI_DESC=	Build with GSSAPI support
 OPTIMIZED_CFLAGS_DESC=	Builds with compiler optimizations (-O3)
 
@@ -170,20 +165,17 @@ INSTALL_TARGET=install
 .  endif
 
 .if ${PORT_OPTIONS:MGSSAPI}
+USES+=	gssapi:flags
 CONFIGURE_ARGS+=--with-gssapi
-.if empty(PORT_OPTIONS:MMIT_KRB5) && empty(PORT_OPTIONS:MHEIMDAL_KRB5)
+.if ${GSSAPI_DEFAULT} == "base"
 # Kerberos libraries will pull the proper GSSAPI library
 # via linker dependencies, but otherwise we must specify
 # it explicitely: ld --as-needed is used for compilation,
 # so configure's -lgssapi_krb5 won't go.
-LDFLAGS+=	-lgssapi
-LDFLAGS_SL+=	-lgssapi
-.endif
-.else
-CONFIGURE_ARGS+=--without-gssapi
+LDFLAGS_SL+=	${GSSAPILIBS}
 .endif
 
-.  if ${PORT_OPTIONS:MMIT_KRB5}
+.  if ${GSSAPI_DEFAULT} == "mit"
 .   if defined(IGNORE_WITH_SRC_KRB5) && (exists(/usr/lib/libkrb5.so) || exists(/usr/bin/krb5-config))
 IGNORE=	requires that you remove heimdal's /usr/bin/krb5-config and /usr/lib/libkrb5.so*, and set NO_KERBEROS=true in /etc/src.conf to build successfully with MIT-KRB
 .   else
@@ -195,9 +187,13 @@ LIB_DEPENDS+=	libkrb5.so.3:security/krb5
 .   endif
 .  endif
 
-.  if ${PORT_OPTIONS:MHEIMDAL_KRB5}
+.  if ${GSSAPI_DEFAULT} == "heimdal"
 CONFIGURE_ARGS+=--with-krb5
 .  endif
+
+.else
+CONFIGURE_ARGS+=--without-gssapi
+.endif
 
 .endif # !SLAVE_ONLY
 
