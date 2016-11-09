@@ -42,7 +42,7 @@ CPE_PRODUCT=	cyrus_imap_server
 
 OPTIONS_DEFINE=		AUTOCREATE BDB HTTP IDLED LDAP MURDER MYSQL \
 			NETSCAPEHACK NNTP PGSQL REPLICATION SNMP SQLITE DOCS \
-			EXAMPLES
+			EXAMPLES GSSAPI
 #OPTIONS_DEFINE+=	CLAMAV DRAC
 OPTIONS_DEFAULT=	BDB IDLED
 OPTIONS_SUB=		yes
@@ -91,23 +91,15 @@ SQLITE_CONFIGURE_ON=	--with-sqlite=${LOCALBASE}
 UNAMER!=	uname -r
 OSMAJOR=	${UNAMER:C/[.-].*//}
 
-OPTIONS_RADIO=			GSSAPI
-OPTIONS_RADIO_GSSAPI=		GSSAPI_HEIMDAL GSSAPI_MIT
 .if exists(/usr/lib/libkrb5.a)
-OPTIONS_RADIO_GSSAPI+=		GSSAPI_BASE
 .if ${OSMAJOR} >= 9
 OPTIONS_DEFAULT+=		GSSAPI_BASE
 .endif
 .endif
-GSSAPI_BASE_USES=		gssapi
-GSSAPI_BASE_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
-				--with-gss_impl=heimdal
-GSSAPI_HEIMDAL_USES=		gssapi:heimdal,flags
-GSSAPI_HEIMDAL_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
-				--with-gss_impl=heimdal
-GSSAPI_MIT_USES=		gssapi:mit
-GSSAPI_MIT_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
-				--with-gss_impl=mit
+GSSAPI_USES=		gssapi:flags
+GSSAPI_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
+				--with-gss_impl=${GSSAPI_IMPLEM}
+GSSAPI_CONFIGURE_OFF=--disable-gssapi
 
 MANDIRS=	${CYRUS_PREFIX}/man
 
@@ -161,11 +153,6 @@ IGNORE=		DRAC is not available
 
 .if ${PORT_OPTIONS:MHTTP} || ${PORT_OPTIONS:MSQLITE}
 USES+=	sqlite
-.endif
-
-.if !${PORT_OPTIONS:MGSSAPI_BASE} && !${PORT_OPTIONS:MGSSAPI_HEIMDAL} && \
-    !${PORT_OPTIONS:MGSSAPI_MIT}
-CONFIGURE_ARGS+=--disable-gssapi
 .endif
 
 .if ${PORT_OPTIONS:MHTTP}
