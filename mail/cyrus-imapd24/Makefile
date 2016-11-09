@@ -43,7 +43,7 @@ CPE_PRODUCT=	cyrus_imap_server
 
 OPTIONS_DEFINE=		AUTOCREATE AUTOSIEVE BDB DRAC IDLED LDAP \
 			MURDER MYSQL NETSCAPEHACK NNTP PGSQL \
-			REPLICATION SNMP SQLITE DOCS EXAMPLES
+			REPLICATION SNMP SQLITE DOCS EXAMPLES GSSAPI
 OPTIONS_DEFAULT=	BDB IDLED
 OPTIONS_SUB=		yes
 AUTOCREATE_DESC=	Use autocreate INBOX patch (UoA)
@@ -80,21 +80,14 @@ SNMP_CONFIGURE_OFF=	--with-snmp=no
 SQLITE_USES=		sqlite
 SQLITE_CONFIGURE_ON=	--with-sqlite=${LOCALBASE}
 
-OPTIONS_RADIO=			GSSAPI
-OPTIONS_RADIO_GSSAPI=		GSSAPI_HEIMDAL GSSAPI_MIT
 .if exists(/usr/lib/libkrb5.a)
-OPTIONS_RADIO_GSSAPI+=		GSSAPI_BASE
-OPTIONS_DEFAULT+=		GSSAPI_BASE
+OPTIONS_DEFAULT+=		GSSAPI
 .endif
-GSSAPI_BASE_USES=		gssapi
-GSSAPI_BASE_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
-				--with-gss_impl=heimdal
-GSSAPI_HEIMDAL_USES=		gssapi:heimdal,flags
-GSSAPI_HEIMDAL_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
-				--with-gss_impl=heimdal
-GSSAPI_MIT_USES=		gssapi:mit
-GSSAPI_MIT_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
-				--with-gss_impl=mit
+
+GSSAPI_USES=		gssapi,flags
+GSSAPI_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
+				--with-gss_impl=${GSSAPI_IMPLEM}
+GSSAPI_CONFIGURE_OFF=--disable-gssapi
 
 # Autocreate Inbox and Autosieve patches from UoA
 # http://email.uoa.gr/projects/cyrus/
@@ -148,11 +141,6 @@ CONFS=		cmu-backend.conf cmu-frontend.conf normal.conf prefork.conf \
 INVALID_BDB_VER=2
 .else
 BDB_LIB_NAME=	no
-.endif
-
-.if !${PORT_OPTIONS:MGSSAPI_BASE} && !${PORT_OPTIONS:MGSSAPI_HEIMDAL} && \
-    !${PORT_OPTIONS:MGSSAPI_MIT}
-CONFIGURE_ARGS+=--disable-gssapi
 .endif
 
 pre-patch-DRAC-on:
