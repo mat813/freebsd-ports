@@ -16,6 +16,7 @@
 #  KRB5_HOME (default: ${LOCALBASE})
 #
 # Exported variables:
+#  GSSAPI_IMPLEM
 #  GSSAPIBASEDIR
 #  GSSAPICPPFLAGS
 #  GSSAPIINCDIR
@@ -90,6 +91,7 @@ IGNORE=	USES=gssapi - invalid args: [${_local}] specified
 .  if ${SSL_DEFAULT} != base
 IGNORE=	You are using OpenSSL from ports and have selected GSSAPI from base, please select another GSSAPI value
 .  endif
+GSSAPI_IMPLEM=	heimdal
 HEIMDAL_HOME=	/usr
 GSSAPIBASEDIR=	${HEIMDAL_HOME}
 GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib
@@ -102,6 +104,7 @@ GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 _FIXUP_KRB5CONFIG=	yes
 .endif
 .elif ${GSSAPI_DEFAULT} == "heimdal"
+GSSAPI_IMPLEM=	heimdal
 HEIMDAL_HOME?=	${LOCALBASE}
 GSSAPIBASEDIR=	${HEIMDAL_HOME}
 GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib/heimdal
@@ -118,6 +121,7 @@ GSSAPILIBS=	-lkrb5 -lgssapi
 GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 _RPATH=		${GSSAPILIBDIR}
 .elif ${GSSAPI_DEFAULT} == "mit"
+GSSAPI_IMPLEM=	mit
 KRB5_HOME?=	${LOCALBASE}
 GSSAPIBASEDIR=	${KRB5_HOME}
 GSSAPILIBDIR=	${GSSAPIBASEDIR}/lib
@@ -133,6 +137,8 @@ GSSAPILIBS=	-lkrb5 -lgssapi_krb5
 GSSAPICPPFLAGS=	-I"${GSSAPIINCDIR}"
 GSSAPILDFLAGS=	-L"${GSSAPILIBDIR}"
 _RPATH=		${GSSAPILIBDIR}
+.else
+IGNORE=		Invalid GSSAPI implementation ${GSSAPI_DEFAULT}
 .endif
 
 # Fix up krb5-config if broken.  This script included in 9.X prior to
