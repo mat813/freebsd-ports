@@ -34,10 +34,8 @@ SHEBANG_FILES=	scripts/*.sh
 SITESDIR=	mariadb/mariadb-${PORTVERSION}/source
 DOCSDIR=	${PREFIX}/share/doc/mysql
 
-OPTIONS_DEFINE=		FASTMTX
-OPTIONS_SINGLE=		GSSAPI
-OPTIONS_SINGLE_GSSAPI=	GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
-OPTIONS_DEFAULT=	GSSAPI_BASE
+OPTIONS_DEFINE=		FASTMTX GSSAPI
+OPTIONS_DEFAULT=	GSSAPI
 
 FASTMTX_DESC=		Replace mutexes with spinlocks
 
@@ -59,9 +57,7 @@ SPIDER_DESC=	Partitioning and XA-transactions engine
 TOKUDB_DESC=	Fractal tree index tree data structure engine
 .endif
 
-GSSAPI_BASE_USES=	gssapi
-GSSAPI_HEIMDAL_USES=	gssapi:heimdal
-GSSAPI_MIT_USES=	gssapi:mit
+GSSAPI_USES=	gssapi
 
 CMAKE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql" \
 		-DINSTALL_DOCREADMEDIR="share/doc/mysql" \
@@ -102,7 +98,7 @@ OPTIONS_SUB=		yes
 .if defined(CLIENT_ONLY)
 # MySQL-Client part
 USES+=		readline
-GSSAPI_NONE_CMAKE_ON=	-DPLUGIN_AUTH_GSSAPI_CLIENT=NO
+GSSAPI_CMAKE_OFF=	-DPLUGIN_AUTH_GSSAPI_CLIENT=NO
 
 post-install:
 	${RM} ${STAGEDIR}${PREFIX}/bin/wsrep*
@@ -124,7 +120,7 @@ ${ENGINE}_CMAKE_OFF=	-DPLUGIN_${ENGINE}=NO \
 			-DWITHOUT_${ENGINE}=1
 .endfor
 
-GSSAPI_NONE_CMAKE_ON=	-DPLUGIN_AUTH_GSSAPI=NO
+GSSAPI_CMAKE_OFF=	-DPLUGIN_AUTH_GSSAPI=NO
 MAXKEY_EXTRA_PATCHES+=	${FILESDIR}/extra-patch-include_my__compare.h
 MROONGA_LIB_DEPENDS=	liblz4.so:archivers/liblz4
 OQGRAPH_LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
@@ -150,17 +146,13 @@ post-install:
 
 .include <bsd.port.pre.mk>
 
-.if ${SSL_DEFAULT} != base && ${PORT_OPTIONS:MGSSAPI_BASE}
-IGNORE=		BASE_GSSAPI is not compatible with OpenSSL from ports. Use other GSSAPI options or OpenSSL from base system
-.endif
-
 .if ${OPSYS} == FreeBSD
 . if ${OSVERSION} >= 1000012
 CMAKE_ARGS+=	-DWITH_JEMALLOC="system"
 . else
 CMAKE_ARGS+=	-DWITH_JEMALLOC="no"
-.  if ${PORT_OPTIONS:MGSSAPI_BASE}
-IGNORE=	requires a Kerberos implementation from ports on FreeBSD < 10. Select GSSAPI_HEIMDAL or GSSAPI_MIT option
+.  if ${GSSAPI_DEFAULT:Mbase}
+IGNORE=	requires a Kerberos implementation from ports on FreeBSD < 10. Change the default GSSAPI.
 .  endif
 . endif
 .endif
