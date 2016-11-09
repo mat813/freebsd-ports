@@ -39,22 +39,12 @@
 #
 #  A typical example:
 #
-#   OPTIONS_SINGLE= GSSAPI
-#   OPTIONS_SINGLE_GSSAPI= GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
+#   OPTIONS_DEFINE= GSSAPI
 #
-#   GSSAPI_BASE_USES=	gssapi
-#   GSSAPI_BASE_CONFIGURE_ON= \
+#   GSSAPI_USES=	gssapi
+#   GSSAPI_CONFIGURE_ON= \
 #	--with-gssapi=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
-#
-#   GSSAPI_HEIMDAL_USES=gssapi:heimdal
-#   GSSAPI_HEIMDAL_CONFIGURE_ON= \
-#	--with-gssapi=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
-#
-#   GSSAPI_MIT_USES=	gssapi:mit
-#   GSSAPI_MIT_CONFIGURE_ON= \
-#	--with-gssapi=${GSSAPIBASEDIR} ${GSSAPI_CONFIGURE_ARGS}
-#
-#   GSSAPI_NONE_CONFIGURE_ON= --without-gssapi
+#   GSSAPI_CONFIGURE_OFF= --without-gssapi
 #
 #  If pathname is required for Kerberos implementation, use ${GSSAPIBASEDIR}.
 #
