@@ -23,14 +23,14 @@ post-patch:
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/include/tclgeomap
-	${FIND} ${WRKSRC}/.. -name "*.h" -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/include/tclgeomap +
+	${INSTALL_DATA} ${WRKSRC}/../*/*.h ${STAGEDIR}${PREFIX}/include/tclgeomap
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/tclgeomap
 	${INSTALL_DATA} ${WRKSRC}/../library/tclgeomap_procs.tcl ${STAGEDIR}${PREFIX}/lib/tclgeomap
 	${INSTALL_DATA} ${WRKSRC}/pkgIndex.tcl ${STAGEDIR}${PREFIX}/lib/tclgeomap
 	${INSTALL_DATA} ${WRKSRC}/libtclgeomap.so ${STAGEDIR}${PREFIX}/lib/libtclgeomap.so.0
 	${LN} -sf libtclgeomap.so.0 ${STAGEDIR}${PREFIX}/lib/libtclgeomap.so
-	${FIND} ${WRKSRC}/../doc -name "*.3" -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/man/man3 +
-	${FIND} ${WRKSRC}/../doc -name "*.n" -exec ${INSTALL_DATA} {} ${STAGEDIR}${PREFIX}/man/mann +
+	${INSTALL_DATA} ${WRKSRC}/../doc/*.3 ${STAGEDIR}${PREFIX}/man/man3
+	${INSTALL_DATA} ${WRKSRC}/../doc/*.n ${STAGEDIR}${PREFIX}/man/mann
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libtclgeomap.so.0
 
 .include <bsd.port.mk>
