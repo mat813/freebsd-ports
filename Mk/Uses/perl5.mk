@@ -164,6 +164,14 @@ IGNORE=	improper use of USE_PERL5
 .  endif
 
 _USES_POST+=	perl5
+
+# Perl versions conversions
+.  if ${PORTVERSION:MCPAN\:*}
+DISTVERSION:=	${PORTVERSION:S/^CPAN://}
+_major:=	${DISTVERSION:C/\..*//}
+_minors:=	${DISTVERSION:C/[[:digit:]]+\.//:S/_//:C/([[:digit:]]{1,3})/.\1/g:C/\.0*([[:digit:]]+)/.\1/g}
+PORTVERSION:=	${_major}${_minors}
+.  endif
 .endif
 
 .if defined(_POSTMKINCLUDED) && !defined(_INCLUDE_USES_PERL5_POST_MK)
