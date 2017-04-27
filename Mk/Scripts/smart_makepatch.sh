@@ -119,7 +119,16 @@ map_existing_patches() {
 				break;
 			fi
 			std_target=$(std_patch_filename ${t})
-			future_name=$(valid_name ${P} ${t} ${std_target})
+			# If the file is not named `patch-*` it is an extra
+			# patch, so use the current name, even if it is a
+			# single patch.
+			# Otherwise, it is a normal patch, use the canonical
+			# name.
+			if [ "${P#patch-}" = "${P}" ]; then
+				future_name=${P}
+			else
+				future_name=$(valid_name ${P} ${t} ${std_target})
+			fi
 		done
 		for t in ${target}; do
 			std_target=$(std_patch_filename ${t})
