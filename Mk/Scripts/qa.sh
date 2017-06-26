@@ -177,11 +177,14 @@ symlinks() {
 				err "Bad symlink '${l#${STAGEDIR}${PREFIX}/}' pointing inside the stage directory"
 				rc=1
 				;;
-			/*)
+			${PREFIX}/*|${LOCALBASE}/*)
 				# Only warn for symlinks within the package.
 				if [ -e "${STAGEDIR}${link}" ]; then
 					warn "Bad symlink '${l#${STAGEDIR}}' pointing to an absolute pathname '${link}'"
 				fi
+				# Don't stop here, continue with next check.
+				;&
+			/*)
 				# Also warn if the symlink exists nowhere.
 				if [ ! -e "${STAGEDIR}${link}" -a ! -e "${link}" ]; then
 					warn "Symlink '${l#${STAGEDIR}}' pointing to '${link}' which does not exist in the stage directory or in localbase"
