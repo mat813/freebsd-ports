@@ -181,6 +181,7 @@ symlinks() {
 				# Only warn for symlinks within the package.
 				if [ -e "${STAGEDIR}${link}" ]; then
 					warn "Bad symlink '${l#${STAGEDIR}}' pointing to an absolute pathname '${link}'"
+					warn "Use a symlink with a relative pathname instead."
 				fi
 				# Don't stop here, continue with next check.
 				;&
