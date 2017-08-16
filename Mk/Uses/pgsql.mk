@@ -60,12 +60,6 @@ PGSQL_DEFAULT?=	${$w_PGSQL_VER:C,^.,&.,}
 IGNORE=		will not allow setting both DEFAULT_PGSQL_VER and WITH_PGSQL_VER.  Use DEFAULT_VERSIONS=pgsql=9.6 instead
 .  endif
 
-# Setting/finding PostgreSQL version we want.
-PG_CONFIG?=	${LOCALBASE}/bin/pg_config
-.  if exists(${PG_CONFIG})
-_PGSQL_VER!=	${PG_CONFIG} --version | ${SED} -n 's/PostgreSQL[^0-9]*\([0-9]\.*[0-9]\).*/\1/p'
-.  endif
-
 # Handle the + and - version stuff
 .  if !empty(pgsql_ARGS)
 .    if ${pgsql_ARGS:M*+}
@@ -93,20 +87,20 @@ PGSQL_VER=	${version}
 .      endif
 PGSQL_VER?=	${version}
 .    endfor
-.    if defined(_PGSQL_VER)
-.      for v in ${_PGSQL_VER}
-.        if ${_WANT_PGSQL_VER:M$v} == ${_PGSQL_VER}
-PGSQL_VER=	${_PGSQL_VER}
+.    if defined(PGSQL_DEFAULT)
+.      for v in ${PGSQL_DEFAULT}
+.        if ${_WANT_PGSQL_VER:M$v} == ${PGSQL_DEFAULT}
+PGSQL_VER=	${PGSQL_DEFAULT}
 .        endif
 .      endfor
 .    endif
-.    if defined(_PGSQL_VER) && ${_PGSQL_VER} != ${PGSQL_VER}
-IGNORE?=	cannot install: the port wants postgresql-client version ${_WANT_PGSQL_VER} and you have version ${_PGSQL_VER} installed
+.    if defined(PGSQL_DEFAULT) && ${PGSQL_DEFAULT} != ${PGSQL_VER}
+IGNORE?=	cannot install: the port wants postgresql-client one of versions ${_WANT_PGSQL_VER:S/$/,/} but ${PGSQL_DEFAULT} is the default, or installed. To change the default version, add DEFAULT_VERSIONS+=pgsql=${PGSQL_VER} to your make.conf
 .    endif
 .  endif
 
 # OK, so the port is ambivalent, we'll just take what's on the system.
-PGSQL_VER?=	${_PGSQL_VER}
+PGSQL_VER?=	${PGSQL_DEFAULT}
 
 # After all that, we still have found nothing!
 .  if empty(PGSQL_VER)

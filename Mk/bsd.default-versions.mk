@@ -72,7 +72,17 @@ _EXPORTED_VARS+=	_PERL5_FROM_BIN
 PERL5_DEFAULT:=		${_PERL5_FROM_BIN:R}
 .endif
 # Possible values: 9.2, 9.3, 9.4, 9.5, 9.6
+_PG_CONFIG=	${LOCALBASE}/bin/pg_config
+.if !exists(${_PG_CONFIG}) || (!defined(_PORTS_ENV_CHECK) && \
+    defined(PACKAGE_BUILDING))
 PGSQL_DEFAULT?=		9.5
+.elif !defined(PGSQL_DEFAULT)
+.if !defined(_PGSQL_FROM_CONFIG)
+_PGSQL_FROM_CONFIG!=	${_PG_CONFIG} --version | ${SED} -n 's/PostgreSQL[^0-9]*\([0-9]\.*[0-9]\).*/\1/p'
+.endif
+_EXPORTED_VARS+=	_PGSQL_FROM_CONFIG
+PGSQL_DEFAULT:=		${_PGSQL_FROM_CONFIG}
+.endif
 # Possible values: 5.6, 7.0, 7.1
 PHP_DEFAULT?=		5.6
 # Possible values: 2.7, 3.3, 3.4, 3.5, 3.6
