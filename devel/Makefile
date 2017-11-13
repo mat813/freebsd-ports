@@ -1621,6 +1621,7 @@
     SUBDIR += omnisharp-server
     SUBDIR += onetbb
     SUBDIR += oniguruma
+    SUBDIR += oniguruma5
     SUBDIR += open-beagle
     SUBDIR += opencl
     SUBDIR += opencl-clang
