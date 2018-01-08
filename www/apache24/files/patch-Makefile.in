@@ -1,4 +1,4 @@
---- Makefile.in.orig	2016-03-20 15:51:49 UTC
+--- Makefile.in.orig	2017-09-19 10:15:00 UTC
 +++ Makefile.in
 @@ -32,12 +32,9 @@ include $(top_srcdir)/build/program.mk
  install-conf:
@@ -14,23 +14,23 @@
  	done; \
  	for j in $(top_srcdir)/docs/conf $(top_builddir)/docs/conf ; do \
  	    cd $$j ; \
-@@ -78,6 +75,7 @@ install-conf:
- 	    					if test "$(LOAD_ALL_MODULES)" = "yes"; then \
- 	    						loading_disabled=""; \
+@@ -88,6 +85,7 @@ install-conf:
+ 		    						loading_disabled=""; \
+ 	    						fi; \
  	    					fi; \
-+							( \
- 							if test $$j = "cgid" -a "$$have_cgi" = "1"; then \
- 								echo "<IfModule !mpm_prefork_module>"; \
- 								echo "	$${loading_disabled}LoadModule $${j}_module $(rel_libexecdir)/mod_$${j}.so"; \
-@@ -89,6 +87,7 @@ install-conf:
- 							else \
- 								echo "$${loading_disabled}LoadModule $${j}_module $(rel_libexecdir)/mod_$${j}.so"; \
- 							fi; \
-+							) > $(DESTDIR)$(sysconfdir)/modules.d/$${j}.conf.sample; \
++						( \
+ 						if test $$j = "cgid" -a "$$have_cgi" = "1"; then \
+ 							echo "<IfModule !mpm_prefork_module>"; \
+ 							echo "	$${loading_disabled}LoadModule $${j}_module $(rel_libexecdir)/mod_$${j}.so"; \
+@@ -99,6 +97,7 @@ install-conf:
+ 						else \
+ 							echo "$${loading_disabled}LoadModule $${j}_module $(rel_libexecdir)/mod_$${j}.so"; \
  						fi; \
++						) > $(DESTDIR)$(sysconfdir)/modules.d/$${j}.conf.sample; \
+ 					fi; \
  	    			done; \
  	    			sed -e '1,/@@LoadModule@@/d' \
-@@ -98,15 +97,12 @@ install-conf:
+@@ -108,15 +107,12 @@ install-conf:
  	    				-e 's#@@SSLPort@@#$(SSLPORT)#g' \
  	    				< $$i; \
  	    		fi \
@@ -48,7 +48,7 @@
  	    	fi; \
  	    done ; \
  	done ; \
-@@ -157,48 +153,25 @@ dox:
+@@ -167,48 +163,25 @@ dox:
  	doxygen $(top_srcdir)/docs/doxygen.conf
  
  install-htdocs:
@@ -106,7 +106,7 @@
  
  install-other:
  	@test -d $(DESTDIR)$(logfiledir) || $(MKINSTALLDIRS) $(DESTDIR)$(logfiledir)
-@@ -252,12 +225,7 @@ install-man:
+@@ -262,12 +235,7 @@ install-man:
  	@test -d $(DESTDIR)$(manualdir)   || $(MKINSTALLDIRS) $(DESTDIR)$(manualdir)
  	@cp -p $(top_srcdir)/docs/man/*.1 $(DESTDIR)$(mandir)/man1
  	@cp -p $(top_srcdir)/docs/man/*.8 $(DESTDIR)$(mandir)/man8
