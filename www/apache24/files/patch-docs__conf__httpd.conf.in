@@ -1,15 +1,17 @@
---- docs/conf/httpd.conf.in.orig	2015-11-03 11:58:58 UTC
+--- docs/conf/httpd.conf.in.orig	2016-08-16 23:12:07 UTC
 +++ docs/conf/httpd.conf.in
-@@ -65,6 +65,8 @@ Listen @@Port@@
+@@ -65,6 +65,10 @@ Listen @@Port@@
  #
  @@LoadModule@@
  
-+IncludeOptional @rel_sysconfdir@/modules.d/*.conf
++IncludeOptional @rel_sysconfdir@/apache.d/*.conf
++# Third party modules
++IncludeOptional @rel_sysconfdir@/modules.d/[0-9][0-9][0-9]_*.conf
 + 
  <IfModule unixd_module>
  #
  # If you wish httpd to run as a different user or group, you must run
-@@ -74,8 +76,8 @@ Listen @@Port@@
+@@ -74,8 +78,8 @@ Listen @@Port@@
  # It is usually good practice to create a dedicated user and group for
  # running httpd, as with most system services.
  #
@@ -20,7 +22,7 @@
  
  </IfModule>
  
-@@ -181,7 +183,7 @@ DocumentRoot "@exp_htdocsdir@"
+@@ -181,7 +185,7 @@ DocumentRoot "@exp_htdocsdir@"
  # logged here.  If you *do* define an error logfile for a <VirtualHost>
  # container, that host's errors will be logged there and not here.
  #
@@ -29,7 +31,7 @@
  
  #
  # LogLevel: Control the number of messages logged to the error_log.
-@@ -210,13 +212,13 @@ LogLevel warn
+@@ -210,13 +214,13 @@ LogLevel warn
      # define per-<VirtualHost> access logfiles, transactions will be
      # logged therein and *not* in this file.
      #
@@ -45,7 +47,7 @@
  </IfModule>
  
  <IfModule alias_module>
-@@ -407,3 +409,5 @@ SSLRandomSeed startup builtin
+@@ -416,3 +420,5 @@ SSLRandomSeed startup builtin
  SSLRandomSeed connect builtin
  </IfModule>
  

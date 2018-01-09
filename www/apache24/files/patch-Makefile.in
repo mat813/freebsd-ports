@@ -26,7 +26,7 @@
  						else \
  							echo "$${loading_disabled}LoadModule $${j}_module $(rel_libexecdir)/mod_$${j}.so"; \
  						fi; \
-+						) > $(DESTDIR)$(sysconfdir)/modules.d/$${j}.conf.sample; \
++						) > $(DESTDIR)$(sysconfdir)/apache.d/$${j}.conf.sample; \
  					fi; \
  	    			done; \
  	    			sed -e '1,/@@LoadModule@@/d' \

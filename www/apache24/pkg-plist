@@ -519,5 +519,6 @@ sbin/split-logfile
 %%WWWDIR%%/icons/world2.png
 %%WWWDIR%%/icons/xml.png
 @preunexec rm -f %D/%%ETCDIR%%/httpd.conf.bak 2> /dev/null || true
+@dir %%ETCDIR%%/apache.d
 @dir %%ETCDIR%%/envvars.d
 @dir %%WWWDIR%%/data

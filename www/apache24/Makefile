@@ -96,7 +96,7 @@ SSL_CONFIGURE_ON=		--with-ssl=${OPENSSLBASE}
 SSL_LDFLAGS=			-L${OPENSSLLIB}
 SSL_USES=			ssl
 
-ETC_SUBDIRS=		Includes envvars.d extra modules.d
+ETC_SUBDIRS=		Includes envvars.d extra apache.d modules.d
 
 APR_CONFIG?=		${LOCALBASE}/bin/apr-1-config
 APU_CONFIG?=		${LOCALBASE}/bin/apu-1-config
@@ -237,10 +237,10 @@ post-install:
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/* 2>/dev/null
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
 	-${STRIP_CMD} ${STAGEDIR}${PREFIX}/libexec/apache24/mod_*.so
-	@${MKDIR} ${STAGEDIR}${DATADIR}/modules.d
-	mv ${STAGEDIR}${ETCDIR}/modules.d/*.conf.sample ${STAGEDIR}${DATADIR}/modules.d
+	@${MKDIR} ${STAGEDIR}${DATADIR}/apache.d
+	mv ${STAGEDIR}${ETCDIR}/apache.d/*.conf.sample ${STAGEDIR}${DATADIR}/apache.d
 	(cd ${STAGEDIR}${DATADIR}; \
-		${FIND} modules.d -name '*.sample' | \
+		${FIND} apache.d -name '*.sample' | \
 		sed -e 's|\(.*\)\(.sample\)|@sample ${DATADIR_REL}/\1\2 ${ETCDIR_REL}/\1 |' >> ${TMPPLIST})
 
 post-install-LOG_FORENSIC-on:
