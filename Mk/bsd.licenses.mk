@@ -218,7 +218,7 @@ _LICENSE_ERROR?=	no licenses present in LICENSE (empty string)
 _LICENSE_GROUPS?=	#
 # Start
 .	for lic in ${_LICENSE}
-.		if ${_LICENSE_LIST:M${lic}} != ""
+.		if ${_LICENSE_LIST:M${lic}}
 # Case 1: license defined in the framework.
 _LICENSE_TYPE=		known
 .			for var in ${_LICENSE_LIST_PORT_VARS}
@@ -261,10 +261,10 @@ _LICENSE_ERROR?=	for unknown licenses, defining LICENSE_${var} is mandatory (oth
 # Check LICENSE_PERMS for invalid, ambiguous and duplicate components
 __LICENSE_PERMS:=	#
 .			for comp in ${_LICENSE_PERMS}
-.				if ${_LICENSE_LIST_PERMS:M${comp:C/^no-//}} == ""
+.				if !${_LICENSE_LIST_PERMS:M${comp:C/^no-//}}
 _LICENSE_ERROR?=	invalid LICENSE_PERMS component "${comp}"
-.				elif ${__LICENSE_PERMS:M${comp}} == "" && \
-					 ${_LICENSE_PERMS:Mno-${comp:C/^no-//}} == ""
+.				elif !${__LICENSE_PERMS:M${comp}} && \
+					 !${_LICENSE_PERMS:Mno-${comp:C/^no-//}}
 __LICENSE_PERMS+=	${comp}
 .				endif
 .			endfor
@@ -306,7 +306,7 @@ LICENSE_FILE_${lic}?=	${LICENSE_FILE}
 .	for lic in ${_LICENSE}
 # Defaults to empty
 _LICENSE_GROUPS_${lic}?=#
-.		if ${_LICENSE_LIST:M${lic}} != ""
+.		if ${_LICENSE_LIST:M${lic}}
 # Case 1: license defined in the framework.
 _LICENSE_TYPE_${lic}=	known
 .			for var in ${_LICENSE_LIST_PORT_VARS}
@@ -347,10 +347,10 @@ _LICENSE_ERROR?=	for unknown licenses, defining LICENSE_${var}_${lic} is mandato
 # Check LICENSE_PERMS for invalid, ambiguous and duplicate components
 __LICENSE_PERMS:=	#
 .			for comp in ${_LICENSE_PERMS_${lic}}
-.				if ${_LICENSE_LIST_PERMS:M${comp:C/^no-//}} == ""
+.				if !${_LICENSE_LIST_PERMS:M${comp:C/^no-//}}
 _LICENSE_ERROR?=		invalid LICENSE_PERMS_${var} component "${comp}"
-.				elif ${__LICENSE_PERMS:M${comp}} == "" && \
-					 ${_LICENSE_PERMS_${lic}:Mno-${comp:C/^no-//}} == ""
+.				elif !${__LICENSE_PERMS:M${comp}} && \
+					 !${_LICENSE_PERMS_${lic}:Mno-${comp:C/^no-//}}
 __LICENSE_PERMS+=		${comp}
 .				endif
 .			endfor
@@ -395,21 +395,21 @@ LICENSES_GROUPS_REJECTED?=	#
 
 .if ${_LICENSE_COMB} == "single"
 .	for lic in ${_LICENSE}
-.		if ${LICENSES_REJECTED:M${lic}} != ""
+.		if ${LICENSES_REJECTED:M${lic}}
 _LICENSE_STATUS?=	rejected
 .		endif
 .		for group in ${_LICENSE_GROUPS}
-.			if ${LICENSES_GROUPS_REJECTED:M${group}} != ""
+.			if ${LICENSES_GROUPS_REJECTED:M${group}}
 _LICENSE_STATUS?=	rejected
 .			endif
-.			if ${LICENSES_GROUPS_ACCEPTED:M${group}} != ""
+.			if ${LICENSES_GROUPS_ACCEPTED:M${group}}
 _LICENSE_STATUS?=	accepted
 .			endif
 .		endfor
-.		if ${LICENSES_ACCEPTED:M${lic}} != ""
+.		if ${LICENSES_ACCEPTED:M${lic}}
 _LICENSE_STATUS?=	accepted
 .		endif
-.		if ${_LICENSE_PERMS:Mauto-accept} != "" && !defined(LICENSES_ASK)
+.		if ${_LICENSE_PERMS:Mauto-accept} && !defined(LICENSES_ASK)
 _LICENSE_STATUS?=	accepted
 .		endif
 _LICENSE_STATUS?=	ask
@@ -417,21 +417,21 @@ _LICENSE_STATUS?=	ask
 
 .else
 .	for lic in ${_LICENSE}
-.		if ${LICENSES_REJECTED:M${lic}} != ""
+.		if ${LICENSES_REJECTED:M${lic}}
 _LICENSE_STATUS_${lic}?=	rejected
 .		endif
 .		for group in ${_LICENSE_GROUPS_${lic}}
-.			if ${LICENSES_GROUPS_REJECTED:M${group}} != ""
+.			if ${LICENSES_GROUPS_REJECTED:M${group}}
 _LICENSE_STATUS_${lic}?=	rejected
 .			endif
-.			if ${LICENSES_GROUPS_ACCEPTED:M${group}} != ""
+.			if ${LICENSES_GROUPS_ACCEPTED:M${group}}
 _LICENSE_STATUS_${lic}?=	accepted
 .			endif
 .		endfor
-.		if ${LICENSES_ACCEPTED:M${lic}} != ""
+.		if ${LICENSES_ACCEPTED:M${lic}}
 _LICENSE_STATUS_${lic}?=	accepted
 .		endif
-.		if ${_LICENSE_PERMS_${lic}:Mauto-accept} != "" && !defined(LICENSES_ASK)
+.		if ${_LICENSE_PERMS_${lic}:Mauto-accept} && !defined(LICENSES_ASK)
 _LICENSE_STATUS_${lic}?=	accepted
 .		endif
 _LICENSE_STATUS_${lic}?=	ask
@@ -472,8 +472,8 @@ _LICENSE_NAME=		Dual (any of): ${_LICENSE}
 _LICENSE_PERMS:=	#
 .	for lic in ${_LICENSE}
 .		for comp in ${_LICENSE_LIST_PERMS}
-.			if ${_LICENSE_PERMS_${lic}:M${comp}} != "" && \
-			   ${_LICENSE_PERMS:M${comp}} == ""
+.			if ${_LICENSE_PERMS_${lic}:M${comp}} && \
+			   !${_LICENSE_PERMS:M${comp}}
 _LICENSE_PERMS+=	${comp}
 .			endif
 .		endfor
@@ -482,8 +482,8 @@ _LICENSE_PERMS+=	${comp}
 _LICENSE_GROUPS:=	#
 .	for lic in ${_LICENSE}
 .		for comp in ${_LICENSE_LIST_GROUPS}
-.			if ${_LICENSE_GROUPS_${lic}:M${comp}} != "" && \
-			   ${_LICENSE_GROUPS:M${comp}} == ""
+.			if ${_LICENSE_GROUPS_${lic}:M${comp}} && \
+			   !${_LICENSE_GROUPS:M${comp}}
 _LICENSE_GROUPS+=	${comp}
 .			endif
 .		endfor
@@ -495,7 +495,7 @@ _LICENSE_NAME=		Multiple (all of): ${_LICENSE}
 _LICENSE_PERMS:=	${_LICENSE_LIST_PERMS}
 .	for lic in ${_LICENSE}
 .		for comp in ${_LICENSE_LIST_PERMS}
-.			if ${_LICENSE_PERMS_${lic}:M${comp}} == ""
+.			if !${_LICENSE_PERMS_${lic}:M${comp}}
 _LICENSE_PERMS:=	${_LICENSE_PERMS:N${comp}}
 .			endif
 .		endfor
@@ -504,7 +504,7 @@ _LICENSE_PERMS:=	${_LICENSE_PERMS:N${comp}}
 _LICENSE_GROUPS:=	${_LICENSE_LIST_GROUPS}
 .	for lic in ${_LICENSE}
 .		for comp in ${_LICENSE_LIST_GROUPS}
-.			if ${_LICENSE_GROUPS_${lic}:M${comp}} == ""
+.			if !${_LICENSE_GROUPS_${lic}:M${comp}}
 _LICENSE_GROUPS:=	${_LICENSE_GROUPS:N${comp}}
 .			endif
 .		endfor
@@ -524,15 +524,15 @@ _LICENSE_ASK_DATA!=	mktemp -ut portslicense
 # CDROM and FTP, but the current framework supports separating them (would
 # require better/new delete-package and delete-distfiles targets)
 
-.if ${_LICENSE_PERMS:Mpkg-mirror} == ""
+.if !${_LICENSE_PERMS:Mpkg-mirror}
 _LICENSE_RESTRICTED+=	delete-package
-.elif ${_LICENSE_PERMS:Mpkg-sell} == ""
+.elif !${_LICENSE_PERMS:Mpkg-sell}
 _LICENSE_CDROM+=		delete-package
 .endif
 
 .if ${_LICENSE_COMB} == "multi"
 .	for lic in ${_LICENSE}
-.		if ${_LICENSE_PERMS_${lic}:Mdist-mirror} == "" || ${_LICENSE_PERMS_${lic}:Mdist-sell} == ""
+.		if !${_LICENSE_PERMS_${lic}:Mdist-mirror} || !${_LICENSE_PERMS_${lic}:Mdist-sell}
 RESTRICTED_FILES+=		${_LICENSE_DISTFILES_${lic}}
 .		endif
 .	endfor
@@ -542,10 +542,10 @@ _LICENSE_RESTRICTED+=	delete-distfiles
 _LICENSE_CDROM+=		delete-distfiles
 .	endif
 .else
-.	if ${_LICENSE_PERMS:Mdist-mirror} == ""
+.	if !${_LICENSE_PERMS:Mdist-mirror}
 _LICENSE_RESTRICTED+=	delete-distfiles
 RESTRICTED_FILES=		${_PATCHFILES} ${_DISTFILES}
-.	elif ${_LICENSE_PERMS:Mdist-sell} == ""
+.	elif !${_LICENSE_PERMS:Mdist-sell}
 _LICENSE_CDROM+=		delete-distfiles
 RESTRICTED_FILES=		${_PATCHFILES} ${_DISTFILES}
 .	endif
