@@ -575,6 +575,8 @@ clean-for-cdrom-list:
 IGNORE=		License ${_LICENSE} needs confirmation, but BATCH is defined
 .endif
 
+debug-license: check-license
+
 check-license:
 .if defined(_LICENSE_ERROR)
 		@${ECHO_MSG} "===>  License not correctly defined: ${_LICENSE_ERROR}"
@@ -771,6 +773,11 @@ install-license:
 .endif
 
 .else	# !LICENSE
+
+debug-license:
+.	if defined(LICENSE_VERBOSE)
+	@${ECHO_MSG} "===>  License debug empty, port has not defined LICENSE"
+.	endif
 
 check-license:
 .	if defined(LICENSE_VERBOSE)
