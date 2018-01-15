@@ -1,5 +1,5 @@
 bin/phoronix-test-suite
-%%BASH_COMPLETIONS%%etc/bash_completion.d/phoronix-test-suite
+%%BASH%%etc/bash_completion.d/phoronix-test-suite
 %%X11%%share/appdata/phoronix-test-suite.appdata.xml
 %%X11%%share/applications/phoronix-test-suite.desktop
 %%X11%%share/applications/phoronix-test-suite-launcher.desktop

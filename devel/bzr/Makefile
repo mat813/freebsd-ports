@@ -26,6 +26,9 @@ MAKE_ENV=	BZR_LOG=/dev/null
 post-install:
 	${INSTALL_MAN} ${WRKSRC}/bzr.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
 	${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/bzrlib/*.so
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
+	${INSTALL_DATA} ${WRKSRC}/contrib/bash/bzr \
+		${STAGEDIR}${PREFIX}/etc/bash_completion.d
 
 test:	build
 	cd ${WRKSRC} && ./bzr selftest

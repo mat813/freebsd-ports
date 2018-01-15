@@ -33,5 +33,8 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}
 	cd ${WRKSRC} ; ${PAX} -rw * ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}
 	${LN} -sf ../${PHP_DESTDIR}/scripts/arcanist.php ${STAGEDIR}${PREFIX}/bin/arc
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
+	${MV} ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}/resources/shell/bash-completion \
+		${STAGEDIR}${PREFIX}/etc/bash_completion.d/arc
 
 .include <bsd.port.mk>

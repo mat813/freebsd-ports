@@ -1,4 +1,5 @@
 bin/bzr
+etc/bash_completion.d/bzr
 %%PYTHON_SITELIBDIR%%/bzrlib/__init__.py
 %%PYTHON_SITELIBDIR%%/bzrlib/__init__.pyc
 %%PYTHON_SITELIBDIR%%/bzrlib/__init__.pyo

@@ -20,7 +20,7 @@ PLIST_FILES=	bin/id3 man/man1/id3.1.gz
 PORTDOCS=	README CHANGES
 
 OPTIONS_DEFINE=	DOCS BASH
-BASH_DESC=	Support for bash auto-completion
+OPTIONS_DEFAULT=	BASH
 BASH_PLIST_FILES=	share/bash-completion/completions/id3
 
 USES=		iconv

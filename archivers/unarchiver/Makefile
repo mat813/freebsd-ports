@@ -25,23 +25,22 @@ MAKEFILE=	Makefile.freebsd
 WRKSRC=		${WRKDIR}/The\ Unarchiver
 BUILD_WRKSRC=	${WRKSRC}/XADMaster
 
-PLIST_FILES=	bin/lsar bin/unar man/man1/lsar.1.gz man/man1/unar.1.gz
+PLIST_FILES=	bin/lsar bin/unar man/man1/lsar.1.gz man/man1/unar.1.gz \
+		etc/bash_completion.d/lsar etc/bash_completion.d/unar
 PORTDOCS=	README.md
-PORTEXAMPLES=	lsar.bash_completion unar.bash_completion
 
-OPTIONS_DEFINE=	DOCS EXAMPLES
+OPTIONS_DEFINE=	DOCS
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/XADMaster/??ar ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/Extra/??ar.1 ${STAGEDIR}${MANPREFIX}/man/man1
+	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
+	cd ${WRKSRC}/Extra; for i in ??ar.bash_completion; do \
+		${INSTALL_DATA} $$i ${STAGEDIR}${PREFIX}/etc/bash_completion.d/$${i%.bash_completion}; \
+	done
 
 do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}
-
-do-install-EXAMPLES-on:
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${INSTALL_DATA} ${WRKSRC}/Extra/??ar.bash_completion \
-		${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

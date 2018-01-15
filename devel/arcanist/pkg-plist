@@ -1,4 +1,5 @@
 bin/arc
+etc/bash_completion.d/arc
 lib/php/arcanist/LICENSE
 lib/php/arcanist/NOTICE
 lib/php/arcanist/README.md
@@ -9,7 +10,6 @@ lib/php/arcanist/externals/includes/README
 lib/php/arcanist/resources/arclint/cornucopia.arclint.example
 lib/php/arcanist/resources/arclint/general-purpose.arclint.example
 lib/php/arcanist/resources/arclint/include-exclude.arclint.example
-lib/php/arcanist/resources/shell/bash-completion
 lib/php/arcanist/resources/spelling/english.json
 lib/php/arcanist/scripts/__init_script__.php
 lib/php/arcanist/scripts/arcanist.php
