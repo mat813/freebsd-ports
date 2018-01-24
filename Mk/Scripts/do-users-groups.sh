@@ -16,8 +16,8 @@ validate_env dp_ECHO_MSG dp_GID_FILES dp_GID_OFFSET dp_GROUPS_BLACKLIST \
 
 set -u
 
-USERS=$1
-GROUPS=$2
+ALL_USERS=$1
+ALL_GROUPS=$2
 
 error() {
 	${dp_ECHO_MSG} "${1}"
@@ -46,7 +46,7 @@ fi
 # Both scripts need to start the same, so
 cp -f "${dp_UG_INSTALL}" "${dp_UG_DEINSTALL}"
 
-if [ -n "${GROUPS}" ]; then
+if [ -n "${ALL_GROUPS}" ]; then
 	for file in ${dp_GID_FILES}; do
 		if [ ! -f "${file}" ]; then
 			error "** ${file} doesn't exist. Exiting."
@@ -54,7 +54,7 @@ if [ -n "${GROUPS}" ]; then
 	done
 	${dp_ECHO_MSG} "===> Creating groups."
 	echo "echo \"===> Creating groups.\"" >> "${dp_UG_INSTALL}"
-	for group in ${GROUPS}; do
+	for group in ${ALL_GROUPS}; do
 		# _bgpd:*:130:
 		if ! grep -q "^${group}:" ${dp_GID_FILES}; then \
 			error "** Cannot find any information about group \`${group}' in ${dp_GID_FILES}."
@@ -87,7 +87,7 @@ if [ -n "${GROUPS}" ]; then
 	done
 fi
 
-if [ -n "${USERS}" ]; then
+if [ -n "${ALL_USERS}" ]; then
 	for file in ${dp_UID_FILES}; do
 		if [ ! -f "${file}" ]; then
 			error "** ${file} doesn't exist. Exiting."
@@ -97,7 +97,7 @@ if [ -n "${USERS}" ]; then
 	${dp_ECHO_MSG} "===> Creating users"
 	echo "echo \"===> Creating users\"" >> "${dp_UG_INSTALL}"
 
-	for user in ${USERS}; do
+	for user in ${ALL_USERS}; do
 		# _bgpd:*:130:130:BGP Daemon:/var/empty:/sbin/nologin
 		if ! grep -q "^${user}:" ${dp_UID_FILES} ; then
 			error "** Cannot find any information about user \`${user}' in ${dp_UID_FILES}."
@@ -148,8 +148,8 @@ if [ -n "${USERS}" ]; then
 	done
 fi
 
-if [ -n "${GROUPS}" ]; then
-	for group in ${GROUPS}; do
+if [ -n "${ALL_GROUPS}" ]; then
+	for group in ${ALL_GROUPS}; do
 		# mail:*:6:postfix,clamav
 		while read -r line; do
 			# Do not change IFS for more than one command, if we
@@ -170,7 +170,7 @@ if [ -n "${GROUPS}" ]; then
 			set -- ${members}
 			IFS=${o_IFS}
 			for login in "$@"; do
-				for user in ${USERS}; do
+				for user in ${ALL_USERS}; do
 					if [ -n "${user}" ] && [ "${user}" = "${login}" ]; then
 						cat >> "${dp_UG_INSTALL}" <<-eot2
 						if ! \${PW} groupshow ${group} | grep -qw ${login}; then
@@ -187,8 +187,8 @@ if [ -n "${GROUPS}" ]; then
 	done
 fi
 
-if [ -n "${USERS}" ]; then
-	for user in ${USERS}; do
+if [ -n "${ALL_USERS}" ]; then
+	for user in ${ALL_USERS}; do
 		if ! echo "${dp_USERS_BLACKLIST}" | grep -qw "${user}"; then
 			cat >> "${dp_UG_DEINSTALL}" <<-eot
 			if \${PW} usershow ${user} >/dev/null 2>&1; then
@@ -199,8 +199,8 @@ if [ -n "${USERS}" ]; then
 	done
 fi
 
-if [ -n "${GROUPS}" ]; then
-	for group in ${GROUPS}; do
+if [ -n "${ALL_GROUPS}" ]; then
+	for group in ${ALL_GROUPS}; do
 		if ! echo "${dp_GROUPS_BLACKLIST}" | grep -qw "${group}"; then
 			cat >> "${dp_UG_DEINSTALL}" <<-eot
 			if \${PW} groupshow ${group} >/dev/null 2>&1; then
