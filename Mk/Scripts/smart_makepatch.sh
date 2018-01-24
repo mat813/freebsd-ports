@@ -245,9 +245,9 @@ compare_common_patches() {
 			cpatch=${DESTDIR}/${P}
 			ppatch_stripped=$(mktemp -t portpatch)
 			cpatch_stripped=$(mktemp -t portpatch)
-			egrep -v -- '--- .+ UTC$' ${ppatch} \
+			grep -E -v -- '--- .+ UTC$' ${ppatch} \
 				> ${ppatch_stripped}
-			egrep -v -- '--- .+ UTC$' ${cpatch} \
+			grep -E -v -- '--- .+ UTC$' ${cpatch} \
 				> ${cpatch_stripped}
 			# Don't replace patches with only metadata changes
 			if ! cmp -s ${ppatch_stripped} ${cpatch_stripped}; then
