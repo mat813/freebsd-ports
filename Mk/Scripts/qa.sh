@@ -11,6 +11,7 @@ fi
 
 LF=$(printf '\nX')
 LF=${LF%X}
+SOH=$(printf '\1')
 
 notice() {
 	echo "Notice: $*" >&2
@@ -675,9 +676,9 @@ proxydeps() {
 		EOT
 	done <<-EOT
 	$(list_stagedir_elfs | \
-		file -F $'\1' -f - | \
+		file -F "${SOH}" -f - | \
 		grep -a 'ELF.*FreeBSD.*dynamically linked' | \
-		cut -f 1 -d $'\1'| \
+		cut -f 1 -d "${SOH}"| \
 		sed -e 's/^\.//')
 	EOT
 
@@ -790,9 +791,9 @@ no_arch() {
 		rc=1
 	done <<-EOF
 	$(list_stagedir_elfs  \
-		| file -F $'\1' -f - -N \
+		| file -F "${SOH}" -f - -N \
 		| grep -aE 'ELF .* [LM]SB .*, .*, version [0-9]+ \(FreeBSD\)' \
-		| cut -f 1 -d $'\1')
+		| cut -f 1 -d "${SOH}")
 	EOF
 	return $rc
 }
