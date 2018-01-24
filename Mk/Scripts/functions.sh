@@ -60,7 +60,7 @@ parse_plist() {
 		@dir*|'@unexec rmdir'*|'@unexec /bin/rmdir'*)
 			line="$(printf %s "$line" \
 			    | sed -Ee 's/\|\|.*//;s|[[:space:]]+[0-9]*[[:space:]]*>[&]?[[:space:]]*[^[:space:]]+||g' \
-			        -e "/^@unexec[[:space:]]+(\/bin\/)?rmdir( -p)?/s|([^%])%D([^%])|\1${cwd}\2|g" \
+			        -e "/^@unexec[[:space:]]+(\\/bin\\/)?rmdir( -p)?/s|([^%])%D([^%])|\\1${cwd}\\2|g" \
 			        -e '/^@unexec[[:space:]]+(\/bin\/)?rmdir( -p)?/s|"(.*)"[[:space:]]*|\1|g' \
 			        -e 's/@unexec[[:space:]]+(\/bin\/)?rmdir( -p)?[[:space:]]+//' \
 				-e 's/@dir(rm|rmtry)?[[:space:]]+//' \

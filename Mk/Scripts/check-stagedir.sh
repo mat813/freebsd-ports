@@ -20,7 +20,7 @@ listmtree() { # mtreefile prefix
 	{
 		echo '#mtree'
 		sed 's/nochange$//;' $1
-	} | tar -tf- | sed "s,^,$2/,;s,^$2/\.$,$2,;s,^$,/,"
+	} | tar -tf- | sed "s,^,$2/,;s,^$2/\\.$,$2,;s,^$,/,"
 }
 
 ### PRODUCE MTREE FILE
@@ -94,17 +94,17 @@ setup_plist_seds() {
 	echo "${PLIST_SUB_SED}" | /bin/sh ${SCRIPTSDIR}/plist_sub_sed_sort.sh ${sed_plist_sub}
 	unset PLIST_SUB_SED
 	# Used for generate_plist
-	sed_files_gen="${sed_portdocsexamples} /^share\/licenses/d; \
-	    \#${LOCALBASE}/lib/debug#d;"
+	sed_files_gen="${sed_portdocsexamples} /^share\\/licenses/d; \
+	    \\#${LOCALBASE}/lib/debug#d;"
 	sed_dirs_gen="s,^,@dir ,; \
 	    ${sed_portdocsexamples} \
-	    /^@dir share\/licenses/d;"
+	    /^@dir share\\/licenses/d;"
 
 	# These prevent ignoring DOCS/EXAMPLES dirs with sed_portdocsexamples
-	sed_files="/^share\/licenses/d; \
-	    \#${LOCALBASE}/lib/debug#d;"
+	sed_files="/^share\\/licenses/d; \
+	    \\#${LOCALBASE}/lib/debug#d;"
 	sed_dirs="s,^,@dir ,; \
-	    /^@dir share\/licenses/d;"
+	    /^@dir share\\/licenses/d;"
 
 }
 
@@ -124,9 +124,9 @@ generate_plist() {
 	    | sort -u >${WRKDIR}/.traced-dirs
 	find ${STAGEDIR} -type d | sed -e "s,^${STAGEDIR},,;/^$/d" | sort \
 	    >${WRKDIR}/.staged-dirrms-sorted
-	find -s -d ${STAGEDIR}${PREFIX} -type d -empty | sed -e "s,^${STAGEDIR},,;\,^${PREFIX}$,d;/^$/d" \
+	find -s -d ${STAGEDIR}${PREFIX} -type d -empty | sed -e "s,^${STAGEDIR},,;\\,^${PREFIX}$,d;/^$/d" \
 	    >${WRKDIR}/.staged-dirs-dfs
-	find -s -d ${STAGEDIR} -type d ! -path "${STAGEDIR}${PREFIX}/*" | sed -e "s,^${STAGEDIR},,;\,^${PREFIX}$,d;/^$/d" \
+	find -s -d ${STAGEDIR} -type d ! -path "${STAGEDIR}${PREFIX}/*" | sed -e "s,^${STAGEDIR},,;\\,^${PREFIX}$,d;/^$/d" \
 	    >>${WRKDIR}/.staged-dirs-dfs
 	sort ${WRKDIR}/.staged-dirs-dfs >${WRKDIR}/.staged-dirs-sorted
 	awk '{print FNR, $0}' ${WRKDIR}/.staged-dirs-dfs \

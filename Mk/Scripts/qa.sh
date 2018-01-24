@@ -731,11 +731,11 @@ perlcore() {
 	local portname version module gotsome
 	[ -x "${LOCALBASE}/bin/corelist" ] || return 0
 	for dep in ${UNIFIED_DEPENDS}; do
-		portname=$(expr "${dep}" : ".*/p5-\(.*\)")
+		portname=$(expr "${dep}" : ".*/p5-\\(.*\\)")
 		if [ -n "${portname}" ]; then
 			gotsome=1
 			module=$(perlcore_port_module_mapping "${portname}")
-			version=$(expr "${dep}" : ".*>=*\([^:<]*\)")
+			version=$(expr "${dep}" : ".*>=*\\([^:<]*\\)")
 
 			while read -r l; do
 				case "${l}" in
@@ -815,7 +815,7 @@ gemdeps()
 						rc=1
 					fi <<-EOF
 					$(${LOCALBASE}/bin/gem list -e "${name}" \
-						| sed "s|.*(\(.*\))|\1|" \
+						| sed "s|.*(\\(.*\\))|\\1|" \
 						| tr -d ' ' \
 						| tr , '\n')
 					EOF
