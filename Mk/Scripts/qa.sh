@@ -854,7 +854,7 @@ gemfiledeps()
 	fi
 	
 	# advise install of bundler if its not present for check
-	if ! type bundle > /dev/null 2>&1; then
+	if ! command -v bundle > /dev/null 2>&1; then
 		notice "Please install sysutils/rubygem-bundler for additional Gemfile-checks"
 		return 0
 	fi
