@@ -33,7 +33,7 @@ parse_mtree() {
 		# Use MTREE_FILE if specified and it doesn't already
 		# match LOCALBASE
 		if [ -n "${MTREE_FILE}" ]; then
-			if [ "${PREFIX}" != "${LOCALBASE}" -o "${MTREE_FILE}" \
+			if [ "${PREFIX}" != "${LOCALBASE}" ] || [ "${MTREE_FILE}" \
 			    != "${PORTSDIR}/Templates/BSD.local.dist" ]; then
 				listmtree "${MTREE_FILE}" "${PREFIX}"
 			fi
@@ -230,7 +230,7 @@ esac
 validate_env STAGEDIR PREFIX LOCALBASE WRKDIR WRKSRC MTREE_FILE \
     TMPPLIST PLIST_SUB_SED SCRIPTSDIR PORT_OPTIONS NO_PREFIX_RMDIR
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_CHECK_STAGEDIR}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_CHECK_STAGEDIR}" ] && set -x
 
 set -u
 

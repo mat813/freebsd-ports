@@ -2,14 +2,14 @@
 # MAINTAINER: portmgr@FreeBSD.org
 # $FreeBSD$
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_FIND_LIB}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_FIND_LIB}" ] && set -x
 
-if [ -z "${LIB_DIRS}" -o -z "${LOCALBASE}" ]; then
+if [ -z "${LIB_DIRS}" ] || [ -z "${LOCALBASE}" ]; then
 	echo "LIB_DIRS, LOCALBASE required in environment." >&2
 	exit 1
 fi
 
-if [ -f /usr/share/misc/magic.mime -o -f /usr/share/misc/magic.mime.mgc ]; then
+if [ -f /usr/share/misc/magic.mime ] || [ -f /usr/share/misc/magic.mime.mgc ]; then
 	echo >&2
 	echo "Either /usr/share/misc/magic.mime or /usr/share/misc/magic.mime.mgc exist and must be removed." >&2
 	echo "These are legacy files from an older release and may safely be deleted." >&2

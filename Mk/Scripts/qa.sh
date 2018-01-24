@@ -2,12 +2,12 @@
 # MAINTAINER: portmgr@FreeBSD.org
 # $FreeBSD$
 
-if [ -z "${STAGEDIR}" -o -z "${PREFIX}" -o -z "${LOCALBASE}" ]; then
+if [ -z "${STAGEDIR}" ] || [ -z "${PREFIX}" ] || [ -z "${LOCALBASE}" ]; then
 	echo "STAGEDIR, PREFIX, LOCALBASE required in environment." >&2
 	exit 1
 fi
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_QA}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_QA}" ] && set -x
 
 LF=$(printf '\nX')
 LF=${LF%X}
@@ -112,7 +112,7 @@ baselibs() {
 	local rc
 	local found_openssl
 	local file
-	[ "${PKGBASE}" = "pkg" -o "${PKGBASE}" = "pkg-devel" ] && return
+	[ "${PKGBASE}" = "pkg" ] || [ "${PKGBASE}" = "pkg-devel" ] && return
 	while read -r f; do
 		case ${f} in
 		File:\ .*)
@@ -133,9 +133,9 @@ baselibs() {
 	done <<-EOF
 	$(list_stagedir_elfs -exec readelf -d {} + 2>/dev/null)
 	EOF
-	if [ -z "${USESSSL}" -a -n "${found_openssl}" ]; then
+	if [ -z "${USESSSL}" ] && [ -n "${found_openssl}" ]; then
 		warn "you need USES=ssl"
-	elif [ -n "${USESSSL}" -a -z "${found_openssl}" ]; then
+	elif [ -n "${USESSSL}" ] && [ -z "${found_openssl}" ]; then
 		warn "you may not need USES=ssl"
 	fi
 	return ${rc}
@@ -163,7 +163,7 @@ symlinks() {
 					warn "Bad symlink '${l#${STAGEDIR}}' pointing to an absolute pathname '${link}'"
 				fi
 				# Also warn if the symlink exists nowhere.
-				if [ ! -e "${STAGEDIR}${link}" -a ! -e "${link}" ]; then
+				if [ ! -e "${STAGEDIR}${link}" ] && [ ! -e "${link}" ]; then
 					warn "Symlink '${l#${STAGEDIR}}' pointing to '${link}' which does not exist in the stage directory or in localbase"
 				fi
 				;;
@@ -237,9 +237,9 @@ sharedmimeinfo() {
 		found=1
 		break
 	done
-	if [ -z "${USESSHAREDMIMEINFO}" -a ${found} -eq 1 ]; then
+	if [ -z "${USESSHAREDMIMEINFO}" ] && [ ${found} -eq 1 ]; then
 		warn "you need USES=shared-mime-info"
-	elif [ -n "${USESSHAREDMIMEINFO}" -a ${found} -eq 0 ]; then
+	elif [ -n "${USESSHAREDMIMEINFO}" ] && [ ${found} -eq 0 ]; then
 		warn "you may not need USES=shared-mime-info"
 	fi
 	return 0
@@ -272,7 +272,7 @@ libtool() {
 
 libperl() {
 	local has_some_libperl_so files found
-	if [ -n "${SITE_ARCH_REL}" -a -d "${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}" ]; then
+	if [ -n "${SITE_ARCH_REL}" ] && [ -d "${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}" ]; then
 		has_some_libperl_so=0
 		files=0
 		while read -r f; do
@@ -296,7 +296,7 @@ libperl() {
 		$(find ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL} -name '*.so')
 		EOT
 
-		if [ ${files} -gt 0 -a ${has_some_libperl_so} -eq 0 ]; then
+		if [ ${files} -gt 0 ] && [ ${has_some_libperl_so} -eq 0 ]; then
 			err "None of the ${files} .so in ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL} are linked with ${LIBPERL}, see above for the full list."
 			return 1
 		else
@@ -306,7 +306,7 @@ libperl() {
 }
 
 prefixvar() {
-	if [ ${PREFIX} != ${LINUXBASE} -a -d ${STAGEDIR}${PREFIX}/var ]; then
+	if [ ${PREFIX} != ${LINUXBASE} ] && [ -d ${STAGEDIR}${PREFIX}/var ]; then
 		warn "port uses ${PREFIX}/var instead of /var"
 	fi
 }
@@ -324,9 +324,9 @@ terminfo() {
 		found=1
 		break
 	done
-	if [ -z "${USESTERMINFO}" -a -n "${found}" ]; then
+	if [ -z "${USESTERMINFO}" ] && [ -n "${found}" ]; then
 		warn "you need USES=terminfo"
-	elif [ -n "${USESTERMINFO}" -a -z "${found}" ]; then
+	elif [ -n "${USESTERMINFO}" ] && [ -z "${found}" ]; then
 		warn "you may not need USES=terminfo"
 	fi
 	return 0
@@ -357,58 +357,58 @@ proxydeps_suggest_uses() {
 	elif [ ${pkg} = 'databases/sqlite2' ]; then
 		warn "you need USES+=sqlite:2"
 	# Gnome -> same as port
-	# grep LIB_DEPENDS= Mk/Uses/gnome.mk |sed -e 's|\(.*\)_LIB_DEPENDS.*:\(.*\)\/\(.*\)|[ "\1" = "\3" ] \&\& echo "\\${pkg} = \\\"\2/\3\\\" -o \\\\"|'|sort|sh
-	elif [ ${pkg} = "accessibility/atk" -o \
-		${pkg} = "accessibility/atkmm" -o \
-		${pkg} = "graphics/cairo" -o \
-		${pkg} = "graphics/cairomm" -o \
-		${pkg} = "devel/dconf" -o \
-		${pkg} = "audio/esound" -o \
-		${pkg} = "devel/gconf2" -o \
-		${pkg} = "devel/gconfmm26" -o \
-		${pkg} = "devel/glib20" -o \
-		${pkg} = "devel/glibmm" -o \
-		${pkg} = "audio/gsound" -o \
-		${pkg} = "x11-toolkits/gtk20" -o \
-		${pkg} = "x11-toolkits/gtk30" -o \
-		${pkg} = "www/gtkhtml3" -o \
-		${pkg} = "www/gtkhtml4" -o \
-		${pkg} = "x11-toolkits/gtkmm20" -o \
-		${pkg} = "x11-toolkits/gtkmm24" -o \
-		${pkg} = "x11-toolkits/gtkmm30" -o \
-		${pkg} = "x11-toolkits/gtksourceview" -o \
-		${pkg} = "x11-toolkits/gtksourceview2" -o \
-		${pkg} = "x11-toolkits/gtksourceview3" -o \
-		${pkg} = "x11-toolkits/gtksourceviewmm3" -o \
-		${pkg} = "devel/libbonobo" -o \
-		${pkg} = "x11-toolkits/libbonoboui" -o \
-		${pkg} = "databases/libgda5" -o \
-		${pkg} = "databases/libgda5-ui" -o \
-		${pkg} = "databases/libgdamm5" -o \
-		${pkg} = "devel/libglade2" -o \
-		${pkg} = "x11/libgnome" -o \
-		${pkg} = "graphics/libgnomecanvas" -o \
-		${pkg} = "x11/libgnomekbd" -o \
-		${pkg} = "print/libgnomeprint" -o \
-		${pkg} = "x11-toolkits/libgnomeprintui" -o \
-		${pkg} = "x11-toolkits/libgnomeui" -o \
-		${pkg} = "devel/libgsf" -o \
-		${pkg} = "www/libgtkhtml" -o \
-		${pkg} = "x11-toolkits/libgtksourceviewmm" -o \
-		${pkg} = "graphics/librsvg2" -o \
-		${pkg} = "devel/libsigc++12" -o \
-		${pkg} = "devel/libsigc++20" -o \
-		${pkg} = "x11-toolkits/libwnck" -o \
-		${pkg} = "x11-toolkits/libwnck3" -o \
-		${pkg} = "textproc/libxml++26" -o \
-		${pkg} = "textproc/libxml2" -o \
-		${pkg} = "textproc/libxslt" -o \
-		${pkg} = "x11-wm/metacity" -o \
-		${pkg} = "x11-toolkits/pango" -o \
-		${pkg} = "x11-toolkits/pangomm" -o \
-		${pkg} = "x11-toolkits/pangox-compat" -o \
-		${pkg} = "x11-toolkits/vte" -o \
-		${pkg} = "x11-toolkits/vte3" ]; then
+	# grep LIB_DEPENDS= Mk/Uses/gnome.mk |sed -e 's|\(.*\)_LIB_DEPENDS.*:\(.*\)\/\([^[:space:]]*\).*|[ "\1" = "\3" ] \&\& echo "[ \\${pkg} = \\\"\2/\3\\\" ] \|\| \\\\"|'|env LANG=C sort|sh
+	elif [ ${pkg} = "accessibility/atk" ] || \
+		[ ${pkg} = "accessibility/atkmm" ] || \
+		[ ${pkg} = "graphics/cairo" ] || \
+		[ ${pkg} = "graphics/cairomm" ] || \
+		[ ${pkg} = "devel/dconf" ] || \
+		[ ${pkg} = "audio/esound" ] || \
+		[ ${pkg} = "devel/gconf2" ] || \
+		[ ${pkg} = "devel/gconfmm26" ] || \
+		[ ${pkg} = "devel/glib20" ] || \
+		[ ${pkg} = "devel/glibmm" ] || \
+		[ ${pkg} = "audio/gsound" ] || \
+		[ ${pkg} = "x11-toolkits/gtk20" ] || \
+		[ ${pkg} = "x11-toolkits/gtk30" ] || \
+		[ ${pkg} = "www/gtkhtml3" ] || \
+		[ ${pkg} = "www/gtkhtml4" ] || \
+		[ ${pkg} = "x11-toolkits/gtkmm20" ] || \
+		[ ${pkg} = "x11-toolkits/gtkmm24" ] || \
+		[ ${pkg} = "x11-toolkits/gtkmm30" ] || \
+		[ ${pkg} = "x11-toolkits/gtksourceview" ] || \
+		[ ${pkg} = "x11-toolkits/gtksourceview2" ] || \
+		[ ${pkg} = "x11-toolkits/gtksourceview3" ] || \
+		[ ${pkg} = "x11-toolkits/gtksourceviewmm3" ] || \
+		[ ${pkg} = "devel/libbonobo" ] || \
+		[ ${pkg} = "x11-toolkits/libbonoboui" ] || \
+		[ ${pkg} = "databases/libgda5" ] || \
+		[ ${pkg} = "databases/libgda5-ui" ] || \
+		[ ${pkg} = "databases/libgdamm5" ] || \
+		[ ${pkg} = "devel/libglade2" ] || \
+		[ ${pkg} = "x11/libgnome" ] || \
+		[ ${pkg} = "graphics/libgnomecanvas" ] || \
+		[ ${pkg} = "x11/libgnomekbd" ] || \
+		[ ${pkg} = "print/libgnomeprint" ] || \
+		[ ${pkg} = "x11-toolkits/libgnomeprintui" ] || \
+		[ ${pkg} = "x11-toolkits/libgnomeui" ] || \
+		[ ${pkg} = "devel/libgsf" ] || \
+		[ ${pkg} = "www/libgtkhtml" ] || \
+		[ ${pkg} = "x11-toolkits/libgtksourceviewmm" ] || \
+		[ ${pkg} = "graphics/librsvg2" ] || \
+		[ ${pkg} = "devel/libsigc++12" ] || \
+		[ ${pkg} = "devel/libsigc++20" ] || \
+		[ ${pkg} = "x11-toolkits/libwnck" ] || \
+		[ ${pkg} = "x11-toolkits/libwnck3" ] || \
+		[ ${pkg} = "textproc/libxml++26" ] || \
+		[ ${pkg} = "textproc/libxml2" ] || \
+		[ ${pkg} = "textproc/libxslt" ] || \
+		[ ${pkg} = "x11-wm/metacity" ] || \
+		[ ${pkg} = "x11-toolkits/pango" ] || \
+		[ ${pkg} = "x11-toolkits/pangomm" ] || \
+		[ ${pkg} = "x11-toolkits/pangox-compat" ] || \
+		[ ${pkg} = "x11-toolkits/vte" ] || \
+		[ ${pkg} = "x11-toolkits/vte3" ]; then
 		warn "you need USE_GNOME+=${pkg#*/}"
 	# Gnome different as port
 	# grep LIB_DEPENDS= Mk/Uses/gnome.mk |sed -e 's|\(.*\)_LIB_DEPENDS.*:\(.*\)\/\(.*\)|[ "\1" = "\3" ] \|\| echo "elif [ \\${pkg} = \\\"\2/\3\\\" ]; then; warn \\\"you need USE_GNOME+=\1\\\""|'|sort|sh
@@ -548,7 +548,7 @@ proxydeps_suggest_uses() {
 	elif expr ${pkg} : "^databases/db[456]" > /dev/null; then
 		warn "you need USES+=bdb"
 	# fam/gamin
-	elif [ ${pkg} = "devel/fam" -o ${pkg} = "devel/gamin" ]; then
+	elif [ ${pkg} = "devel/fam" ] || [ ${pkg} = "devel/gamin" ]; then
 		warn "you need USES+=fam"
 	# firebird
 	elif [ ${pkg} = "databases/firebird25-client" ]; then
@@ -565,7 +565,7 @@ proxydeps_suggest_uses() {
 	elif [ ${pkg} = "converters/libiconv" ]; then
 		warn "you need USES+=iconv, USES+=iconv:wchar_t, or USES+=iconv:translit depending on needs"
 	# jpeg
-	elif [ ${pkg} = "graphics/jpeg" -o ${pkg} = "graphics/jpeg-turbo" ]; then
+	elif [ ${pkg} = "graphics/jpeg" ] || [ ${pkg} = "graphics/jpeg-turbo" ]; then
 		warn "you need USES+=jpeg"
 	# libarchive
 	elif [ ${pkg} = "archivers/libarchive" ]; then
@@ -576,7 +576,7 @@ proxydeps_suggest_uses() {
 	elif expr ${pkg} : "^lang/lua" > /dev/null; then
 		warn "you need USES+=lua"
 	# motif
-	elif [ ${pkg} = "x11-toolkits/lesstif" -o ${pkg} = "x11-toolkits/open-motif" ]; then
+	elif [ ${pkg} = "x11-toolkits/lesstif" ] || [ ${pkg} = "x11-toolkits/open-motif" ]; then
 		warn "you need USES+=motif"
 	# ncurses
 	elif [ ${pkg} = "devel/ncurses" ]; then
@@ -585,7 +585,7 @@ proxydeps_suggest_uses() {
 	elif [ ${pkg} = "lang/libobjc2" ]; then
 		warn "you need USES+=objc"
 	# openal
-	elif [ ${pkg} = "audio/openal" -o ${pkg} = "audio/openal-soft" -o ${pkg} = "audio/freealut" ]; then
+	elif [ ${pkg} = "audio/openal" ] || [ ${pkg} = "audio/openal-soft" ] || [ ${pkg} = "audio/freealut" ]; then
 		warn "you need USES+=openal"
 	# pure
 	elif [ ${pkg} = "lang/pure" ]; then
@@ -594,9 +594,8 @@ proxydeps_suggest_uses() {
 	elif [ ${pkg} = "devel/readline" ]; then
 		warn "you need USES+=readline"
 	# ssl
-	elif [ ${pkg} = "security/openssl" -o ${pkg} = "security/openssl111" \
-	  -o ${pkg} = "security/libressl" -o ${pkg} = "security/libressl-devel" \
-	  ]; then
+	elif [ ${pkg} = "security/openssl" ] || [ ${pkg} = "security/openssl111" ] || \
+	  [ ${pkg} = "security/libressl" ] || [ ${pkg} = "security/libressl-devel" ]; then
 		warn "you need USES=ssl"
 	# Tcl
 	elif expr ${pkg} : "^lang/tcl" > /dev/null; then
@@ -688,12 +687,14 @@ proxydeps() {
 }
 
 sonames() {
-	[ ! -d ${STAGEDIR}${PREFIX}/lib -o -n "${BUNDLE_LIBS}" ] && return 0
+	[ ! -d ${STAGEDIR}${PREFIX}/lib ] || [ -n "${BUNDLE_LIBS}" ] && return 0
 	while read -r f; do
 		# No results presents a blank line from heredoc.
 		[ -z "${f}" ] && continue
 		# Ignore symlinks
-		[ -f "${f}" -a ! -L "${f}" ] || continue
+		if [ -f "${f}" ] && [ ! -L "${f}" ]; then
+			continue
+		fi
 		if ! readelf -d ${f} | grep -q SONAME; then
 			warn "${f} doesn't have a SONAME."
 			warn "pkg(8) will not register it as being provided by the port."

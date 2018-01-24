@@ -23,7 +23,7 @@
 # The PLIST_SUB feature can be disabled by setting PLIST_SUB_SED=
 # in environment.
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_CHECK_LEFTOVERS}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_CHECK_LEFTOVERS}" ] && set -x
 
 origin="$1"
 [ $# -eq 1 ] || { echo "Must supply ORIGIN as parameter" >&2; exit 1; }
@@ -119,13 +119,13 @@ while read -r modtype path extra; do
 		# bsd.port.mk for now.
 		# Skip if it is PREFIX and non-LOCALBASE. See misc/kdehier4
 		# or mail/qmail for examples
-		[ "${path}" = "${PREFIX}" -a "${LOCALBASE}" != "${PREFIX}" ] &&
+		[ "${path}" = "${PREFIX}" ] && [ "${LOCALBASE}" != "${PREFIX}" ] &&
 		    ignore_path=1
 
 		# The removal of info may be a bug; it's part of BSD.local.dist.
 		# See ports/74691
 
-		[ "${sub_path}" = "info" -a "${LOCALBASE}" != "${PREFIX}" ] &&
+		[ "${sub_path}" = "info" ] && [ "${LOCALBASE}" != "${PREFIX}" ] &&
 		    ignore_path=1
 
 		[ $ignore_path -eq 0 ] && echo "- ${sub_path}"

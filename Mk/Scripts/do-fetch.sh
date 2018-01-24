@@ -13,7 +13,7 @@ validate_env dp_DEVELOPER dp_DISABLE_SIZE dp_DISTDIR dp_DISTINFO_FILE \
 	dp_MASTER_SITE_BACKUP dp_MASTER_SITE_OVERRIDE dp_MASTER_SORT_AWK \
 	dp_NO_CHECKSUM dp_RANDOMIZE_SITES dp_SITE_FLAVOR dp_TARGET
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_DO_FETCH}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_DO_FETCH}" ] && set -x
 
 set -u
 
@@ -48,7 +48,7 @@ for _file in "${@}"; do
 			fi
 		done
 	fi
-	if [ -f "${file}" -a "$force_fetch" != "true" ]; then
+	if [ -f "${file}" ] && [ "$force_fetch" != "true" ]; then
 		continue
 	fi
 	full_file="${dp_DIST_SUBDIR:+${dp_DIST_SUBDIR}/}${file}"
@@ -58,7 +58,7 @@ for _file in "${@}"; do
 		${dp_ECHO_MSG} "=> Please correct this problem and try again."
 		exit 1
 	fi
-	if [ -f "${dp_DISTINFO_FILE}" -a -z "${dp_NO_CHECKSUM}" ]; then
+	if [ -f "${dp_DISTINFO_FILE}" ] && [ -z "${dp_NO_CHECKSUM}" ]; then
 		_sha256sum=$(distinfo_data SHA256 "${full_file}")
 		if [ -z "$_sha256sum" ]; then
 			${dp_ECHO_MSG} "=> ${dp_DIST_SUBDIR:+$dp_DIST_SUBDIR/}$file is not in ${dp_DISTINFO_FILE}."
@@ -134,7 +134,7 @@ for _file in "${@}"; do
 				;;
 		esac
 		_fetch_cmd="${dp_FETCH_CMD} ${dp_FETCH_BEFORE_ARGS}"
-		if [ -z "${dp_DISABLE_SIZE}" -a -n "${CKSIZE}" ]; then
+		if [ -z "${dp_DISABLE_SIZE}" ] && [ -n "${CKSIZE}" ]; then
 			_fetch_cmd="${_fetch_cmd} -S ${CKSIZE}"
 		fi
 		_fetch_cmd="${_fetch_cmd} ${args} ${dp_FETCH_AFTER_ARGS}"

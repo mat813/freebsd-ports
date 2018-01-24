@@ -13,7 +13,7 @@ validate_env dp_BZCAT dp_CAT dp_DISTDIR dp_ECHO_MSG dp_EXTRA_PATCHES \
 	dp_PATCH_SILENT dp_PATCH_WRKSRC dp_PKGNAME dp_PKGORIGIN \
 	dp_UNZIP_NATIVE_CMD dp_XZCAT
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_DO_PATCH}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_DO_PATCH}" ] && set -x
 
 set -u
 
@@ -83,7 +83,7 @@ patch_from_directory() {
 							PATCHES_APPLIED="${PATCHES_APPLIED} ${i}"
 						else
 							${dp_ECHO_MSG} "=> ${msg} patch ${i} failed to apply cleanly."
-							if [ -n "${PATCHES_APPLIED}" -a "${dp_PATCH_SILENT}" != "yes" ]; then
+							if [ -n "${PATCHES_APPLIED}" ] && [ "${dp_PATCH_SILENT}" != "yes" ]; then
 								${dp_ECHO_MSG} "=> Patch(es) ${PATCHES_APPLIED} applied cleanly."
 							fi
 							false

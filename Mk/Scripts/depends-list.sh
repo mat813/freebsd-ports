@@ -38,14 +38,14 @@ done
 shift $((OPTIND-1))
 
 validate_env PORTSDIR dp_PKGNAME
-if [ ${recursive} -eq 1 -o ${requires_wrkdir} -eq 1 ]; then
+if [ ${recursive} -eq 1 ] || [ ${requires_wrkdir} -eq 1 ]; then
 	validate_env dp_MAKE
 	# Cache command executions to avoid looking them up again in every
 	# sub-make.
 	MAKE="${dp_MAKE}" export_ports_env >/dev/null
 fi
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_DEPENDS_LIST}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_DEPENDS_LIST}" ] && set -x
 
 set -u
 
@@ -75,7 +75,7 @@ check_dep() {
 			d=${d%@*}
 			;;
 		esac
-		if [ ${flavors} -eq 1 -a -n "${FLAVOR:-}" ]; then
+		if [ ${flavors} -eq 1 ] && [ -n "${FLAVOR:-}" ]; then
 			port_display="${d}@${FLAVOR}"
 		else
 			port_display="${d}"
@@ -118,7 +118,7 @@ check_dep() {
 			show_dep=0
 		fi
 		[ ${show_dep} -eq 1 ] && echo "${port_display}"
-		if [ ${recursive} -eq 1 -o ${requires_wrkdir} -eq 1 -a ${show_dep} -eq 1 ]; then
+		if [ ${recursive} -eq 1 ] || ( [ ${requires_wrkdir} -eq 1 ] && [ ${show_dep} -eq 1 ] ); then
 			# shellcheck disable=SC2068
 			# Do not add quotes, we want to split the string here.
 			check_dep $@

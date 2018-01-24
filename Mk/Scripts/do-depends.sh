@@ -13,7 +13,7 @@ validate_env dp_RAWDEPENDS dp_DEPTYPE dp_DEPENDS_TARGET dp_DEPENDS_PRECLEAN \
 	dp_PKGNAME dp_STRICT_DEPENDS dp_LOCALBASE dp_LIB_DIRS dp_SH \
 	dp_SCRIPTSDIR PORTSDIR dp_MAKE dp_MAKEFLAGS
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_DO_DEPENDS}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_DO_DEPENDS}" ] && set -x
 
 set -u
 
@@ -22,7 +22,7 @@ install_depends()
 	origin=$1
 	target=$2
 	depends_args=$3
-	if [ -z "${dp_USE_PACKAGE_DEPENDS}" -a -z "${dp_USE_PACKAGE_DEPENDS_ONLY}" ]; then
+	if [ -z "${dp_USE_PACKAGE_DEPENDS}" ] && [ -z "${dp_USE_PACKAGE_DEPENDS_ONLY}" ]; then
 		MAKEFLAGS="${dp_MAKEFLAGS}" ${dp_MAKE} -C ${origin} -DINSTALLS_DEPENDS ${target} ${depends_args}
 		return 0
 	fi
@@ -31,7 +31,7 @@ install_depends()
 	    PKGFILE pkgfile \
 	    PKGBASE pkgbase
 
-	if [ -r "${pkgfile}" -a "${target}" = "${dp_DEPENDS_TARGET}" ]; then
+	if [ -r "${pkgfile}" ] && [ "${target}" = "${dp_DEPENDS_TARGET}" ]; then
 		echo "===>   Installing existing package ${pkgfile}"
 		if [ "${pkgbase}" = "pkg" ]; then
 			[ -d ${dp_WRKDIR} ] || mkdir -p ${dp_WRKDIR}
@@ -41,7 +41,7 @@ install_depends()
 		else
 			${dp_PKG_ADD} -A ${pkgfile}
 		fi
-	elif [ -n "${dp_USE_PACKAGE_DEPENDS_ONLY}" -a "${target}" = "${dp_DEPENDS_TARGET}" ]; then
+	elif [ -n "${dp_USE_PACKAGE_DEPENDS_ONLY}" ] && [ "${target}" = "${dp_DEPENDS_TARGET}" ]; then
 		echo "===>   ${dp_PKGNAME} depends on package: ${pkgfile} - not found" >&2
 		echo "===>   USE_PACKAGE_DEPENDS_ONLY set - not building missing dependency from source" >&2
 		exit 1
@@ -100,7 +100,7 @@ for _line in ${dp_RAWDEPENDS} ; do
 	IFS=:
 	set -- ${_line}
 	IFS=${myifs}
-	if [ $# -lt 2 -o $# -gt 3 ]; then
+	if [ $# -lt 2 ] || [ $# -gt 3 ]; then
 		echo "Error: bad dependency syntax in ${dp_DEPTYPE}" >&2
 		echo "expecting: pattern:origin[@flavour][:target]" >&2
 		echo "got: ${_line}" >&2
@@ -190,7 +190,7 @@ if [ $err -eq 1 ]; then
 	exit 1
 fi
 
-if [ -n "${dp_STRICT_DEPENDS}" -a ${anynotfound} -eq 1 ]; then \
+if [ -n "${dp_STRICT_DEPENDS}" ] && [ ${anynotfound} -eq 1 ]; then \
 	echo "===>   dp_STRICT_DEPENDS set - Not installing missing dependencies."
 	echo "       This means a dependency is wrong since it was not satisfied in the ${dp_DEPTYPE} phase."
 	exit 1

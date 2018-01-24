@@ -3,9 +3,9 @@
 # Maintainer: portmgr@FreeBSD.org
 set -e
 
-[ -n "${DEBUG_MK_SCRIPTS}" -o -n "${DEBUG_MK_SCRIPTS_DIALOG4PORTS}" ] && set -x
+[ -n "${DEBUG_MK_SCRIPTS}" ] || [ -n "${DEBUG_MK_SCRIPTS_DIALOG4PORTS}" ] && set -x
 
-if [ -z "${DIALOG4PORTS}" -o -z "${PORTSDIR}" -o -z "${MAKE}" ]; then
+if [ -z "${DIALOG4PORTS}" ] || [ -z "${PORTSDIR}" ] || [ -z "${MAKE}" ]; then
 	echo "DIALOG4PORTS, MAKE and PORTSDIR required in environment." >&2
 	exit 1
 fi
@@ -19,7 +19,7 @@ if ! [ -e $DIALOG4PORTS ]; then
 	# If INSTALL_AS_USER is set then just build and use the WRKDIR version
 	# Also do this if PREFIX!=LOCALBASE to avoid missing file or double
 	# installs
-	if [ -n "${INSTALL_AS_USER}" -o "${PREFIX}" != "${LOCALBASE}" ]; then
+	if [ -n "${INSTALL_AS_USER}" ] || [ "${PREFIX}" != "${LOCALBASE}" ]; then
 		if ! [ -d "${PORTSDIR}/${DIALOGPORT}" ]; then
 			echo "===> Skipping 'config' as ${DIALOGPORT} is not checked out" >&2
 			exit 1

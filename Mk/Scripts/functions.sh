@@ -30,7 +30,7 @@ parse_plist() {
 		# the plist so it does not show up as an orphan. PLIST_SUB uses
 		# a @comment to deactive files. XXX: It would be better to
 		# make all ports use @ignore instead of @comment.
-		if [ ${parse_comments} -eq 1 -a -z "${line%%@comment *}" ]; then
+		if [ ${parse_comments} -eq 1 ] && [ -z "${line%%@comment *}" ]; then
 			line="${line##*@comment }"
 			# Remove @comment so it can be parsed as a file,
 			# but later prepend it again to create a list of
@@ -213,7 +213,7 @@ distinfo_data() {
 	alg=$1
 	file=$2
 
-	if [ \( -n "${dp_DISABLE_SIZE}" -a -n "${dp_NO_CHECKSUM}" \) -o ! -f "${dp_DISTINFO_FILE}" ]; then
+	if ( [ -n "${dp_DISABLE_SIZE}" ] && [ -n "${dp_NO_CHECKSUM}" ] ) || [ ! -f "${dp_DISTINFO_FILE}" ]; then
 		exit
 	fi
 	awk -v alg="$alg" -v file="${file}" \
