@@ -104,11 +104,10 @@ for _file in "${@}"; do
 		fi
 	done
 	___MASTER_SITES_TMP=
-	SORTED_MASTER_SITES_CMD_TMP="echo ${dp_MASTER_SITE_OVERRIDE} $(echo -n "${__MASTER_SITES_TMP}" | awk "${dp_MASTER_SORT_AWK}") ${dp_MASTER_SITE_BACKUP}"
+	SORTED_MASTER_SITES_CMD_TMP="echo ${dp_MASTER_SITE_OVERRIDE} $(printf "%s" "${__MASTER_SITES_TMP}" | awk "${dp_MASTER_SORT_AWK}") ${dp_MASTER_SITE_BACKUP}"
 	case ${dp_TARGET} in
 		fetch-list)
-			echo -n "mkdir -p ${dp_DISTDIR} && "
-			echo -n "cd ${dp_DISTDIR} && { "
+			printf "mkdir -p %s && cd %s && { " "${dp_DISTDIR}" "${dp_DISTDIR}"
 			;;
 	esac
 	sites_remaining=0
@@ -155,7 +154,7 @@ for _file in "${@}"; do
 				fi
 				;;
 			fetch-list)
-				echo -n "env $(escape "${_fetch_cmd}") || "
+				printf "env %s || " "$(escape "${_fetch_cmd}")"
 				;;
 			fetch-url-list-int)
 				echo ${args}

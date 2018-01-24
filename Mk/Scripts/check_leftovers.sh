@@ -128,7 +128,7 @@ while read -r modtype path extra; do
 		[ "${sub_path}" = "info" ] && [ "${LOCALBASE}" != "${PREFIX}" ] &&
 		    ignore_path=1
 
-		[ $ignore_path -eq 0 ] && echo "- ${sub_path}"
+		[ $ignore_path -eq 0 ] && printf -- "- %s\\n" "${sub_path}"
 		;;
 	M)
 		# Check relative/plist paths
