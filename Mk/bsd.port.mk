@@ -3787,12 +3787,7 @@ post-clean-noflavor:
 clean: ${CLEAN_DEPENDENCIES}
 .endif
 
-.if !empty(_FLAVOR)
-_CLEANFLAVORS=	${_FLAVOR}
-.else
-_CLEANFLAVORS=	${FLAVORS}
-.endif
-.for _f in ${_CLEANFLAVORS}
+.for _f in ${FLAVORS}
 CLEAN_DEPENDENCIES=
 .if !defined(NOCLEANDEPENDS)
 CLEAN_DEPENDENCIES+=	limited-clean-depends-${_f}
@@ -3814,6 +3809,7 @@ post-clean-${_f}:
 .endif
 .ORDER: ${CLEAN_DEPENDENCIES}
 clean: ${CLEAN_DEPENDENCIES}
+clean-${_f}: ${CLEAN_DEPENDENCIES}
 .endfor
 .endif
 
