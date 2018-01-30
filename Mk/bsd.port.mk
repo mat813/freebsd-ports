@@ -3761,7 +3761,7 @@ do-clean:
 .if !target(clean)
 pre-clean: clean-msg
 clean-msg:
-	@${ECHO_MSG} "===>  Cleaning for ${PKGNAME}"
+	@${ECHO_MSG} "===>  Cleaning for ${PKGNAME}${FLAVOR:? flavor ${FLAVOR}:}"
 
 .if empty(FLAVORS)
 CLEAN_DEPENDENCIES=
