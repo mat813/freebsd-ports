@@ -20,13 +20,13 @@ RUN_DEPENDS=	${LOCALBASE}/sbin/amavisd:security/amavisd-new \
 		${PEARDIR}/Net/Socket.php:net/pear-Net_Socket@${PHP_FLAVOR} \
 		${PEARDIR}/Mail/mimeDecode.php:mail/pear-Mail_mimeDecode@${PHP_FLAVOR}
 
+USES=		php:web
 PEARDIR?=	${LOCALBASE}/share/pear
 PLIST_SUB=	WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 SUB_FILES=	pkg-message
 NO_BUILD=	yes
 NO_ARCH=	yes
 USE_PHP=	sockets
-WANT_PHP_WEB=	yes
 
 OPTIONS_DEFINE=	IMAP LDAP DOCS
 OPTIONS_MULTI=	SQL

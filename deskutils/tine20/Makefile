@@ -13,7 +13,7 @@ COMMENT=	Professional Open Source Groupware and CRM
 
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		tar:bzip2 gettext
+USES=		tar:bzip2 gettext php:web
 NO_BUILD=	yes
 EXTRACT_AFTER_ARGS=	--no-same-owner --no-same-permissions -C ${WRKSRC}
 
@@ -26,7 +26,6 @@ MEMCACHE_DESC=	Enable pecl-memcache support
 USE_MYSQL=	yes
 USE_PHP=	ctype dom gd iconv json mcrypt pdo_mysql simplexml \
 		spl xml zip
-WANT_PHP_WEB=	yes
 
 LDAP_USE=	php=ldap
 MEMCACHE_USE=	php=memcache

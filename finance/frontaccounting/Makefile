@@ -34,16 +34,8 @@ NLS_USES=		gettext
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MAPACHE}
-WANT_PHP_WEB=yes
-.endif
-
-.if ${PORT_OPTIONS:MLIGHTTPD}
-WANT_PHP_WEB=yes
-.endif
-
-.if ${PORT_OPTIONS:MNGINX}
-WANT_PHP_WEB=yes
+.if ${PORT_OPTIONS:MAPACHE} || ${PORT_OPTIONS:MLIGHTTPD} || ${PORT_OPTIONS:MNGINX}
+USES+=	php:web
 .endif
 
 .if !${PORT_OPTIONS:MDOCS}

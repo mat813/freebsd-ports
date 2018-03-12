@@ -48,9 +48,6 @@
 #
 # IGNORE_WITH_PHP=N - The port doesn't work with PHP version N.
 #
-# You may combine multiple WANT_PHP_* knobs.
-# Don't specify any WANT_PHP_* knob if your port will work with every PHP SAPI.
-#
 # If you are building PHP-based ports in poudriere(8) with ZTS enabled,
 # add WITH_MPM=event to /etc/make.conf to prevent build failures.
 
@@ -62,21 +59,6 @@ _INCLUDE_USES_PHP_MK=	yes
 
 .  if defined(USE_PHPIZE) && empty(php_ARGS:Mphpize)
 php_ARGS+=	phpize
-.  endif
-.  if defined(WANT_PHP_CLI) && empty(php_ARGS:Mcli)
-php_ARGS+=	cli
-.  endif
-.  if defined(WANT_PHP_CGI) && empty(php_ARGS:Mcgi)
-php_ARGS+=	cgi
-.  endif
-.  if defined(WANT_PHP_MOD) && empty(php_ARGS:Mmod)
-php_ARGS+=	mod
-.  endif
-.  if defined(WANT_PHP_WEB) && empty(php_ARGS:Mweb)
-php_ARGS+=	web
-.  endif
-.  if defined(WANT_PHP_EMB) && empty(php_ARGS:Membed)
-php_ARGS+=	embed
 .  endif
 
 .  if ${php_ARGS:Mbuild} && ( ${php_ARGS:Mphpize} || ${php_ARGS:Mext} || ${php_ARGS:Mzend} )

@@ -18,8 +18,8 @@ RUN_DEPENDS=	git:devel/git
 PLIST=		${WRKDIR}/plist
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
+USES=		php:web
 NO_BUILD=	yes
-WANT_PHP_WEB=	yes
 
 USERS?=		${WWWOWN}
 GROUPS?=	${WWWGRP}

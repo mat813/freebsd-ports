@@ -18,9 +18,7 @@ USE_PHP=	curl \
 		session \
 		xml
 
-USES=	gettext
-
-WANT_PHP_MOD=	yes
+USES=	gettext php:mod
 
 OPTIONS_DEFINE=	ADDONS NLS
 OPTIONS_SINGLE=	DB

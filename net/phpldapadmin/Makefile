@@ -14,14 +14,12 @@ COMMENT=	PHP application to administer LDAP over the web
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		cpe tar:tgz
+USES=		cpe tar:tgz php:web
 CPE_VENDOR=	deon_george
 
 NO_ARCH=	yes
 NO_BUILD=	yes
 USE_PHP=	gettext ldap openssl pcre session xml iconv hash
-
-WANT_PHP_WEB=	yes
 
 GROUPS?=	${WWWGRP}
 CFGDIR=		config

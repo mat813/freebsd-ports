@@ -37,9 +37,9 @@ NGINX_RUN_DEPENDS=	nginx:www/nginx
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPHPMOD}
-WANT_PHP_MOD=	yes
+USES+=	php:mod
 .else
-WANT_PHP_CGI=	yes
+USES+=	php:cgi
 .endif
 
 # Set files to ignore.

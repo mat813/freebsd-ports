@@ -20,8 +20,6 @@ PLIST_SUB+=	${SUB_LIST}
 
 USE_PHP=	bcmath curl filter ftp json pdo_mysql posix session xml zip
 
-WANT_PHP_CLI=	yes
-
 NO_ARCH=	yes
 NO_BUILD=	yes
 
@@ -108,7 +106,9 @@ NLS_USE=	PHP=gettext
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MAPACHE}
-WANT_PHP_MOD=	yes
+USES+=	php:mod
+.else
+USES+=	php:cli
 .endif
 
 do-install:
