@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 
 PORTSCOUT=	skipv:3.12
 
-USES=		gettext shebangfix zip
+USES=		gettext shebangfix zip php
 SHEBANG_FILES=	report_runner.php make_release.sh
 USE_PHP=	mysqli gettext
 WRKSRC=		${WRKDIR}/webERP

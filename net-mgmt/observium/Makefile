@@ -20,7 +20,7 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-USES=		php:cli python${PY_MYSQL} shebangfix
+USES=		python${PY_MYSQL} shebangfix
 SHEBANG_FILES=	\
 		mibs/process.pl \
 		poller-wrapper.py \
@@ -79,10 +79,10 @@ PORTEXAMPLES=	snmp.conf.example snmpd.conf.example
 USES+=	apache:run,2.2+
 .endif
 .if !defined(PACKAGE_BUILDING)
-USES+=	php:mod
+USES+=	php:mod,cli
 .else
 # Package builder doesn't create php5 with module
-USES+=	php:web
+USES+=	php:web,cli
 .endif
 
 .if ${PORT_OPTIONS:MMYSQLD}

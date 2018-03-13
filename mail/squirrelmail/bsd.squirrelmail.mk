@@ -47,7 +47,6 @@ USE_PERL5+=	run
 NO_BUILD=	yes
 NO_ARCH=	yes
 NO_WRKSUBDIR=	yes
-USE_PHP?=	yes
 .if empty(USES:Mphp*)
 USES+=		php:web
 .endif

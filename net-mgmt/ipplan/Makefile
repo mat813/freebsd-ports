@@ -12,7 +12,7 @@ COMMENT=	IP address management and tracking
 
 RUN_DEPENDS=	nmap:security/nmap
 
-USES=		perl5 shebangfix
+USES=		perl5 shebangfix php
 USE_PERL5=	run
 USE_PHP=	gettext pcre xml zlib
 SHEBANG_FILES=	${WRKSRC}/contrib/process-exports.pl ${WRKSRC}/contrib/ipplan-poller.php

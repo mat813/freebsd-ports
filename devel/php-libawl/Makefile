@@ -21,7 +21,7 @@ OPTIONS_DEFAULT=	PHP
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPHP}
-USE_PHP=	YES
+USES+=	php
 .endif
 NO_BUILD=	YES
 LIBAWLDIR?=	share/awl

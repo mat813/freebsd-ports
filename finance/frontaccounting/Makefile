@@ -36,6 +36,8 @@ NLS_USES=		gettext
 
 .if ${PORT_OPTIONS:MAPACHE} || ${PORT_OPTIONS:MLIGHTTPD} || ${PORT_OPTIONS:MNGINX}
 USES+=	php:web
+.else
+USES+=	php
 .endif
 
 .if !${PORT_OPTIONS:MDOCS}

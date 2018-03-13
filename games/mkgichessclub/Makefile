@@ -21,7 +21,7 @@ NO_BUILD=	yes
 
 SUB_FILES=	pkg-message
 
-USES=		python
+USES=		python php
 USE_MYSQL=	server
 USE_PHP=	mysql pcre session
 GNUCHESS_RUN_DEPENDS=	gnuchess:games/gnuchess

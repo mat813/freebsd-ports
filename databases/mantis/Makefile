@@ -8,6 +8,7 @@ CATEGORIES=	databases www
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Bug tracking system written in PHP
 
+USES=		php
 NO_BUILD=	yes
 USE_PHP=	hash pcre session xml
 USE_GITHUB=	yes

@@ -12,7 +12,7 @@ COMMENT=	Allows users to change their passwords stored in LDAP Tree
 
 LICENSE=	GPLv2
 
-USE_PHP+=	ldap
+USE_PHP+=	ldap php
 USES=		gettext
 
 USE_GENERIC_PKGMESSAGE=	yes

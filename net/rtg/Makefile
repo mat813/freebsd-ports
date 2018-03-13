@@ -3,7 +3,7 @@
 
 PORTNAME=	rtg
 PORTVERSION=	0.7.4
-PORTREVISION=	14
+PORTREVISION=	15
 CATEGORIES=	net
 MASTER_SITES=	SF \
 		ftp://ftpmirror.uk/freebsd-ports/rtg/
@@ -17,9 +17,9 @@ LIB_DEPENDS=	libnetsnmp.so:net-mgmt/net-snmp
 RUN_DEPENDS=	p5-DBI>=0:databases/p5-DBI \
 		p5-DBD-mysql>=0:databases/p5-DBD-mysql
 
+USES=		shebangfix mysql:client ssl
 USE_RC_SUBR=	rtgpoll
 WANT_PERL=	yes
-USES=		shebangfix mysql:client ssl
 SHEBANG_FILES=	etc/95.pl etc/report.pl etc/rtgtargmkr.pl.in
 SUB_FILES=	pkg-message
 GNU_CONFIGURE=	yes
@@ -38,7 +38,7 @@ WEB_DESC=	Include PHP-based web client interface pre-requisites
 MYSQL_USES=	mysql:server
 
 WEB_USES=	php
-USE_PHP=	mysqli spl
+WEB_USE=	PHP=mysqli,spl
 
 CFLAGS+=	-fstack-protector
 LDFLAGS+=	-fstack-protector

@@ -19,7 +19,7 @@ LIB_DEPENDS=	libltdl.so:devel/libltdl \
 		libpng.so:graphics/png \
 		libgd.so:graphics/gd
 
-USES=		cpe gmake jpeg perl5
+USES=		cpe gmake jpeg perl5 php
 USE_PERL5=	build
 USE_PHP=	xml
 USE_RC_SUBR=	nagios

@@ -11,14 +11,12 @@ DISTNAME=	${PORTNAME}-core-${PORTVERSION}
 MAINTAINER=	eksffa@freebsdbrasil.com.br
 COMMENT=	Web based GroupWare system
 
-# php extensions
+USES=	gettext php:mod
 USE_PHP=	curl \
 		gd \
 		pcre \
 		session \
 		xml
-
-USES=	gettext php:mod
 
 OPTIONS_DEFINE=	ADDONS NLS
 OPTIONS_SINGLE=	DB

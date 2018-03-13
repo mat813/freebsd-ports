@@ -37,30 +37,22 @@ WWW_DESC=	Install web interface
 WWWGD_DESC=	Graphic reports
 
 MYSQL_USES=		mysql
+MYSQL_USE=		php=mysqli
 MYSQL_BUILD_DEPENDS=	p5-DBD-mysql>=0:databases/p5-DBD-mysql
 MYSQL_RUN_DEPENDS=	p5-DBD-mysql>=0:databases/p5-DBD-mysql
 
 PGSQL_USES=		pgsql
+PGSQL_USE=		php=pgsql
 PGSQL_BUILD_DEPENDS=	p5-DBD-Pg>=0:databases/p5-DBD-Pg
 PGSQL_RUN_DEPENDS=	p5-DBD-Pg>=0:databases/p5-DBD-Pg
 
+WWW_USE=	php=pcre
+WWW_USES=	php:web
+WWW_USES_OFF=	php
+
+WWWGD_USE=	php=gd
+
 LIBWRAP_CONFIGURE_OFF=	--disable-libwrap
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MWWW}
-USE_PHP=	pcre
-USES+=		php:web
-.if ${PORT_OPTIONS:MWWWGD}
-USE_PHP+=	gd
-.endif
-.if ${PORT_OPTIONS:MMYSQL}
-USE_PHP+=	mysqli
-.endif
-.if ${PORT_OPTIONS:MPGSQL}
-USE_PHP+=	pgsql
-.endif
-.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|createsqltables.|${DATADIR}/sql/createsqltables.|g' \

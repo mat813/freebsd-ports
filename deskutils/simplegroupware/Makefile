@@ -11,7 +11,7 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple Groupware is an open source enterprise application
 
 NO_BUILD=	yes
-USES=		apache:run,2.2+
+USES=		apache:run,2.2+ php
 USE_MYSQL=	yes
 USE_PHP=	mysql
 

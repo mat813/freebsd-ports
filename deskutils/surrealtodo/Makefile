@@ -11,7 +11,7 @@ DISTNAME=	surrealtodo_v${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Surreal ToDo is an AJAX enabled web 2.0 list manager
 
-USES=		zip
+USES=		zip php
 USE_PHP=	mysql
 IGNORE_WITH_PHP=	70
 NO_BUILD=	yes

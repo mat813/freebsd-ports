@@ -11,6 +11,7 @@ DISTNAME=	dracMail-${PORTVERSION}_release
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	DracMail is a webmail interface built using PHP
 
+USES=	php
 USE_PHP+=	mysql imap dom tidy iconv mbstring
 USE_MYSQL=	yes
 IGNORE_WITH_PHP=	70

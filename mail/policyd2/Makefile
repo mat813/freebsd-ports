@@ -46,6 +46,7 @@ PGSQL_RUN_DEPENDS=	p5-DBD-Pg>=0:databases/p5-DBD-Pg
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MWEBUI}
+USES+=	php
 . if ${PORT_OPTIONS:MMYSQL}
 USE_PHP=	pdo_mysql
 . endif

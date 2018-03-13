@@ -11,7 +11,7 @@ MAINTAINER=	wen@FreeBSD.org
 COMMENT=	Open-Source e-Commerce Software for Web 2.0
 
 EXTRACT_DEPENDS=	${UNZIP_CMD}:archivers/unzip
-USES=		cpe shebangfix zip
+USES=		cpe shebangfix php zip
 NO_BUILD=	yes
 PRESTADIR=	www/${PORTNAME}
 PLIST=		${WRKDIR}/plist

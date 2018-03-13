@@ -10,15 +10,16 @@ MASTER_SITES=	http://open.rhx.it/phamm/
 MAINTAINER=	gustavofukao@gmail.com
 COMMENT=	Front-end written in PHP to manage virtual service
 
-NO_BUILD=	yes
+USES=		gettext shebangfix php
 USE_PHP=	gettext ldap openssl pcre session
 
-USES=		gettext shebangfix
 SHEBANG_FILES=	po/update-all-mo.sh \
 		tools/*.sh tools/*.pl \
 		tools/ldap-schema-manage
 PHAMMDIR?=	www/${PORTNAME}
 SCHEMADIR=	${WRKSRC}/schema
+
+NO_BUILD=	yes
 
 SUB_FILES=	pkg-message
 SUB_LIST=	PHAMMDIR=${PHAMMDIR} PKGNAME=${PKGNAME}

@@ -17,6 +17,7 @@ NO_ARCH=	yes
 NO_BUILD=	yes
 USES=		cpe tar:bzip2 shebangfix
 .if !defined(WITHOUT_PHP_DEPENDS)
+USES+=		php
 USE_PHP=	pgsql pcre session
 .endif
 

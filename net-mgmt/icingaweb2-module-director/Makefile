@@ -17,7 +17,6 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	icinga
 
 USES=		php
-USE_PHP=	yes
 
 NO_BUILD=	yes
 NO_ARCH=	yes

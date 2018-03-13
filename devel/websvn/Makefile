@@ -13,7 +13,7 @@ COMMENT=	Subversion repository web frontend
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/license.txt
 
-USES=		cpe
+USES=		cpe php
 USE_PHP=	iconv pcre xml
 NO_BUILD=	yes
 
