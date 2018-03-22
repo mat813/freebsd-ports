@@ -24,7 +24,8 @@ IGNORE= Incorrect 'USES+= gem:${gem_ARGS}' usage: argument [${arg}] is not recog
 BUILD_DEPENDS+=	${RUBYGEMBIN}:devel/ruby-gems
 RUN_DEPENDS+=	${RUBYGEMBIN}:devel/ruby-gems
 
-PKGNAMEPREFIX?=	rubygem-
+RG_PKGNAMEPREFIX=	rubygem-
+PKGNAMEPREFIX?=	${RG_PKGNAMEPREFIX}
 EXTRACT_SUFX=	.gem
 EXTRACT_ONLY=
 DIST_SUBDIR=	rubygem
