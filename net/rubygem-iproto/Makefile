@@ -9,7 +9,7 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby implementation of Mail.Ru iproto protocol
 
-RUN_DEPENDS=	rubygem-bin_utils>=0.0.3:devel/rubygem-bin_utils
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bin_utils>=0.0.3:devel/rubygem-bin_utils
 
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE

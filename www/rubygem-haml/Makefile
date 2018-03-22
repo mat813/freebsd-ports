@@ -12,8 +12,8 @@ COMMENT=	Markup language to describe HTML
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-temple>=0.8.0:devel/rubygem-temple \
-		rubygem-tilt>=0:devel/rubygem-tilt
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}temple>=0.8.0:devel/rubygem-temple \
+		${RG_PKGNAMEPREFIX}tilt>=0:devel/rubygem-tilt
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -11,8 +11,8 @@ COMMENT=	Ruby binding of GDK specific API of Clutter
 
 LICENSE=	LGPL21+
 
-RUN_DEPENDS=	rubygem-clutter>=${PORTVERSION}:graphics/rubygem-clutter \
-		rubygem-gdk3>=${PORTVERSION}:x11-toolkits/rubygem-gdk3
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}clutter>=${PORTVERSION}:graphics/rubygem-clutter \
+		${RG_PKGNAMEPREFIX}gdk3>=${PORTVERSION}:x11-toolkits/rubygem-gdk3
 
 NO_ARCH=	yes
 USE_RUBY=	yes

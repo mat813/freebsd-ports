@@ -11,16 +11,16 @@ COMMENT=	Sinatra-based framework for building dashboards
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-coffee-script>=2.4.1:devel/rubygem-coffee-script \
-		rubygem-execjs>=2.7.0:devel/rubygem-execjs \
-		rubygem-rack>=2.0.0:www/rubygem-rack \
-		rubygem-rufus-scheduler>=3.4.2:devel/rubygem-rufus-scheduler \
-		rubygem-sass34>=3.4.24:textproc/rubygem-sass34 \
-		rubygem-sinatra>=2.0.0:www/rubygem-sinatra \
-		rubygem-sinatra-contrib>=2.0.0:www/rubygem-sinatra-contrib \
-		rubygem-sprockets3>=3.7.1:devel/rubygem-sprockets3 \
-		rubygem-thin>=1.7.0:www/rubygem-thin \
-		rubygem-thor>=0.19.4:devel/rubygem-thor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}coffee-script>=2.4.1:devel/rubygem-coffee-script \
+		${RG_PKGNAMEPREFIX}execjs>=2.7.0:devel/rubygem-execjs \
+		${RG_PKGNAMEPREFIX}rack>=2.0.0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}rufus-scheduler>=3.4.2:devel/rubygem-rufus-scheduler \
+		${RG_PKGNAMEPREFIX}sass34>=3.4.24:textproc/rubygem-sass34 \
+		${RG_PKGNAMEPREFIX}sinatra>=2.0.0:www/rubygem-sinatra \
+		${RG_PKGNAMEPREFIX}sinatra-contrib>=2.0.0:www/rubygem-sinatra-contrib \
+		${RG_PKGNAMEPREFIX}sprockets3>=3.7.1:devel/rubygem-sprockets3 \
+		${RG_PKGNAMEPREFIX}thin>=1.7.0:www/rubygem-thin \
+		${RG_PKGNAMEPREFIX}thor>=0.19.4:devel/rubygem-thor
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -11,10 +11,10 @@ COMMENT=	File attachments as attributes for DataMapper
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-dm-core>=1.2.0:databases/rubygem-dm-core \
-		rubygem-dm-migrations>=1.2.0:databases/rubygem-dm-migrations \
-		rubygem-dm-validations>=1.2.0:databases/rubygem-dm-validations \
-		rubygem-extlib>=0:devel/rubygem-extlib
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}dm-core>=1.2.0:databases/rubygem-dm-core \
+		${RG_PKGNAMEPREFIX}dm-migrations>=1.2.0:databases/rubygem-dm-migrations \
+		${RG_PKGNAMEPREFIX}dm-validations>=1.2.0:databases/rubygem-dm-validations \
+		${RG_PKGNAMEPREFIX}extlib>=0:devel/rubygem-extlib
 
 NO_ARCH=	yes
 

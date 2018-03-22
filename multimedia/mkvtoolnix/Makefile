@@ -13,7 +13,7 @@ COMMENT=	Tools to extract from/get info about/create Matroska media streams
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	rake:devel/rubygem-rake \
+BUILD_DEPENDS=	rake:devel/${RG_PKGNAMEPREFIX}rake \
 		docbook-xsl>=0:textproc/docbook-xsl \
 		xsltproc:textproc/libxslt
 LIB_DEPENDS=	libvorbis.so:audio/libvorbis \

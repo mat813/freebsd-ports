@@ -10,7 +10,7 @@ COMMENT=	TOML parser using Citrus parsing library
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-citrus>=3.0:textproc/rubygem-citrus
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}citrus>=3.0:textproc/rubygem-citrus
 
 NO_ARCH=	yes
 USE_RUBY=	yes

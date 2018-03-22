@@ -42,8 +42,8 @@ RUBY_DESC=		Enable Ruby module
 RUBY_BROKEN=		Does not build
 RUBY_USE=		RUBY=yes
 RUBY_CONFIGURE_OFF=	--with-ruby=no
-RUBY_BUILD_DEPENDS=	rubygem-glib2>0:devel/rubygem-glib2
-RUBY_RUN_DEPENDS=	rubygem-glib2>0:devel/rubygem-glib2
+RUBY_BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}glib2>0:devel/rubygem-glib2
+RUBY_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}glib2>0:devel/rubygem-glib2
 RUBY_CFLAGS=		-I${LOCALBASE}/include/ruby-${RUBY_VER} \
 			-I${LOCALBASE}/include/ruby-${RUBY_VER}/${RUBY_ARCH}
 UNIHAN_DESC=		Enable Unihan database dictionary module

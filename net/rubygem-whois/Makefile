@@ -12,7 +12,7 @@ COMMENT=	Ruby whois library
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-activesupport4>=3:devel/rubygem-activesupport4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport4>=3:devel/rubygem-activesupport4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,7 +12,7 @@ COMMENT=	Generates attr_accessors that encrypt and decrypt attributes
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-encryptor>=3.0.0:security/rubygem-encryptor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}encryptor>=3.0.0:security/rubygem-encryptor
 
 PORTSCOUT=	limit:^3\.0\.
 

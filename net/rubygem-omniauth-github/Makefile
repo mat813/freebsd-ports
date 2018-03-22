@@ -10,8 +10,8 @@ COMMENT=	Official OmniAuth strategy for GitHub
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-omniauth>=1.5:security/rubygem-omniauth \
-		rubygem-omniauth-oauth2>=1.4.0:net/rubygem-omniauth-oauth2
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}omniauth>=1.5:security/rubygem-omniauth \
+		${RG_PKGNAMEPREFIX}omniauth-oauth2>=1.4.0:net/rubygem-omniauth-oauth2
 
 NO_ARCH=	yes
 USE_RUBY=	yes

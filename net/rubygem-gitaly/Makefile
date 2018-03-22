@@ -11,10 +11,10 @@ COMMENT=	Auto-generated gRPC client for gitaly
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/ruby/LICENSE.txt
 
-BUILD_DEPENDS=	rubygem-bundler>=1.12:sysutils/rubygem-bundler \
-		rubygem-rake>=10.0:devel/rubygem-rake
-RUN_DEPENDS=	rubygem-google-protobuf>=3.4.0.2:devel/rubygem-google-protobuf \
-		rubygem-grpc>=1.0:net/rubygem-grpc \
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}bundler>=1.12:sysutils/rubygem-bundler \
+		${RG_PKGNAMEPREFIX}rake>=10.0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}google-protobuf>=3.4.0.2:devel/rubygem-google-protobuf \
+		${RG_PKGNAMEPREFIX}grpc>=1.0:net/rubygem-grpc \
 		gitaly>=0.11.2:devel/gitaly
 
 NO_ARCH=	yes

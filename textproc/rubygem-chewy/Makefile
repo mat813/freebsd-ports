@@ -12,9 +12,9 @@ COMMENT=	ODM and wrapper for Elasticsearch client
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-activesupport5>=4.0:devel/rubygem-activesupport5 \
-		rubygem-elasticsearch>=2.0.0:textproc/rubygem-elasticsearch \
-		rubygem-elasticsearch-dsl>=0:textproc/rubygem-elasticsearch-dsl
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport5>=4.0:devel/rubygem-activesupport5 \
+		${RG_PKGNAMEPREFIX}elasticsearch>=2.0.0:textproc/rubygem-elasticsearch \
+		${RG_PKGNAMEPREFIX}elasticsearch-dsl>=0:textproc/rubygem-elasticsearch-dsl
 
 NO_ARCH=	yes
 USE_RUBY=	yes

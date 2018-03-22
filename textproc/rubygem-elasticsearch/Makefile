@@ -12,8 +12,8 @@ COMMENT=	Ruby integrations for Elasticsearch
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-elasticsearch-api=${PORTVERSION}:textproc/rubygem-elasticsearch-api \
-		rubygem-elasticsearch-transport=${PORTVERSION}:textproc/rubygem-elasticsearch-transport
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}elasticsearch-api=${PORTVERSION}:textproc/rubygem-elasticsearch-api \
+		${RG_PKGNAMEPREFIX}elasticsearch-transport=${PORTVERSION}:textproc/rubygem-elasticsearch-transport
 
 NO_ARCH=	yes
 USE_RUBY=	yes

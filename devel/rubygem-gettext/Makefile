@@ -12,8 +12,8 @@ COMMENT=	Ruby implementation of the gettext library
 LICENSE=	RUBY LGPL3
 LICENSE_COMB=	dual
 
-RUN_DEPENDS=	rubygem-locale>=2.0.5:devel/rubygem-locale \
-		rubygem-text>=1.3.0:textproc/rubygem-text
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}locale>=2.0.5:devel/rubygem-locale \
+		${RG_PKGNAMEPREFIX}text>=1.3.0:textproc/rubygem-text
 
 NO_ARCH=	yes
 

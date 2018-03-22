@@ -11,8 +11,8 @@ COMMENT=	JSON-LD reader/writer for Ruby
 LICENSE=	UNLICENSE
 LICENSE_FILE=	${WRKSRC}/UNLICENSE
 
-RUN_DEPENDS=	rubygem-multi_json>=1.12:devel/rubygem-multi_json \
-		rubygem-rdf>=2.2.8:www/rubygem-rdf
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}multi_json>=1.12:devel/rubygem-multi_json \
+		${RG_PKGNAMEPREFIX}rdf>=2.2.8:www/rubygem-rdf
 
 USES=		gem
 USE_RUBY=	yes

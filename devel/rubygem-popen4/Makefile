@@ -14,8 +14,8 @@ LICENSE=	GPLv2 RUBY
 LICENSE_COMB=	dual
 LICENSE_FILE_RUBY=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-open4>=0.4.0:devel/rubygem-open4 \
-		rubygem-platform>=0.4.0:devel/rubygem-platform
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}open4>=0.4.0:devel/rubygem-open4 \
+		${RG_PKGNAMEPREFIX}platform>=0.4.0:devel/rubygem-platform
 
 NO_ARCH=	yes
 USE_RUBY=	yes

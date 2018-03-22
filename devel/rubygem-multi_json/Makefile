@@ -22,8 +22,8 @@ NO_ARCH=	yes
 USE_RUBY=	yes
 USES=		gem
 
-JSON_RUN_DEPENDS=	rubygem-json>=0:devel/rubygem-json
-JSON_PURE_RUN_DEPENDS=	rubygem-json_pure>=0:devel/rubygem-json_pure
-YAJL_RUBY_RUN_DEPENDS=	rubygem-yajl-ruby>=0:devel/rubygem-yajl-ruby
+JSON_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json>=0:devel/rubygem-json
+JSON_PURE_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json_pure>=0:devel/rubygem-json_pure
+YAJL_RUBY_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}yajl-ruby>=0:devel/rubygem-yajl-ruby
 
 .include <bsd.port.mk>

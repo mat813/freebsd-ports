@@ -12,7 +12,7 @@ COMMENT=	Mirror rubygems
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-net-http-persistent2>=2.9:www/rubygem-net-http-persistent2
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}net-http-persistent2>=2.9:www/rubygem-net-http-persistent2
 
 NO_ARCH=	yes
 USE_RUBY=	yes

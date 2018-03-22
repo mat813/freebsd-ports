@@ -10,8 +10,8 @@ COMMENT=	Pure Ruby PDF document creation library
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-color>=1.4.0:print/rubygem-color \
-		rubygem-transaction-simple>=1.3:devel/rubygem-transaction-simple
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}color>=1.4.0:print/rubygem-color \
+		${RG_PKGNAMEPREFIX}transaction-simple>=1.3:devel/rubygem-transaction-simple
 
 NO_ARCH=	yes
 

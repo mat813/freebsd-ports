@@ -13,8 +13,8 @@ COMMENT=	HTTP router for use in Rack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rack>=1.0.0:www/rubygem-rack \
-		rubygem-url_mount>=0.2.1:www/rubygem-url_mount
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack>=1.0.0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}url_mount>=0.2.1:www/rubygem-url_mount
 
 NO_ARCH=	yes
 USE_RUBY=	yes

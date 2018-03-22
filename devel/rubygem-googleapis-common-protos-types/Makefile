@@ -8,7 +8,7 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Common protocol buffer types used by Google APIs
 
-RUN_DEPENDS=	rubygem-google-protobuf>=3.0:devel/rubygem-google-protobuf
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}google-protobuf>=3.0:devel/rubygem-google-protobuf
 
 USES=		gem
 USE_RUBY=	yes

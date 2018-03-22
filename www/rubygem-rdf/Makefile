@@ -12,8 +12,8 @@ COMMENT=	Pure-Ruby library for working with RDF data
 LICENSE=	UNLICENSE
 LICENSE_FILE=	${WRKSRC}/UNLICENSE
 
-RUN_DEPENDS=	rubygem-hamster>=3.0:devel/rubygem-hamster \
-		rubygem-link_header>=0.0.8:www/rubygem-link_header
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hamster>=3.0:devel/rubygem-hamster \
+		${RG_PKGNAMEPREFIX}link_header>=0.0.8:www/rubygem-link_header
 
 USES=		gem
 USE_RUBY=	yes

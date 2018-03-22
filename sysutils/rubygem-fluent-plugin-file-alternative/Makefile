@@ -9,8 +9,8 @@ MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Gems for fluent plugin of alternative implementation of out_file
 
 RUN_DEPENDS=	\
-	rubygem-fluentd>0:sysutils/rubygem-fluentd \
-	rubygem-fluent-mixin-plaintextformatter>0:sysutils/rubygem-fluent-mixin-plaintextformatter
+	${RG_PKGNAMEPREFIX}fluentd>0:sysutils/rubygem-fluentd \
+	${RG_PKGNAMEPREFIX}fluent-mixin-plaintextformatter>0:sysutils/rubygem-fluent-mixin-plaintextformatter
 
 USE_RUBY=	yes
 USES=		gem

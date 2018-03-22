@@ -14,9 +14,9 @@ LICENSE_COMB=	multi
 
 BROKEN_RUBY24=	Build succeeds, but using binary results in segmentation fault
 
-BUILD_DEPENDS=	rubygem-glib2>0:devel/rubygem-glib2
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}glib2>0:devel/rubygem-glib2
 LIB_DEPENDS=	libev.so:devel/libev
-RUN_DEPENDS=	rubygem-glib2>0:devel/rubygem-glib2
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}glib2>0:devel/rubygem-glib2
 
 USES=		gettext gmake libtool pathfix pkgconfig
 USE_RC_SUBR=	milter-manager

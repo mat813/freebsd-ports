@@ -11,8 +11,8 @@ COMMENT=	Official OmniAuth strategy for GitHub
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-omniauth>=1.0:security/rubygem-omniauth \
-		rubygem-omniauth-oauth2>=1.1:net/rubygem-omniauth-oauth2
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}omniauth>=1.0:security/rubygem-omniauth \
+		${RG_PKGNAMEPREFIX}omniauth-oauth2>=1.1:net/rubygem-omniauth-oauth2
 
 PORTSCOUT=	limit:^1\.1\.
 

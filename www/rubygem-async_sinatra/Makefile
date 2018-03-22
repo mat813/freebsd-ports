@@ -11,8 +11,8 @@ COMMENT=	Sinatra plugin to provide async responses
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-rack>=2.0.0:www/rubygem-rack \
-		rubygem-sinatra>=1.4.8:www/rubygem-sinatra
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack>=2.0.0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}sinatra>=1.4.8:www/rubygem-sinatra
 
 NO_ARCH=	yes
 USE_RUBY=	yes

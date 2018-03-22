@@ -5,7 +5,7 @@
         for templating and mongrel or thin as an HTTP server.
         To use them, install the respective ports separately:
 
-                www/rubygem-haml
-                devel/rubygem-builder
-                www/rubygem-mongrel
-                www/rubygem-thin
+                www/${RG_PKGNAMEPREFIX}haml
+                devel/${RG_PKGNAMEPREFIX}builder
+                www/${RG_PKGNAMEPREFIX}mongrel
+                www/${RG_PKGNAMEPREFIX}thin

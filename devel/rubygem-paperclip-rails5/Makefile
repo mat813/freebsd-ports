@@ -13,11 +13,11 @@ COMMENT=	Easy upload management for ActiveRecord
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-activemodel5>=4.2.0:databases/rubygem-activemodel5 \
-		rubygem-activesupport5>=4.2.0:devel/rubygem-activesupport5 \
-		rubygem-mimemagic>=0.3.0:misc/rubygem-mimemagic \
-		rubygem-mime-types>=0:misc/rubygem-mime-types \
-		rubygem-terrapin>=0.6.0:devel/rubygem-terrapin
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel5>=4.2.0:databases/rubygem-activemodel5 \
+		${RG_PKGNAMEPREFIX}activesupport5>=4.2.0:devel/rubygem-activesupport5 \
+		${RG_PKGNAMEPREFIX}mimemagic>=0.3.0:misc/rubygem-mimemagic \
+		${RG_PKGNAMEPREFIX}mime-types>=0:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}terrapin>=0.6.0:devel/rubygem-terrapin
 
 USES=		gem
 USE_RUBY=	yes

@@ -10,8 +10,8 @@ COMMENT=	Ruby binding for cairo-gobject
 
 LICENSE=	LGPL21+
 
-RUN_DEPENDS=	rubygem-cairo>=0:graphics/rubygem-cairo \
-		rubygem-glib2>=${PORTVERSION}:devel/rubygem-glib2
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cairo>=0:graphics/rubygem-cairo \
+		${RG_PKGNAMEPREFIX}glib2>=${PORTVERSION}:devel/rubygem-glib2
 
 USE_GNOME=	cairo glib20
 USE_RUBY=	yes

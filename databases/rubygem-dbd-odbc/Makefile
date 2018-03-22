@@ -10,7 +10,7 @@ COMMENT=	ODBC driver for DBI-for-Ruby
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	rubygem-dbi>=0:databases/rubygem-dbi \
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}dbi>=0:databases/rubygem-dbi \
 		${RUBY_SITEARCHLIBDIR}/odbc.so:databases/ruby-odbc
 
 NO_ARCH=	yes

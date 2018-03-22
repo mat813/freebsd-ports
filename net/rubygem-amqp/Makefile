@@ -12,8 +12,8 @@ COMMENT=	Implementation of the AMQP protocol for RabbitMQ clients
 LICENSE=	BSD2CLAUSE RUBY
 LICENSE_COMB=	dual
 
-RUN_DEPENDS=	rubygem-amq-protocol>=2.2.0:net/rubygem-amq-protocol \
-		rubygem-eventmachine>=0:devel/rubygem-eventmachine
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}amq-protocol>=2.2.0:net/rubygem-amq-protocol \
+		${RG_PKGNAMEPREFIX}eventmachine>=0:devel/rubygem-eventmachine
 
 NO_ARCH=	yes
 USE_RUBY=	yes

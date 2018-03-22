@@ -13,8 +13,8 @@ COMMENT=	Job class declarations for a variety of queueing backends
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport50>=${PORTVERSION}:devel/rubygem-activesupport50 \
-		rubygem-globalid-rails50>=0.3.6:databases/rubygem-globalid-rails50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport50>=${PORTVERSION}:devel/rubygem-activesupport50 \
+		${RG_PKGNAMEPREFIX}globalid-rails50>=0.3.6:databases/rubygem-globalid-rails50
 
 PORTSCOUT=	limit:^5\.0\.
 

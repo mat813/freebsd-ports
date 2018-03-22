@@ -13,7 +13,7 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
-RUN_DEPENDS=	rubygem-ffi>=1.3.0:devel/rubygem-ffi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=1.3.0:devel/rubygem-ffi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

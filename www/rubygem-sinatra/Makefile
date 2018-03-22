@@ -12,10 +12,10 @@ COMMENT=	Classy web development framework in ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-mustermann>=1.0:devel/rubygem-mustermann \
-		rubygem-rack>=2.0:www/rubygem-rack \
-		rubygem-rack-protection>=${PORTVERSION}:www/rubygem-rack-protection \
-		rubygem-tilt>=2.0:devel/rubygem-tilt
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}mustermann>=1.0:devel/rubygem-mustermann \
+		${RG_PKGNAMEPREFIX}rack>=2.0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}rack-protection>=${PORTVERSION}:www/rubygem-rack-protection \
+		${RG_PKGNAMEPREFIX}tilt>=2.0:devel/rubygem-tilt
 
 NO_ARCH=	yes
 USE_RUBY=	yes

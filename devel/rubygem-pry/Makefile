@@ -12,8 +12,8 @@ COMMENT=	IRB alternative and runtime developer console
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-coderay>=1.1.0:textproc/rubygem-coderay \
-		rubygem-method_source>=0.9.0:devel/rubygem-method_source
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}coderay>=1.1.0:textproc/rubygem-coderay \
+		${RG_PKGNAMEPREFIX}method_source>=0.9.0:devel/rubygem-method_source
 
 NO_ARCH=	yes
 USE_RUBY=	yes

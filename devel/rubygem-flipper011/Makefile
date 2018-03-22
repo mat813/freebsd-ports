@@ -12,7 +12,7 @@ COMMENT=	Act of enabling/disabling features in your application
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-CONFLICTS_INSTALL=	rubygem-flipper rubygem-flipper010
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}flipper rubygem-flipper010
 
 PORTSCOUT=	limit:^0\.11\.
 

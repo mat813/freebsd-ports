@@ -11,7 +11,7 @@ COMMENT=	Fast, flexible, easy to use logging service for Ruby
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-eventmachine>=1.2:devel/rubygem-eventmachine
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}eventmachine>=1.2:devel/rubygem-eventmachine
 
 NO_ARCH=	yes
 USE_RUBY=	yes

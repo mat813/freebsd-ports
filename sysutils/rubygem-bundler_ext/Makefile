@@ -11,7 +11,7 @@ COMMENT=	Loads gems installed on the system using Bundler Gemfile DSL
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-bundler>=0:sysutils/rubygem-bundler
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bundler>=0:sysutils/rubygem-bundler
 
 NO_ARCH=	yes
 USE_RUBY=	yes

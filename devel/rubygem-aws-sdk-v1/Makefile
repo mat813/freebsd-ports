@@ -10,8 +10,8 @@ COMMENT=	AWS SDK for Ruby V1
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-json1>=1.4:devel/rubygem-json1 \
-		rubygem-nokogiri>=1:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json1>=1.4:devel/rubygem-json1 \
+		${RG_PKGNAMEPREFIX}nokogiri>=1:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USE_RUBY=	yes

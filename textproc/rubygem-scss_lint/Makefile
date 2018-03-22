@@ -11,8 +11,8 @@ COMMENT=	SCSS linter
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-rake>=0.9:devel/rubygem-rake \
-		rubygem-sass>=3.5.5:textproc/rubygem-sass
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0.9:devel/rubygem-rake \
+		${RG_PKGNAMEPREFIX}sass>=3.5.5:textproc/rubygem-sass
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -10,7 +10,7 @@ COMMENT=	Helpers to construct database queries with ActiveRecord and Arel
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activerecord4>=3.1.0:databases/rubygem-activerecord4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord4>=3.1.0:databases/rubygem-activerecord4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

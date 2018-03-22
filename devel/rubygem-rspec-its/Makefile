@@ -13,8 +13,8 @@ COMMENT=	RSpec extension gem for attribute matching
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-rspec-core>=${PORTVERSION:R}:devel/rubygem-rspec-core \
-		rubygem-rspec-expectations>=${PORTVERSION:R}:devel/rubygem-rspec-expectations
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rspec-core>=${PORTVERSION:R}:devel/rubygem-rspec-core \
+		${RG_PKGNAMEPREFIX}rspec-expectations>=${PORTVERSION:R}:devel/rubygem-rspec-expectations
 
 NO_ARCH=	yes
 USES=		gem shebangfix

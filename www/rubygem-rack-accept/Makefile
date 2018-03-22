@@ -11,7 +11,7 @@ COMMENT=	HTTP Accept* for Ruby/Rack
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-rack>=0.4:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack>=0.4:www/rubygem-rack
 
 NO_ARCH=	yes
 USE_RUBY=	yes

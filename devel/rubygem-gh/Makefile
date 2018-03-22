@@ -13,11 +13,11 @@ COMMENT=	Multi-layer client for the GitHub API v3
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-addressable>=2.4.0:www/rubygem-addressable \
-		rubygem-faraday>=0.8:www/rubygem-faraday \
-		rubygem-multi_json>=1.0:devel/rubygem-multi_json \
-		rubygem-net-http-persistent2>=2.9:www/rubygem-net-http-persistent2 \
-		rubygem-net-http-pipeline>=0:www/rubygem-net-http-pipeline
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}addressable>=2.4.0:www/rubygem-addressable \
+		${RG_PKGNAMEPREFIX}faraday>=0.8:www/rubygem-faraday \
+		${RG_PKGNAMEPREFIX}multi_json>=1.0:devel/rubygem-multi_json \
+		${RG_PKGNAMEPREFIX}net-http-persistent2>=2.9:www/rubygem-net-http-persistent2 \
+		${RG_PKGNAMEPREFIX}net-http-pipeline>=0:www/rubygem-net-http-pipeline
 
 NO_ARCH=	yes
 REINPLACE_ARGS=	-i ''

@@ -11,8 +11,8 @@ COMMENT=	Protobuf specifications and client libraries for Gitaly
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-google-protobuf>=3.1:devel/rubygem-google-protobuf \
-		rubygem-grpc>=1.0:net/rubygem-grpc
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}google-protobuf>=3.1:devel/rubygem-google-protobuf \
+		${RG_PKGNAMEPREFIX}grpc>=1.0:net/rubygem-grpc
 
 NO_ARCH=	yes
 USE_RUBY=	yes

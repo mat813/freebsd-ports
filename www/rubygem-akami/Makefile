@@ -12,8 +12,8 @@ COMMENT=	Library for building web service security
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-gyoku>=0.4.0:devel/rubygem-gyoku \
-		rubygem-nokogiri>=0:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}gyoku>=0.4.0:devel/rubygem-gyoku \
+		${RG_PKGNAMEPREFIX}nokogiri>=0:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USE_RUBY=	yes

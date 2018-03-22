@@ -10,8 +10,8 @@ COMMENT=	Ruby binding for GObjectIntrospection
 
 LICENSE=	LGPL21+
 
-BUILD_DEPENDS=	rubygem-pkg-config>=0:devel/rubygem-pkg-config
-RUN_DEPENDS=	rubygem-glib2>=${PORTVERSION}:devel/rubygem-glib2
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}pkg-config>=0:devel/rubygem-pkg-config
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}glib2>=${PORTVERSION}:devel/rubygem-glib2
 
 BROKEN_sparc64=	does not build: fails to compile rb-gi-function-info.c
 

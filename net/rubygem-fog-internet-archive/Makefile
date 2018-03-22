@@ -11,9 +11,9 @@ COMMENT=	Module for the 'fog' gem to support Internet Archive
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-fog-core>=0:devel/rubygem-fog-core \
-		rubygem-fog-json>=0:devel/rubygem-fog-json \
-		rubygem-fog-xml>=0:textproc/rubygem-fog-xml
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fog-core>=0:devel/rubygem-fog-core \
+		${RG_PKGNAMEPREFIX}fog-json>=0:devel/rubygem-fog-json \
+		${RG_PKGNAMEPREFIX}fog-xml>=0:textproc/rubygem-fog-xml
 
 NO_ARCH=	yes
 USE_RUBY=	yes

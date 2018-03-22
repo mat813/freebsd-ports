@@ -11,7 +11,7 @@ COMMENT=	Parser for puppet modules
 
 LICENSE=	GPLv3
 
-RUN_DEPENDS=	rubygem-json>=0:devel/rubygem-json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json>=0:devel/rubygem-json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

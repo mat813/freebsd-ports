@@ -5,7 +5,7 @@ PORTNAME=	passenger
 PORTVERSION=	5.2.1
 CATEGORIES=	www rubygems
 MASTER_SITES=	RG
-PKGNAMEPREFIX=	rubygem-
+PKGNAMEPREFIX=	${RG_PKGNAMEPREFIX}
 
 MAINTAINER=	osa@FreeBSD.org
 COMMENT=	Modules for running Ruby on Rails and Rack applications
@@ -13,7 +13,7 @@ COMMENT=	Modules for running Ruby on Rails and Rack applications
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	rake:devel/rubygem-rake
+BUILD_DEPENDS=	rake:devel/${RG_PKGNAMEPREFIX}rake
 
 CPE_VENDOR=	phusion
 CPE_PRODUCT=	passenger
@@ -56,7 +56,7 @@ LIB_DEPENDS+=	libuv.so:devel/libuv \
 		libunwind.so:devel/libunwind \
 		libapr-1.so:devel/apr1
 
-BUILD_DEPENDS+=	rubygem-rack16>=0:www/rubygem-rack16
+BUILD_DEPENDS+=	${RG_PKGNAMEPREFIX}rack16>=0:www/rubygem-rack16
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 SUB_LIST+=	GEM_LIB_DIR=${GEM_LIB_DIR} RUBY=${RUBY}

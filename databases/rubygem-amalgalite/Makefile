@@ -12,7 +12,7 @@ COMMENT=	Embeds the SQLite database engine in a Ruby extension
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-arrayfields>=4.9:devel/rubygem-arrayfields
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}arrayfields>=4.9:devel/rubygem-arrayfields
 
 USE_RUBY=	yes
 USES=		gem

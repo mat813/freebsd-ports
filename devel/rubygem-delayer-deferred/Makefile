@@ -12,7 +12,7 @@ COMMENT=	Deferred for Delayer
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-delayer>=0.0.2:devel/rubygem-delayer
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}delayer>=0.0.2:devel/rubygem-delayer
 
 NO_ARCH=	yes
 USE_RUBY=	yes

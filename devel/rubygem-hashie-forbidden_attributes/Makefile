@@ -12,7 +12,7 @@ COMMENT=	Hashie compatibility layer for forbidden attributes protection
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-hashie>=3.0:devel/rubygem-hashie
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hashie>=3.0:devel/rubygem-hashie
 
 NO_ARCH=	yes
 USE_RUBY=	yes

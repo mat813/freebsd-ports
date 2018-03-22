@@ -11,7 +11,7 @@ COMMENT=	DSL for generating XPath Expressions
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-nokogiri>=1.8:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}nokogiri>=1.8:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USE_RUBY=	yes

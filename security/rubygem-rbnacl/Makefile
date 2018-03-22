@@ -11,7 +11,7 @@ COMMENT=	Networking and Cryptography (NaCl) library
 LICENSE=	MIT
 
 LIB_DEPENDS=	libsodium.so:security/libsodium
-RUN_DEPENDS=	rubygem-ffi>=0:devel/rubygem-ffi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=0:devel/rubygem-ffi
 
 NO_ARCH=	yes
 USES=		gem

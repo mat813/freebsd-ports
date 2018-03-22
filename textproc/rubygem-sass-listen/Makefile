@@ -10,8 +10,8 @@ COMMENT=	Listens to file modifications
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-rb-fsevent>=0.9.4:devel/rubygem-rb-fsevent \
-		rubygem-rb-inotify>=0.9.7:devel/rubygem-rb-inotify
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rb-fsevent>=0.9.4:devel/rubygem-rb-fsevent \
+		${RG_PKGNAMEPREFIX}rb-inotify>=0.9.7:devel/rubygem-rb-inotify
 
 NO_ARCH=	yes
 

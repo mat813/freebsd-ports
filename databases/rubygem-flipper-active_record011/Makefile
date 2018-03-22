@@ -11,8 +11,8 @@ COMMENT=	ActiveRecord adapter for Flipper
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activerecord4>=3.2:databases/rubygem-activerecord4 \
-		rubygem-flipper011>=${PORTVERSION}:devel/rubygem-flipper011
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord4>=3.2:databases/rubygem-activerecord4 \
+		${RG_PKGNAMEPREFIX}flipper011>=${PORTVERSION}:devel/rubygem-flipper011
 
 PORTSCOUT=	limit:^0\.11\.
 

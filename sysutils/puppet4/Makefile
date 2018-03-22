@@ -13,11 +13,11 @@ COMMENT=	Configuration management framework written in Ruby
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	rubygem-hiera>=2.0:sysutils/rubygem-hiera \
-		rubygem-json_pure>=0:devel/rubygem-json_pure
-RUN_DEPENDS=	rubygem-hiera>=2.0:sysutils/rubygem-hiera \
-		rubygem-json_pure>=0:devel/rubygem-json_pure \
-		rubygem-ruby-augeas>=0:textproc/rubygem-ruby-augeas
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}hiera>=2.0:sysutils/rubygem-hiera \
+		${RG_PKGNAMEPREFIX}json_pure>=0:devel/rubygem-json_pure
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hiera>=2.0:sysutils/rubygem-hiera \
+		${RG_PKGNAMEPREFIX}json_pure>=0:devel/rubygem-json_pure \
+		${RG_PKGNAMEPREFIX}ruby-augeas>=0:textproc/rubygem-ruby-augeas
 
 USES=		cpe
 CPE_VENDOR=	puppetlabs
@@ -41,8 +41,8 @@ OPTIONS_RADIO_FACTER=	CFACTER RFACTER
 RFACTER_DESC=	Use facter 2.x (written in Ruby)
 CFACTER_DESC=	Use facter 3.x (experimental rewrite in C++)
 
-RFACTER_BUILD_DEPENDS=	rubygem-facter>=2.0:sysutils/rubygem-facter
-RFACTER_RUN_DEPENDS=	rubygem-facter>=2.0:sysutils/rubygem-facter
+RFACTER_BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}facter>=2.0:sysutils/rubygem-facter
+RFACTER_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}facter>=2.0:sysutils/rubygem-facter
 
 CFACTER_BUILD_DEPENDS=	facter>=3.0:sysutils/facter
 CFACTER_RUN_DEPENDS=	facter>=3.0:sysutils/facter

@@ -12,10 +12,10 @@ COMMENT=	JavaScript-first tooling to use webpack within your Rails application
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-railties4>=3.2.0:www/rubygem-railties4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}railties4>=3.2.0:www/rubygem-railties4
 
 # www/gitlab still depends on this port
-DEPRECATED=	Upstream no longer maintained, use devel/rubygem-webpacker-rails* instead
+DEPRECATED=	Upstream no longer maintained, use devel/${RG_PKGNAMEPREFIX}webpacker-rails* instead
 EXPIRATION_DATE=2018-03-31
 
 NO_ARCH=	yes

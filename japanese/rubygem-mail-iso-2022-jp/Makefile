@@ -11,7 +11,7 @@ COMMENT=	Provides 'mail' gem with iso-2022-jp conversion capability
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-mail>=2.2.6:mail/rubygem-mail
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}mail>=2.2.6:mail/rubygem-mail
 
 NO_ARCH=	yes
 USE_RUBY=	yes
@@ -19,6 +19,6 @@ USES=		gem
 
 .include <bsd.port.pre.mk>
 
-PKGNAMEPREFIX:=	${PKGNAMEPREFIX}rubygem-
+PKGNAMEPREFIX:=	${PKGNAMEPREFIX}${RG_PKGNAMEPREFIX}
 
 .include <bsd.port.post.mk>

@@ -12,7 +12,7 @@ COMMENT=	Weak signal ham radio communication package
 
 LICENSE=	GPLv3
 
-BUILD_DEPENDS=	asciidoctor:textproc/rubygem-asciidoctor \
+BUILD_DEPENDS=	asciidoctor:textproc/${RG_PKGNAMEPREFIX}asciidoctor \
 		a2x:textproc/asciidoc \
 		${LOCALBASE}/share/xsl/docbook:textproc/docbook-xsl
 LIB_DEPENDS=	libfftw3.so:math/fftw3 \

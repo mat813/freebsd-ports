@@ -10,7 +10,7 @@ COMMENT=	Port rbnacl with bundled libsodium
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-rbnacl>=3.0.1:security/rubygem-rbnacl
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rbnacl>=3.0.1:security/rubygem-rbnacl
 
 USES=		gem libtool
 USE_LDCONFIG=	yes

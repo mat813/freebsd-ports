@@ -12,11 +12,11 @@ COMMENT=	PDF parser conforming as much as possible to the PDF specification
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-afm>=0.2.1:print/rubygem-afm \
-		rubygem-ascii85>=1.0.0:devel/rubygem-ascii85 \
-		rubygem-hashery>=2.0:devel/rubygem-hashery \
-		rubygem-ruby-rc4>=0:security/rubygem-ruby-rc4 \
-		rubygem-ttfunk>=0:print/rubygem-ttfunk
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}afm>=0.2.1:print/rubygem-afm \
+		${RG_PKGNAMEPREFIX}ascii85>=1.0.0:devel/rubygem-ascii85 \
+		${RG_PKGNAMEPREFIX}hashery>=2.0:devel/rubygem-hashery \
+		${RG_PKGNAMEPREFIX}ruby-rc4>=0:security/rubygem-ruby-rc4 \
+		${RG_PKGNAMEPREFIX}ttfunk>=0:print/rubygem-ttfunk
 
 NO_ARCH=	yes
 USE_RUBY=	yes

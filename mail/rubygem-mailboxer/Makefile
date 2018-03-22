@@ -12,8 +12,8 @@ COMMENT=	Send messages inside a web application
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-carrierwave>=0.5.8:www/rubygem-carrierwave \
-		rubygem-rails5>=5.0.0:www/rubygem-rails5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}carrierwave>=0.5.8:www/rubygem-carrierwave \
+		${RG_PKGNAMEPREFIX}rails5>=5.0.0:www/rubygem-rails5
 
 NO_ARCH=	yes
 USE_RUBY=	yes

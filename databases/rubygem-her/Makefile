@@ -11,10 +11,10 @@ COMMENT=	ORM that maps REST resources to Ruby objects
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-activemodel4>=3.0.0:databases/rubygem-activemodel4 \
-		rubygem-activesupport4>=3.0.0:devel/rubygem-activesupport4 \
-		rubygem-faraday>=0.8:www/rubygem-faraday \
-		rubygem-multi_json>=1.7:devel/rubygem-multi_json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel4>=3.0.0:databases/rubygem-activemodel4 \
+		${RG_PKGNAMEPREFIX}activesupport4>=3.0.0:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}faraday>=0.8:www/rubygem-faraday \
+		${RG_PKGNAMEPREFIX}multi_json>=1.7:devel/rubygem-multi_json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

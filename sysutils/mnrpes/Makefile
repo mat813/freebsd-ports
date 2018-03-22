@@ -10,7 +10,7 @@ COMMENT=	MCollective and Rufus scheduler wrapper
 LICENSE=	APACHE20
 
 RUN_DEPENDS=	mcollective>=2:sysutils/mcollective \
-		rubygem-rufus-scheduler>=0.1:devel/rubygem-rufus-scheduler
+		${RG_PKGNAMEPREFIX}rufus-scheduler>=0.1:devel/rubygem-rufus-scheduler
 
 USE_RUBY=	yes
 USE_GITHUB=	yes

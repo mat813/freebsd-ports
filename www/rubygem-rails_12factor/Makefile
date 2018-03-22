@@ -11,8 +11,8 @@ COMMENT=	Run Rails the 12factor way
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rails_serve_static_assets>=0:www/rubygem-rails_serve_static_assets \
-		rubygem-rails_stdout_logging>=0:www/rubygem-rails_stdout_logging
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rails_serve_static_assets>=0:www/rubygem-rails_serve_static_assets \
+		${RG_PKGNAMEPREFIX}rails_stdout_logging>=0:www/rubygem-rails_stdout_logging
 
 NO_ARCH=	yes
 

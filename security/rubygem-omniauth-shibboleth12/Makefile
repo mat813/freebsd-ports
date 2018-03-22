@@ -11,7 +11,7 @@ COMMENT=	OmniAuth Shibboleth strategies for OmniAuth 1.x
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-omniauth>=1.0:security/rubygem-omniauth
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}omniauth>=1.0:security/rubygem-omniauth
 
 PORTSCOUT=	limit:^1\.2
 

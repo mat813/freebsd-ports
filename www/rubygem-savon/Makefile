@@ -12,13 +12,13 @@ COMMENT=	Library for SOAP communications
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-akami>=1.2:www/rubygem-akami \
-		rubygem-builder>=2.1.2:devel/rubygem-builder \
-		rubygem-gyoku>=1.2:devel/rubygem-gyoku \
-		rubygem-httpi>=2.3:www/rubygem-httpi \
-		rubygem-nokogiri>=1.4.0:textproc/rubygem-nokogiri \
-		rubygem-nori>=2.4:devel/rubygem-nori \
-		rubygem-wasabi>=3.4:www/rubygem-wasabi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}akami>=1.2:www/rubygem-akami \
+		${RG_PKGNAMEPREFIX}builder>=2.1.2:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}gyoku>=1.2:devel/rubygem-gyoku \
+		${RG_PKGNAMEPREFIX}httpi>=2.3:www/rubygem-httpi \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.4.0:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}nori>=2.4:devel/rubygem-nori \
+		${RG_PKGNAMEPREFIX}wasabi>=3.4:www/rubygem-wasabi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

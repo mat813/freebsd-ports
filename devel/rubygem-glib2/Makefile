@@ -10,8 +10,8 @@ COMMENT=	Ruby binding for GLib2
 
 LICENSE=	LGPL21+
 
-RUN_DEPENDS=	rubygem-native-package-installer>=1.0.3:devel/rubygem-native-package-installer \
-		rubygem-pkg-config>=1.2.2:devel/rubygem-pkg-config
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}native-package-installer>=1.0.3:devel/rubygem-native-package-installer \
+		${RG_PKGNAMEPREFIX}pkg-config>=1.2.2:devel/rubygem-pkg-config
 
 USE_GNOME=	glib20
 USE_RUBY=	yes

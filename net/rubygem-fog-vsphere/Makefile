@@ -12,8 +12,8 @@ COMMENT=	Module for the 'fog' gem to support vSphere
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-fog-core>=0:devel/rubygem-fog-core \
-		rubygem-rbvmomi>=1.9:net/rubygem-rbvmomi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fog-core>=0:devel/rubygem-fog-core \
+		${RG_PKGNAMEPREFIX}rbvmomi>=1.9:net/rubygem-rbvmomi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

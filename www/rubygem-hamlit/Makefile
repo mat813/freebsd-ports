@@ -12,11 +12,11 @@ COMMENT=	High Performance Haml Implementation
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-temple>=0.8.0:devel/rubygem-temple \
-		rubygem-thor>=0:devel/rubygem-thor \
-		rubygem-tilt>=0:devel/rubygem-tilt
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}temple>=0.8.0:devel/rubygem-temple \
+		${RG_PKGNAMEPREFIX}thor>=0:devel/rubygem-thor \
+		${RG_PKGNAMEPREFIX}tilt>=0:devel/rubygem-tilt
 
-CONFLICTS_INSTALL=	rubygem-hamlit26
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}hamlit26
 
 USES=		gem shebangfix
 USE_RUBY=	yes

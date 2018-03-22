@@ -12,7 +12,7 @@ COMMENT=	Convert HTML into a plain text format
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-nokogiri>=1.6:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}nokogiri>=1.6:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USE_RUBY=	yes

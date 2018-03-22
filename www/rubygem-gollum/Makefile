@@ -13,12 +13,12 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	git:devel/git \
-		rubygem-gemojione>=3.2:graphics/rubygem-gemojione \
-		rubygem-gollum-lib>=4.2.7:www/rubygem-gollum-lib \
-		rubygem-kramdown>=1.9:textproc/rubygem-kramdown \
-		rubygem-mustache0>=0.99.5:devel/rubygem-mustache0 \
-		rubygem-sinatra1>=1.4.4:www/rubygem-sinatra1 \
-		rubygem-useragent>=0.16.2:devel/rubygem-useragent
+		${RG_PKGNAMEPREFIX}gemojione>=3.2:graphics/rubygem-gemojione \
+		${RG_PKGNAMEPREFIX}gollum-lib>=4.2.7:www/rubygem-gollum-lib \
+		${RG_PKGNAMEPREFIX}kramdown>=1.9:textproc/rubygem-kramdown \
+		${RG_PKGNAMEPREFIX}mustache0>=0.99.5:devel/rubygem-mustache0 \
+		${RG_PKGNAMEPREFIX}sinatra1>=1.4.4:www/rubygem-sinatra1 \
+		${RG_PKGNAMEPREFIX}useragent>=0.16.2:devel/rubygem-useragent
 
 NO_ARCH=	yes
 USES=		gem

@@ -12,7 +12,7 @@ COMMENT=	New wave Internationalization support for Ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-concurrent-ruby>=1.0:devel/rubygem-concurrent-ruby
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}concurrent-ruby>=1.0:devel/rubygem-concurrent-ruby
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -10,9 +10,9 @@ COMMENT=	JSON-LD with preloaded contexts
 
 LICENSE=	UNLICENSE
 
-RUN_DEPENDS=	rubygem-json-ld>=2.2:converters/rubygem-json-ld \
-		rubygem-multi_json>=1.12:devel/rubygem-multi_json \
-		rubygem-rdf>=2.2:www/rubygem-rdf
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json-ld>=2.2:converters/rubygem-json-ld \
+		${RG_PKGNAMEPREFIX}multi_json>=1.12:devel/rubygem-multi_json \
+		${RG_PKGNAMEPREFIX}rdf>=2.2:www/rubygem-rdf
 
 NO_ARCH=	yes
 USES=		gem

@@ -12,7 +12,7 @@ COMMENT=	Simple interface to various archive formats
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-mixlib-log>=0:devel/rubygem-mixlib-log
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}mixlib-log>=0:devel/rubygem-mixlib-log
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -10,9 +10,9 @@ COMMENT=	Ruby binding for Pango
 
 LICENSE=	LGPL21+
 
-RUN_DEPENDS=	rubygem-cairo>=1.14.0:graphics/rubygem-cairo \
-		rubygem-cairo-gobject>=${PORTVERSION}:devel/rubygem-cairo-gobject \
-		rubygem-gobject-introspection>=${PORTVERSION}:devel/rubygem-gobject-introspection
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cairo>=1.14.0:graphics/rubygem-cairo \
+		${RG_PKGNAMEPREFIX}cairo-gobject>=${PORTVERSION}:devel/rubygem-cairo-gobject \
+		${RG_PKGNAMEPREFIX}gobject-introspection>=${PORTVERSION}:devel/rubygem-gobject-introspection
 
 USE_GNOME=	pango
 USE_RUBY=	yes

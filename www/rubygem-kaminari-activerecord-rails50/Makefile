@@ -13,8 +13,8 @@ COMMENT=	Kaminari Active Record adapter
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activerecord50>0:databases/rubygem-activerecord50 \
-		rubygem-kaminari-core>=${PORTVERSION}:www/rubygem-kaminari-core
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord50>0:databases/rubygem-activerecord50 \
+		${RG_PKGNAMEPREFIX}kaminari-core>=${PORTVERSION}:www/rubygem-kaminari-core
 
 NO_ARCH=	yes
 USE_RUBY=	yes

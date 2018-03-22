@@ -12,10 +12,10 @@ COMMENT=	Module for the 'fog' gem to support Google Cloud
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-fog-core>=0:devel/rubygem-fog-core \
-		rubygem-fog-json>=0:devel/rubygem-fog-json \
-		rubygem-fog-xml>=0:textproc/rubygem-fog-xml \
-		rubygem-google-api-client>=0.19.1:devel/rubygem-google-api-client
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fog-core>=0:devel/rubygem-fog-core \
+		${RG_PKGNAMEPREFIX}fog-json>=0:devel/rubygem-fog-json \
+		${RG_PKGNAMEPREFIX}fog-xml>=0:textproc/rubygem-fog-xml \
+		${RG_PKGNAMEPREFIX}google-api-client>=0.19.1:devel/rubygem-google-api-client
 
 NO_ARCH=	yes
 USE_RUBY=	yes

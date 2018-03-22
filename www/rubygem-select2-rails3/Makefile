@@ -11,7 +11,7 @@ COMMENT=	Implement select2 jQuery library into Rails
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-thor>=0.14:devel/rubygem-thor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}thor>=0.14:devel/rubygem-thor
 
 PORTSCOUT=	limit:^3\.
 

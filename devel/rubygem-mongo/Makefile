@@ -12,7 +12,7 @@ COMMENT=	Ruby driver for MongoDB
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-bson>=4.3.0:devel/rubygem-bson
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bson>=4.3.0:devel/rubygem-bson
 
 NO_ARCH=	yes
 USE_RUBY=	yes

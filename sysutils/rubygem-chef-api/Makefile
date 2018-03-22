@@ -12,7 +12,7 @@ COMMENT=	Leightweight Chef API client
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-logify>=0.1:sysutils/rubygem-logify
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}logify>=0.1:sysutils/rubygem-logify
 
 NO_ARCH=	yes
 USE_RUBY=	yes

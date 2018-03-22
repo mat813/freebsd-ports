@@ -11,9 +11,9 @@ COMMENT=	Ruby Exploitation(Rex) library for scanning SSL/TLS capabilities
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rex-core>=0:security/rubygem-rex-core \
-		rubygem-rex-socket>=0:security/rubygem-rex-socket \
-		rubygem-rex-text>=0:security/rubygem-rex-text
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rex-core>=0:security/rubygem-rex-core \
+		${RG_PKGNAMEPREFIX}rex-socket>=0:security/rubygem-rex-socket \
+		${RG_PKGNAMEPREFIX}rex-text>=0:security/rubygem-rex-text
 
 NO_ARCH=	yes
 USES=		gem

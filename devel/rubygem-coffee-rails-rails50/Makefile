@@ -13,8 +13,8 @@ COMMENT=	Coffee Script adapter for the Rails asset pipeline
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-coffee-script>=2.2.0:devel/rubygem-coffee-script \
-		rubygem-railties50>=5.0.0:www/rubygem-railties50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}coffee-script>=2.2.0:devel/rubygem-coffee-script \
+		${RG_PKGNAMEPREFIX}railties50>=5.0.0:www/rubygem-railties50
 
 NO_ARCH=	yes
 USE_RUBY=	yes

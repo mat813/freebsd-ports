@@ -12,9 +12,9 @@ LICENSE=	BSD3CLAUSE
 
 RUN_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
 		grpc>=0:devel/grpc \
-		rubygem-google-protobuf>=3.0:devel/rubygem-google-protobuf \
-		rubygem-googleauth>=0.5.1:security/rubygem-googleauth \
-		rubygem-googleapis-common-protos-types>=1.0.0:devel/rubygem-googleapis-common-protos-types
+		${RG_PKGNAMEPREFIX}google-protobuf>=3.0:devel/rubygem-google-protobuf \
+		${RG_PKGNAMEPREFIX}googleauth>=0.5.1:security/rubygem-googleauth \
+		${RG_PKGNAMEPREFIX}googleapis-common-protos-types>=1.0.0:devel/rubygem-googleapis-common-protos-types
 
 LIB_DEPENDS=	libcares.so:dns/c-ares \
 		libunwind.so:devel/libunwind

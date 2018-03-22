@@ -12,7 +12,7 @@ COMMENT=	Additional libraries for Rake
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 USE_RUBY=	yes
 USES=		gem

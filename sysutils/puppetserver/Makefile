@@ -13,7 +13,7 @@ LICENSE=	APACHE20
 
 RUN_DEPENDS=	bash>=0:shells/bash \
 		puppet4>=0:sysutils/puppet4
-BUILD_DEPENDS=	rubygem-rake>=0:devel/rubygem-rake
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 USE_RC_SUBR=	puppetserver
 
@@ -36,8 +36,8 @@ OPTIONS_RADIO_FACTER=	CFACTER RFACTER
 RFACTER_DESC=	Use facter 2.x (written in Ruby)
 CFACTER_DESC=	Use facter 3.x (experimental rewrite in C++)
 
-RFACTER_BUILD_DEPENDS=	rubygem-facter>=2.0:sysutils/rubygem-facter
-RFACTER_RUN_DEPENDS=	rubygem-facter>=2.0:sysutils/rubygem-facter
+RFACTER_BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}facter>=2.0:sysutils/rubygem-facter
+RFACTER_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}facter>=2.0:sysutils/rubygem-facter
 
 CFACTER_BUILD_DEPENDS=	facter>=3.0:sysutils/facter
 CFACTER_RUN_DEPENDS=	facter>=3.0:sysutils/facter

@@ -13,11 +13,11 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	nvim:editors/neovim \
-		rubygem-msgpack1>=1.1:devel/rubygem-msgpack1 \
-		rubygem-multi_json>=1.0:devel/rubygem-multi_json
-TEST_DEPENDS=	rubygem-bundler>=0:sysutils/rubygem-bundler \
-		rubygem-rake>=0:devel/rubygem-rake \
-		rubygem-rspec>=0:devel/rubygem-rspec
+		${RG_PKGNAMEPREFIX}msgpack1>=1.1:devel/rubygem-msgpack1 \
+		${RG_PKGNAMEPREFIX}multi_json>=1.0:devel/rubygem-multi_json
+TEST_DEPENDS=	${RG_PKGNAMEPREFIX}bundler>=0:sysutils/rubygem-bundler \
+		${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake \
+		${RG_PKGNAMEPREFIX}rspec>=0:devel/rubygem-rspec
 
 USES=		gem
 USE_RUBY=	yes

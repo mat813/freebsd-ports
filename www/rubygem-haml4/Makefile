@@ -14,7 +14,7 @@ COMMENT=	Markup language to describe HTML
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-tilt>=0:devel/rubygem-tilt
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}tilt>=0:devel/rubygem-tilt
 
 PORTSCOUT=	limit:^4\.
 

@@ -12,8 +12,8 @@ COMMENT=	Kaminari Action View adapter
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionview4>=0:devel/rubygem-actionview4 \
-		rubygem-kaminari-core>=${PORTVERSION}:www/rubygem-kaminari-core
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionview4>=0:devel/rubygem-actionview4 \
+		${RG_PKGNAMEPREFIX}kaminari-core>=${PORTVERSION}:www/rubygem-kaminari-core
 
 NO_ARCH=	yes
 USE_RUBY=	yes

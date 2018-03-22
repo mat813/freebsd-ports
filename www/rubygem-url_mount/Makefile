@@ -12,7 +12,7 @@ COMMENT=	Glue to allow mounted rack applications to know where they're mounted
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rack>=0:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack>=0:www/rubygem-rack
 
 NO_ARCH=	yes
 USE_RUBY=	yes

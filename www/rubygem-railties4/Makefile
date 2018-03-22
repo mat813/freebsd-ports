@@ -12,12 +12,12 @@ COMMENT=	Rails internals bootup, plugins, generators, and rake tasks
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-actionpack4>=${PORTVERSION}:www/rubygem-actionpack4 \
-		rubygem-activesupport4>=${PORTVERSION}:devel/rubygem-activesupport4 \
-		rubygem-rake>=0.8.7:devel/rubygem-rake \
-		rubygem-thor>=0.18.1:devel/rubygem-thor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack4>=${PORTVERSION}:www/rubygem-actionpack4 \
+		${RG_PKGNAMEPREFIX}activesupport4>=${PORTVERSION}:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}rake>=0.8.7:devel/rubygem-rake \
+		${RG_PKGNAMEPREFIX}thor>=0.18.1:devel/rubygem-thor
 
-CONFLICTS_INSTALL=	rubygem-railties5 rubygem-railties50
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}railties5 rubygem-railties50
 
 NO_ARCH=	yes
 USE_RUBY=	yes

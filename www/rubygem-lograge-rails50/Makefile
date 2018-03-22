@@ -11,10 +11,10 @@ COMMENT=	Tame Rails' multi-line logging into a single line per request #'
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-actionpack50>=4:www/rubygem-actionpack50 \
-		rubygem-activesupport50>=4:devel/rubygem-activesupport50 \
-		rubygem-railties50>=4:www/rubygem-railties50 \
-		rubygem-request_store>=1.0:devel/rubygem-request_store
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack50>=4:www/rubygem-actionpack50 \
+		${RG_PKGNAMEPREFIX}activesupport50>=4:devel/rubygem-activesupport50 \
+		${RG_PKGNAMEPREFIX}railties50>=4:www/rubygem-railties50 \
+		${RG_PKGNAMEPREFIX}request_store>=1.0:devel/rubygem-request_store
 
 USES=		gem
 USE_RUBY=	yes

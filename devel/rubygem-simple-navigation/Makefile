@@ -12,7 +12,7 @@ COMMENT=	Create navigations for Rails, Sinatra or Padrino applications
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport5>0:devel/rubygem-activesupport5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport5>0:devel/rubygem-activesupport5
 
 NO_ARCH=	yes
 

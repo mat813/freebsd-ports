@@ -1,4 +1,4 @@
-rubygem-benelux provides a mad way to time Ruby codes.
+${RG_PKGNAMEPREFIX}benelux provides a mad way to time Ruby codes.
 
 Features:
 - A replacement for Benchmark.measure

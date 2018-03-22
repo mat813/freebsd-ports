@@ -11,7 +11,7 @@ COMMENT=	Adds Grape style patterns to Mustermman
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-mustermann>=1.0.0:devel/rubygem-mustermann
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}mustermann>=1.0.0:devel/rubygem-mustermann
 
 NO_ARCH=	yes
 USE_RUBY=	yes

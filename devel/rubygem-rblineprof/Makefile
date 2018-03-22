@@ -13,7 +13,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libunwind.so:devel/libunwind \
 		libgmp.so:math/gmp
-RUN_DEPENDS=	rubygem-debugger-ruby_core_source>=1.3:devel/rubygem-debugger-ruby_core_source
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}debugger-ruby_core_source>=1.3:devel/rubygem-debugger-ruby_core_source
 
 USES=		gem
 USE_RUBY=	yes

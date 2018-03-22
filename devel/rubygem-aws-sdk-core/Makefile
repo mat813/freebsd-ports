@@ -10,8 +10,8 @@ COMMENT=	AWS SDK for Ruby - Core
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-aws-sigv4>=1.0:devel/rubygem-aws-sigv4 \
-		rubygem-jmespath>=1.0:devel/rubygem-jmespath
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}aws-sigv4>=1.0:devel/rubygem-aws-sigv4 \
+		${RG_PKGNAMEPREFIX}jmespath>=1.0:devel/rubygem-jmespath
 
 USES=		gem
 USE_RUBY=	yes

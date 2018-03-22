@@ -13,10 +13,10 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	jruby:lang/jruby \
-		rubygem-jruby-jars>=9.0.0.0:devel/rubygem-jruby-jars \
-		rubygem-jruby-rack>=1.1.1:www/rubygem-jruby-rack \
-		rubygem-rake>=10.1.0:devel/rubygem-rake \
-		rubygem-rubyzip>=1.0:archivers/rubygem-rubyzip
+		${RG_PKGNAMEPREFIX}jruby-jars>=9.0.0.0:devel/rubygem-jruby-jars \
+		${RG_PKGNAMEPREFIX}jruby-rack>=1.1.1:www/rubygem-jruby-rack \
+		${RG_PKGNAMEPREFIX}rake>=10.1.0:devel/rubygem-rake \
+		${RG_PKGNAMEPREFIX}rubyzip>=1.0:archivers/rubygem-rubyzip
 
 NO_ARCH=	yes
 USE_RUBY=	yes

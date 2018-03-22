@@ -11,10 +11,10 @@ COMMENT=	Synchronizes Assets between Rails and S3
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activemodel4>=4.1.0:databases/rubygem-activemodel4 \
-		rubygem-fog-core>=0:devel/rubygem-fog-core \
-		rubygem-mime-types>=2.99:misc/rubygem-mime-types \
-		rubygem-unf>=0:textproc/rubygem-unf
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel4>=4.1.0:databases/rubygem-activemodel4 \
+		${RG_PKGNAMEPREFIX}fog-core>=0:devel/rubygem-fog-core \
+		${RG_PKGNAMEPREFIX}mime-types>=2.99:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}unf>=0:textproc/rubygem-unf
 
 CONFLICTS_INSTALL=	asset_sync
 

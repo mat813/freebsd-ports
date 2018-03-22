@@ -21,7 +21,7 @@ BROKEN_armv6=		fails to compile: Checking for compiler version... 5.0.0, bad; Pl
 BROKEN_armv7=		fails to compile: Checking for compiler version... 5.0.0, bad; Please ensure you are using GCC 4.7 / Clang 3.4 or above
 BROKEN_powerpc64=	fails to compile: CartDebug.cxx: 'snprintf' is not a member of 'std'
 
-CONFLICTS_INSTALL=	rubygem-stella
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}stella
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 

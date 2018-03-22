@@ -8,13 +8,13 @@ CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
 MAINTAINER=	sunpoet@FreeBSD.org
-COMMENT=	XML interface for rubygem-debugger
+COMMENT=	XML interface for ${RG_PKGNAMEPREFIX}debugger
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-builder>=2.0.0:devel/rubygem-builder \
-		rubygem-byebug>=0:devel/rubygem-byebug
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=2.0.0:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}byebug>=0:devel/rubygem-byebug
 
 NO_ARCH=	yes
 USE_RUBY=	yes

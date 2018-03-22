@@ -13,11 +13,11 @@ COMMENT=	Easy email delivery and testing for Ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack50>=${PORTVERSION}:www/rubygem-actionpack50 \
-		rubygem-actionview50>=${PORTVERSION}:devel/rubygem-actionview50 \
-		rubygem-activejob50>=${PORTVERSION}:devel/rubygem-activejob50 \
-		rubygem-mail>=2.5.4:mail/rubygem-mail \
-		rubygem-rails-dom-testing-rails50>=2.0:textproc/rubygem-rails-dom-testing-rails50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack50>=${PORTVERSION}:www/rubygem-actionpack50 \
+		${RG_PKGNAMEPREFIX}actionview50>=${PORTVERSION}:devel/rubygem-actionview50 \
+		${RG_PKGNAMEPREFIX}activejob50>=${PORTVERSION}:devel/rubygem-activejob50 \
+		${RG_PKGNAMEPREFIX}mail>=2.5.4:mail/rubygem-mail \
+		${RG_PKGNAMEPREFIX}rails-dom-testing-rails50>=2.0:textproc/rubygem-rails-dom-testing-rails50
 
 PORTSCOUT=	limit:^5\.0\.
 

@@ -11,8 +11,8 @@ COMMENT=	Log outgoing HTTP requests
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-colorize>=0.8:devel/rubygem-colorize \
-		rubygem-rack>=1.0:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}colorize>=0.8:devel/rubygem-colorize \
+		${RG_PKGNAMEPREFIX}rack>=1.0:www/rubygem-rack
 
 NO_ARCH=	yes
 USES=		gem

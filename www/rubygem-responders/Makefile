@@ -12,8 +12,8 @@ COMMENT=	Simple Ruby DSL for making HTTP requests
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack4>=4.2.0:www/rubygem-actionpack4 \
-		rubygem-railties4>=4.2.0:www/rubygem-railties4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack4>=4.2.0:www/rubygem-actionpack4 \
+		${RG_PKGNAMEPREFIX}railties4>=4.2.0:www/rubygem-railties4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

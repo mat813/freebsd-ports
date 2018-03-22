@@ -11,7 +11,7 @@ COMMENT=	Rack middleware for throttling and blocking abusive requests
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-rack>=0:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack>=0:www/rubygem-rack
 
 PORTSCOUT=	limit:^4\.4
 

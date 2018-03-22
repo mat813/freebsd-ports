@@ -11,15 +11,15 @@ COMMENT=	Client for accessing Google APIs
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-addressable>=2.5.1:www/rubygem-addressable \
-		rubygem-googleauth>=0.5:security/rubygem-googleauth \
-		rubygem-httpclient>=2.8.1:www/rubygem-httpclient \
-		rubygem-mime-types>=3.0:misc/rubygem-mime-types \
-		rubygem-representable>=3.0:textproc/rubygem-representable \
-		rubygem-retriable>=2.0:devel/rubygem-retriable
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}addressable>=2.5.1:www/rubygem-addressable \
+		${RG_PKGNAMEPREFIX}googleauth>=0.5:security/rubygem-googleauth \
+		${RG_PKGNAMEPREFIX}httpclient>=2.8.1:www/rubygem-httpclient \
+		${RG_PKGNAMEPREFIX}mime-types>=3.0:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}representable>=3.0:textproc/rubygem-representable \
+		${RG_PKGNAMEPREFIX}retriable>=2.0:devel/rubygem-retriable
 
 # bin/generate-api
-CONFLICTS_INSTALL=	rubygem-google-api-client010
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}google-api-client010
 
 NO_ARCH=	yes
 USES=		gem

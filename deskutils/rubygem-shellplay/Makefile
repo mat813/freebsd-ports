@@ -11,10 +11,10 @@ COMMENT=	CLI tool for shell-based presentations
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-cliprompt>=0.1.2:devel/rubygem-cliprompt \
-		rubygem-configstruct>=0.1.0:devel/rubygem-configstruct \
-		rubygem-paint>=2.0.0:devel/rubygem-paint \
-		rubygem-shell2html>=0.0.6:textproc/rubygem-shell2html
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cliprompt>=0.1.2:devel/rubygem-cliprompt \
+		${RG_PKGNAMEPREFIX}configstruct>=0.1.0:devel/rubygem-configstruct \
+		${RG_PKGNAMEPREFIX}paint>=2.0.0:devel/rubygem-paint \
+		${RG_PKGNAMEPREFIX}shell2html>=0.0.6:textproc/rubygem-shell2html
 
 NO_ARCH=	yes
 USE_RUBY=	yes

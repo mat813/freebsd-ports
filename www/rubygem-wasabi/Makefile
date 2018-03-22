@@ -12,8 +12,8 @@ COMMENT=	Library for simple WSDL parsing
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-httpi>=2.0:www/rubygem-httpi \
-		rubygem-nokogiri>=1.4.2:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}httpi>=2.0:www/rubygem-httpi \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.4.2:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USE_RUBY=	yes

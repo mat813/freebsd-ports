@@ -12,9 +12,9 @@ COMMENT=	Improve the rendering of HTML emails
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-addressable>=0:www/rubygem-addressable \
-		rubygem-css_parser>=1.6.0:textproc/rubygem-css_parser \
-		rubygem-htmlentities>=4.0.0:textproc/rubygem-htmlentities
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}addressable>=0:www/rubygem-addressable \
+		${RG_PKGNAMEPREFIX}css_parser>=1.6.0:textproc/rubygem-css_parser \
+		${RG_PKGNAMEPREFIX}htmlentities>=4.0.0:textproc/rubygem-htmlentities
 
 NO_ARCH=	yes
 USE_RUBY=	yes

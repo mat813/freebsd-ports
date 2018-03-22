@@ -10,9 +10,9 @@ COMMENT=	Central Authentication Service (CAS) strategy for OmniAuth
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-omniauth>=1.2:security/rubygem-omniauth \
-		rubygem-nokogiri>=1.5:textproc/rubygem-nokogiri \
-		rubygem-addressable>=2.3:www/rubygem-addressable
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}omniauth>=1.2:security/rubygem-omniauth \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.5:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}addressable>=2.3:www/rubygem-addressable
 
 USES=		gem
 USE_RUBY=	yes

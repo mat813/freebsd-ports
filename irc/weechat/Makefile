@@ -54,7 +54,7 @@ CA_BUNDLE_CMAKE_ON=	-DCA_FILE=${LOCALBASE}/share/certs/ca-root-nss.crt
 CA_BUNDLE_RUN_DEPENDS=	${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss
 CHARSET_IMPLIES=	ICONV
 DOCS_CMAKE_BOOL=	ENABLE_DOC
-DOCS_BUILD_DEPENDS=	${LOCALBASE}/bin/asciidoctor:textproc/rubygem-asciidoctor
+DOCS_BUILD_DEPENDS=	${LOCALBASE}/bin/asciidoctor:textproc/${RG_PKGNAMEPREFIX}asciidoctor
 HEADLESS_CMAKE_BOOL=	ENABLE_HEADLESS
 ICONV_USES=		iconv
 JAVASCRIPT_LIB_DEPENDS=	libv8.so:lang/v8
@@ -63,7 +63,7 @@ GNUTLS_USES=		pkgconfig
 LUA_USES=		lua pkgconfig
 MANPAGES_CMAKE_BOOL=	ENABLE_MAN
 MANPAGES_CMAKE_ON=	-DMANDIR=${MANPREFIX}/man
-MANPAGES_BUILD_DEPENDS=	${LOCALBASE}/bin/asciidoctor:textproc/rubygem-asciidoctor
+MANPAGES_BUILD_DEPENDS=	${LOCALBASE}/bin/asciidoctor:textproc/${RG_PKGNAMEPREFIX}asciidoctor
 NLS_USES=		gettext
 PERL_USES=		perl5
 PHP_USES=		php:embed

@@ -12,16 +12,16 @@ COMMENT=	Irc bot based on Cinch
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-cinch>=2.3.3:irc/rubygem-cinch \
-		rubygem-thor>=0.19.4:devel/rubygem-thor \
-		rubygem-eventmachine>=1.2.3:devel/rubygem-eventmachine \
-		rubygem-eventmachine_httpserver>=0.2.1:www/rubygem-eventmachine_httpserver \
-		rubygem-nokogiri>=1.8.0:textproc/rubygem-nokogiri \
-		rubygem-daemons>=1.2.4:devel/rubygem-daemons \
-		rubygem-twitter>=6.1.0:net/rubygem-twitter \
-		rubygem-json>=2.1.0:devel/rubygem-json \
-		rubygem-yajl-ruby>=1.3.0:devel/rubygem-yajl-ruby \
-		rubygem-fortune_gem>=0.0.9:games/rubygem-fortune_gem
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cinch>=2.3.3:irc/rubygem-cinch \
+		${RG_PKGNAMEPREFIX}thor>=0.19.4:devel/rubygem-thor \
+		${RG_PKGNAMEPREFIX}eventmachine>=1.2.3:devel/rubygem-eventmachine \
+		${RG_PKGNAMEPREFIX}eventmachine_httpserver>=0.2.1:www/rubygem-eventmachine_httpserver \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.8.0:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}daemons>=1.2.4:devel/rubygem-daemons \
+		${RG_PKGNAMEPREFIX}twitter>=6.1.0:net/rubygem-twitter \
+		${RG_PKGNAMEPREFIX}json>=2.1.0:devel/rubygem-json \
+		${RG_PKGNAMEPREFIX}yajl-ruby>=1.3.0:devel/rubygem-yajl-ruby \
+		${RG_PKGNAMEPREFIX}fortune_gem>=0.0.9:games/rubygem-fortune_gem
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -13,8 +13,8 @@ COMMENT=	Create JSON structures via a Builder-style DSL
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport5>0:devel/rubygem-activesupport5 \
-		rubygem-multi_json>=1.2:devel/rubygem-multi_json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport5>0:devel/rubygem-activesupport5 \
+		${RG_PKGNAMEPREFIX}multi_json>=1.2:devel/rubygem-multi_json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

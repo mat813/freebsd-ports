@@ -11,9 +11,9 @@ COMMENT=	Manage complex tmux sessions easily
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-erubis>=2.6:www/rubygem-erubis \
-		rubygem-thor>=0.15.0:devel/rubygem-thor \
-		rubygem-xdg>=2.2.3:devel/rubygem-xdg \
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}erubis>=2.6:www/rubygem-erubis \
+		${RG_PKGNAMEPREFIX}thor>=0.15.0:devel/rubygem-thor \
+		${RG_PKGNAMEPREFIX}xdg>=2.2.3:devel/rubygem-xdg \
 		tmux:sysutils/tmux
 
 USES=		gem

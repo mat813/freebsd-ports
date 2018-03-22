@@ -1,4 +1,4 @@
-rubygem-fog-core (Fog::Core) provides shared classes and tests for fog providers
+${RG_PKGNAMEPREFIX}fog-core (Fog::Core) provides shared classes and tests for fog providers
 and services.
 
 WWW: https://github.com/fog/fog-core

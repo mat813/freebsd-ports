@@ -11,8 +11,8 @@ COMMENT=	CLI and Library to interface with network devices in rubygems-oxidized
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-oxidized>=0.15:net-mgmt/rubygem-oxidized \
-		rubygem-slop3>=3.5:devel/rubygem-slop3
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}oxidized>=0.15:net-mgmt/rubygem-oxidized \
+		${RG_PKGNAMEPREFIX}slop3>=3.5:devel/rubygem-slop3
 
 NO_ARCH=	yes
 

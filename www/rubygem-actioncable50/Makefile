@@ -14,9 +14,9 @@ COMMENT=	Integrated WebSockets for Rails
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack50>=${PORTVERSION}:www/rubygem-actionpack50 \
-		rubygem-nio4r>=1.2:devel/rubygem-nio4r \
-		rubygem-websocket-driver>=0.6.1:www/rubygem-websocket-driver
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack50>=${PORTVERSION}:www/rubygem-actionpack50 \
+		${RG_PKGNAMEPREFIX}nio4r>=1.2:devel/rubygem-nio4r \
+		${RG_PKGNAMEPREFIX}websocket-driver>=0.6.1:www/rubygem-websocket-driver
 
 PORTSCOUT=	limit:^5\.0\.
 

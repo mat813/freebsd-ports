@@ -12,8 +12,8 @@ COMMENT=	Game-development extension and library for the ruby language
 
 LICENSE=	LGPL21
 
-RUN_DEPENDS=	rubygem-rake>=0.7.0:devel/rubygem-rake \
-		rubygem-ruby-sdl-ffi>=0.1.0:devel/rubygem-ruby-sdl-ffi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0.7.0:devel/rubygem-rake \
+		${RG_PKGNAMEPREFIX}ruby-sdl-ffi>=0.1.0:devel/rubygem-ruby-sdl-ffi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

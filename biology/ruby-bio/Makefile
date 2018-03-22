@@ -28,8 +28,8 @@ ruby_OLD_CMD=	/usr/proj/bioruby/bin/ruby
 
 XMLPARSER_RUN_DEPENDS=	${RUBY_SITEARCHLIBDIR}/xmlparser.so:textproc/ruby-xmlparser
 BDB4_RUN_DEPENDS=	${RUBY_SITEARCHLIBDIR}/bdb.so:databases/ruby-bdb
-MYSQL_RUN_DEPENDS=	rubygem-dbd-mysql>=0:databases/rubygem-dbd-mysql
-PGSQL_RUN_DEPENDS=	rubygem-dbd-pg>=0:databases/rubygem-dbd-pg
+MYSQL_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}dbd-mysql>=0:databases/rubygem-dbd-mysql
+PGSQL_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}dbd-pg>=0:databases/rubygem-dbd-pg
 
 post-patch:
 	${RUBY} -i -pe 'gsub(%r"(/etc/bioinformatics/)") { "${PREFIX}" + $$1 }' \

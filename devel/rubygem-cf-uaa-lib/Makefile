@@ -12,8 +12,8 @@ COMMENT=	Client library for CloudFoundry UAA
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-httpclient>=2.8.2.4:www/rubygem-httpclient \
-		rubygem-multi_json>=1.12.1:devel/rubygem-multi_json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}httpclient>=2.8.2.4:www/rubygem-httpclient \
+		${RG_PKGNAMEPREFIX}multi_json>=1.12.1:devel/rubygem-multi_json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

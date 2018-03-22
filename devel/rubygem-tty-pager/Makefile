@@ -12,9 +12,9 @@ COMMENT=	Terminal output paging in cross-platform way
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-strings>=0.1.0:devel/rubygem-strings \
-		rubygem-tty-screen>=0.6.4:devel/rubygem-tty-screen \
-		rubygem-tty-which>=0.3.0:devel/rubygem-tty-which
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}strings>=0.1.0:devel/rubygem-strings \
+		${RG_PKGNAMEPREFIX}tty-screen>=0.6.4:devel/rubygem-tty-screen \
+		${RG_PKGNAMEPREFIX}tty-which>=0.3.0:devel/rubygem-tty-which
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,7 +12,7 @@ COMMENT=	Use Pry as your rails console
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENCE
 
-RUN_DEPENDS=	rubygem-pry>=0.10.4:devel/rubygem-pry
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}pry>=0.10.4:devel/rubygem-pry
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -16,13 +16,13 @@ LICENSE_FILE_GPLv2=	${WRKSRC}/GPLv2
 LICENSE_FILE_MIT=	${WRKSRC}/COPYING.rbot
 
 RUN_DEPENDS=	${RUBY_SITEARCHLIBDIR}/tokyocabinet.so:databases/ruby-tokyocabinet \
-		rubygem-gettext>=0:devel/rubygem-gettext \
-		rubygem-htmlentities>=0:textproc/rubygem-htmlentities \
-		rubygem-hpricot>=0:www/rubygem-hpricot \
-		rubygem-mechanize>=0:www/rubygem-mechanize \
-		rubygem-tzinfo>=0:devel/rubygem-tzinfo \
-		rubygem-oauth>=0:net/rubygem-oauth \
-		rubygem-oauth2>=0:net/rubygem-oauth2
+		${RG_PKGNAMEPREFIX}gettext>=0:devel/rubygem-gettext \
+		${RG_PKGNAMEPREFIX}htmlentities>=0:textproc/rubygem-htmlentities \
+		${RG_PKGNAMEPREFIX}hpricot>=0:www/rubygem-hpricot \
+		${RG_PKGNAMEPREFIX}mechanize>=0:www/rubygem-mechanize \
+		${RG_PKGNAMEPREFIX}tzinfo>=0:devel/rubygem-tzinfo \
+		${RG_PKGNAMEPREFIX}oauth>=0:net/rubygem-oauth \
+		${RG_PKGNAMEPREFIX}oauth2>=0:net/rubygem-oauth2
 LIB_DEPENDS=	libtokyocabinet.so:databases/tokyocabinet
 
 USE_RUBY=	yes

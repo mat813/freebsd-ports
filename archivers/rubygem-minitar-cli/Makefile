@@ -14,8 +14,8 @@ LICENSE_COMB=	dual
 LICENSE_FILE_BSD3CLAUSE=${WRKSRC}/docs/bsdl.txt
 LICENSE_FILE_RUBY=	${WRKSRC}/docs/ruby.txt
 
-RUN_DEPENDS=	rubygem-minitar>=0.6.0:archivers/rubygem-minitar \
-		rubygem-powerbar>=1.0:devel/rubygem-powerbar
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}minitar>=0.6.0:archivers/rubygem-minitar \
+		${RG_PKGNAMEPREFIX}powerbar>=1.0:devel/rubygem-powerbar
 
 NO_ARCH=	yes
 USE_RUBY=	yes

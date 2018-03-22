@@ -10,8 +10,8 @@ COMMENT=	OmniAuth strategy for Kerberos
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-omniauth-multipassword>0:security/rubygem-omniauth-multipassword \
-		rubygem-timfel-krb5-auth>=0.8:security/rubygem-timfel-krb5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}omniauth-multipassword>0:security/rubygem-omniauth-multipassword \
+		${RG_PKGNAMEPREFIX}timfel-krb5-auth>=0.8:security/rubygem-timfel-krb5
 
 USES=		gem
 NO_ARCH=	yes

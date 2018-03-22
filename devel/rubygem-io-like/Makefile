@@ -5,7 +5,7 @@ PORTNAME=	io-like
 PORTVERSION=	0.3.0.20130301
 CATEGORIES=	devel rubygems
 MASTER_SITES=	LOCAL/tota/${PORTNAME}
-PKGNAMEPREFIX=	rubygem-
+PKGNAMEPREFIX=	${RG_PKGNAMEPREFIX}
 
 MAINTAINER=	tota@FreeBSD.org
 COMMENT=	The interface of IO objects to classes providing a few simple methods
@@ -14,7 +14,7 @@ LICENSE=	RUBY
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	${RUBYGEMBIN}:devel/ruby-gems \
-		${LOCALBASE}/bin/rake:devel/rubygem-rake
+		${LOCALBASE}/bin/rake:devel/${RG_PKGNAMEPREFIX}rake
 RUN_DEPENDS=	${RUBYGEMBIN}:devel/ruby-gems
 
 USE_RUBY=	yes
@@ -57,7 +57,7 @@ WRKSRC=	${WRKDIR}/${PORTNAME}-ruby-1.9-temp
 
 OPTIONS_DEFINE=	DOCS
 
-DOCS_BUILD_DEPENDS=	rubygem-allison>=0:devel/rubygem-allison
+DOCS_BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}allison>=0:devel/rubygem-allison
 DOCS_VARS_OFF=		RUBYGEM_ARGS+=--no-rdoc
 
 post-patch:

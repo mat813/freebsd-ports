@@ -11,9 +11,9 @@ COMMENT=	Ruby code generation framework
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-diff-lcs>=1.1.2:textproc/rubygem-diff-lcs \
-		rubygem-extlib>=0.9.5:devel/rubygem-extlib \
-		rubygem-highline>=1.4.0:devel/rubygem-highline
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}diff-lcs>=1.1.2:textproc/rubygem-diff-lcs \
+		${RG_PKGNAMEPREFIX}extlib>=0.9.5:devel/rubygem-extlib \
+		${RG_PKGNAMEPREFIX}highline>=1.4.0:devel/rubygem-highline
 
 NO_ARCH=	yes
 

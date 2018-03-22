@@ -37,7 +37,7 @@ PORTDOCS=	00api 00changes.0 00changes.1 00changes.2 00changes.3 \
 OPTIONS_DEFINE=	DATABASE DOCS STUNNEL
 OPTIONS_DEFAULT=STUNNEL
 DATABASE_DESC=	Support database feature (with Ruby & Sqlite3)
-DATABASE_RUN_DEPENDS=	rubygem-sqlite3>=0:databases/rubygem-sqlite3
+DATABASE_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}sqlite3>=0:databases/rubygem-sqlite3
 STUNNEL_DESC=	Support SSL feature using stunnel
 STUNNEL_RUN_DEPENDS=	stunnel>=0:security/stunnel
 

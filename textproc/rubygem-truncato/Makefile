@@ -11,8 +11,8 @@ COMMENT=	Truncating HTML strings keeping a valid HTML markup
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-htmlentities>=4.3.1:textproc/rubygem-htmlentities \
-		rubygem-nokogiri>=1.8.0:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}htmlentities>=4.3.1:textproc/rubygem-htmlentities \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.8.0:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USE_RUBY=	yes

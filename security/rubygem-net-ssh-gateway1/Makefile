@@ -11,7 +11,7 @@ COMMENT=	Establish Net::SSH connections through firewalls
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-net-ssh>=2.6.5:security/rubygem-net-ssh
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}net-ssh>=2.6.5:security/rubygem-net-ssh
 
 PORTSCOUT=	limit:^1\.
 

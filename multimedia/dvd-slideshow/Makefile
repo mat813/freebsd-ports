@@ -21,7 +21,7 @@ RUN_DEPENDS=	bash:shells/bash \
 		sox:audio/sox \
 		dvdauthor:multimedia/dvdauthor \
 		jhead:graphics/jhead \
-		flvtool2:multimedia/rubygem-flvtool2 \
+		flvtool2:multimedia/${RG_PKGNAMEPREFIX}flvtool2 \
 		${LOCALBASE}/share/fonts/urwfonts-ttf/README:x11-fonts/urwfonts-ttf \
 		cdrecord:sysutils/cdrtools
 

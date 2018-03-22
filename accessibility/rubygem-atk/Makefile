@@ -10,8 +10,8 @@ COMMENT=	Ruby binding for ATK
 
 LICENSE=	LGPL21+
 
-BUILD_DEPENDS=	rubygem-rake>=0:devel/rubygem-rake
-RUN_DEPENDS=	rubygem-glib2>=${PORTVERSION}:devel/rubygem-glib2
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}glib2>=${PORTVERSION}:devel/rubygem-glib2
 
 NO_ARCH=	yes
 USE_GNOME=	atk

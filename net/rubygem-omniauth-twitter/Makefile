@@ -10,8 +10,8 @@ COMMENT=	OmniAuth strategy for Twitter
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-omniauth-oauth>=1.1:net/rubygem-omniauth-oauth \
-		rubygem-rack>=0:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}omniauth-oauth>=1.1:net/rubygem-omniauth-oauth \
+		${RG_PKGNAMEPREFIX}rack>=0:www/rubygem-rack
 
 NO_ARCH=	yes
 USE_RUBY=	yes

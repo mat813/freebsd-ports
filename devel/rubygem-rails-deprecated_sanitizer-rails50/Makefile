@@ -12,7 +12,7 @@ COMMENT=	Deprecated sanitizer API extracted from Action View
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activesupport50>0:devel/rubygem-activesupport50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport50>0:devel/rubygem-activesupport50
 
 NO_ARCH=	yes
 USE_RUBY=	yes

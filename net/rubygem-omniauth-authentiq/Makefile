@@ -11,7 +11,7 @@ COMMENT=	Authentiq OAuth2 Strategy for OmniAuth
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-omniauth-oauth2>=1.3.1:net/rubygem-omniauth-oauth2
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}omniauth-oauth2>=1.3.1:net/rubygem-omniauth-oauth2
 
 NO_ARCH=	yes
 USE_RUBY=	yes

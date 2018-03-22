@@ -12,7 +12,7 @@ COMMENT=	Time zones for fugit and rufus-scheduler
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-tzinfo>=0:devel/rubygem-tzinfo
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}tzinfo>=0:devel/rubygem-tzinfo
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,7 +12,7 @@ COMMENT=	Powerful web-framework wrapper for Rack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-RUN_DEPENDS=	rubygem-rack16>=1.6.4:www/rubygem-rack16
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack16>=1.6.4:www/rubygem-rack16
 
 NO_ARCH=	yes
 USE_RUBY=	yes

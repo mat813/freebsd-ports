@@ -12,8 +12,8 @@ COMMENT=	Library to maintain seed datas
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-activerecord4>=3.1:databases/rubygem-activerecord4 \
-		rubygem-activesupport4>=3.1:devel/rubygem-activesupport4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord4>=3.1:databases/rubygem-activerecord4 \
+		${RG_PKGNAMEPREFIX}activesupport4>=3.1:devel/rubygem-activesupport4
 
 PORTSCOUT=	limit:^2\.3\.6
 

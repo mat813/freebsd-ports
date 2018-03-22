@@ -12,8 +12,8 @@ COMMENT=	Gem for Flowdock API
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-httparty>=0.7:www/rubygem-httparty \
-		rubygem-multi_json>=0:devel/rubygem-multi_json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}httparty>=0.7:www/rubygem-httparty \
+		${RG_PKGNAMEPREFIX}multi_json>=0:devel/rubygem-multi_json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

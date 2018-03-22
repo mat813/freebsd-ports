@@ -12,7 +12,7 @@ COMMENT=	Pure Ruby one-shot and periodic timers
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-hitimes>=0:devel/rubygem-hitimes
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hitimes>=0:devel/rubygem-hitimes
 
 NO_ARCH=	yes
 USE_RUBY=	yes

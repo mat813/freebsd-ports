@@ -12,9 +12,9 @@ COMMENT=	Tool for management and bundling Puppet modules
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-librarianp>=0.6.3:devel/rubygem-librarianp \
-		rubygem-puppet_forge>=2.1:sysutils/rubygem-puppet_forge \
-		rubygem-rsync>0:net/rubygem-rsync
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}librarianp>=0.6.3:devel/rubygem-librarianp \
+		${RG_PKGNAMEPREFIX}puppet_forge>=2.1:sysutils/rubygem-puppet_forge \
+		${RG_PKGNAMEPREFIX}rsync>0:net/rubygem-rsync
 
 NO_ARCH=	yes
 USE_RUBY=	yes

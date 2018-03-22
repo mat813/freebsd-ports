@@ -12,9 +12,9 @@ COMMENT=	Ruby bindings for API calls that are documented with Apipie
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-json>=1.2.1:devel/rubygem-json \
-		rubygem-oauth>=0:net/rubygem-oauth \
-		rubygem-rest-client>=1.6.5:www/rubygem-rest-client
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json>=1.2.1:devel/rubygem-json \
+		${RG_PKGNAMEPREFIX}oauth>=0:net/rubygem-oauth \
+		${RG_PKGNAMEPREFIX}rest-client>=1.6.5:www/rubygem-rest-client
 
 NO_ARCH=	yes
 USE_RUBY=	yes

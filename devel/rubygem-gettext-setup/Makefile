@@ -11,9 +11,9 @@ COMMENT=	Set up i18n for Ruby projects
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-fast_gettext>=1.1.0:devel/rubygem-fast_gettext \
-		rubygem-gettext>=3.0.2:devel/rubygem-gettext \
-		rubygem-locale>=0:devel/rubygem-locale
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fast_gettext>=1.1.0:devel/rubygem-fast_gettext \
+		${RG_PKGNAMEPREFIX}gettext>=3.0.2:devel/rubygem-gettext \
+		${RG_PKGNAMEPREFIX}locale>=0:devel/rubygem-locale
 
 NO_ARCH=	yes
 USE_RUBY=	yes

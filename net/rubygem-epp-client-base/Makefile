@@ -11,8 +11,8 @@ COMMENT=	Extensible EPP client library
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-builder>=2.1.2:devel/rubygem-builder \
-		rubygem-nokogiri>=1.4:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=2.1.2:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.4:textproc/rubygem-nokogiri
 
 USE_RUBY=	yes
 USES=		gem

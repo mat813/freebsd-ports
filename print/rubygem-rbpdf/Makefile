@@ -12,8 +12,8 @@ COMMENT=	Ruby library for creating ERB enabled PDF templates
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/LICENSE.TXT
 
-RUN_DEPENDS=	rubygem-htmlentities>=0:textproc/rubygem-htmlentities \
-		rubygem-rbpdf-font>=${PORTVERSION:R}:print/rubygem-rbpdf-font
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}htmlentities>=0:textproc/rubygem-htmlentities \
+		${RG_PKGNAMEPREFIX}rbpdf-font>=${PORTVERSION:R}:print/rubygem-rbpdf-font
 
 NO_ARCH=	yes
 USE_RUBY=	yes

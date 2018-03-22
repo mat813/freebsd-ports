@@ -13,9 +13,9 @@ COMMENT=	Object-relational mapping layer for Rails MVC Framework
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activemodel5>=${PORTVERSION}:databases/rubygem-activemodel5 \
-		rubygem-activesupport5>=${PORTVERSION}:devel/rubygem-activesupport5 \
-		rubygem-arel8>=8.0:databases/rubygem-arel8
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel5>=${PORTVERSION}:databases/rubygem-activemodel5 \
+		${RG_PKGNAMEPREFIX}activesupport5>=${PORTVERSION}:devel/rubygem-activesupport5 \
+		${RG_PKGNAMEPREFIX}arel8>=8.0:databases/rubygem-arel8
 
 NO_ARCH=	yes
 USE_RUBY=	yes

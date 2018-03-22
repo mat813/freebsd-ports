@@ -19,6 +19,6 @@ NO_ARCH=	yes
 USE_RUBY=	yes
 USES=		gem
 
-NOKOGIRI_RUN_DEPENDS=	rubygem-nokogiri>=0:textproc/rubygem-nokogiri
+NOKOGIRI_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}nokogiri>=0:textproc/rubygem-nokogiri
 
 .include <bsd.port.mk>

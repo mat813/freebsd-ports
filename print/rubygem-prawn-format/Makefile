@@ -12,7 +12,7 @@ COMMENT=	Extension of Prawn that allows inline formatting
 LICENSE=	GPLv2 RUBY
 LICENSE_COMB=	dual
 
-RUN_DEPENDS=	rubygem-prawn-core>=0:print/rubygem-prawn-core
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}prawn-core>=0:print/rubygem-prawn-core
 
 NO_ARCH=	yes
 

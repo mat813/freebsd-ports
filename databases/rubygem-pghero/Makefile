@@ -11,7 +11,7 @@ COMMENT=	Performance dashboard for Postgres
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-activerecord4>=0:databases/rubygem-activerecord4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord4>=0:databases/rubygem-activerecord4
 
 NO_ARCH=	yes
 USES=		gem

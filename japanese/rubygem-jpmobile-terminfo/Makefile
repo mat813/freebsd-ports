@@ -18,6 +18,6 @@ USES=		gem
 
 .include <bsd.port.pre.mk>
 
-PKGNAMEPREFIX:=	${PKGNAMEPREFIX}rubygem-
+PKGNAMEPREFIX:=	${PKGNAMEPREFIX}${RG_PKGNAMEPREFIX}
 
 .include <bsd.port.post.mk>

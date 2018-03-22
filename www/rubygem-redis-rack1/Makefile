@@ -13,8 +13,8 @@ COMMENT=	Redis Store for Rack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-rack16>=1.5:www/rubygem-rack16 \
-		rubygem-redis-store>=1.2.0:devel/rubygem-redis-store
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack16>=1.5:www/rubygem-rack16 \
+		${RG_PKGNAMEPREFIX}redis-store>=1.2.0:devel/rubygem-redis-store
 
 NO_ARCH=	yes
 USE_RUBY=	yes

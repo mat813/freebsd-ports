@@ -13,7 +13,7 @@ COMMENT=	XML parameters parser for Action Pack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack4>=4.0.0:www/rubygem-actionpack4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack4>=4.0.0:www/rubygem-actionpack4
 
 PORTSCOUT=	limit:^1\.
 

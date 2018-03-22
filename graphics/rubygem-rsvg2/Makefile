@@ -10,10 +10,10 @@ COMMENT=	Ruby binding for librsvg2
 
 LICENSE=	LGPL21+
 
-BUILD_DEPENDS=	rubygem-rake>=0:devel/rubygem-rake
-RUN_DEPENDS=	rubygem-cairo>=1.12.8:graphics/rubygem-cairo \
-		rubygem-cairo-gobject>=${PORTVERSION}:devel/rubygem-cairo-gobject \
-		rubygem-gdk_pixbuf2>=${PORTVERSION}:graphics/rubygem-gdk_pixbuf2
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cairo>=1.12.8:graphics/rubygem-cairo \
+		${RG_PKGNAMEPREFIX}cairo-gobject>=${PORTVERSION}:devel/rubygem-cairo-gobject \
+		${RG_PKGNAMEPREFIX}gdk_pixbuf2>=${PORTVERSION}:graphics/rubygem-gdk_pixbuf2
 
 NO_ARCH=	yes
 USE_GNOME=	librsvg2

@@ -11,7 +11,7 @@ COMMENT=	Unified, cross platform replacement for the Etc module
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-ffi>=1.1.0:devel/rubygem-ffi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=1.1.0:devel/rubygem-ffi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

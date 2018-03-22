@@ -10,13 +10,13 @@ COMMENT=	Simple pub/sub messaging for the web
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-cookiejar>=0.3.0:www/rubygem-cookiejar \
-		rubygem-em-http-request>=0.3.0:www/rubygem-em-http-request \
-		rubygem-eventmachine>=0.12.0:devel/rubygem-eventmachine \
-		rubygem-faye-websocket>=0.9.1:www/rubygem-faye-websocket \
-		rubygem-multi_json>=1.0.0:devel/rubygem-multi_json \
-		rubygem-rack>=1.0.0:www/rubygem-rack \
-		rubygem-websocket-driver>=0.5.1:www/rubygem-websocket-driver
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cookiejar>=0.3.0:www/rubygem-cookiejar \
+		${RG_PKGNAMEPREFIX}em-http-request>=0.3.0:www/rubygem-em-http-request \
+		${RG_PKGNAMEPREFIX}eventmachine>=0.12.0:devel/rubygem-eventmachine \
+		${RG_PKGNAMEPREFIX}faye-websocket>=0.9.1:www/rubygem-faye-websocket \
+		${RG_PKGNAMEPREFIX}multi_json>=1.0.0:devel/rubygem-multi_json \
+		${RG_PKGNAMEPREFIX}rack>=1.0.0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}websocket-driver>=0.5.1:www/rubygem-websocket-driver
 
 NO_ARCH=	yes
 USE_RUBY=	yes

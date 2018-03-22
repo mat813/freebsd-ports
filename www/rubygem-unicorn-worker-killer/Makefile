@@ -12,8 +12,8 @@ LICENSE=	GPLv2+ RUBY
 LICENSE_COMB=	dual
 LICENSE_FILE_RUBY=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-get_process_mem>=0:devel/rubygem-get_process_mem \
-		rubygem-unicorn>=4:www/rubygem-unicorn
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}get_process_mem>=0:devel/rubygem-get_process_mem \
+		${RG_PKGNAMEPREFIX}unicorn>=4:www/rubygem-unicorn
 
 NO_ARCH=	yes
 USE_RUBY=	yes

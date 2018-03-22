@@ -12,8 +12,8 @@ COMMENT=	Ruby interface for lighthouse ticketing system
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-activeresource4>=3.0.0:www/rubygem-activeresource4 \
-		rubygem-activesupport4>=3.0.0:devel/rubygem-activesupport4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activeresource4>=3.0.0:www/rubygem-activeresource4 \
+		${RG_PKGNAMEPREFIX}activesupport4>=3.0.0:devel/rubygem-activesupport4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

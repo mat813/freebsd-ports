@@ -12,8 +12,8 @@ COMMENT=	Extension to ActiveRecord::Base for validating hostnames
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activerecord4>=3.0:databases/rubygem-activerecord4 \
-		rubygem-activesupport4>=3.0:devel/rubygem-activesupport4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord4>=3.0:databases/rubygem-activerecord4 \
+		${RG_PKGNAMEPREFIX}activesupport4>=3.0:devel/rubygem-activesupport4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

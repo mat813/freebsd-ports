@@ -13,27 +13,27 @@ COMMENT=	Flexible project management web application
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/doc/COPYING
 
-RUN_DEPENDS=	rubygem-bundler>=1.5.0:sysutils/rubygem-bundler \
-		rubygem-rails4>=4.2.8:www/rubygem-rails4 \
-		rubygem-jquery-rails>=4.3.0:www/rubygem-jquery-rails \
-		rubygem-coderay>=1.1.1:textproc/rubygem-coderay \
-		rubygem-request_store>=1.0.5:devel/rubygem-request_store \
-		rubygem-mime-types>=0:misc/rubygem-mime-types \
-		rubygem-protected_attributes>=0:devel/rubygem-protected_attributes \
-		rubygem-actionpack-xml_parser1>=0:textproc/rubygem-actionpack-xml_parser1 \
-		rubygem-roadie-rails>=1.2.0:mail/rubygem-roadie-rails \
-		rubygem-roadie>=3.2.1:mail/rubygem-roadie \
-		rubygem-mimemagic>=0:misc/rubygem-mimemagic \
-		rubygem-mail>=2.6.4:mail/rubygem-mail \
-		rubygem-nokogiri>=1.8.1:textproc/rubygem-nokogiri \
-		rubygem-i18n>=0.8.5:devel/rubygem-i18n \
-		rubygem-ffi>=1.9.14:devel/rubygem-ffi \
-		rubygem-rails-html-sanitizer>=1.0.3:textproc/rubygem-rails-html-sanitizer \
-		rubygem-rbpdf>=1.19.2:print/rubygem-rbpdf \
-		rubygem-net-ldap>=0.12.0:net/rubygem-net-ldap \
-		rubygem-ruby-openid>=2.3.0:net/rubygem-ruby-openid \
-		rubygem-rack-openid>=0:www/rubygem-rack-openid \
-		rubygem-rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bundler>=1.5.0:sysutils/rubygem-bundler \
+		${RG_PKGNAMEPREFIX}rails4>=4.2.8:www/rubygem-rails4 \
+		${RG_PKGNAMEPREFIX}jquery-rails>=4.3.0:www/rubygem-jquery-rails \
+		${RG_PKGNAMEPREFIX}coderay>=1.1.1:textproc/rubygem-coderay \
+		${RG_PKGNAMEPREFIX}request_store>=1.0.5:devel/rubygem-request_store \
+		${RG_PKGNAMEPREFIX}mime-types>=0:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}protected_attributes>=0:devel/rubygem-protected_attributes \
+		${RG_PKGNAMEPREFIX}actionpack-xml_parser1>=0:textproc/rubygem-actionpack-xml_parser1 \
+		${RG_PKGNAMEPREFIX}roadie-rails>=1.2.0:mail/rubygem-roadie-rails \
+		${RG_PKGNAMEPREFIX}roadie>=3.2.1:mail/rubygem-roadie \
+		${RG_PKGNAMEPREFIX}mimemagic>=0:misc/rubygem-mimemagic \
+		${RG_PKGNAMEPREFIX}mail>=2.6.4:mail/rubygem-mail \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.8.1:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}i18n>=0.8.5:devel/rubygem-i18n \
+		${RG_PKGNAMEPREFIX}ffi>=1.9.14:devel/rubygem-ffi \
+		${RG_PKGNAMEPREFIX}rails-html-sanitizer>=1.0.3:textproc/rubygem-rails-html-sanitizer \
+		${RG_PKGNAMEPREFIX}rbpdf>=1.19.2:print/rubygem-rbpdf \
+		${RG_PKGNAMEPREFIX}net-ldap>=0.12.0:net/rubygem-net-ldap \
+		${RG_PKGNAMEPREFIX}ruby-openid>=2.3.0:net/rubygem-ruby-openid \
+		${RG_PKGNAMEPREFIX}rack-openid>=0:www/rubygem-rack-openid \
+		${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 NO_ARCH=	yes
 NO_BUILD=	yes
@@ -56,11 +56,11 @@ THIN_DESC=	Use Thin WEB server
 MYSQL_DESC=	MySQL database support (via mysql2 rubygem)
 NO_OPTIONS_SORT=	yes
 
-MYSQL_RUN_DEPENDS=	rubygem-mysql2>=0.4.6:databases/rubygem-mysql2
-POSTGRESQL_RUN_DEPENDS=	rubygem-pg>=0.18.1:databases/rubygem-pg
-MARKDOWN_RUN_DEPENDS=	rubygem-redcarpet>=3.4.0:textproc/rubygem-redcarpet
-RMAGIC_RUN_DEPENDS=	rubygem-rmagick>=2.14.0:graphics/rubygem-rmagick
-THIN_RUN_DEPENDS=	rubygem-thin>=1.6.2:www/rubygem-thin
+MYSQL_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}mysql2>=0.4.6:databases/rubygem-mysql2
+POSTGRESQL_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}pg>=0.18.1:databases/rubygem-pg
+MARKDOWN_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}redcarpet>=3.4.0:textproc/rubygem-redcarpet
+RMAGIC_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rmagick>=2.14.0:graphics/rubygem-rmagick
+THIN_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}thin>=1.6.2:www/rubygem-thin
 THIN_SUB_LIST=		WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 THIN_VARS=		USE_RC_SUBR=redmine
 

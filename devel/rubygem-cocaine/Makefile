@@ -12,7 +12,7 @@ COMMENT=	Small library for doing (command) lines
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-terrapin>=${PORTVERSION}:devel/rubygem-terrapin
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}terrapin>=${PORTVERSION}:devel/rubygem-terrapin
 
 NO_ARCH=	yes
 USE_RUBY=	yes

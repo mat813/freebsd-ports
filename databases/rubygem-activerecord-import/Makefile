@@ -12,7 +12,7 @@ LICENSE=	BSD2CLAUSE RUBY
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-activerecord4>=3.2:databases/rubygem-activerecord4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord4>=3.2:databases/rubygem-activerecord4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

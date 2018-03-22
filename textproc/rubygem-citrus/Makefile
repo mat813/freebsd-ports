@@ -8,7 +8,7 @@ MASTER_SITES=	RG
 MAINTAINER=	idefix@fechner.net
 COMMENT=	Parsing Expressions for Ruby
 
-BUILD_DEPENDS=	rubygem-rake>=0:devel/rubygem-rake
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 NO_ARCH=	yes
 USE_RUBY=	yes

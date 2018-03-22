@@ -12,7 +12,7 @@ COMMENT=	Helpers for the reCAPTCHA API
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-json>=0:devel/rubygem-json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json>=0:devel/rubygem-json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

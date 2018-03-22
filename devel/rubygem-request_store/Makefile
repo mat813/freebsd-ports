@@ -12,7 +12,7 @@ COMMENT=	RequestStore gives you per-request global storage
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-rack16>=1.4:www/rubygem-rack16
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack16>=1.4:www/rubygem-rack16
 
 NO_ARCH=	yes
 USE_RUBY=	yes

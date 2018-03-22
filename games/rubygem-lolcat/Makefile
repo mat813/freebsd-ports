@@ -11,8 +11,8 @@ COMMENT=	Rainbows and unicorns
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-paint>=2.0.0:devel/rubygem-paint \
-		rubygem-trollop>=2.1.2:devel/rubygem-trollop
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}paint>=2.0.0:devel/rubygem-paint \
+		${RG_PKGNAMEPREFIX}trollop>=2.1.2:devel/rubygem-trollop
 
 NO_ARCH=	yes
 USE_RUBY=	yes

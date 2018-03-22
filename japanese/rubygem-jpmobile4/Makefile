@@ -13,7 +13,7 @@ COMMENT=	Rails plugin for Japanese mobile-phones
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-rails4>0:www/rubygem-rails4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rails4>0:www/rubygem-rails4
 
 NO_ARCH=	yes
 USE_RUBY=	yes
@@ -28,10 +28,10 @@ OPTIONS_DEFAULT=	IPADDRESSES TERMINFO
 
 .include <bsd.port.pre.mk>
 
-PKGNAMEPREFIX:=	${PKGNAMEPREFIX}rubygem-
+PKGNAMEPREFIX:=	${PKGNAMEPREFIX}${RG_PKGNAMEPREFIX}
 
-GEOKIT_RUN_DEPENDS=	rubygem-geokit>=1.5.0:graphics/rubygem-geokit
-IPADDRESSES_RUN_DEPENDS=	ja-rubygem-jpmobile-ipaddresses>=0.0.1:japanese/rubygem-jpmobile-ipaddresses
-TERMINFO_RUN_DEPENDS+=	ja-rubygem-jpmobile-terminfo>=0.0.2:japanese/rubygem-jpmobile-terminfo
+GEOKIT_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}geokit>=1.5.0:graphics/rubygem-geokit
+IPADDRESSES_RUN_DEPENDS=	ja-${RG_PKGNAMEPREFIX}jpmobile-ipaddresses>=0.0.1:japanese/rubygem-jpmobile-ipaddresses
+TERMINFO_RUN_DEPENDS+=	ja-${RG_PKGNAMEPREFIX}jpmobile-terminfo>=0.0.2:japanese/rubygem-jpmobile-terminfo
 
 .include <bsd.port.post.mk>

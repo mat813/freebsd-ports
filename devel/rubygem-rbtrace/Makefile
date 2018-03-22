@@ -12,9 +12,9 @@ COMMENT=	Shows method calls inside another ruby process in real time
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-ffi>=1.0.6:devel/rubygem-ffi \
-		rubygem-msgpack>=0.4.3:devel/rubygem-msgpack \
-		rubygem-trollop>=1.16.2:devel/rubygem-trollop
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=1.0.6:devel/rubygem-ffi \
+		${RG_PKGNAMEPREFIX}msgpack>=0.4.3:devel/rubygem-msgpack \
+		${RG_PKGNAMEPREFIX}trollop>=1.16.2:devel/rubygem-trollop
 
 USE_RUBY=	yes
 USES=		gem

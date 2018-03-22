@@ -11,7 +11,7 @@ COMMENT=	Module that adds descendant tracking to a class
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-thread_safe>=0.3.1:devel/rubygem-thread_safe
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}thread_safe>=0.3.1:devel/rubygem-thread_safe
 
 NO_ARCH=	yes
 USE_RUBY=	yes

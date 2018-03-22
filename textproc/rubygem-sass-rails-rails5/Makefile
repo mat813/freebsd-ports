@@ -13,11 +13,11 @@ COMMENT=	Sass adapter for the Rails asset pipeline
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-railties5>=5.0.0:www/rubygem-railties5 \
-		rubygem-sass>=3.1:textproc/rubygem-sass \
-		rubygem-sprockets3>=3.0.3:devel/rubygem-sprockets3 \
-		rubygem-sprockets-rails-rails5>=2.0:devel/rubygem-sprockets-rails-rails5 \
-		rubygem-tilt>=1.1:devel/rubygem-tilt
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}railties5>=5.0.0:www/rubygem-railties5 \
+		${RG_PKGNAMEPREFIX}sass>=3.1:textproc/rubygem-sass \
+		${RG_PKGNAMEPREFIX}sprockets3>=3.0.3:devel/rubygem-sprockets3 \
+		${RG_PKGNAMEPREFIX}sprockets-rails-rails5>=2.0:devel/rubygem-sprockets-rails-rails5 \
+		${RG_PKGNAMEPREFIX}tilt>=1.1:devel/rubygem-tilt
 
 NO_ARCH=	yes
 USE_RUBY=	yes

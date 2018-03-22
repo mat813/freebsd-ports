@@ -12,8 +12,8 @@ COMMENT=	Generalized Rack framework for multiple-provider authentication
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-hashie>=3.4.6:devel/rubygem-hashie \
-		rubygem-rack>=1.6.2:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hashie>=3.4.6:devel/rubygem-hashie \
+		${RG_PKGNAMEPREFIX}rack>=1.6.2:www/rubygem-rack
 
 PORTSCOUT=	limit:^1\.4
 

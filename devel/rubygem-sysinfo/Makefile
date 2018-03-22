@@ -12,8 +12,8 @@ COMMENT=	All your system-independent infoz in one handy class
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-drydock>=0:devel/rubygem-drydock \
-		rubygem-storable>=0:devel/rubygem-storable
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}drydock>=0:devel/rubygem-drydock \
+		${RG_PKGNAMEPREFIX}storable>=0:devel/rubygem-storable
 
 NO_ARCH=	yes
 USE_RUBY=	yes

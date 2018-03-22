@@ -11,8 +11,8 @@ COMMENT=	Parse liquid tags easily
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-extras>=0.3:devel/rubygem-extras \
-		rubygem-liquid>=3.0:textproc/rubygem-liquid
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}extras>=0.3:devel/rubygem-extras \
+		${RG_PKGNAMEPREFIX}liquid>=3.0:textproc/rubygem-liquid
 
 NO_ARCH=	yes
 USE_RUBY=	yes

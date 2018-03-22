@@ -12,9 +12,9 @@ COMMENT=	Redis session store for ActionPack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack5>0:www/rubygem-actionpack5 \
-		rubygem-redis-rack>=1:www/rubygem-redis-rack \
-		rubygem-redis-store>=1.1.0:devel/rubygem-redis-store
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack5>0:www/rubygem-actionpack5 \
+		${RG_PKGNAMEPREFIX}redis-rack>=1:www/rubygem-redis-rack \
+		${RG_PKGNAMEPREFIX}redis-store>=1.1.0:devel/rubygem-redis-store
 
 NO_ARCH=	yes
 USE_RUBY=	yes

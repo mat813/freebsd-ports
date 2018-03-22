@@ -12,12 +12,12 @@ COMMENT=	Sinatra based gem hosting app
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-builder>=0:devel/rubygem-builder \
-		rubygem-faraday>=0:www/rubygem-faraday \
-		rubygem-httpclient>=2.2.7:www/rubygem-httpclient \
-		rubygem-nesty>=0:devel/rubygem-nesty \
-		rubygem-reentrant_flock>=0:devel/rubygem-reentrant_flock \
-		rubygem-sinatra>=1.2.7:www/rubygem-sinatra
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=0:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}faraday>=0:www/rubygem-faraday \
+		${RG_PKGNAMEPREFIX}httpclient>=2.2.7:www/rubygem-httpclient \
+		${RG_PKGNAMEPREFIX}nesty>=0:devel/rubygem-nesty \
+		${RG_PKGNAMEPREFIX}reentrant_flock>=0:devel/rubygem-reentrant_flock \
+		${RG_PKGNAMEPREFIX}sinatra>=1.2.7:www/rubygem-sinatra
 
 NO_ARCH=	yes
 USE_RUBY=	yes

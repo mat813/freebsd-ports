@@ -12,8 +12,8 @@ COMMENT=	Detects under what license a project is distributed
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-rugged>=0.24:devel/rubygem-rugged \
-		rubygem-octokit>=4.8.0:net/rubygem-octokit
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rugged>=0.24:devel/rubygem-rugged \
+		${RG_PKGNAMEPREFIX}octokit>=4.8.0:net/rubygem-octokit
 
 NO_ARCH=	yes
 USE_RUBY=	yes

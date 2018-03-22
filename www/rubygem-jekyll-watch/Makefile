@@ -11,7 +11,7 @@ COMMENT=	Handles rebuilding of Jekyll sites when a file changes
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-listen>=3.0:devel/rubygem-listen
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}listen>=3.0:devel/rubygem-listen
 
 NO_ARCH=	yes
 USE_RUBY=	yes

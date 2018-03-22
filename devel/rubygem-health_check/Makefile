@@ -12,7 +12,7 @@ COMMENT=	Simple health check of Rails app for uptime monitoring
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-railties5>=5.0:www/rubygem-railties5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}railties5>=5.0:www/rubygem-railties5
 
 NO_ARCH=	yes
 USE_RUBY=	yes

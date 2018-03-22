@@ -12,7 +12,7 @@ LICENSE=	APACHE20
 USE_GITHUB=	yes
 GH_TUPLE=	cloudfoundry:bosh-cli:v${PORTVERSION}
 
-CONFLICTS_INSTALL=	rubygem-bosh_cli
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}bosh_cli
 
 USES=		go tar:xz
 

@@ -13,8 +13,8 @@ COMMENT=	Improve the rendering of HTML emails
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-actionmailer5>=3:mail/rubygem-actionmailer5 \
-		rubygem-premailer>=1.7.9:mail/rubygem-premailer
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionmailer5>=3:mail/rubygem-actionmailer5 \
+		${RG_PKGNAMEPREFIX}premailer>=1.7.9:mail/rubygem-premailer
 
 USES=		gem
 USE_RUBY=	yes

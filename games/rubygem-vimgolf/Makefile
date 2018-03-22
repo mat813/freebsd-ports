@@ -10,9 +10,9 @@ COMMENT=	CLI client for vimgolf.com
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-thor>=0.14.6:devel/rubygem-thor \
-		rubygem-json_pure>=0:devel/rubygem-json_pure \
-		rubygem-highline>=0:devel/rubygem-highline
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}thor>=0.14.6:devel/rubygem-thor \
+		${RG_PKGNAMEPREFIX}json_pure>=0:devel/rubygem-json_pure \
+		${RG_PKGNAMEPREFIX}highline>=0:devel/rubygem-highline
 
 NO_ARCH=	yes
 USE_RUBY=	yes

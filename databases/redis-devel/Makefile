@@ -33,7 +33,7 @@ CFLAGS+=	-march=i586
 .if ${PORT_OPTIONS:MTRIB}
 CATEGORIES+=	ruby
 USE_RUBY=	yes
-RUN_DEPENDS=	rubygem-redis>=2.2:databases/rubygem-redis
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}redis>=2.2:databases/rubygem-redis
 .endif
 
 .if ${PORT_OPTIONS:MLUA}

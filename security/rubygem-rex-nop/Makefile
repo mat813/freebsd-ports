@@ -11,7 +11,7 @@ COMMENT=	Ruby Exploitation(Rex) library for NOP generation
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rex-arch>=0:security/rubygem-rex-arch
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rex-arch>=0:security/rubygem-rex-arch
 
 NO_ARCH=	yes
 

@@ -12,7 +12,7 @@ COMMENT=	Pluggable data store for hierarchical data
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-CONFLICTS_INSTALL=	rubygem-hiera1-*
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}hiera1-*
 
 NO_ARCH=	yes
 USE_RUBY=	yes

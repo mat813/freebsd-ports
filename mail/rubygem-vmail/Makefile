@@ -13,11 +13,11 @@ COMMENT=	Vim interface to Gmail
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE.txt
 
-RUN_DEPENDS=	rubygem-highline>=1.6.1:devel/rubygem-highline \
-		rubygem-mail>=2.2.12:mail/rubygem-mail \
-		rubygem-sequel>=3.24.1:devel/rubygem-sequel \
-		rubygem-sqlite3>=1.3.3:databases/rubygem-sqlite3 \
-		rubygem-versionomy>=0.4.4:devel/rubygem-versionomy \
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}highline>=1.6.1:devel/rubygem-highline \
+		${RG_PKGNAMEPREFIX}mail>=2.2.12:mail/rubygem-mail \
+		${RG_PKGNAMEPREFIX}sequel>=3.24.1:devel/rubygem-sequel \
+		${RG_PKGNAMEPREFIX}sqlite3>=1.3.3:databases/rubygem-sqlite3 \
+		${RG_PKGNAMEPREFIX}versionomy>=0.4.4:devel/rubygem-versionomy \
 		vim:editors/vim-console
 
 NO_ARCH=	yes

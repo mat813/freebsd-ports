@@ -12,26 +12,26 @@ COMMENT=	Vagrant Virtual Machine Manager
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	rubygem-builder>=2.1.2:devel/rubygem-builder \
-		rubygem-bundler>=1.12.5:sysutils/rubygem-bundler \
-		rubygem-main>=1.0:devel/rubygem-main
-RUN_DEPENDS=	rubygem-bundler>=1.12.5:sysutils/rubygem-bundler \
-		rubygem-childprocess>=0.6.0:devel/rubygem-childprocess \
-		rubygem-erubis>=2.7.0:www/rubygem-erubis \
-		rubygem-hashicorp-checkpoint>=0.1.5:www/rubygem-hashicorp-checkpoint \
-		rubygem-i18n>=0.6.0:devel/rubygem-i18n \
-		rubygem-listen>=3.1.5:devel/rubygem-listen \
-		rubygem-log4r>=1.1.9:sysutils/rubygem-log4r \
-		rubygem-net-scp>=1.2.0:security/rubygem-net-scp \
-		rubygem-net-sftp>=2.1:security/rubygem-net-sftp \
-		rubygem-net-ssh>=4.2.0:security/rubygem-net-ssh \
-		rubygem-rb-kqueue>=0.2.0:devel/rubygem-rb-kqueue \
-		rubygem-rest-client>=1.6.0:www/rubygem-rest-client \
-		rubygem-wdm>=0.1.0:devel/rubygem-wdm \
-		rubygem-winrm>=2.1:sysutils/rubygem-winrm \
-		rubygem-winrm-elevated>=1.1:sysutils/rubygem-winrm-elevated \
-		rubygem-winrm-fs>=1.0:sysutils/rubygem-winrm-fs \
-		rubygem-ruby_dep>=0:devel/rubygem-ruby_dep
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=2.1.2:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}bundler>=1.12.5:sysutils/rubygem-bundler \
+		${RG_PKGNAMEPREFIX}main>=1.0:devel/rubygem-main
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bundler>=1.12.5:sysutils/rubygem-bundler \
+		${RG_PKGNAMEPREFIX}childprocess>=0.6.0:devel/rubygem-childprocess \
+		${RG_PKGNAMEPREFIX}erubis>=2.7.0:www/rubygem-erubis \
+		${RG_PKGNAMEPREFIX}hashicorp-checkpoint>=0.1.5:www/rubygem-hashicorp-checkpoint \
+		${RG_PKGNAMEPREFIX}i18n>=0.6.0:devel/rubygem-i18n \
+		${RG_PKGNAMEPREFIX}listen>=3.1.5:devel/rubygem-listen \
+		${RG_PKGNAMEPREFIX}log4r>=1.1.9:sysutils/rubygem-log4r \
+		${RG_PKGNAMEPREFIX}net-scp>=1.2.0:security/rubygem-net-scp \
+		${RG_PKGNAMEPREFIX}net-sftp>=2.1:security/rubygem-net-sftp \
+		${RG_PKGNAMEPREFIX}net-ssh>=4.2.0:security/rubygem-net-ssh \
+		${RG_PKGNAMEPREFIX}rb-kqueue>=0.2.0:devel/rubygem-rb-kqueue \
+		${RG_PKGNAMEPREFIX}rest-client>=1.6.0:www/rubygem-rest-client \
+		${RG_PKGNAMEPREFIX}wdm>=0.1.0:devel/rubygem-wdm \
+		${RG_PKGNAMEPREFIX}winrm>=2.1:sysutils/rubygem-winrm \
+		${RG_PKGNAMEPREFIX}winrm-elevated>=1.1:sysutils/rubygem-winrm-elevated \
+		${RG_PKGNAMEPREFIX}winrm-fs>=1.0:sysutils/rubygem-winrm-fs \
+		${RG_PKGNAMEPREFIX}ruby_dep>=0:devel/rubygem-ruby_dep
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	hashicorp

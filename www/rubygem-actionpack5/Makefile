@@ -13,12 +13,12 @@ COMMENT=	Action Controller and Action View of Rails MVC Framework
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionview5>=${PORTVERSION}:devel/rubygem-actionview5 \
-		rubygem-activesupport5>=${PORTVERSION}:devel/rubygem-activesupport5 \
-		rubygem-rack>=2.0:www/rubygem-rack \
-		rubygem-rack-test>=0.6.3:www/rubygem-rack-test \
-		rubygem-rails-dom-testing-rails5>=2.0:textproc/rubygem-rails-dom-testing-rails5 \
-		rubygem-rails-html-sanitizer>=1.0.2:textproc/rubygem-rails-html-sanitizer
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionview5>=${PORTVERSION}:devel/rubygem-actionview5 \
+		${RG_PKGNAMEPREFIX}activesupport5>=${PORTVERSION}:devel/rubygem-activesupport5 \
+		${RG_PKGNAMEPREFIX}rack>=2.0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}rack-test>=0.6.3:www/rubygem-rack-test \
+		${RG_PKGNAMEPREFIX}rails-dom-testing-rails5>=2.0:textproc/rubygem-rails-dom-testing-rails5 \
+		${RG_PKGNAMEPREFIX}rails-html-sanitizer>=1.0.2:textproc/rubygem-rails-html-sanitizer
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,7 +12,7 @@ COMMENT=	C extensions to optimize the concurrent-ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-concurrent-ruby>=${PORTVERSION}:devel/rubygem-concurrent-ruby
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}concurrent-ruby>=${PORTVERSION}:devel/rubygem-concurrent-ruby
 
 USE_RUBY=	yes
 USES=		gem

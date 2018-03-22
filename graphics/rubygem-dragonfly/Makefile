@@ -12,9 +12,9 @@ COMMENT=	On-the-fly Rack-based image handling framework
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-addressable>=2.3:www/rubygem-addressable \
-		rubygem-multi_json>=1.0:devel/rubygem-multi_json \
-		rubygem-rack>=1.3:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}addressable>=2.3:www/rubygem-addressable \
+		${RG_PKGNAMEPREFIX}multi_json>=1.0:devel/rubygem-multi_json \
+		${RG_PKGNAMEPREFIX}rack>=1.3:www/rubygem-rack
 
 NO_ARCH=	yes
 USE_RUBY=	yes

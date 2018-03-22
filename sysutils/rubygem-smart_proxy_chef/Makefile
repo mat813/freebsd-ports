@@ -13,7 +13,7 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	foreman-proxy>=1.8.0:net/foreman-proxy \
-		rubygem-chef-api>0:sysutils/rubygem-chef-api
+		${RG_PKGNAMEPREFIX}chef-api>0:sysutils/rubygem-chef-api
 
 NO_ARCH=	yes
 USE_RUBY=	yes

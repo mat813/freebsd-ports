@@ -11,7 +11,7 @@ COMMENT=	Allows building easy-to-use commandline interfaces
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-colored>=1.2:textproc/rubygem-colored
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}colored>=1.2:textproc/rubygem-colored
 
 NO_ARCH=	yes
 

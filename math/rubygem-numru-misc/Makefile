@@ -9,8 +9,8 @@ MASTER_SITES=	RG
 MAINTAINER=	murashin@gfd-dennou.org
 COMMENT=	Miscellaneous functions and classes to help Ruby programming
 
-RUN_DEPENDS=	rubygem-narray>0:math/rubygem-narray \
-		rubygem-narray_miss>0:math/rubygem-narray_miss
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}narray>0:math/rubygem-narray \
+		${RG_PKGNAMEPREFIX}narray_miss>0:math/rubygem-narray_miss
 
 USE_RUBY=	yes
 USES=		gem

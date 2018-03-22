@@ -12,10 +12,10 @@ COMMENT=	Ruby library that preprocesses and concatenates JavaScript files
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-hike1>=1.2:devel/rubygem-hike1 \
-		rubygem-multi_json>=1.0:devel/rubygem-multi_json \
-		rubygem-rack16>=1.0:www/rubygem-rack16 \
-		rubygem-tilt1>=1.1:devel/rubygem-tilt1
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hike1>=1.2:devel/rubygem-hike1 \
+		${RG_PKGNAMEPREFIX}multi_json>=1.0:devel/rubygem-multi_json \
+		${RG_PKGNAMEPREFIX}rack16>=1.0:www/rubygem-rack16 \
+		${RG_PKGNAMEPREFIX}tilt1>=1.1:devel/rubygem-tilt1
 
 NO_ARCH=	yes
 USE_RUBY=	yes

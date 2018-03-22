@@ -12,10 +12,10 @@ COMMENT=	Ruby interface to the VMware vSphere API
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-builder>=3.0:devel/rubygem-builder \
-		rubygem-json>=1.8:devel/rubygem-json \
-		rubygem-nokogiri>=1.5:textproc/rubygem-nokogiri \
-		rubygem-trollop>=2.1:devel/rubygem-trollop
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=3.0:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}json>=1.8:devel/rubygem-json \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.5:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}trollop>=2.1:devel/rubygem-trollop
 
 NO_ARCH=	yes
 USE_RUBY=	yes

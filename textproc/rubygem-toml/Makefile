@@ -12,7 +12,7 @@ COMMENT=	TOML parser
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-parslet>=1.8.0:textproc/rubygem-parslet
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}parslet>=1.8.0:textproc/rubygem-parslet
 
 NO_ARCH=	yes
 USE_RUBY=	yes

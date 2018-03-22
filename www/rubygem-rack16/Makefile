@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 # XXX: If updating this port, please check compatibality with at least the following ports,
-# XXX: preferably, the full rubygem-* tree.  rack version requirements are specified with ~>
+# XXX: preferably, the full ${RG_PKGNAMEPREFIX}* tree.  rack version requirements are specified with ~>
 # XXX: which requires *EXACTLY* that version.
 #
-# 	www/rubygem-actionpack4
+# 	www/${RG_PKGNAMEPREFIX}actionpack4
 
 PORTNAME=	rack
 PORTVERSION=	1.6.9
@@ -29,7 +29,7 @@ rackup_CMD=	${LOCALBASE}/bin/rackup
 
 PORTSCOUT=	limit:^1\.6
 
-# avoid duplicate file from www/rubygem-rack port
+# avoid duplicate file from www/${RG_PKGNAMEPREFIX}rack port
 post-install:
 	@${RM} ${STAGEDIR}${PREFIX}/bin/rackup
 

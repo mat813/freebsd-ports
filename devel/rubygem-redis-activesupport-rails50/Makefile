@@ -12,8 +12,8 @@ COMMENT=	Redis store for ActiveSupport::Cache
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS?=	rubygem-activesupport50>0:devel/rubygem-activesupport50 \
-		rubygem-redis-store>=1.3.0:devel/rubygem-redis-store
+RUN_DEPENDS?=	${RG_PKGNAMEPREFIX}activesupport50>0:devel/rubygem-activesupport50 \
+		${RG_PKGNAMEPREFIX}redis-store>=1.3.0:devel/rubygem-redis-store
 
 NO_ARCH=	yes
 USE_RUBY=	yes

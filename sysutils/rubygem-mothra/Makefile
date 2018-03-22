@@ -11,9 +11,9 @@ COMMENT=	FreeBSD send-pr command line tool for Bugzilla system
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-colorize>=0.7.3:devel/rubygem-colorize \
-		rubygem-rodzilla>=0.3.6:devel/rubygem-rodzilla \
-		rubygem-thor>=0.19.1:devel/rubygem-thor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}colorize>=0.7.3:devel/rubygem-colorize \
+		${RG_PKGNAMEPREFIX}rodzilla>=0.3.6:devel/rubygem-rodzilla \
+		${RG_PKGNAMEPREFIX}thor>=0.19.1:devel/rubygem-thor
 
 NO_ARCH=	yes
 

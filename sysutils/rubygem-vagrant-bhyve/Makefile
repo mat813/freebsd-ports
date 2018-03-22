@@ -8,7 +8,7 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Vagrant provider plugin to support bhyve
 
-RUN_DEPENDS=	rubygem-ruby_expect>=0:textproc/rubygem-ruby_expect
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ruby_expect>=0:textproc/rubygem-ruby_expect
 
 USE_RUBY=	yes
 USES=		gem

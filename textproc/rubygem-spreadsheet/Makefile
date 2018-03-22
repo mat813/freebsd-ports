@@ -12,7 +12,7 @@ COMMENT=	Ruby module to generate Microsoft Excel compatible files
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-ruby-ole>=1.0:devel/rubygem-ruby-ole
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ruby-ole>=1.0:devel/rubygem-ruby-ole
 
 NO_ARCH=	yes
 USE_RUBY=	yes

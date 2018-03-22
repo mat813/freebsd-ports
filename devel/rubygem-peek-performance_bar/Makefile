@@ -11,7 +11,7 @@ COMMENT=	Take a peek into the window.performance timing behind your app
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-peek>=0.1.0:devel/rubygem-peek
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}peek>=0.1.0:devel/rubygem-peek
 
 NO_ARCH=	yes
 USES=		gem

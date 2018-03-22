@@ -10,7 +10,7 @@ COMMENT=	Extraction of the key_transform abilities of ActiveModelSerializers
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activesupport5>0:devel/rubygem-activesupport5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport5>0:devel/rubygem-activesupport5
 
 USES=		gem
 USE_RUBY=	yes

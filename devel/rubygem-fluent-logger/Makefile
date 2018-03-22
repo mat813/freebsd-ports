@@ -11,7 +11,7 @@ COMMENT=	Structured event logger for Ruby
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-msgpack1>=1.0.0:devel/rubygem-msgpack1
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}msgpack1>=1.0.0:devel/rubygem-msgpack1
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -11,8 +11,8 @@ COMMENT=	Devise PAM authentication module using rpam2
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-devise-rails5>=4.0.0:devel/rubygem-devise-rails5 \
-		rubygem-rpam2>=3.0:security/rubygem-rpam2
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}devise-rails5>=4.0.0:devel/rubygem-devise-rails5 \
+		${RG_PKGNAMEPREFIX}rpam2>=3.0:security/rubygem-rpam2
 
 USES=		gem
 USE_RUBY=	yes

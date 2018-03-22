@@ -12,8 +12,8 @@ COMMENT=	Adapter for Gollum to use Rugged (libgit2) at the backend
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-mime-types>=1.15:misc/rubygem-mime-types \
-		rubygem-rugged>=0.25:devel/rubygem-rugged
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}mime-types>=1.15:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}rugged>=0.25:devel/rubygem-rugged
 
 NO_ARCH=	yes
 USE_RUBY=	yes

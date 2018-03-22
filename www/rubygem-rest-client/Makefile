@@ -12,9 +12,9 @@ COMMENT=	Simple Simple HTTP and REST client for Ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-http-cookie>=1.0.2:www/rubygem-http-cookie \
-		rubygem-mime-types>=1.16:misc/rubygem-mime-types \
-		rubygem-netrc>=0.8:net/rubygem-netrc
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}http-cookie>=1.0.2:www/rubygem-http-cookie \
+		${RG_PKGNAMEPREFIX}mime-types>=1.16:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}netrc>=0.8:net/rubygem-netrc
 
 NO_ARCH=	yes
 USE_RUBY=	yes

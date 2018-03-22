@@ -11,8 +11,8 @@ COMMENT=	SQLite3 driver for DBI-for-Ruby
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	rubygem-dbi>=0.4.0:databases/rubygem-dbi \
-		rubygem-sqlite3-ruby>=0:databases/rubygem-sqlite3-ruby
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}dbi>=0.4.0:databases/rubygem-dbi \
+		${RG_PKGNAMEPREFIX}sqlite3-ruby>=0:databases/rubygem-sqlite3-ruby
 
 NO_ARCH=	yes
 

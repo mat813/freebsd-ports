@@ -12,7 +12,7 @@ COMMENT=	Gems for fluent plugin for graylog
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	rubygem-fluentd>0:sysutils/rubygem-fluentd
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fluentd>0:sysutils/rubygem-fluentd
 
 USE_RUBY=	yes
 USES=		gem shebangfix

@@ -10,8 +10,8 @@ COMMENT=	Proxy for Meterpreter sessions
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	rubygem-grpc>=0:net/rubygem-grpc \
-		rubygem-rex-arch>=0:security/rubygem-rex-arch
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}grpc>=0:net/rubygem-grpc \
+		${RG_PKGNAMEPREFIX}rex-arch>=0:security/rubygem-rex-arch
 
 NO_ARCH=	yes
 USE_RUBY=	yes

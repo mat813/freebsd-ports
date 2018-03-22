@@ -11,14 +11,14 @@ COMMENT=	Generators for creating BOSH releases
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport4>=4.0:devel/rubygem-activesupport4 \
-		rubygem-cyoi>=0.10:devel/rubygem-cyoi \
-		rubygem-fog>=1.11:devel/rubygem-fog \
-		rubygem-fog-aws>=0:net/rubygem-fog-aws \
-		rubygem-mime-types>=0:misc/rubygem-mime-types \
-		rubygem-progressbar>=0:devel/rubygem-progressbar \
-		rubygem-readwritesettings>=3.0:devel/rubygem-readwritesettings \
-		rubygem-thor>=0:devel/rubygem-thor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport4>=4.0:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}cyoi>=0.10:devel/rubygem-cyoi \
+		${RG_PKGNAMEPREFIX}fog>=1.11:devel/rubygem-fog \
+		${RG_PKGNAMEPREFIX}fog-aws>=0:net/rubygem-fog-aws \
+		${RG_PKGNAMEPREFIX}mime-types>=0:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}progressbar>=0:devel/rubygem-progressbar \
+		${RG_PKGNAMEPREFIX}readwritesettings>=3.0:devel/rubygem-readwritesettings \
+		${RG_PKGNAMEPREFIX}thor>=0:devel/rubygem-thor
 
 NO_ARCH=	yes
 USE_RUBY=	yes

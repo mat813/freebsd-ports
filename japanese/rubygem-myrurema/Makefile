@@ -9,7 +9,7 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Tool which helps searching/browsing/writing the Japanese Ruby docs
 
-RUN_DEPENDS=	rubygem-launchy>=2.3:devel/rubygem-launchy
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}launchy>=2.3:devel/rubygem-launchy
 
 NO_ARCH=	yes
 USE_RUBY=	yes
@@ -19,6 +19,6 @@ PLIST_FILES=	bin/rurema
 
 .include <bsd.port.pre.mk>
 
-PKGNAMEPREFIX:=	${PKGNAMEPREFIX}rubygem-
+PKGNAMEPREFIX:=	${PKGNAMEPREFIX}${RG_PKGNAMEPREFIX}
 
 .include <bsd.port.post.mk>

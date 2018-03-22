@@ -12,7 +12,7 @@ COMMENT=	Simple health check of Rails app for uptime monitoring
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-rails4>=4.0:www/rubygem-rails4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rails4>=4.0:www/rubygem-rails4
 
 PORTSCOUT=	limit:^2\.6
 

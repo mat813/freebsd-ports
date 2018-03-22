@@ -13,8 +13,8 @@ COMMENT=	Small and easy to use ruby Atom feed generator
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-RUN_DEPENDS=	rubygem-builder>=0:devel/rubygem-builder \
-		rubygem-public_suffix>=0:dns/rubygem-public_suffix
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=0:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}public_suffix>=0:dns/rubygem-public_suffix
 
 NO_ARCH=	yes
 USE_RUBY=	yes

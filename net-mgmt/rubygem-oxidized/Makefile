@@ -11,10 +11,10 @@ COMMENT=	Network device configuration backup tool
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-asetus>=0.1:devel/rubygem-asetus \
-		rubygem-net-ssh>=4.1.0:security/rubygem-net-ssh \
-		rubygem-rugged>=0.21.4:devel/rubygem-rugged \
-		rubygem-slop3>=3.5:devel/rubygem-slop3
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}asetus>=0.1:devel/rubygem-asetus \
+		${RG_PKGNAMEPREFIX}net-ssh>=4.1.0:security/rubygem-net-ssh \
+		${RG_PKGNAMEPREFIX}rugged>=0.21.4:devel/rubygem-rugged \
+		${RG_PKGNAMEPREFIX}slop3>=3.5:devel/rubygem-slop3
 
 NO_ARCH=	yes
 

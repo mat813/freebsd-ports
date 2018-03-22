@@ -12,9 +12,9 @@ COMMENT=	Route helpers for Grape
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-activesupport4>=0:devel/rubygem-activesupport4 \
-		rubygem-grape>=0.16.0:devel/rubygem-grape \
-		rubygem-rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport4>=0:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}grape>=0.16.0:devel/rubygem-grape \
+		${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 NO_ARCH=	yes
 USE_RUBY=	yes

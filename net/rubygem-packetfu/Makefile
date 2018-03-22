@@ -11,7 +11,7 @@ COMMENT=	Mid-level packet manipulation library for Ruby
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-pcaprub>=0:net/rubygem-pcaprub
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}pcaprub>=0:net/rubygem-pcaprub
 
 NO_ARCH=	yes
 

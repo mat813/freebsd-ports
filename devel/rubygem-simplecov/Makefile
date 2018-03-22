@@ -11,9 +11,9 @@ COMMENT=	Powerful configuration library and automatic merging of coverage across
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-docile>=1.1:devel/rubygem-docile \
-		rubygem-json>=1.8:devel/rubygem-json \
-		rubygem-simplecov-html>=0.10.0:textproc/rubygem-simplecov-html
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}docile>=1.1:devel/rubygem-docile \
+		${RG_PKGNAMEPREFIX}json>=1.8:devel/rubygem-json \
+		${RG_PKGNAMEPREFIX}simplecov-html>=0.10.0:textproc/rubygem-simplecov-html
 
 NO_ARCH=	yes
 USE_RUBY=	yes

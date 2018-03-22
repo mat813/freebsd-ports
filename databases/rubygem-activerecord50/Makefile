@@ -13,9 +13,9 @@ COMMENT=	Object-relational mapping layer for Rails MVC Framework
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activemodel50>=${PORTVERSION}:databases/rubygem-activemodel50 \
-		rubygem-activesupport50>=${PORTVERSION}:devel/rubygem-activesupport50 \
-		rubygem-arel7>=7.0:databases/rubygem-arel7
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel50>=${PORTVERSION}:databases/rubygem-activemodel50 \
+		${RG_PKGNAMEPREFIX}activesupport50>=${PORTVERSION}:devel/rubygem-activesupport50 \
+		${RG_PKGNAMEPREFIX}arel7>=7.0:databases/rubygem-arel7
 
 PORTSCOUT=	limit:^5\.0\.
 

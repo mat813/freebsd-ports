@@ -12,8 +12,8 @@ COMMENT=	Anti-CSRF Rack middleware
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.rdoc
 
-RUN_DEPENDS=	rubygem-rack>=1.1.0:www/rubygem-rack
-TEST_DEPENDS=	rubygem-rspec>0:devel/rubygem-rspec
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack>=1.1.0:www/rubygem-rack
+TEST_DEPENDS=	${RG_PKGNAMEPREFIX}rspec>0:devel/rubygem-rspec
 
 USES=		gem
 USE_RUBY=	yes

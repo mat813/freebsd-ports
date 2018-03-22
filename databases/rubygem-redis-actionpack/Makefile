@@ -11,9 +11,9 @@ COMMENT=	Redis session store for ActionPack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack4>=4.0:www/rubygem-actionpack4 \
-		rubygem-redis-rack1>=1:www/rubygem-redis-rack1 \
-		rubygem-redis-store>=1.1.0:devel/rubygem-redis-store
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack4>=4.0:www/rubygem-actionpack4 \
+		${RG_PKGNAMEPREFIX}redis-rack1>=1:www/rubygem-redis-rack1 \
+		${RG_PKGNAMEPREFIX}redis-store>=1.1.0:devel/rubygem-redis-store
 
 NO_ARCH=	yes
 USE_RUBY=	yes

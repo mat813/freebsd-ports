@@ -13,7 +13,7 @@ COMMENT=	Collection of Rack middleware to protect against opportunistic attack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/License
 
-RUN_DEPENDS=	rubygem-rack>=0:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack>=0:www/rubygem-rack
 
 PORTSCOUT=	limit:^1\.
 

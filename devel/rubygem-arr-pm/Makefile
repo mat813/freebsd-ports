@@ -11,7 +11,7 @@ COMMENT=	Read and write rpm packages
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-cabin>=0:devel/rubygem-cabin
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cabin>=0:devel/rubygem-cabin
 
 NO_ARCH=	yes
 USE_RUBY=	yes

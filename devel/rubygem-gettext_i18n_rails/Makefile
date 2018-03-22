@@ -12,7 +12,7 @@ COMMENT=	Simple FastGettext Rails integration
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE.txt
 
-RUN_DEPENDS=	rubygem-fast_gettext>=0.9.0:devel/rubygem-fast_gettext
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fast_gettext>=0.9.0:devel/rubygem-fast_gettext
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,8 +12,8 @@ COMMENT=	Rspec-expectations adds should and should_not to every object
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-diff-lcs>=1.2.0:textproc/rubygem-diff-lcs \
-		rubygem-rspec-support>=${PORTVERSION:R}:devel/rubygem-rspec-support
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}diff-lcs>=1.2.0:textproc/rubygem-diff-lcs \
+		${RG_PKGNAMEPREFIX}rspec-support>=${PORTVERSION:R}:devel/rubygem-rspec-support
 
 NO_ARCH=	yes
 USE_RUBY=	yes

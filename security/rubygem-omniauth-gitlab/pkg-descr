@@ -1,4 +1,4 @@
 Ruby gem that implements the OmniAuth strategy of GitLab
-for usage in rubygem-onmiauth.
+for usage in ${RG_PKGNAMEPREFIX}onmiauth.
 
 WWW: https://github.com/linchus/omniauth-gitlab

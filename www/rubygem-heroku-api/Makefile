@@ -10,8 +10,8 @@ COMMENT=	Heroku API
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-excon>=0.45:devel/rubygem-excon \
-		rubygem-multi_json>=1.8:devel/rubygem-multi_json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}excon>=0.45:devel/rubygem-excon \
+		${RG_PKGNAMEPREFIX}multi_json>=1.8:devel/rubygem-multi_json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

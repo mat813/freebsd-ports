@@ -10,7 +10,7 @@ COMMENT=	RDF Graph normalizer for Ruby
 
 LICENSE=	UNLICENSE
 
-RUN_DEPENDS=	rubygem-rdf>=2.2:www/rubygem-rdf
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rdf>=2.2:www/rubygem-rdf
 
 USES=		gem
 USE_RUBY=	yes

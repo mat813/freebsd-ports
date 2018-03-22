@@ -13,7 +13,7 @@ LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	jruby:lang/jruby \
-		rubygem-activerecord5>=5.1.0:databases/rubygem-activerecord5
+		${RG_PKGNAMEPREFIX}activerecord5>=5.1.0:databases/rubygem-activerecord5
 
 NO_ARCH=	yes
 USE_RUBY=	yes

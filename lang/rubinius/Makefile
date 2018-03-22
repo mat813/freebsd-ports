@@ -14,7 +14,7 @@ COMMENT=	LLVM based ruby language implementation
 LICENSE=	MPL20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	${LOCALBASE}/bin/bundle:sysutils/rubygem-bundler \
+BUILD_DEPENDS=	${LOCALBASE}/bin/bundle:sysutils/${RG_PKGNAMEPREFIX}bundler \
 		${LOCALBASE}/bin/bison:devel/bison \
 		${LLVM_CONFIG_PATH}:${LLVM_PORT}
 LIB_DEPENDS=	libyaml.so:textproc/libyaml

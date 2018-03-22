@@ -13,8 +13,8 @@ COMMENT=	Job class declarations for a variety of queueing backends
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport5>=${PORTVERSION}:devel/rubygem-activesupport5 \
-		rubygem-globalid-rails5>=0.3.6:databases/rubygem-globalid-rails5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport5>=${PORTVERSION}:devel/rubygem-activesupport5 \
+		${RG_PKGNAMEPREFIX}globalid-rails5>=0.3.6:databases/rubygem-globalid-rails5
 
 NO_ARCH=	yes
 USE_RUBY=	yes

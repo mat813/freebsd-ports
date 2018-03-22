@@ -12,7 +12,7 @@ COMMENT=	Ruby interface for getting process information
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-ffi>=0:devel/rubygem-ffi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=0:devel/rubygem-ffi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

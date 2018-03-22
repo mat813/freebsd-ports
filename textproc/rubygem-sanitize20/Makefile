@@ -12,7 +12,7 @@ COMMENT=	Whitelist based HTML sanitizer
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-nokogiri>=1.4.4:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}nokogiri>=1.4.4:textproc/rubygem-nokogiri
 
 PORTSCOUT=	limit:^2\.0
 

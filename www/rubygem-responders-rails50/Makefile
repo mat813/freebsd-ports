@@ -13,8 +13,8 @@ COMMENT=	Simple Ruby DSL for making HTTP requests
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack50>0:www/rubygem-actionpack50 \
-		rubygem-railties50>=0:www/rubygem-railties50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack50>0:www/rubygem-actionpack50 \
+		${RG_PKGNAMEPREFIX}railties50>=0:www/rubygem-railties50
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -11,8 +11,8 @@ COMMENT=	Library and command-line utility for tar archives
 LICENSE=	BSD3CLAUSE RUBY
 LICENSE_COMB=	dual
 
-RUN_DEPENDS=	rubygem-minitar>=${PORTVERSION:R}:archivers/rubygem-minitar \
-		rubygem-minitar-cli>=${PORTVERSION:R}:archivers/rubygem-minitar-cli
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}minitar>=${PORTVERSION:R}:archivers/rubygem-minitar \
+		${RG_PKGNAMEPREFIX}minitar-cli>=${PORTVERSION:R}:archivers/rubygem-minitar-cli
 
 NO_ARCH=	yes
 USE_RUBY=	yes

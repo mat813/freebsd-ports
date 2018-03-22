@@ -13,7 +13,7 @@ COMMENT=	Toolkit for building modeling frameworks
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport50>=${PORTVERSION}:devel/rubygem-activesupport50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport50>=${PORTVERSION}:devel/rubygem-activesupport50
 
 PORTSCOUT=	limit:^5\.0\.
 

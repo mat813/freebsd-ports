@@ -11,7 +11,7 @@ COMMENT=	Patches to make Jekyll less insane and easier
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-jekyll>=3.1:www/rubygem-jekyll
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}jekyll>=3.1:www/rubygem-jekyll
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -13,7 +13,7 @@ COMMENT=	Compass core stylesheet library and minimum required ruby extensions
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-sass34>=0:textproc/rubygem-sass34
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}sass34>=0:textproc/rubygem-sass34
 
 NO_ARCH=	yes
 USE_RUBY=	yes

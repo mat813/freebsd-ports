@@ -10,8 +10,8 @@ COMMENT=	Backend for Hiera that provides encryption/decryption for properties
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-trollop>=2.0:devel/rubygem-trollop \
-		rubygem-highline>=1.7:devel/rubygem-highline
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}trollop>=2.0:devel/rubygem-trollop \
+		${RG_PKGNAMEPREFIX}highline>=1.7:devel/rubygem-highline
 
 PLIST_FILES=	bin/eyaml
 

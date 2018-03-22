@@ -12,9 +12,9 @@ COMMENT=	Behaviour Driven Development in Ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-rspec-core>=${PORTVERSION:R}:devel/rubygem-rspec-core \
-		rubygem-rspec-expectations>=${PORTVERSION:R}:devel/rubygem-rspec-expectations \
-		rubygem-rspec-mocks>=${PORTVERSION:R}:devel/rubygem-rspec-mocks
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rspec-core>=${PORTVERSION:R}:devel/rubygem-rspec-core \
+		${RG_PKGNAMEPREFIX}rspec-expectations>=${PORTVERSION:R}:devel/rubygem-rspec-expectations \
+		${RG_PKGNAMEPREFIX}rspec-mocks>=${PORTVERSION:R}:devel/rubygem-rspec-mocks
 
 NO_ARCH=	yes
 USE_RUBY=	yes

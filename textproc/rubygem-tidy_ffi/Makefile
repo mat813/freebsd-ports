@@ -8,7 +8,7 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Tidy library interface via FFI
 
-RUN_DEPENDS=	rubygem-ffi>=0:devel/rubygem-ffi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=0:devel/rubygem-ffi
 LIB_DEPENDS=	libtidy.so:www/tidy-lib
 
 USES=		gem

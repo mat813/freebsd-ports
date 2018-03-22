@@ -12,7 +12,7 @@ COMMENT=	Simple wrapper for the GitHub API
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-sawyer>=0.8.0:www/rubygem-sawyer
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}sawyer>=0.8.0:www/rubygem-sawyer
 
 PORTSCOUT=	limit=^4\.6
 

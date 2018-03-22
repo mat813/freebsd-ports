@@ -12,9 +12,9 @@ COMMENT=	Redis for Ruby on Rails
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-redis-actionpack-rails50>0:databases/rubygem-redis-actionpack-rails50 \
-		rubygem-redis-activesupport-rails50>0:devel/rubygem-redis-activesupport-rails50 \
-		rubygem-redis-store>=1.2:devel/rubygem-redis-store
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}redis-actionpack-rails50>0:databases/rubygem-redis-actionpack-rails50 \
+		${RG_PKGNAMEPREFIX}redis-activesupport-rails50>0:devel/rubygem-redis-activesupport-rails50 \
+		${RG_PKGNAMEPREFIX}redis-store>=1.2:devel/rubygem-redis-store
 
 NO_ARCH=	yes
 USE_RUBY=	yes

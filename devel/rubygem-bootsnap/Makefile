@@ -11,7 +11,7 @@ COMMENT=	Boot large ruby/rails apps faster
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-msgpack1>=1.0:devel/rubygem-msgpack1
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}msgpack1>=1.0:devel/rubygem-msgpack1
 
 USE_RUBY=	yes
 USES=		gem shebangfix

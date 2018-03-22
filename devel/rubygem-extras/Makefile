@@ -12,7 +12,7 @@ COMMENT=	Provides patches to stdlib that provide extra functions
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-forwardable-extended>=2.5:devel/rubygem-forwardable-extended
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}forwardable-extended>=2.5:devel/rubygem-forwardable-extended
 
 NO_ARCH=	yes
 USE_RUBY=	yes

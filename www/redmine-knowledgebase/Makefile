@@ -21,8 +21,8 @@ GH_PROJECT=	redmine_knowledgebase
 
 REDMINE_PLUGIN_NAME=	redmine_${PORTNAME}
 
-RUN_DEPENDS+=	rubygem-redmine_acts_as_taggable_on>=1.1.0:www/rubygem-redmine_acts_as_taggable_on \
-		rubygem-ya2yaml>0:textproc/rubygem-ya2yaml \
-		rubygem-awesome_nested_set>0:databases/rubygem-awesome_nested_set
+RUN_DEPENDS+=	${RG_PKGNAMEPREFIX}redmine_acts_as_taggable_on>=1.1.0:www/rubygem-redmine_acts_as_taggable_on \
+		${RG_PKGNAMEPREFIX}ya2yaml>0:textproc/rubygem-ya2yaml \
+		${RG_PKGNAMEPREFIX}awesome_nested_set>0:databases/rubygem-awesome_nested_set
 
 .include "${.CURDIR}/../../www/redmine/bsd.redmine.mk"

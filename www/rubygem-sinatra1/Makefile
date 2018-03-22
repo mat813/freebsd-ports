@@ -13,9 +13,9 @@ COMMENT=	Classy web development framework in ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rack16>=1.5:www/rubygem-rack16 \
-		rubygem-rack-protection1>=1.4:www/rubygem-rack-protection1 \
-		rubygem-tilt>=1.3:devel/rubygem-tilt
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rack16>=1.5:www/rubygem-rack16 \
+		${RG_PKGNAMEPREFIX}rack-protection1>=1.4:www/rubygem-rack-protection1 \
+		${RG_PKGNAMEPREFIX}tilt>=1.3:devel/rubygem-tilt
 
 PORTSCOUT=	limit:^1\.
 

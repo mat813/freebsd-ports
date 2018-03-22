@@ -12,7 +12,7 @@ COMMENT=	Module for the 'fog' gem to support local filesystem storage
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-fog-core1>=1.27:devel/rubygem-fog-core1
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fog-core1>=1.27:devel/rubygem-fog-core1
 
 NO_ARCH=	yes
 USE_RUBY=	yes

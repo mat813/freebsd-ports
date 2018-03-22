@@ -12,7 +12,7 @@ COMMENT=	IANA Time Zone database for TZInfo
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-tzinfo>=1.0.0:devel/rubygem-tzinfo
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}tzinfo>=1.0.0:devel/rubygem-tzinfo
 
 NO_ARCH=	yes
 USE_RUBY=	yes

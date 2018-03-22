@@ -11,7 +11,7 @@ COMMENT=	Markdown TaskList components
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-html-pipeline>=0:textproc/rubygem-html-pipeline
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}html-pipeline>=0:textproc/rubygem-html-pipeline
 
 NO_ARCH=	yes
 USE_RUBY=	yes

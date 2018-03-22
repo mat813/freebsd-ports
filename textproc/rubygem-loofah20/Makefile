@@ -12,7 +12,7 @@ COMMENT=	Library for manipulating HTML/XML documents and fragments
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE.txt
 
-RUN_DEPENDS=	rubygem-nokogiri>=1.5.9:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}nokogiri>=1.5.9:textproc/rubygem-nokogiri
 
 PORTSCOUT=	limit:^2\.0
 

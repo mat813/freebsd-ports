@@ -12,7 +12,7 @@ COMMENT=	Like Pathname but a little less insane
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-forwardable-extended>=2.6:devel/rubygem-forwardable-extended
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}forwardable-extended>=2.6:devel/rubygem-forwardable-extended
 
 NO_ARCH=	yes
 USE_RUBY=	yes

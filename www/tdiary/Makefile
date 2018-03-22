@@ -13,13 +13,13 @@ COMMENT=	Web-based diary system (like weblog) written in Ruby
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-bundler>=1.16.1:sysutils/rubygem-bundler \
-		rubygem-emot>=0.0.4:textproc/rubygem-emot \
-		rubygem-fastimage>=2.1.1:graphics/rubygem-fastimage \
-		rubygem-hikidoc>=0.1.0:textproc/rubygem-hikidoc \
-		rubygem-mail>=2.7.0:mail/rubygem-mail \
-		rubygem-rack16>=1.6.8:www/rubygem-rack16 \
-		rubygem-rake>=12.1.0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bundler>=1.16.1:sysutils/rubygem-bundler \
+		${RG_PKGNAMEPREFIX}emot>=0.0.4:textproc/rubygem-emot \
+		${RG_PKGNAMEPREFIX}fastimage>=2.1.1:graphics/rubygem-fastimage \
+		${RG_PKGNAMEPREFIX}hikidoc>=0.1.0:textproc/rubygem-hikidoc \
+		${RG_PKGNAMEPREFIX}mail>=2.7.0:mail/rubygem-mail \
+		${RG_PKGNAMEPREFIX}rack16>=1.6.8:www/rubygem-rack16 \
+		${RG_PKGNAMEPREFIX}rake>=12.1.0:devel/rubygem-rake
 
 USES=		shebangfix
 USE_RUBY=	yes

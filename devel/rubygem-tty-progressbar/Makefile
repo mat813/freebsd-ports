@@ -12,8 +12,8 @@ COMMENT=	Flexible progress bars drawing in terminal emulators
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-tty-cursor>=0.5.0:devel/rubygem-tty-cursor \
-		rubygem-tty-screen>=0.6.4:devel/rubygem-tty-screen
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}tty-cursor>=0.5.0:devel/rubygem-tty-cursor \
+		${RG_PKGNAMEPREFIX}tty-screen>=0.6.4:devel/rubygem-tty-screen
 
 NO_ARCH=	yes
 USE_RUBY=	yes

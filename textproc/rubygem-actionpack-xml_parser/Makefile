@@ -12,8 +12,8 @@ COMMENT=	XML parameters parser for Action Pack
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack5>=5.0:www/rubygem-actionpack5 \
-		rubygem-railties5>=5.0:www/rubygem-railties5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack5>=5.0:www/rubygem-actionpack5 \
+		${RG_PKGNAMEPREFIX}railties5>=5.0:www/rubygem-railties5
 
 NO_ARCH=	yes
 USE_RUBY=	yes

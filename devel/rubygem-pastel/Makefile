@@ -12,8 +12,8 @@ COMMENT=	Terminal strings styling with intuitive and clean API
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-equatable>=0.5.0:devel/rubygem-equatable \
-		rubygem-tty-color>=0.4.0:devel/rubygem-tty-color
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}equatable>=0.5.0:devel/rubygem-equatable \
+		${RG_PKGNAMEPREFIX}tty-color>=0.4.0:devel/rubygem-tty-color
 
 NO_ARCH=	yes
 USE_RUBY=	yes

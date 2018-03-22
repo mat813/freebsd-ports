@@ -12,7 +12,7 @@ COMMENT=	Natural language parser for elapsed time
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-numerizer>=0.1.1:devel/rubygem-numerizer
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}numerizer>=0.1.1:devel/rubygem-numerizer
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,10 +12,10 @@ COMMENT=	Client library for REST API of Amazon SES
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-builder>=0:devel/rubygem-builder \
-		rubygem-mail>=2.2.5:mail/rubygem-mail \
-		rubygem-mime-types>=0:misc/rubygem-mime-types \
-		rubygem-xml-simple>=0:textproc/rubygem-xml-simple
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=0:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}mail>=2.2.5:mail/rubygem-mail \
+		${RG_PKGNAMEPREFIX}mime-types>=0:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}xml-simple>=0:textproc/rubygem-xml-simple
 
 NO_ARCH=	yes
 USE_RUBY=	yes

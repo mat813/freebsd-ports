@@ -23,7 +23,7 @@ CONFIGURE_ENV+=	${MAKE_ENV}
 # For C glib support, use devel/thrift-c_glib.
 # For Perl support, use devel/p5-Thrift.
 # For Python support, use devel/py-thrift.
-# For Ruby support, use devel/rubygem-thrift.
+# For Ruby support, use devel/${RG_PKGNAMEPREFIX}thrift.
 # For PHP support, use devel/php5-thrift.
 # For nodejs support, use devel/node-thrift.
 # Other languages are not yet supported, please feel free to contribute

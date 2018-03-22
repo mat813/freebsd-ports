@@ -12,7 +12,7 @@ COMMENT=	Replacement log formatter for SSHKit
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-sshkit>=1.7.1:security/rubygem-sshkit
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}sshkit>=1.7.1:security/rubygem-sshkit
 
 NO_ARCH=	yes
 USE_RUBY=	yes

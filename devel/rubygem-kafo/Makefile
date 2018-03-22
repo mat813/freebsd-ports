@@ -13,13 +13,13 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	gsed:textproc/gsed \
-		rubygem-ansi>=0:devel/rubygem-ansi \
-		rubygem-clamp>=0.6.2:devel/rubygem-clamp \
-		rubygem-highline>=1.6.21:devel/rubygem-highline \
-		rubygem-kafo_parsers>=0.1.6:devel/rubygem-kafo_parsers \
-		rubygem-kafo_wizards>=0:devel/rubygem-kafo_wizards \
-		rubygem-logging>=0:devel/rubygem-logging \
-		rubygem-powerbar>=0:devel/rubygem-powerbar
+		${RG_PKGNAMEPREFIX}ansi>=0:devel/rubygem-ansi \
+		${RG_PKGNAMEPREFIX}clamp>=0.6.2:devel/rubygem-clamp \
+		${RG_PKGNAMEPREFIX}highline>=1.6.21:devel/rubygem-highline \
+		${RG_PKGNAMEPREFIX}kafo_parsers>=0.1.6:devel/rubygem-kafo_parsers \
+		${RG_PKGNAMEPREFIX}kafo_wizards>=0:devel/rubygem-kafo_wizards \
+		${RG_PKGNAMEPREFIX}logging>=0:devel/rubygem-logging \
+		${RG_PKGNAMEPREFIX}powerbar>=0:devel/rubygem-powerbar
 
 NO_ARCH=	yes
 USE_RUBY=	yes

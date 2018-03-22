@@ -10,7 +10,7 @@ COMMENT=	Retrieve the binding of a methods caller
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-debug_inspector>=0.0.1:devel/rubygem-debug_inspector
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}debug_inspector>=0.0.1:devel/rubygem-debug_inspector
 
 NO_ARCH=	yes
 USE_RUBY=	yes

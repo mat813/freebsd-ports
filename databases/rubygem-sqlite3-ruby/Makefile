@@ -14,7 +14,7 @@ LICENSE=	BSD3CLAUSE
 
 BUILD_DEPENDS=	swig3.0:devel/swig30
 LIB_DEPENDS=	libsqlite3.so:databases/sqlite3
-RUN_DEPENDS=	rubygem-sqlite3>=1.3.3:databases/rubygem-sqlite3
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}sqlite3>=1.3.3:databases/rubygem-sqlite3
 
 CONFIGURE_ARGS=	--with-sqlite3-dir=${LOCALBASE}
 NO_ARCH=	yes

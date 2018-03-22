@@ -11,9 +11,9 @@ COMMENT=	Provide a peek into the Sidekiq calls made
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-atomic>=1.0.0:devel/rubygem-atomic \
-		rubygem-peek>=0:devel/rubygem-peek \
-		rubygem-sidekiq>=0:devel/rubygem-sidekiq
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}atomic>=1.0.0:devel/rubygem-atomic \
+		${RG_PKGNAMEPREFIX}peek>=0:devel/rubygem-peek \
+		${RG_PKGNAMEPREFIX}sidekiq>=0:devel/rubygem-sidekiq
 
 NO_ARCH=	yes
 USES=		gem

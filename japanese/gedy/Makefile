@@ -15,8 +15,8 @@ COMMENT=	GNOME Edy Viewer
 
 LICENSE=	GPLv2
 
-RUN_DEPENDS=	rubygem-gtk2>0:x11-toolkits/rubygem-gtk2 \
-		rubygem-gio2>=3.1.0:devel/rubygem-gio2 \
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}gtk2>0:x11-toolkits/rubygem-gtk2 \
+		${RG_PKGNAMEPREFIX}gio2>=3.1.0:devel/rubygem-gio2 \
 		${RUBY_SITEARCHLIBDIR}/pasori.so:devel/libpafe-ruby
 
 USE_RUBY=		yes

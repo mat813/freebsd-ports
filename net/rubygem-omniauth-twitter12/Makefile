@@ -11,9 +11,9 @@ COMMENT=	OmniAuth strategy for Twitter
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-json1>=1.3:devel/rubygem-json1 \
-		rubygem-omniauth-oauth>=1.1:net/rubygem-omniauth-oauth \
-		rubygem-rack>=0:www/rubygem-rack
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json1>=1.3:devel/rubygem-json1 \
+		${RG_PKGNAMEPREFIX}omniauth-oauth>=1.1:net/rubygem-omniauth-oauth \
+		${RG_PKGNAMEPREFIX}rack>=0:www/rubygem-rack
 
 PORTSCOUT=	limit:1\.2
 

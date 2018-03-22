@@ -13,7 +13,7 @@ COMMENT=	Extends ruby String class enabling coloring text on ANSI terminals
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 PORTSCOUT=	limit:^2\.
 

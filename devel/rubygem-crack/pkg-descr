@@ -1,4 +1,4 @@
-rubygem-crack is a Ruby library that really simple JSON
+${RG_PKGNAMEPREFIX}crack is a Ruby library that really simple JSON
 and XML parsing, ripped from ActiveSupport so it can be
 used without all of ActiveSupport.
 

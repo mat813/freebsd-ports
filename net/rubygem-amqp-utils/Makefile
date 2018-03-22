@@ -13,13 +13,13 @@ COMMENT=	Command line utilies for interacting with AMQP compliant queues
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/License.txt
 
-RUN_DEPENDS=	rubygem-amqp>=0.7.1:net/rubygem-amqp \
-		rubygem-clio>=0.3.0:devel/rubygem-clio \
-		rubygem-facets>=2.9:devel/rubygem-facets \
-		rubygem-heredoc_unindent>=1.1.2:textproc/rubygem-heredoc_unindent \
-		rubygem-json1>=1.5:devel/rubygem-json1 \
-		rubygem-msgpack>=0.4.5:devel/rubygem-msgpack \
-		rubygem-trollop1>=1.16.2:devel/rubygem-trollop1
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}amqp>=0.7.1:net/rubygem-amqp \
+		${RG_PKGNAMEPREFIX}clio>=0.3.0:devel/rubygem-clio \
+		${RG_PKGNAMEPREFIX}facets>=2.9:devel/rubygem-facets \
+		${RG_PKGNAMEPREFIX}heredoc_unindent>=1.1.2:textproc/rubygem-heredoc_unindent \
+		${RG_PKGNAMEPREFIX}json1>=1.5:devel/rubygem-json1 \
+		${RG_PKGNAMEPREFIX}msgpack>=0.4.5:devel/rubygem-msgpack \
+		${RG_PKGNAMEPREFIX}trollop1>=1.16.2:devel/rubygem-trollop1
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,7 +12,7 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	foreman-proxy>=1.12.0:net/foreman-proxy \
-		rubygem-smart_proxy_dynflow>=0.1.0:sysutils/rubygem-smart_proxy_dynflow
+		${RG_PKGNAMEPREFIX}smart_proxy_dynflow>=0.1.0:sysutils/rubygem-smart_proxy_dynflow
 
 NO_ARCH=	yes
 USE_RUBY=	yes

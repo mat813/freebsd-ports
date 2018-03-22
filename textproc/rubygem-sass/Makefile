@@ -12,10 +12,10 @@ COMMENT=	Sass is an extension of CSS3
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-sass-listen>=4.0.0:textproc/rubygem-sass-listen
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}sass-listen>=4.0.0:textproc/rubygem-sass-listen
 
 # bin/sass bin/sass-convert bin/scss
-CONFLICTS_INSTALL=	rubygem-sass34
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}sass34
 
 NO_ARCH=	yes
 USES=		gem shebangfix

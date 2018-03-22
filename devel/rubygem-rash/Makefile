@@ -13,7 +13,7 @@ COMMENT=	Simple extension to Hashie::Mash for rubyfied keys
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-hashie>=2.0.0:devel/rubygem-hashie
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hashie>=2.0.0:devel/rubygem-hashie
 
 NO_ARCH=	yes
 USE_RUBY=	yes

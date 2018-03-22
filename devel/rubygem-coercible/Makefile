@@ -12,7 +12,7 @@ COMMENT=	Ruby coercion library
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-descendants_tracker>=0.0.1:devel/rubygem-descendants_tracker
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}descendants_tracker>=0.0.1:devel/rubygem-descendants_tracker
 
 NO_ARCH=	yes
 USE_RUBY=	yes

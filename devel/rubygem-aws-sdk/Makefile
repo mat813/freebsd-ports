@@ -10,7 +10,7 @@ COMMENT=	AWS SDK for Ruby
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-aws-sdk-resources>=${PORTVERSION}:devel/rubygem-aws-sdk-resources
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}aws-sdk-resources>=${PORTVERSION}:devel/rubygem-aws-sdk-resources
 
 USES=		gem
 USE_RUBY=	yes

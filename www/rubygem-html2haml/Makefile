@@ -12,10 +12,10 @@ COMMENT=	Converts HTML into Haml
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-erubis>=2.7.0:www/rubygem-erubis \
-		rubygem-haml>=4.0:www/rubygem-haml \
-		rubygem-nokogiri>=1.6.0:textproc/rubygem-nokogiri \
-		rubygem-ruby_parser>=3.5:devel/rubygem-ruby_parser
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}erubis>=2.7.0:www/rubygem-erubis \
+		${RG_PKGNAMEPREFIX}haml>=4.0:www/rubygem-haml \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.6.0:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}ruby_parser>=3.5:devel/rubygem-ruby_parser
 
 NO_ARCH=	yes
 USE_RUBY=	yes

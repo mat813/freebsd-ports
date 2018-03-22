@@ -11,9 +11,9 @@ COMMENT=	Connect to Pry remotely using EventMachine
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-eventmachine>=0:devel/rubygem-eventmachine \
-		rubygem-highline>=0:devel/rubygem-highline \
-		rubygem-pry>=0.9:devel/rubygem-pry
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}eventmachine>=0:devel/rubygem-eventmachine \
+		${RG_PKGNAMEPREFIX}highline>=0:devel/rubygem-highline \
+		${RG_PKGNAMEPREFIX}pry>=0.9:devel/rubygem-pry
 
 NO_ARCH=	yes
 

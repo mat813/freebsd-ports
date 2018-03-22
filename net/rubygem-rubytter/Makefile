@@ -11,8 +11,8 @@ COMMENT=	Simple Twitter library
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-json>=1.1.3:devel/rubygem-json \
-		rubygem-oauth>=0.3.6:net/rubygem-oauth
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}json>=1.1.3:devel/rubygem-json \
+		${RG_PKGNAMEPREFIX}oauth>=0.3.6:net/rubygem-oauth
 
 NO_ARCH=	yes
 USE_RUBY=	yes

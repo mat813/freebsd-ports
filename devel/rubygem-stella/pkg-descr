@@ -1,4 +1,4 @@
-rubygem-stella helps you to define realistic testplans and run them against your
+${RG_PKGNAMEPREFIX}stella helps you to define realistic testplans and run them against your
 webapps.
 
 Stella is an agile testing tool for web applications. Software development has

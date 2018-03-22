@@ -19,7 +19,7 @@ GH_ACCOUNT=	alminium
 GH_PROJECT=	redmine_redcarpet_formatter
 
 RUN_DEPENDS+=	redmine>=2.0:www/redmine
-RUN_DEPENDS+=	rubygem-redcarpet>0:textproc/rubygem-redcarpet
+RUN_DEPENDS+=	${RG_PKGNAMEPREFIX}redcarpet>0:textproc/rubygem-redcarpet
 
 REDMINE_PLUGIN_NAME=	redmine_${PORTNAME}
 

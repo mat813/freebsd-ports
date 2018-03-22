@@ -9,9 +9,9 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Ruby port of the statsd python and node.js tools
 
-RUN_DEPENDS=	rubygem-erubis>=2.6.6:www/rubygem-erubis \
-		rubygem-eventmachine>=0.12.10:devel/rubygem-eventmachine \
-		rubygem-mongo>=1.2.4:devel/rubygem-mongo
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}erubis>=2.6.6:www/rubygem-erubis \
+		${RG_PKGNAMEPREFIX}eventmachine>=0.12.10:devel/rubygem-eventmachine \
+		${RG_PKGNAMEPREFIX}mongo>=1.2.4:devel/rubygem-mongo
 
 NO_ARCH=	yes
 

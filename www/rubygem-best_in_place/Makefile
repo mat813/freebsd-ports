@@ -10,8 +10,8 @@ COMMENT=	jQuery script to edit fields by clicking on them
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-actionpack4>0:www/rubygem-actionpack4 \
-		rubygem-railties4>0:www/rubygem-railties4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack4>0:www/rubygem-actionpack4 \
+		${RG_PKGNAMEPREFIX}railties4>0:www/rubygem-railties4
 
 NO_ARCH=	yes
 

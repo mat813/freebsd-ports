@@ -11,8 +11,8 @@ COMMENT=	Encryption utilities for Web Push payload
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-hkdf>=0.2:security/rubygem-hkdf \
-		rubygem-jwt>=2.0:www/rubygem-jwt
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}hkdf>=0.2:security/rubygem-hkdf \
+		${RG_PKGNAMEPREFIX}jwt>=2.0:www/rubygem-jwt
 
 USES=		gem
 USE_RUBY=	yes

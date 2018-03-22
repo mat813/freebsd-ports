@@ -10,8 +10,8 @@ MASTER_SITES=	RG
 MAINTAINER=	ruby@FreeBSD.org
 COMMENT=	Redis store for OpenID
 
-RUN_DEPENDS=	rubygem-redis>=0:databases/rubygem-redis \
-		rubygem-ruby-openid>=0:net/rubygem-ruby-openid
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}redis>=0:databases/rubygem-redis \
+		${RG_PKGNAMEPREFIX}ruby-openid>=0:net/rubygem-ruby-openid
 
 NO_ARCH=	yes
 

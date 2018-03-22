@@ -11,7 +11,7 @@ COMMENT=	Rails settings plugin for easily managing key-value pairs table
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-rails5>=0:www/rubygem-rails5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rails5>=0:www/rubygem-rails5
 
 NO_ARCH=	yes
 

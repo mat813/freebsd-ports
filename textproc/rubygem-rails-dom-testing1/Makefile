@@ -13,9 +13,9 @@ COMMENT=	Analyse and compare DOMs using Nokogiri
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-activesupport4>=4.2.0:devel/rubygem-activesupport4 \
-		rubygem-nokogiri>=1.6:textproc/rubygem-nokogiri \
-		rubygem-rails-deprecated_sanitizer>=1.0.1:devel/rubygem-rails-deprecated_sanitizer
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport4>=4.2.0:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.6:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}rails-deprecated_sanitizer>=1.0.1:devel/rubygem-rails-deprecated_sanitizer
 
 NO_ARCH=	yes
 USE_RUBY=	yes

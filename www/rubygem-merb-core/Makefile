@@ -13,12 +13,12 @@ COMMENT=	Merb. Pocket rocket web framework
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-bundler>=0:sysutils/rubygem-bundler \
-		rubygem-erubis>=2.6.2:www/rubygem-erubis \
-		rubygem-extlib>=0.9.13:devel/rubygem-extlib \
-		rubygem-mime-types>=1.16:misc/rubygem-mime-types \
-		rubygem-rack>=0:www/rubygem-rack \
-		rubygem-rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bundler>=0:sysutils/rubygem-bundler \
+		${RG_PKGNAMEPREFIX}erubis>=2.6.2:www/rubygem-erubis \
+		${RG_PKGNAMEPREFIX}extlib>=0.9.13:devel/rubygem-extlib \
+		${RG_PKGNAMEPREFIX}mime-types>=1.16:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}rack>=0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 USE_RUBY=	yes
 USES=		gem shebangfix

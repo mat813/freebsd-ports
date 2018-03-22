@@ -12,8 +12,8 @@ COMMENT=	Tool for writing automated tests of websites
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-childprocess>=0.5:devel/rubygem-childprocess \
-		rubygem-rubyzip>=1.2:archivers/rubygem-rubyzip
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}childprocess>=0.5:devel/rubygem-childprocess \
+		${RG_PKGNAMEPREFIX}rubyzip>=1.2:archivers/rubygem-rubyzip
 
 USE_RUBY=	yes
 USES=		gem

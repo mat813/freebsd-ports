@@ -13,8 +13,8 @@ COMMENT=	Autoload dotenv in Rails
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-dotenv>=${PORTVERSION}:misc/rubygem-dotenv \
-		rubygem-railties4>=3.2:www/rubygem-railties4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}dotenv>=${PORTVERSION}:misc/rubygem-dotenv \
+		${RG_PKGNAMEPREFIX}railties4>=3.2:www/rubygem-railties4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

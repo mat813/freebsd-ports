@@ -12,11 +12,11 @@ COMMENT=	Foreman Proxy Agent
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-bundler_ext>=0.4:sysutils/rubygem-bundler_ext \
-		rubygem-json>=1.8.1:devel/rubygem-json \
-		rubygem-rack>=2.0:www/rubygem-rack \
-		rubygem-rb-kqueue>=0.2.2:devel/rubygem-rb-kqueue \
-		rubygem-sinatra>=2.0:www/rubygem-sinatra \
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}bundler_ext>=0.4:sysutils/rubygem-bundler_ext \
+		${RG_PKGNAMEPREFIX}json>=1.8.1:devel/rubygem-json \
+		${RG_PKGNAMEPREFIX}rack>=2.0:www/rubygem-rack \
+		${RG_PKGNAMEPREFIX}rb-kqueue>=0.2.2:devel/rubygem-rb-kqueue \
+		${RG_PKGNAMEPREFIX}sinatra>=2.0:www/rubygem-sinatra \
 		wget:ftp/wget
 
 OPTIONS_DEFINE=	BMC PUPPET4
@@ -47,9 +47,9 @@ PLIST_SUB=	${SUB_LIST} MKDIR="${MKDIR}"
 
 SHEBANG_FILES=	extra/foreman-debug-proxy
 
-BMC_RUN_DEPENDS=	rubygem-rubyipmi>=0.10.0:sysutils/rubygem-rubyipmi
+BMC_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rubyipmi>=0.10.0:sysutils/rubygem-rubyipmi
 PUPPET4_RUN_DEPENDS=	puppet:sysutils/puppet4 \
-			rubygem-ruby-augeas>=0.5:textproc/rubygem-ruby-augeas
+			${RG_PKGNAMEPREFIX}ruby-augeas>=0.5:textproc/rubygem-ruby-augeas
 
 post-patch:
 	@${REINPLACE_CMD} \

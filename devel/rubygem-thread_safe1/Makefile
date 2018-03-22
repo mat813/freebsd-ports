@@ -12,7 +12,7 @@ COMMENT=	Thread-safe collections and utilities for Ruby
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	rubygem-atomic>=0:devel/rubygem-atomic
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}atomic>=0:devel/rubygem-atomic
 
 NO_ARCH=	yes
 USE_RUBY=	yes

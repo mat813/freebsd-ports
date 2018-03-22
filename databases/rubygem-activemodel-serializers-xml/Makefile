@@ -12,9 +12,9 @@ COMMENT=	XML serialization for Active Model objects and Active Record models
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activemodel5>=5.0:databases/rubygem-activemodel5 \
-		rubygem-activesupport5>=5.0:devel/rubygem-activesupport5 \
-		rubygem-builder>=3.1:devel/rubygem-builder
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel5>=5.0:databases/rubygem-activemodel5 \
+		${RG_PKGNAMEPREFIX}activesupport5>=5.0:devel/rubygem-activesupport5 \
+		${RG_PKGNAMEPREFIX}builder>=3.1:devel/rubygem-builder
 
 NO_ARCH=	yes
 USE_RUBY=	yes

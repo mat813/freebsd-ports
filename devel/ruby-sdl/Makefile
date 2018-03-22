@@ -18,7 +18,7 @@ LICENSE=	LGPL21
 LIB_DEPENDS=	libSGE.so:devel/sdl_sge \
 		libSDLSKK.so:devel/sdlskk \
 		libsmpeg.so:multimedia/smpeg
-RUN_DEPENDS=	rubygem-opengl>=0:graphics/rubygem-opengl
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}opengl>=0:graphics/rubygem-opengl
 
 USE_SDL=	mixer image ttf sdl
 USE_RUBY=	yes

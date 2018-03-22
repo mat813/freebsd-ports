@@ -12,8 +12,8 @@ COMMENT=	Ruby client for oVirt REST API
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-nokogiri>=0:textproc/rubygem-nokogiri \
-		rubygem-rest-client>=1.7.0:www/rubygem-rest-client
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}nokogiri>=0:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}rest-client>=1.7.0:www/rubygem-rest-client
 
 NO_ARCH=	yes
 USE_RUBY=	yes

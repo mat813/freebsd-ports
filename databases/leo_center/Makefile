@@ -17,11 +17,11 @@ GH_TAGNAME=	${PORTVERSION:C/0$//}
 
 DIST_SUBDIR=	leofs
 
-RUN_DEPENDS=	rubygem-haml>=0:www/rubygem-haml \
-		rubygem-leo_manager_client>=0.4.13:databases/rubygem-leo_manager_client \
-		rubygem-sinatra-contrib1>=0:www/rubygem-sinatra-contrib1 \
-		rubygem-sinatra1>=1.4.3:www/rubygem-sinatra1 \
-		rubygem-thin>=0:www/rubygem-thin
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}haml>=0:www/rubygem-haml \
+		${RG_PKGNAMEPREFIX}leo_manager_client>=0.4.13:databases/rubygem-leo_manager_client \
+		${RG_PKGNAMEPREFIX}sinatra-contrib1>=0:www/rubygem-sinatra-contrib1 \
+		${RG_PKGNAMEPREFIX}sinatra1>=1.4.3:www/rubygem-sinatra1 \
+		${RG_PKGNAMEPREFIX}thin>=0:www/rubygem-thin
 
 USE_RC_SUBR=	${PORTNAME}
 

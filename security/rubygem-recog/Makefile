@@ -11,7 +11,7 @@ COMMENT=	Framework for fingerprinting products
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-RUN_DEPENDS=	rubygem-nokogiri>=0:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}nokogiri>=0:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USES=		gem

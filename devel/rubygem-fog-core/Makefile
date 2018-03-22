@@ -12,10 +12,10 @@ COMMENT=	Shared classes and tests for fog providers and services
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-builder>=0:devel/rubygem-builder \
-		rubygem-excon>=0.58:devel/rubygem-excon \
-		rubygem-formatador>=0.2:devel/rubygem-formatador \
-		rubygem-mime-types>=0:misc/rubygem-mime-types
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}builder>=0:devel/rubygem-builder \
+		${RG_PKGNAMEPREFIX}excon>=0.58:devel/rubygem-excon \
+		${RG_PKGNAMEPREFIX}formatador>=0.2:devel/rubygem-formatador \
+		${RG_PKGNAMEPREFIX}mime-types>=0:misc/rubygem-mime-types
 
 NO_ARCH=	yes
 USE_RUBY=	yes

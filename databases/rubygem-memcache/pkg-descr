@@ -1,4 +1,4 @@
-rubygem-memcache
+${RG_PKGNAMEPREFIX}memcache
 
 Ruby client for memcached supporting advanced
 protocol features and pluggable architecture.

@@ -13,7 +13,7 @@ COMMENT=	Rails engine for cache-friendly, client-side local time
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-coffee-rails-rails5>=0:devel/rubygem-coffee-rails-rails5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}coffee-rails-rails5>=0:devel/rubygem-coffee-rails-rails5
 
 NO_ARCH=	yes
 USE_RUBY=	yes

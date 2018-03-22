@@ -12,9 +12,9 @@ COMMENT=	Coherent wrapper object-relational mapping for REST web services
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activemodel4>=${PORTVERSION}:databases/rubygem-activemodel4 \
-		rubygem-activesupport4>=${PORTVERSION}:devel/rubygem-activesupport4 \
-		rubygem-rails-observers>=0.1.1:devel/rubygem-rails-observers
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel4>=${PORTVERSION}:databases/rubygem-activemodel4 \
+		${RG_PKGNAMEPREFIX}activesupport4>=${PORTVERSION}:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}rails-observers>=0.1.1:devel/rubygem-rails-observers
 
 PORTSCOUT=	limit:^4\.
 

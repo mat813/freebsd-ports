@@ -12,7 +12,7 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	yajl>=2.0.0:devel/yajl \
-		rubygem-libyajl2>=1.2:devel/rubygem-libyajl2
+		${RG_PKGNAMEPREFIX}libyajl2>=1.2:devel/rubygem-libyajl2
 
 USE_RUBY=	yes
 USES=		gem

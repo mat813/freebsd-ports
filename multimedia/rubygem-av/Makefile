@@ -12,7 +12,7 @@ COMMENT=	Programmable Ruby interface for FFMPEG/Libav
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-cocaine>=0.5.3:devel/rubygem-cocaine
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}cocaine>=0.5.3:devel/rubygem-cocaine
 
 USES=		gem
 USE_RUBY=	yes

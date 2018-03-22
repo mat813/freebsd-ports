@@ -12,10 +12,10 @@ COMMENT=	Sophisticated paginator for Rails 4+
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport4>=4.1.0:devel/rubygem-activesupport4 \
-		rubygem-kaminari-actionview>=${PORTVERSION}:www/rubygem-kaminari-actionview \
-		rubygem-kaminari-activerecord>=${PORTVERSION}:www/rubygem-kaminari-activerecord \
-		rubygem-kaminari-core>=${PORTVERSION}:www/rubygem-kaminari-core
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport4>=4.1.0:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}kaminari-actionview>=${PORTVERSION}:www/rubygem-kaminari-actionview \
+		${RG_PKGNAMEPREFIX}kaminari-activerecord>=${PORTVERSION}:www/rubygem-kaminari-activerecord \
+		${RG_PKGNAMEPREFIX}kaminari-core>=${PORTVERSION}:www/rubygem-kaminari-core
 
 NO_ARCH=	yes
 USE_RUBY=	yes

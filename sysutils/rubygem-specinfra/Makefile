@@ -12,9 +12,9 @@ COMMENT=	Test suite for server configuration
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-net-scp>=0:security/rubygem-net-scp \
-		rubygem-net-ssh>=2.7:security/rubygem-net-ssh \
-		rubygem-net-telnet>=0:security/rubygem-net-telnet
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}net-scp>=0:security/rubygem-net-scp \
+		${RG_PKGNAMEPREFIX}net-ssh>=2.7:security/rubygem-net-ssh \
+		${RG_PKGNAMEPREFIX}net-telnet>=0:security/rubygem-net-telnet
 
 NO_ARCH=	yes
 USES=		gem

@@ -11,9 +11,9 @@ COMMENT=	Provide reliable messaging using the stomp protocol
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-daemons>=1.0.2:devel/rubygem-daemons \
-		rubygem-eventmachine>=0.7.2:devel/rubygem-eventmachine \
-		rubygem-hoe>=1.3.0:devel/rubygem-hoe
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}daemons>=1.0.2:devel/rubygem-daemons \
+		${RG_PKGNAMEPREFIX}eventmachine>=0.7.2:devel/rubygem-eventmachine \
+		${RG_PKGNAMEPREFIX}hoe>=1.3.0:devel/rubygem-hoe
 
 NO_ARCH=	yes
 USE_RUBY=	yes

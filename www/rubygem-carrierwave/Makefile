@@ -10,9 +10,9 @@ COMMENT=	Upload files, map them to a range of ORMs, store on different backends
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-activemodel4>=4.0.0:databases/rubygem-activemodel4 \
-		rubygem-activesupport4>=4.0.0:devel/rubygem-activesupport4 \
-		rubygem-mime-types>=1.16:misc/rubygem-mime-types
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel4>=4.0.0:databases/rubygem-activemodel4 \
+		${RG_PKGNAMEPREFIX}activesupport4>=4.0.0:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}mime-types>=1.16:misc/rubygem-mime-types
 
 NO_ARCH=	yes
 USE_RUBY=	yes

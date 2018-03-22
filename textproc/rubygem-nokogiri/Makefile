@@ -11,7 +11,7 @@ COMMENT=	HTML, XML, SAX, and Reader parser
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-BUILD_DEPENDS=	rubygem-pkg-config>=1.1.7:devel/rubygem-pkg-config
+BUILD_DEPENDS=	${RG_PKGNAMEPREFIX}pkg-config>=1.1.7:devel/rubygem-pkg-config
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 LIB_DEPENDS=	libgcrypt.so:security/libgcrypt
 

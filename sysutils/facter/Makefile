@@ -16,7 +16,7 @@ USES=		cmake:noninja compiler:c++11-lib ssl
 BROKEN_DragonFly=	DragonFly is not supported upstream
 BROKEN_powerpc64=	fails to compile: collection.cc: 'stoi' was not declared in this scope
 
-CONFLICTS_INSTALL=	rubygem-facter-2*
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}facter-2*
 
 LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 		libcurl.so:ftp/curl \

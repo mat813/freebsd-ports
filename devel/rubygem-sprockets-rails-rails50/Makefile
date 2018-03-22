@@ -13,9 +13,9 @@ COMMENT=	Sprockets Rails integration
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-actionpack50>0:www/rubygem-actionpack50 \
-		rubygem-activesupport50>0:devel/rubygem-activesupport50 \
-		rubygem-sprockets3>=3.0.0:devel/rubygem-sprockets3
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack50>0:www/rubygem-actionpack50 \
+		${RG_PKGNAMEPREFIX}activesupport50>0:devel/rubygem-activesupport50 \
+		${RG_PKGNAMEPREFIX}sprockets3>=3.0.0:devel/rubygem-sprockets3
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -12,7 +12,7 @@ COMMENT=	Request logging for Grape
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-grape>=0:devel/rubygem-grape
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}grape>=0:devel/rubygem-grape
 
 NO_ARCH=	yes
 USE_RUBY=	yes

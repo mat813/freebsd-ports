@@ -6,7 +6,7 @@ PORTVERSION=	2.1.0.2
 PORTREVISION=	1
 CATEGORIES=	math rubygems
 MASTER_SITES=	RG
-PKGNAMEPREFIX=	rubygem-rb-
+PKGNAMEPREFIX=	${RG_PKGNAMEPREFIX}rb-
 
 MAINTAINER=	murashin@gfd-dennou.org
 COMMENT=	Ruby extension library for GSL (GNU Scientific Library)
@@ -14,7 +14,7 @@ COMMENT=	Ruby extension library for GSL (GNU Scientific Library)
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	libgsl.so:math/gsl
-RUN_DEPENDS=	rubygem-narray>=0.5.9:math/rubygem-narray
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}narray>=0.5.9:math/rubygem-narray
 
 USE_RUBY=	yes
 USES=		gem

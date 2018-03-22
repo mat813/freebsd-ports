@@ -12,12 +12,12 @@ COMMENT=	Convert markdown document/text into terminal friendly output
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-kramdown>=1.16.2:textproc/rubygem-kramdown \
-		rubygem-pastel>=0.7.2:devel/rubygem-pastel \
-		rubygem-rouge>=3.1.0:textproc/rubygem-rouge \
-		rubygem-strings>=0.1.0:devel/rubygem-strings \
-		rubygem-tty-color>=0.4.2:devel/rubygem-tty-color \
-		rubygem-tty-screen>=0.6.4:devel/rubygem-tty-screen
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}kramdown>=1.16.2:textproc/rubygem-kramdown \
+		${RG_PKGNAMEPREFIX}pastel>=0.7.2:devel/rubygem-pastel \
+		${RG_PKGNAMEPREFIX}rouge>=3.1.0:textproc/rubygem-rouge \
+		${RG_PKGNAMEPREFIX}strings>=0.1.0:devel/rubygem-strings \
+		${RG_PKGNAMEPREFIX}tty-color>=0.4.2:devel/rubygem-tty-color \
+		${RG_PKGNAMEPREFIX}tty-screen>=0.6.4:devel/rubygem-tty-screen
 
 NO_ARCH=	yes
 USE_RUBY=	yes

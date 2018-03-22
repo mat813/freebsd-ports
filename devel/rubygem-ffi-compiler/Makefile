@@ -12,8 +12,8 @@ COMMENT=	Ruby FFI library
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-ffi>=1.0.0:devel/rubygem-ffi \
-		rubygem-rake>=0:devel/rubygem-rake
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=1.0.0:devel/rubygem-ffi \
+		${RG_PKGNAMEPREFIX}rake>=0:devel/rubygem-rake
 
 NO_ARCH=	yes
 USE_RUBY=	yes

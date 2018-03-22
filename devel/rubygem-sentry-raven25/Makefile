@@ -12,10 +12,10 @@ COMMENT=	Client interface for the Sentry error logger
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-faraday>=0.7.6:www/rubygem-faraday
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}faraday>=0.7.6:www/rubygem-faraday
 
 PORTSCOUT=	limit:^2\.5
-CONFLICTS_INSTALL=	rubygem-sentry-raven
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}sentry-raven
 
 NO_ARCH=	yes
 USES=		gem

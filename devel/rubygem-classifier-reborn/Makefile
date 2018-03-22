@@ -12,7 +12,7 @@ COMMENT=	Classifier module for Bayesian and other types of classifications
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-fast-stemmer>=1.0.0:devel/rubygem-fast-stemmer
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fast-stemmer>=1.0.0:devel/rubygem-fast-stemmer
 
 NO_ARCH=	yes
 USE_RUBY=	yes

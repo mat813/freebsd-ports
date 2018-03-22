@@ -12,14 +12,14 @@ COMMENT=	Microsoft Azure Client Library for Ruby
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-addressable>=2.3:www/rubygem-addressable \
-		rubygem-azure-core>=0.1:net/rubygem-azure-core \
-		rubygem-faraday>=0.9:www/rubygem-faraday \
-		rubygem-faraday_middleware>=0.10:www/rubygem-faraday_middleware \
-		rubygem-mime-types>=1:misc/rubygem-mime-types \
-		rubygem-nokogiri>=1.6:textproc/rubygem-nokogiri \
-		rubygem-systemu>=2.6:devel/rubygem-systemu \
-		rubygem-thor>=0.19:devel/rubygem-thor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}addressable>=2.3:www/rubygem-addressable \
+		${RG_PKGNAMEPREFIX}azure-core>=0.1:net/rubygem-azure-core \
+		${RG_PKGNAMEPREFIX}faraday>=0.9:www/rubygem-faraday \
+		${RG_PKGNAMEPREFIX}faraday_middleware>=0.10:www/rubygem-faraday_middleware \
+		${RG_PKGNAMEPREFIX}mime-types>=1:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.6:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}systemu>=2.6:devel/rubygem-systemu \
+		${RG_PKGNAMEPREFIX}thor>=0.19:devel/rubygem-thor
 
 NO_ARCH=	yes
 USE_RUBY=	yes

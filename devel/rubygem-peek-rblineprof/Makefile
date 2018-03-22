@@ -11,8 +11,8 @@ COMMENT=	Peek into how much each line of your Rails application takes
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-peek>=0:devel/rubygem-peek \
-		rubygem-rblineprof>=0:devel/rubygem-rblineprof
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}peek>=0:devel/rubygem-peek \
+		${RG_PKGNAMEPREFIX}rblineprof>=0:devel/rubygem-rblineprof
 
 NO_ARCH=	yes
 USES=		gem

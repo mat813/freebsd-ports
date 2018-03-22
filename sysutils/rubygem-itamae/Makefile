@@ -12,11 +12,11 @@ COMMENT=	Simple and lightweight configuration management tool
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-ansi>=0:devel/rubygem-ansi \
-		rubygem-hashie>=0:devel/rubygem-hashie \
-		rubygem-schash>=0.1.0:devel/rubygem-schash \
-		rubygem-specinfra>=2.64.0:sysutils/rubygem-specinfra \
-		rubygem-thor>=0:devel/rubygem-thor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ansi>=0:devel/rubygem-ansi \
+		${RG_PKGNAMEPREFIX}hashie>=0:devel/rubygem-hashie \
+		${RG_PKGNAMEPREFIX}schash>=0.1.0:devel/rubygem-schash \
+		${RG_PKGNAMEPREFIX}specinfra>=2.64.0:sysutils/rubygem-specinfra \
+		${RG_PKGNAMEPREFIX}thor>=0:devel/rubygem-thor
 
 NO_ARCH=	yes
 USE_RUBY=	yes

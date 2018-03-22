@@ -11,7 +11,7 @@ COMMENT=	Wraps ffmpeg to read metadata and transcodes videos
 LICENSE=	MIT
 LICENSE_FILES=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-multi_json>=1.8:devel/rubygem-multi_json \
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}multi_json>=1.8:devel/rubygem-multi_json \
 		ffmpeg>=3.4.2,1:multimedia/ffmpeg
 
 USES=		gem

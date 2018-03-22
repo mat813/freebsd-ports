@@ -13,10 +13,10 @@ COMMENT=	Listen to file modifications and notify about the changes
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-rb-fsevent>=0.9.4:devel/rubygem-rb-fsevent \
-		rubygem-rb-inotify>=0.9.7:devel/rubygem-rb-inotify \
-		rubygem-rb-kqueue>=0.2:devel/rubygem-rb-kqueue \
-		rubygem-ruby_dep>=1.2:devel/rubygem-ruby_dep
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rb-fsevent>=0.9.4:devel/rubygem-rb-fsevent \
+		${RG_PKGNAMEPREFIX}rb-inotify>=0.9.7:devel/rubygem-rb-inotify \
+		${RG_PKGNAMEPREFIX}rb-kqueue>=0.2:devel/rubygem-rb-kqueue \
+		${RG_PKGNAMEPREFIX}ruby_dep>=1.2:devel/rubygem-ruby_dep
 
 NO_ARCH=	yes
 USE_RUBY=	yes

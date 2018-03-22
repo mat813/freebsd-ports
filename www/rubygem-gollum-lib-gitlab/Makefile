@@ -2,7 +2,7 @@
 
 CATEGORIES=	www
 
-MASTERDIR=	${.CURDIR}/../rubygem-gollum-lib
+MASTERDIR=	${.CURDIR}/../${RG_PKGNAMEPREFIX}gollum-lib
 
 PKGNAMESUFFIX=	-gitlab
 

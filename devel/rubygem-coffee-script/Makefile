@@ -12,8 +12,8 @@ COMMENT=	Ruby CoffeeScript is a bridge to the JS CoffeeScript compiler
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-coffee-script-source>=0:devel/rubygem-coffee-script-source \
-		rubygem-execjs>=0:devel/rubygem-execjs
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}coffee-script-source>=0:devel/rubygem-coffee-script-source \
+		${RG_PKGNAMEPREFIX}execjs>=0:devel/rubygem-execjs
 
 NO_ARCH=	yes
 USE_RUBY=	yes

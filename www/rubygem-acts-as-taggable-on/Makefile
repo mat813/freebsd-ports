@@ -11,7 +11,7 @@ COMMENT=	Tag a single model on several contexts
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-activerecord4>=4.0:databases/rubygem-activerecord4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activerecord4>=4.0:databases/rubygem-activerecord4
 
 NO_ARCH=	yes
 USE_RUBY=	YES

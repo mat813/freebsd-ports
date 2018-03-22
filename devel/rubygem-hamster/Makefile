@@ -12,7 +12,7 @@ COMMENT=	Efficient, immutable, thread-safe collection classes for Ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-concurrent-ruby>=1.0:devel/rubygem-concurrent-ruby
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}concurrent-ruby>=1.0:devel/rubygem-concurrent-ruby
 
 NO_ARCH=	yes
 USE_RUBY=	yes

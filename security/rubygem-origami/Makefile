@@ -11,7 +11,7 @@ COMMENT=	Ruby framework to parse analyze and forge PDF documents
 LICENSE=	LGPL3+
 LICENSE_FILE=	${WRKSRC}/COPYING.LESSER
 
-RUN_DEPENDS=	rubygem-colorize>=0.7:devel/rubygem-colorize
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}colorize>=0.7:devel/rubygem-colorize
 
 NO_ARCH=	yes
 

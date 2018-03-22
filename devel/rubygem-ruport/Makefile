@@ -11,8 +11,8 @@ COMMENT=	Ruby Reports (Ruport) is an extensible reporting system
 LICENSE=	GPLv2 RUBY
 LICENSE_COMB=	dual
 
-RUN_DEPENDS=	rubygem-pdf-writer>=1.1.8:print/rubygem-pdf-writer \
-		rubygem-prawn>=0.12.0:print/rubygem-prawn
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}pdf-writer>=1.1.8:print/rubygem-pdf-writer \
+		${RG_PKGNAMEPREFIX}prawn>=0.12.0:print/rubygem-prawn
 
 NO_ARCH=	yes
 USE_RUBY=	yes

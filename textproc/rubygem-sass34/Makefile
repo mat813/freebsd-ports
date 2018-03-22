@@ -14,7 +14,7 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
 # bin/sass bin/sass-convert bin/scss
-CONFLICTS_INSTALL=	rubygem-sass
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}sass
 
 PORTSCOUT=	limit:^3\.4\.
 

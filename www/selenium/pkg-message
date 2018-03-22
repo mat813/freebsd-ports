@@ -12,7 +12,7 @@ x11/xkeyboard-config
 x11/xkbcomp
 
 Clients can also be found:
-www/rubygem-selenium-webdriver
+www/${RG_PKGNAMEPREFIX}selenium-webdriver
 www/py-selenium
 devel/p5-Test-WWW-Selenium
 

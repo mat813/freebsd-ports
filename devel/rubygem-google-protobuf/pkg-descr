@@ -1,4 +1,4 @@
-rubygem-google-protobuf is a Ruby extension that implements Protocol Buffers
+${RG_PKGNAMEPREFIX}google-protobuf is a Ruby extension that implements Protocol Buffers
 functionality. It makes use of generated Ruby code that defines message and enum
 types in a Ruby DSL. You may write definitions in this DSL directly, but we
 recommend using protoc's Ruby generation support with .proto files. The build

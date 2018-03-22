@@ -12,8 +12,8 @@ COMMENT=	Ruby wrapper for UglifyJS JavaScript compressor
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-execjs>=0.3.0:devel/rubygem-execjs \
-		rubygem-json1>=1.8.0:devel/rubygem-json1
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}execjs>=0.3.0:devel/rubygem-execjs \
+		${RG_PKGNAMEPREFIX}json1>=1.8.0:devel/rubygem-json1
 
 PORTSCOUT=	limit=^2\.7
 

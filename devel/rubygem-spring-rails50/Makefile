@@ -13,7 +13,7 @@ COMMENT=	Rails application preloader
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-activesupport50>0:devel/rubygem-activesupport50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport50>0:devel/rubygem-activesupport50
 
 NO_ARCH=	yes
 USE_RUBY=	yes

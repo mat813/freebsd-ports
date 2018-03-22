@@ -12,7 +12,7 @@ COMMENT=	Formatter of RSpec results for Jenkins
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rspec-core>=2.12.0:devel/rubygem-rspec-core
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rspec-core>=2.12.0:devel/rubygem-rspec-core
 
 NO_ARCH=	yes
 USE_RUBY=	yes

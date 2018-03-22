@@ -11,8 +11,8 @@ COMMENT=	jQuery script to edit fields by clicking on them
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-actionpack5>0:www/rubygem-actionpack5 \
-		rubygem-railties5>0:www/rubygem-railties5
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}actionpack5>0:www/rubygem-actionpack5 \
+		${RG_PKGNAMEPREFIX}railties5>0:www/rubygem-railties5
 
 NO_ARCH=	yes
 

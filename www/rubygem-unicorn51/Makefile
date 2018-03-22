@@ -14,13 +14,13 @@ LICENSE_COMB=	dual
 LICENSE_FILE_GPLv3=	${WRKSRC}/COPYING
 LICENSE_FILE_RUBY=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-kgio>=2.6:devel/rubygem-kgio \
-		rubygem-raindrops>=0.7:www/rubygem-raindrops
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}kgio>=2.6:devel/rubygem-kgio \
+		${RG_PKGNAMEPREFIX}raindrops>=0.7:www/rubygem-raindrops
 
 USES=		gem shebangfix
 USE_RUBY=	yes
 
-CONFLICTS_INSTALL=	rubygem-unicorn
+CONFLICTS_INSTALL=	${RG_PKGNAMEPREFIX}unicorn
 PORTSCOUT=	limit:^5\.1
 
 PLIST_FILES=	bin/unicorn bin/unicorn_rails

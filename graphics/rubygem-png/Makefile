@@ -11,7 +11,7 @@ COMMENT=	Almost-pure-ruby PNG library
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-rubyinline>=3.9:devel/rubygem-rubyinline
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rubyinline>=3.9:devel/rubygem-rubyinline
 
 NO_ARCH=	yes
 USE_RUBY=	yes

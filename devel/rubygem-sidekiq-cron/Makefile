@@ -13,8 +13,8 @@ COMMENT=	Enables to set jobs to be run in specified time (using CRON notation)
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-rufus-scheduler>=3.3.0:devel/rubygem-rufus-scheduler \
-		rubygem-sidekiq>=4.2.1:devel/rubygem-sidekiq
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rufus-scheduler>=3.3.0:devel/rubygem-rufus-scheduler \
+		${RG_PKGNAMEPREFIX}sidekiq>=4.2.1:devel/rubygem-sidekiq
 
 NO_ARCH=	yes
 USE_RUBY=	yes

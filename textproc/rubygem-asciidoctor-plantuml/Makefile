@@ -11,7 +11,7 @@ COMMENT=	Asciidoctor PlantUML extension
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-asciidoctor>=1.5:textproc/rubygem-asciidoctor
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}asciidoctor>=1.5:textproc/rubygem-asciidoctor
 
 NO_ARCH=	yes
 USE_RUBY=	yes

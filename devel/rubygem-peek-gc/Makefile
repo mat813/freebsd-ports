@@ -11,7 +11,7 @@ COMMENT=	Take a peek into the GC info of your Rails application
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-peek>=0:devel/rubygem-peek
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}peek>=0:devel/rubygem-peek
 
 NO_ARCH=	yes
 USES=		gem

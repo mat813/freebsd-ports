@@ -12,8 +12,8 @@ COMMENT=	Forms made easy
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activemodel4>=4:databases/rubygem-activemodel4 \
-		rubygem-actionpack4>=4:www/rubygem-actionpack4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activemodel4>=4:databases/rubygem-activemodel4 \
+		${RG_PKGNAMEPREFIX}actionpack4>=4:www/rubygem-actionpack4
 
 NO_ARCH=	yes
 USE_RUBY=	yes

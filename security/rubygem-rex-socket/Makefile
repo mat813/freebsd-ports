@@ -11,7 +11,7 @@ COMMENT=	Ruby Exploitation(Rex) socket abstraction library
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rex-core>=0:security/rubygem-rex-core
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rex-core>=0:security/rubygem-rex-core
 
 NO_ARCH=	yes
 USES=		gem

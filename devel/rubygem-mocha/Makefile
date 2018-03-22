@@ -13,7 +13,7 @@ LICENSE=	BSD2CLAUSE RUBY MIT
 LICENSE_COMB=	dual
 LICENSE_FILE_MIT=	${WRKSRC}/MIT-LICENSE.md
 
-RUN_DEPENDS=	rubygem-metaclass>=0.0.1:devel/rubygem-metaclass
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}metaclass>=0.0.1:devel/rubygem-metaclass
 
 NO_ARCH=	yes
 USE_RUBY=	yes

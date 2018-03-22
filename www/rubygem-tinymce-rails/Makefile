@@ -11,7 +11,7 @@ COMMENT=	Seamlessly integrates TinyMCE into the Rails asset pipeline
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-railties4>=4.0:www/rubygem-railties4
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}railties4>=4.0:www/rubygem-railties4
 
 NO_ARCH=	yes
 

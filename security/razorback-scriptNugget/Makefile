@@ -19,7 +19,7 @@ LIB_DEPENDS=	librazorback_api.so:security/razorback-api \
 		libjson-c.so:devel/json-c
 BUILD_DEPENDS=	razorback-masterNugget>=0.5.0:security/razorback-masterNugget
 RUN_DEPENDS=	razorback-masterNugget>=0.5.0:security/razorback-masterNugget \
-		rubygem-razorback-scriptNugget>=0.5.0:security/rubygem-razorback-scriptNugget
+		${RG_PKGNAMEPREFIX}razorback-scriptNugget>=0.5.0:security/rubygem-razorback-scriptNugget
 
 RB_LIBDIR?=	${PREFIX}/lib/razorback
 USES=		autoreconf libtool pkgconfig

@@ -12,7 +12,7 @@ COMMENT=	Ruby wrapper for libinotify, using ffi
 LICENSE=	MIT
 
 LIB_DEPENDS=	libinotify.so:devel/libinotify
-RUN_DEPENDS=	rubygem-ffi>=0.5.0:devel/rubygem-ffi
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ffi>=0.5.0:devel/rubygem-ffi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

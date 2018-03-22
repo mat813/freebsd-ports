@@ -13,8 +13,8 @@ COMMENT=	Extraction of the JSON parsing tools between providers
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
-RUN_DEPENDS=	rubygem-fog-core1>=1:devel/rubygem-fog-core1 \
-		rubygem-multi_json>=1.10:devel/rubygem-multi_json
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}fog-core1>=1:devel/rubygem-fog-core1 \
+		${RG_PKGNAMEPREFIX}multi_json>=1.10:devel/rubygem-multi_json
 
 USES=		gem
 USE_RUBY=	yes

@@ -12,10 +12,10 @@ COMMENT=	Feed fetching and parsing library
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-faraday>=0.9:www/rubygem-faraday \
-		rubygem-faraday_middleware>=0.9:www/rubygem-faraday_middleware \
-		rubygem-loofah>=2.0:textproc/rubygem-loofah \
-		rubygem-sax-machine>=1.0:textproc/rubygem-sax-machine
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}faraday>=0.9:www/rubygem-faraday \
+		${RG_PKGNAMEPREFIX}faraday_middleware>=0.9:www/rubygem-faraday_middleware \
+		${RG_PKGNAMEPREFIX}loofah>=2.0:textproc/rubygem-loofah \
+		${RG_PKGNAMEPREFIX}sax-machine>=1.0:textproc/rubygem-sax-machine
 
 NO_ARCH=	yes
 USE_RUBY=	yes

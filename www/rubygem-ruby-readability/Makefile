@@ -12,8 +12,8 @@ COMMENT=	Readability for Ruby
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-guess_html_encoding>=0.0.4:devel/rubygem-guess_html_encoding \
-		rubygem-nokogiri>=1.6.0:textproc/rubygem-nokogiri
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}guess_html_encoding>=0.0.4:devel/rubygem-guess_html_encoding \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.6.0:textproc/rubygem-nokogiri
 
 NO_ARCH=	yes
 USE_RUBY=	yes

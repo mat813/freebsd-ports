@@ -13,8 +13,8 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
 RUN_DEPENDS=	rrdtool:databases/rrdtool \
-		rubygem-activesupport4>=0:devel/rubygem-activesupport4 \
-		rubygem-ffi>=0:devel/rubygem-ffi
+		${RG_PKGNAMEPREFIX}activesupport4>=0:devel/rubygem-activesupport4 \
+		${RG_PKGNAMEPREFIX}ffi>=0:devel/rubygem-ffi
 
 NO_ARCH=	yes
 USE_RUBY=	yes

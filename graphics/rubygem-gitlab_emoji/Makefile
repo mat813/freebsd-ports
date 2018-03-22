@@ -13,7 +13,7 @@ COMMENT=	Provides Gitlab Emoji assets
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-gemojione>=2.2.1:graphics/rubygem-gemojione
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}gemojione>=2.2.1:graphics/rubygem-gemojione
 
 NO_ARCH=	yes
 USE_RUBY=	yes

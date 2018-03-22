@@ -13,23 +13,23 @@ COMMENT=	Simple, Git-powered wiki with a sweet API and local frontend
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-gemojione>=3.2:graphics/rubygem-gemojione \
-		rubygem-gollum-grit_adapter>=1.0:www/rubygem-gollum-grit_adapter \
-		rubygem-nokogiri>=1.6.1:textproc/rubygem-nokogiri \
-		rubygem-rouge2>=2.1:textproc/rubygem-rouge2 \
-		rubygem-sanitize>=2.1:textproc/rubygem-sanitize \
-		rubygem-stringex>=2.6:devel/rubygem-stringex
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}gemojione>=3.2:graphics/rubygem-gemojione \
+		${RG_PKGNAMEPREFIX}gollum-grit_adapter>=1.0:www/rubygem-gollum-grit_adapter \
+		${RG_PKGNAMEPREFIX}nokogiri>=1.6.1:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}rouge2>=2.1:textproc/rubygem-rouge2 \
+		${RG_PKGNAMEPREFIX}sanitize>=2.1:textproc/rubygem-sanitize \
+		${RG_PKGNAMEPREFIX}stringex>=2.6:devel/rubygem-stringex
 
 OPTIONS_RADIO=	MARKUP
 OPTIONS_RADIO_MARKUP=	GITHUB GITLAB
 OPTIONS_DEFAULT?=	GITHUB
 
 MARKUP_DESC=	Markup Selection
-GITHUB_DESC=	Use rubygem-github-markup (default)
-GITLAB_DESC=	Use rubygem-gitlab-markup instead
+GITHUB_DESC=	Use ${RG_PKGNAMEPREFIX}github-markup (default)
+GITLAB_DESC=	Use ${RG_PKGNAMEPREFIX}gitlab-markup instead
 
-GITHUB_RUN_DEPENDS=	rubygem-github-markup>=1.6:textproc/rubygem-github-markup
-GITLAB_RUN_DEPENDS=	rubygem-gitlab-markup>=1.5:textproc/rubygem-gitlab-markup
+GITHUB_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}github-markup>=1.6:textproc/rubygem-github-markup
+GITLAB_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}gitlab-markup>=1.5:textproc/rubygem-gitlab-markup
 
 NO_ARCH=	yes
 USES=		gem

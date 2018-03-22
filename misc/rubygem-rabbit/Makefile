@@ -13,17 +13,17 @@ LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 LICENSE_FILE_GPLv2=	${WRKSRC}/GPL
 
-RUN_DEPENDS=	rubygem-coderay>=1.0.0:textproc/rubygem-coderay \
-		rubygem-faraday>0:www/rubygem-faraday \
-		rubygem-gettext>0:devel/rubygem-gettext \
-		rubygem-gtk2>0:x11-toolkits/rubygem-gtk2 \
-		rubygem-hikidoc>0:textproc/rubygem-hikidoc \
-		rubygem-kramdown>0:textproc/rubygem-kramdown \
-		rubygem-nokogiri>0:textproc/rubygem-nokogiri \
-		rubygem-poppler>0:x11-toolkits/rubygem-poppler \
-		rubygem-rdtool>0:textproc/rubygem-rdtool \
-		rubygem-rsvg2>0:graphics/rubygem-rsvg2 \
-		rubygem-rttool>0:textproc/rubygem-rttool
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}coderay>=1.0.0:textproc/rubygem-coderay \
+		${RG_PKGNAMEPREFIX}faraday>0:www/rubygem-faraday \
+		${RG_PKGNAMEPREFIX}gettext>0:devel/rubygem-gettext \
+		${RG_PKGNAMEPREFIX}gtk2>0:x11-toolkits/rubygem-gtk2 \
+		${RG_PKGNAMEPREFIX}hikidoc>0:textproc/rubygem-hikidoc \
+		${RG_PKGNAMEPREFIX}kramdown>0:textproc/rubygem-kramdown \
+		${RG_PKGNAMEPREFIX}nokogiri>0:textproc/rubygem-nokogiri \
+		${RG_PKGNAMEPREFIX}poppler>0:x11-toolkits/rubygem-poppler \
+		${RG_PKGNAMEPREFIX}rdtool>0:textproc/rubygem-rdtool \
+		${RG_PKGNAMEPREFIX}rsvg2>0:graphics/rubygem-rsvg2 \
+		${RG_PKGNAMEPREFIX}rttool>0:textproc/rubygem-rttool
 
 NO_ARCH=	yes
 USE_RUBY=	yes

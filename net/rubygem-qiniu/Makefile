@@ -12,8 +12,8 @@ COMMENT=	Qiniu Resource (Cloud) Storage SDK for Ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-mime-types>=3.1:misc/rubygem-mime-types \
-		rubygem-rest-client>=2.0:www/rubygem-rest-client
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}mime-types>=3.1:misc/rubygem-mime-types \
+		${RG_PKGNAMEPREFIX}rest-client>=2.0:www/rubygem-rest-client
 
 NO_ARCH=	yes
 USE_RUBY=	yes

@@ -13,7 +13,7 @@ COMMENT=	General ruby templating with json, bson, xml and msgpack support
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport50>0:devel/rubygem-activesupport50
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}activesupport50>0:devel/rubygem-activesupport50
 
 NO_ARCH=	yes
 

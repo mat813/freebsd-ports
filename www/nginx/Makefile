@@ -257,7 +257,7 @@ IMAGEMAGICK_LIB_DEPENDS=	libMagickWand-6.so:graphics/ImageMagick-nox11
 .if ${PORT_OPTIONS:MPASSENGER}
 CATEGORIES+=	ruby
 USE_RUBY=	yes
-BUILD_DEPENDS+=		${LOCALBASE}/bin/rake:devel/rubygem-rake
+BUILD_DEPENDS+=		${LOCALBASE}/bin/rake:devel/${RG_PKGNAMEPREFIX}rake
 RAKE_BIN=	${LOCALBASE}/bin/rake
 .endif
 

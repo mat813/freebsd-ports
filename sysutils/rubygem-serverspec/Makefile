@@ -12,10 +12,10 @@ COMMENT=	Test suite for server configuration
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-multi_json>=0:devel/rubygem-multi_json \
-		rubygem-rspec>=3.0:devel/rubygem-rspec \
-		rubygem-rspec-its>=1.2.0:devel/rubygem-rspec-its \
-		rubygem-specinfra>=2.72:sysutils/rubygem-specinfra
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}multi_json>=0:devel/rubygem-multi_json \
+		${RG_PKGNAMEPREFIX}rspec>=3.0:devel/rubygem-rspec \
+		${RG_PKGNAMEPREFIX}rspec-its>=1.2.0:devel/rubygem-rspec-its \
+		${RG_PKGNAMEPREFIX}specinfra>=2.72:sysutils/rubygem-specinfra
 
 NO_ARCH=	yes
 USE_RUBY=	yes

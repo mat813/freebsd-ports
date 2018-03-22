@@ -11,7 +11,7 @@ COMMENT=	Ruby Exploitation(Rex) library with architecture specific information
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	rubygem-rex-text>=0:security/rubygem-rex-text
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rex-text>=0:security/rubygem-rex-text
 
 NO_ARCH=	yes
 USES=		gem

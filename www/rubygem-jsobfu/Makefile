@@ -10,7 +10,7 @@ COMMENT=	Javascript code obfuscator
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	rubygem-rkelly-remix>=0:www/rubygem-rkelly-remix
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}rkelly-remix>=0:www/rubygem-rkelly-remix
 
 NO_ARCH=	yes
 USE_RUBY=	yes

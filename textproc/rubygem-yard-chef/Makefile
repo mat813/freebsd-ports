@@ -11,8 +11,8 @@ COMMENT=	YARD plugin for Chef
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-yard>=0.9.9:textproc/rubygem-yard \
-		rubygem-redcarpet>=2.1.1:textproc/rubygem-redcarpet
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}yard>=0.9.9:textproc/rubygem-yard \
+		${RG_PKGNAMEPREFIX}redcarpet>=2.1.1:textproc/rubygem-redcarpet
 
 NO_ARCH=	yes
 

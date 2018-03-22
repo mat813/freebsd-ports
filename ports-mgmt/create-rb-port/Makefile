@@ -5,7 +5,7 @@ PORTVERSION=	0.0.3
 CATEGORIES=	ports-mgmt
 
 MAINTAINER=	swills@FreeBSD.org
-COMMENT=	Script to ease creation of rubygem- ports
+COMMENT=	Script to ease creation of ${RG_PKGNAMEPREFIX} ports
 
 RUN_DEPENDS=	gem:devel/ruby-gems
 

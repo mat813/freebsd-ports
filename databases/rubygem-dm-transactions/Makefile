@@ -10,7 +10,7 @@ COMMENT=	Makes transaction support available for adapters that support them
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-dm-core>=${PORTVERSION}:databases/rubygem-dm-core
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}dm-core>=${PORTVERSION}:databases/rubygem-dm-core
 
 NO_ARCH=	yes
 

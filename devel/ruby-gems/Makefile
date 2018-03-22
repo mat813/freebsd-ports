@@ -3,8 +3,8 @@
 
 PORTNAME=	gems
 # Do not forget to update the following gemspec patches:
-# - security/rubygem-ezcrypto/files/patch-gemspec
-# - www/rubygem-gitlab-grack/files/patch-gemspec
+# - security/${RG_PKGNAMEPREFIX}ezcrypto/files/patch-gemspec
+# - www/${RG_PKGNAMEPREFIX}gitlab-grack/files/patch-gemspec
 PORTVERSION=	2.7.6
 CATEGORIES=	devel ruby
 MASTER_SITES=	http://production.cf.rubygems.org/rubygems/

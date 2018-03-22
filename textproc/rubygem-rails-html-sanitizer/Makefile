@@ -10,7 +10,7 @@ COMMENT=	Sanitize HTML fragments in Rails applications
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-loofah>=2.0:textproc/rubygem-loofah
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}loofah>=2.0:textproc/rubygem-loofah
 
 NO_ARCH=	yes
 USE_RUBY=	yes

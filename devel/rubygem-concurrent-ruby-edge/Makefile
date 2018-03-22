@@ -12,7 +12,7 @@ COMMENT=	Bleeding edge features for concurrent-ruby
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	rubygem-concurrent-ruby>=1.0.5:devel/rubygem-concurrent-ruby
+RUN_DEPENDS=	${RG_PKGNAMEPREFIX}concurrent-ruby>=1.0.5:devel/rubygem-concurrent-ruby
 
 NO_ARCH=	yes
 USE_RUBY=	yes

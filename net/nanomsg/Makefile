@@ -21,7 +21,7 @@ OPTIONS_SUB=			yes
 
 DOCS_DESC=			Build and/or install HTML and manpages
 
-DOCS_BUILD_DEPENDS=		asciidoctor:textproc/rubygem-asciidoctor
+DOCS_BUILD_DEPENDS=		asciidoctor:textproc/${RG_PKGNAMEPREFIX}asciidoctor
 DOCS_CMAKE_BOOL=		NN_ENABLE_DOC
 
 .include <bsd.port.mk>

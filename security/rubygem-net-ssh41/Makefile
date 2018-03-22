@@ -23,6 +23,6 @@ USES=		gem shebangfix
 USE_RUBY=	yes
 SHEBANG_FILES=	support/ssh_tunnel_bug.rb
 
-PROMPT_PASSPHRASES_RUN_DEPENDS=	rubygem-ruby-termios>=0:comms/rubygem-ruby-termios
+PROMPT_PASSPHRASES_RUN_DEPENDS=	${RG_PKGNAMEPREFIX}ruby-termios>=0:comms/rubygem-ruby-termios
 
 .include <bsd.port.mk>
