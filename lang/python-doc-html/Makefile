@@ -17,6 +17,10 @@ PORTSCOUT=	ignore:1
 NO_ARCH=	yes
 NO_BUILD=	yes
 USES=		python:build tar:bzip2
+USE_PYTHON=	flavors
+
+# Python 3.5's documentation is not present
+FLAVORS=	py27 py34 py36
 
 DOCSDIR=	${PREFIX}/share/doc/${PYTHON_VERSION}
 PLIST=		${WRKDIR}/pkg-plist.${DOCFORMAT}
@@ -37,5 +41,21 @@ pre-install:
 do-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/
 	cd ${WRKSRC}/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
+
+all-makesum:
+	${MKDIR} ${WRKDIR}; \
+	distinfo=${WRKDIR}/distinfo.all; \
+	for flavor in ${FLAVORS} ; \
+	do \
+		for fmt in html pdf-a4 pdf-letter text; \
+		do \
+			file=${WRKDIR}/distinfo-$${flavor}-$${fmt}; \
+			make makesum BUILD_ALL_PYTHON_FLAVORS=yes FLAVOR=$${flavor} DOCFORMAT=$${fmt} DISTINFO_FILE=$${file}; \
+			cat $${file} >> $${distinfo}; \
+			rm $${file}; \
+		done \
+	done; \
+	${SED} -e '2,$${/TIMESTAMP/d;}' $${distinfo} > ${DISTINFO_FILE}; \
+	rm $${distinfo}
 
 .include <bsd.port.mk>
