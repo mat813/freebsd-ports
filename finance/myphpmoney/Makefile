@@ -6,6 +6,7 @@ PORTEPOCH=	1
 CATEGORIES=	finance www
 MASTER_SITES=	SF/${PORTNAME}/MyPhpMoney/1.3RC3
 DISTNAME=	${PORTNAME}-${PORTVERSION:S/.r/RC/}
+PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PHP script for managing your accounts
@@ -14,7 +15,7 @@ WEBOWN?=	www
 WEBGRP?=	www
 APACHEDIR=	${PREFIX}/www/data
 INSTALLDIR=	${APACHEDIR}/myphpmoney
-USES=		php:web tar:bzip2
+USES=		php:web,flavors tar:bzip2
 NO_BUILD=	yes
 
 PLIST_SUB+=	INSTALLDIR=${INSTALLDIR:S,^${PREFIX}/,,} WWWOWN="${WEBOWN}" WWWGRP="${WEBGRP}"

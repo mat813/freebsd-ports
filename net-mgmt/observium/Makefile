@@ -78,10 +78,10 @@ PORTEXAMPLES=	snmp.conf.example snmpd.conf.example
 USES+=	apache:run,2.2+
 .endif
 .if !defined(PACKAGE_BUILDING)
-USES+=	php:mod
+USES+=	php:mod,flavors
 .else
 # Package builder doesn't create php5 with module
-USES+=	php:web
+USES+=	php:web,flavors
 .endif
 
 .if ${PORT_OPTIONS:MMYSQLD}

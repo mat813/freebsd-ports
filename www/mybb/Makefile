@@ -3,6 +3,7 @@
 PORTNAME=	mybb
 DISTVERSION=	1.8.22
 CATEGORIES=	www
+PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
 MAINTAINER=	joneum@FreeBSD.org
 COMMENT=	PHP-based bulletin board / discussion forum system
@@ -12,7 +13,7 @@ LICENSE=	GPLv3
 USE_GITHUB=	yes
 GH_TAGNAME=	${PORTNAME}_1822
 
-USES=		cpe mysql php:web
+USES=		cpe mysql php:web,flavors
 NO_BUILD=	yes
 NO_ARCH=	yes
 USE_PHP=	xsl mysqli iconv gd xml

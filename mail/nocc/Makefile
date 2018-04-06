@@ -4,13 +4,14 @@ PORTNAME=	nocc
 PORTVERSION=	1.9.10
 CATEGORIES=	mail www
 MASTER_SITES=	SF/${PORTNAME}/NOCC/${PORTVERSION}
+PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	Webmail system which access POP3 and IMAP mail servers
 
 LICENSE=	GPLv2
 
-USES=		php:web
+USES=		php:web,flavors
 
 OPTIONS_DEFINE=	DOCS
 
