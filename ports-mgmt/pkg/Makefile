@@ -74,7 +74,7 @@ PKG_DEPENDS=
 
 # Use the internal pkg instead, generally, unless this is a cross-build,
 # in which case that won't work. Hope for the best then.
-.if ${PKGORIGIN} != ${PKG_ORIGIN} && !defined(CROSS_TOOLCHAIN)
+.if ${PKGORIGIN} == ${PKG_ORIGIN} && !defined(CROSS_TOOLCHAIN)
 PKG_BIN=	${WRKSRC}/src/pkg-static
 .endif
 
