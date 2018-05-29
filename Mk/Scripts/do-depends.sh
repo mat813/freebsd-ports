@@ -72,7 +72,7 @@ find_file()
 
 find_file_path()
 {
-	if which -s $1 ; then
+	if command -v $1 >/dev/null ; then
 		echo "===>   ${dp_PKGNAME} depends on executable: $1 - found"
 		return 0
 	fi

@@ -60,7 +60,7 @@ find_dep() {
 		searchfile=$pattern
 		;;
 	*)
-		searchfile=$(/usr/bin/which ${pattern} 2>/dev/null)
+		searchfile=$(command -v ${pattern} 2>/dev/null)
 		;;
 	esac
 	if [ -n "${searchfile}" ]; then
