@@ -232,7 +232,7 @@ sharedmimeinfo() {
 	local f found
 
 	found=0
-	for f in ${STAGEDIR}${PREFIX}/share/mime/packages/*.xml; do
+	for f in "${STAGEDIR}${PREFIX}"/share/mime/packages/*.xml; do
 		[ "${f}" = "${STAGEDIR}${PREFIX}/share/mime/packages/*.xml" ] && break #no matches
 		[ "${f}" = "${STAGEDIR}${PREFIX}/share/mime/packages/freedesktop.org.xml" ] && continue
 		found=1
@@ -315,12 +315,12 @@ prefixvar() {
 terminfo() {
 	local f found
 
-	for f in ${STAGEDIR}${PREFIX}/share/misc/*.terminfo; do
+	for f in "${STAGEDIR}${PREFIX}"/share/misc/*.terminfo; do
 		[ "${f}" = "${STAGEDIR}${PREFIX}/share/misc/*.terminfo" ] && break #no matches
 		found=1
 		break
 	done
-	for f in ${STAGEDIR}${PREFIX}/share/misc/terminfo.db*; do
+	for f in "${STAGEDIR}${PREFIX}"/share/misc/terminfo.db*; do
 		[ "${f}" = "${STAGEDIR}${PREFIX}/share/misc/terminfo.db*" ] && break #no matches
 		found=1
 		break
