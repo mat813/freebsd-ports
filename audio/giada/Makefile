@@ -5,9 +5,6 @@ DISTVERSIONPREFIX=	v
 DISTVERSION=	0.15.2
 CATEGORIES=	audio
 
-PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES=	64a37052fd26d578929e068eb70529f0bd895596.patch:-p1 \
-
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Hardcore loop machine
 
@@ -27,6 +24,7 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 USES=		autoreconf gmake localbase
 USE_GITHUB=	yes
 GH_ACCOUNT=	monocasual
+GH_PATCH=	64a37052fd26d578929e068eb70529f0bd895596
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--target=freebsd
 USE_XORG=	x11 xext xft xpm
