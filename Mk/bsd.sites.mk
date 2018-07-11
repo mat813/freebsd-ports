@@ -420,10 +420,18 @@ check-makevars::
 .          if !${_GITHUB_GROUPS:M${_group}}
 _GITHUB_GROUPS+=	${_group}
 .          endif
+.          if ${_gh_v} == GH_PATCH
+${_gh_v}_${_group}+=	${_v_ex:C@^(.*):[^/:]+$@\1@}
+.          else
 ${_gh_v}_${_group}=	${_v_ex:C@^(.*):[^/:]+$@\1@}
+.          endif
 .        endfor
 .      else
+.        if ${_gh_v} == GH_PATCH
+${_gh_v}_DEFAULT+=	${_v_ex:C@^(.*):[^/:]+$@\1@}
+.        else
 ${_gh_v}_DEFAULT=	${_v_ex:C@^(.*):[^/:]+$@\1@}
+.        endif
 .      endif
 .    endfor
 .  endfor
