@@ -406,7 +406,7 @@ GH_TAGNAME_DEFAULT=	${DISTVERSIONFULL}
 GH_TAGNAME?=	${GH_TAGNAME_DEFAULT}
 # Iterate over GH_ACCOUNT, GH_PROJECT, GH_TAGNAME and GH_SUBDIR to extract groups
 _GITHUB_GROUPS= DEFAULT
-.  for _gh_v in GH_ACCOUNT GH_PROJECT GH_TAGNAME GH_SUBDIR
+.  for _gh_v in GH_ACCOUNT GH_PROJECT GH_TAGNAME GH_SUBDIR GH_PATCH
 .    for _v_ex in ${${_gh_v}}
 _GH_GROUPS=	${_v_ex:S/^${_v_ex:C@:[^/:]+$@@}//:S/^://}
 .      if !empty(_GH_GROUPS)
@@ -433,11 +433,16 @@ GH_ACCOUNT:=	${GH_ACCOUNT_DEFAULT}
 GH_PROJECT:=	${GH_PROJECT_DEFAULT}
 GH_TAGNAME:=	${GH_TAGNAME_DEFAULT}
 GH_SUBDIR:=	${GH_SUBDIR_DEFAULT}
+GH_PATCH:=	${GH_PATCH_DEFAULT}
 .  if defined(GH_TAGNAME)
 GH_TAGNAME_SANITIZED=	${GH_TAGNAME:S,/,-,g}
 # GitHub silently converts tags starting with v to not have v in the filename
 # and extraction directory.  It also replaces + with -.
 GH_TAGNAME_EXTRACT=	${GH_TAGNAME_SANITIZED:C/^[vV]([0-9])/\1/:S/+/-/g}
+.  endif
+.  if ${GH_PATCH_DEFAULT}
+PATCH_SITES+=	https://github.com/${GH_ACCOUNT_DEFAULT}/${GH_PROJECT_DEFAULT}/commit/
+PATCHFILES+=    ${GH_PATCH_DEFAULT:S/$/.patch:-p1/}
 .  endif
 .  if defined(_GITHUB_MUST_SET_DISTNAME)
 # GH_TAGNAME defaults to DISTVERSIONFULL; Avoid adding DISTVERSIONFULL in twice
@@ -489,6 +494,10 @@ DISTFILE_${_group}:=	${DISTNAME_${_group}}_GH${_GITHUB_REV}${_GITHUB_EXTRACT_SUF
 DISTFILES:=	${DISTFILES} ${DISTFILE_${_group}}:${_group}
 MASTER_SITES:=	${MASTER_SITES} ${MASTER_SITE_GITHUB:S@%SUBDIR%@${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}/tar.gz/${GH_TAGNAME_${_group}}?dummy=/:${_group}@}
 WRKSRC_${_group}:=	${WRKDIR}/${GH_PROJECT_${_group}}-${GH_TAGNAME_${_group}_EXTRACT}
+.  if ${GH_PATCH_${_group}}
+PATCH_SITES+=	https://github.com/${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}/commit/:${_group}
+PATCHFILES+=    ${GH_PATCH_${_group}:S/$/.patch:-p1/}
+.  endif
 .      if !empty(GH_SUBDIR_${_group})
 # In order to sort the subdir extraction so that foo/bar is moved in before
 # foo/bar/baz, we count the number of / in the path and use it to order the
