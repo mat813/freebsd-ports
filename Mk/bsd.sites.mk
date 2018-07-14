@@ -369,11 +369,6 @@ DEV_WARNING+=	"MASTER_SITES contains ${MASTER_SITES:M*/github.com/*/archive/*}, 
 # GH_TUPLE      - above shortened to account:project:tagname[:group][/subdir]
 #
 .if defined(USE_GITHUB)
-.  if defined(GH_TAGNAME) && ${GH_TAGNAME} == master
-IGNORE?=	Using master as GH_TAGNAME is invalid. \
-		Must use a tag or commit hash so the upstream does \
-		not "reroll" as soon as the branch is updated
-.  endif
 .  if defined(GH_TUPLE)
 .    for _tuple in ${GH_TUPLE}
 _t_tmp=${_tuple}
@@ -459,6 +454,11 @@ _GITHUB_EXTRACT_SUFX=	.tar.gz
 _GITHUB_CLONE_DIR?=	${WRKDIR}/git-clone
 _PORTS_DIRECTORIES+=	${_GITHUB_CLONE_DIR}
 .  if !${USE_GITHUB:Mnodefault} && defined(_GITHUB_MUST_SET_DISTNAME)
+.    if ${GH_TAGNAME_DEFAULT} == master
+IGNORE?=	Using master as GH_TAGNAME is invalid. \
+		Must use a tag or commit hash so the upstream does \
+		not "reroll" as soon as the branch is updated
+.    endif
 DISTFILES+=	${DISTNAME}${_GITHUB_EXTRACT_SUFX}
 git-clone: git-clone-DEFAULT
 git-clone-DEFAULT: ${_GITHUB_CLONE_DIR}
@@ -489,6 +489,11 @@ DISTFILE_${_group}:=	${DISTNAME_${_group}}_GH${_GITHUB_REV}${_GITHUB_EXTRACT_SUF
 DISTFILES:=	${DISTFILES} ${DISTFILE_${_group}}:${_group}
 MASTER_SITES:=	${MASTER_SITES} ${MASTER_SITE_GITHUB:S@%SUBDIR%@${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}/tar.gz/${GH_TAGNAME_${_group}}?dummy=/:${_group}@}
 WRKSRC_${_group}:=	${WRKDIR}/${GH_PROJECT_${_group}}-${GH_TAGNAME_${_group}_EXTRACT}
+.      if ${GH_TAGNAME_${_group}} == master
+IGNORE?=	Using master as GH_TAGNAME for group ${_group} is invalid. \
+		Must use a tag or commit hash so the upstream does \
+		not "reroll" as soon as the branch is updated
+.      endif
 .      if !empty(GH_SUBDIR_${_group})
 # In order to sort the subdir extraction so that foo/bar is moved in before
 # foo/bar/baz, we count the number of / in the path and use it to order the
