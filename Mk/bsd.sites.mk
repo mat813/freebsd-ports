@@ -443,9 +443,9 @@ GH_TAGNAME_EXTRACT=	${GH_TAGNAME_SANITIZED:C/^[vV]([0-9])/\1/:S/+/-/g}
 .  if defined(_GITHUB_MUST_SET_DISTNAME)
 # GH_TAGNAME defaults to DISTVERSIONFULL; Avoid adding DISTVERSIONFULL in twice
 .    if ${GH_TAGNAME} != ${DISTVERSIONFULL}
-DISTNAME=	${GH_ACCOUNT}/${GH_PROJECT}/${DISTVERSIONFULL}-${GH_TAGNAME_SANITIZED}
+DISTNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/${DISTVERSIONFULL}-${GH_TAGNAME_SANITIZED}
 .    else
-DISTNAME=	${GH_ACCOUNT}/${GH_PROJECT}/${GH_TAGNAME_SANITIZED}
+DISTNAME=	github.com/${GH_ACCOUNT}/${GH_PROJECT}/${GH_TAGNAME_SANITIZED}
 .    endif
 .  endif
 # This new scheme rerolls distfiles. Also ensure they are renamed to avoid
@@ -485,7 +485,7 @@ GH_TAGNAME_${_group}?=	${GH_TAGNAME_DEFAULT}
 GH_TAGNAME_${_group}_SANITIZED=	${GH_TAGNAME_${_group}:S,/,-,}
 GH_TAGNAME_${_group}_EXTRACT=	${GH_TAGNAME_${_group}_SANITIZED:C/^[vV]([0-9])/\1/}
 _GH_TUPLE_OUT:=	${_GH_TUPLE_OUT} ${GH_ACCOUNT_${_group}}:${GH_PROJECT_${_group}}:${GH_TAGNAME_${_group}}:${_group}/${GH_SUBDIR_${_group}}
-DISTNAME_${_group}:=	${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}/${GH_TAGNAME_${_group}_SANITIZED}
+DISTNAME_${_group}:=	github.com/${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}/${GH_TAGNAME_${_group}_SANITIZED}
 DISTFILE_${_group}:=	${DISTNAME_${_group}}_GH${_GITHUB_REV}${_GITHUB_EXTRACT_SUFX}
 DISTFILES:=	${DISTFILES} ${DISTFILE_${_group}}:${_group}
 MASTER_SITES:=	${MASTER_SITES} ${MASTER_SITE_GITHUB:S@%SUBDIR%@${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}/tar.gz/${GH_TAGNAME_${_group}}?dummy=/:${_group}@}
@@ -591,7 +591,7 @@ GL_SUBDIR:=	${GL_SUBDIR_DEFAULT}
 
 
 _GITLAB_REV=	0
-DISTNAME:=	${GL_ACCOUNT}/${GL_PROJECT}/${GL_COMMIT}_GL${_GITLAB_REV}
+DISTNAME:=	${GL_SITE:C/.*:\/\///:S/\/$//}/${GL_ACCOUNT}/${GL_PROJECT}/${GL_COMMIT}_GL${_GITLAB_REV}
 
 _GITLAB_EXTRACT_SUFX=	.tar.gz
 
