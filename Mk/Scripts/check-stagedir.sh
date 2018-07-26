@@ -90,7 +90,7 @@ setup_plist_seds() {
 
 	sed_plist_sub=$(mktemp -t sed_plist_sub)
 	# We only exit 0 or exit 1
-	trap "rm -f ${sed_plist_sub}" EXIT 1
+	trap 'rm -f ${sed_plist_sub}' EXIT 1
 	echo "${PLIST_SUB_SED}" | /bin/sh ${SCRIPTSDIR}/plist_sub_sed_sort.sh ${sed_plist_sub}
 	unset PLIST_SUB_SED
 	# Used for generate_plist
