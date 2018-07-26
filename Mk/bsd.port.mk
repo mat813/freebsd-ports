@@ -2631,6 +2631,8 @@ _PKGDIR=	${.CURDIR}
 .endif
 .  for p in ${_PKGS}
 ${p}_PKGFILE=	${_PKGDIR}/${p}-${PKGVERSION}${PKG_SUFX}
+# FIXME: This should go away at one point
+PKGFILE?=		${${p}_PKGFILE}
 .  endfor
 _EXTRA_PACKAGE_TARGET_DEP+=	${_PKGDIR}
 .for p in ${_PKGS}
