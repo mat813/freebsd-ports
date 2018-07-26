@@ -2619,7 +2619,7 @@ PKGLATESTFILE=		${PKGLATESTREPOSITORY}/${PKGBASE}${PKG_SUFX}
 
 _PKGS=	${PKGBASE}
 .for p in ${SUBPACKAGES}
-PKGS+=	${PKGBASE}-${p}
+_PKGS+=	${PKGBASE}-${p}
 .endfor
 
 .if exists(${PACKAGES})
@@ -4331,7 +4331,7 @@ create-manifest.${p}:
 			dp_USERS='${USERS:u:S/$/,/}'                          \
 			dp_WWW='${WWW}'                                       \
 			${PKG_NOTES_ENV}                                      \
-			${SH} -x ${SCRIPTSDIR}/create-manifest.sh
+			${SH} ${SCRIPTSDIR}/create-manifest.sh
 .endfor
 
 
