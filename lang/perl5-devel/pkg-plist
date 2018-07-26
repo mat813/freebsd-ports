@@ -786,7 +786,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%ARCH_LIB%%/File/Spec/VMS.pm
 %%ARCH_LIB%%/File/Spec/Win32.pm
 %%ARCH_LIB%%/Filter/Util/Call.pm
-%%GDBM%%%%ARCH_LIB%%/GDBM_File.pm
+%%GDBM%%@@gdbm@@%%ARCH_LIB%%/GDBM_File.pm
 %%ARCH_LIB%%/Hash/Util.pm
 %%ARCH_LIB%%/Hash/Util/FieldHash.pm
 %%ARCH_LIB%%/I18N/Langinfo.pm
@@ -855,7 +855,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%ARCH_LIB%%/auto/File/DosGlob/DosGlob.so
 %%ARCH_LIB%%/auto/File/Glob/Glob.so
 %%ARCH_LIB%%/auto/Filter/Util/Call/Call.so
-%%GDBM%%%%ARCH_LIB%%/auto/GDBM_File/GDBM_File.so
+%%GDBM%%@@gdbm@@%%ARCH_LIB%%/auto/GDBM_File/GDBM_File.so
 %%ARCH_LIB%%/auto/Hash/Util/FieldHash/FieldHash.so
 %%ARCH_LIB%%/auto/Hash/Util/Util.so
 %%ARCH_LIB%%/auto/I18N/Langinfo/Langinfo.so
@@ -1317,7 +1317,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN3%%/Filter::Simple.3.gz
 %%MAN3%%/Filter::Util::Call.3.gz
 %%MAN3%%/FindBin.3.gz
-%%GDBM%%%%MAN3%%/GDBM_File.3.gz
+%%GDBM%%@@gdbm@@%%MAN3%%/GDBM_File.3.gz
 %%MAN3%%/Getopt::Long.3.gz
 %%MAN3%%/Getopt::Std.3.gz
 %%MAN3%%/HTTP::Tiny.3.gz

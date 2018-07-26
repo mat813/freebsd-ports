@@ -16,6 +16,7 @@ DIST_SUBDIR=	perl
 
 MAINTAINER=	mat@FreeBSD.org
 COMMENT=	Practical Extraction and Report Language
+COMMENT.gdbm=	GNU Data Base Manager (gdbm) interface
 
 LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
@@ -25,6 +26,8 @@ LICENSE_FILE_GPLv1+ =	${WRKSRC}/Copying
 # Uncomment when the default Perl is switched to 5.3(X+2)
 #DEPRECATED=	Support end three years after .0 release, please upgrade to a more recent version of Perl
 #EXPIRATION_DATE=<Release date of .0 + 3 years>
+
+SELF_DEPENDS.gdbm=	main
 
 # XXX releases are .tar.xz, add: tar:xz
 USES=		cpe
@@ -76,6 +79,9 @@ CONFIGURE_ARGS=		-Darchlib=${PREFIX}/${_ARCH_LIB} \
 # XXX change the soname to $$(LIBPERL:R)
 CONFIGURE_ARGS+=	-Alddlflags='-L${WRKSRC} -L${PREFIX}/${_ARCH_LIB}/CORE -lperl' \
 			-Dshrpldflags='$$(LDDLFLAGS:N-L${WRKSRC}:N-L${PREFIX}/${_ARCH_LIB}/CORE:N-lperl) -Wl,-soname,$$(LIBPERL)'
+
+# Give a hint of where libperl.so can be found.
+USE_LDCONFIG=	${PREFIX}/${_ARCH_LIB}/CORE
 
 # XXX Remove
 CONFIGURE_ARGS+=	-Dusedevel \
@@ -182,7 +188,8 @@ DTRACE_CONFIGURE_ON=		-Dusedtrace
 DTRACE_CONFIGURE_OFF=		-Uusedtrace
 GDBM_CONFIGURE_ON=		-Di_gdbm
 GDBM_CONFIGURE_OFF=		-Ui_gdbm
-GDBM_LIB_DEPENDS=		libgdbm.so:databases/gdbm
+GDBM_LIB_DEPENDS.gdbm=		libgdbm.so:databases/gdbm
+GDBM_SUBPACKAGES=		gdbm
 MULTIPLICITY_CONFIGURE_ON=	-Dusemultiplicity=y
 MULTIPLICITY_CONFIGURE_OFF=	-Dusemultiplicity=n
 PERL_64BITINT_CONFIGURE_ON=	-Duse64bitint
