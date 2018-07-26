@@ -4296,6 +4296,7 @@ PKG_NOTES_ENV+=	dp_PKG_NOTE_${note}=${PKG_NOTE_${note}:Q}
 .endfor
 
 .for p in ${_PKGS}
+create-manifest: create-manifest.${p}
 create-manifest.${p}:
 	@${SETENV} \
 			dp_SCRIPTSDIR='${SCRIPTSDIR}'                         \
@@ -4715,9 +4716,6 @@ flavors-package-names: .PHONY
 STAGE_ARGS=		-i ${STAGEDIR}
 
 .if !defined(NO_PKG_REGISTER)
-.for p in ${_PKGS}
-create-manifest: create-manifest.${p}
-.endfor
 fake-pkg:
 .if defined(INSTALLS_DEPENDS)
 	@${ECHO_MSG} "===>   Registering installation for ${PKGNAME} as automatic"
