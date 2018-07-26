@@ -4716,7 +4716,7 @@ STAGE_ARGS=		-i ${STAGEDIR}
 
 .if !defined(NO_PKG_REGISTER)
 .for p in ${_PKGS}
-fake-pkg: create-manifest.${p}
+create-manifest: create-manifest.${p}
 .endfor
 fake-pkg:
 .if defined(INSTALLS_DEPENDS)
@@ -5315,6 +5315,7 @@ _TEST_SEQ=		100:test-message 150:test-depends 300:pre-test 500:do-test \
 _INSTALL_DEP=	stage
 _INSTALL_SEQ=	100:install-message \
 				200:check-already-installed \
+				300:create-manifest
 _INSTALL_SUSEQ=	400:fake-pkg 500:security-check
 
 _PACKAGE_DEP=	stage
