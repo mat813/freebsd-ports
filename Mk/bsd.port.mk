@@ -2639,7 +2639,7 @@ COMMENT.${PKGBASE}=	${COMMENT}
 ${v}.${PKGBASE}-${p}?=	${$v}.$p
 .  endfor
 _PKGMESSAGES.${p}=		${PKGMESSAGE}.${p}
-# XXX: for testing, and maybe kept afterwards  
+# XXX: for testing, and maybe kept afterwards
 .  if !exists(${DESCR.${PKGBASE}-${p}})
 DESCR.${PKGBASE}-${p}=		${DESCR}
 .  endif
@@ -3779,7 +3779,7 @@ deinstall:
 		${SU_CMD} "${MAKE} ${.TARGET}"
 	@${ECHO_MSG} "===>  Returning to user credentials"
 .else
-.for _p in ${_PKGS} 
+.for _p in ${_PKGS}
 	@${ECHO_MSG} "===>  Deinstalling for ${_p}"
 	@if ${PKG_INFO} -e ${_p}; then \
 		p=`${PKG_INFO} -q -O ${_p}`; \
@@ -4042,10 +4042,14 @@ package-noinstall: package
 depends: pkg-depends extract-depends patch-depends lib-depends fetch-depends build-depends run-depends
 
 .for deptype in PKG EXTRACT PATCH FETCH BUILD LIB RUN TEST
+${deptype}_DEPENDS_ALL=	${${deptype}_DEPENDS}
+.for p in ${SUBPACKAGES}
+${deptype}_DEPENDS_ALL+=	${${deptype}_DEPENDS_${p}}
+.endfor
 ${deptype:tl}-depends:
-.if defined(${deptype}_DEPENDS) && !defined(NO_DEPENDS)
+.if !empty(${deptype}_DEPENDS_ALL) && !defined(NO_DEPENDS)
 	@${SETENV} \
-		dp_RAWDEPENDS="${${deptype}_DEPENDS}" \
+		dp_RAWDEPENDS="${${deptype}_DEPENDS_ALL}" \
 		dp_DEPTYPE="${deptype}_DEPENDS" \
 		dp_DEPENDS_TARGET="${DEPENDS_TARGET}" \
 		dp_DEPENDS_PRECLEAN="${DEPENDS_PRECLEAN}" \
@@ -4074,7 +4078,7 @@ ${deptype:tl}-depends:
 
 # Dependency lists: both build and runtime, recursive.  Print out directory names.
 
-_UNIFIED_DEPENDS=${PKG_DEPENDS} ${EXTRACT_DEPENDS} ${PATCH_DEPENDS} ${FETCH_DEPENDS} ${BUILD_DEPENDS} ${LIB_DEPENDS} ${RUN_DEPENDS} ${TEST_DEPENDS}
+_UNIFIED_DEPENDS=${PKG_DEPENDS_ALL} ${EXTRACT_DEPENDS_ALL} ${PATCH_DEPENDS_ALL} ${FETCH_DEPENDS_ALL} ${BUILD_DEPENDS_ALL} ${LIB_DEPENDS_ALL} ${RUN_DEPENDS_ALL} ${TEST_DEPENDS_ALL}
 _DEPEND_SPECIALS=	${_UNIFIED_DEPENDS:M*\:*\:*:C,^[^:]*:([^:]*):.*$,\1,}
 
 .for d in ${_UNIFIED_DEPENDS:M*\:/*}
@@ -4126,10 +4130,10 @@ ALL-DEPENDS-LIST=			${DEPENDS-LIST} -r ${_UNIFIED_DEPENDS:Q}
 ALL-DEPENDS-FLAVORS-LIST=	${DEPENDS-LIST} -f -r ${_UNIFIED_DEPENDS:Q}
 DEINSTALL-DEPENDS-FLAVORS-LIST=	${DEPENDS-LIST} -f -r ${_UNIFIED_DEPENDS:N${PKG_DEPENDS}:Q}
 MISSING-DEPENDS-LIST=		${DEPENDS-LIST} -m ${_UNIFIED_DEPENDS:Q}
-BUILD-DEPENDS-LIST=			${DEPENDS-LIST} "${PKG_DEPENDS} ${EXTRACT_DEPENDS} ${PATCH_DEPENDS} ${FETCH_DEPENDS} ${BUILD_DEPENDS} ${LIB_DEPENDS}"
-RUN-DEPENDS-LIST=			${DEPENDS-LIST} "${LIB_DEPENDS} ${RUN_DEPENDS}"
-TEST-DEPENDS-LIST=			${DEPENDS-LIST} ${TEST_DEPENDS:Q}
-CLEAN-DEPENDS-LIST=			${DEPENDS-LIST} -wr ${_UNIFIED_DEPENDS:Q} 
+BUILD-DEPENDS-LIST=			${DEPENDS-LIST_ALL} "${PKG_DEPENDS_ALL} ${EXTRACT_DEPENDS_ALL} ${PATCH_DEPENDS_ALL} ${FETCH_DEPENDS_ALL} ${BUILD_DEPENDS_ALL} ${LIB_DEPENDS_ALL}"
+RUN-DEPENDS-LIST=			${DEPENDS-LIST_ALL} "${LIB_DEPENDS_ALL} ${RUN_DEPENDS_ALL}"
+TEST-DEPENDS-LIST=			${DEPENDS-LIST} ${TEST_DEPENDS_ALL:Q}
+CLEAN-DEPENDS-LIST=			${DEPENDS-LIST} -wr ${_UNIFIED_DEPENDS:Q}
 CLEAN-DEPENDS-LIMITED-LIST=	${DEPENDS-LIST} -w ${_UNIFIED_DEPENDS:Q}
 
 .if !target(clean-depends)
@@ -4217,7 +4221,7 @@ fetch-required: fetch
 	@${ECHO_MSG} "===> Fetching all required distfiles for ${PKGNAME} and dependencies"
 .for deptype in PKG EXTRACT PATCH FETCH BUILD RUN
 .if defined(${deptype}_DEPENDS)
-	@targ=fetch; deps="${${deptype}_DEPENDS}"; ${FETCH_LIST}
+	@targ=fetch; deps="${${deptype}_DEPENDS_ALL}"; ${FETCH_LIST}
 .endif
 .endfor
 .endif
@@ -4229,7 +4233,7 @@ fetch-required-list: fetch-list
 .if !defined(NO_DEPENDS)
 .for deptype in PKG EXTRACT PATCH FETCH BUILD RUN
 .if defined(${deptype}_DEPENDS)
-	@targ=fetch-list; deps="${${deptype}_DEPENDS}"; ${FETCH_LIST}
+	@targ=fetch-list; deps="${${deptype}_DEPENDS_ALL}"; ${FETCH_LIST}
 .endif
 .endfor
 .endif
@@ -4268,7 +4272,7 @@ package-depends-list:
 	@${PACKAGE-DEPENDS-LIST}
 .endif
 
-_LIB_RUN_DEPENDS=	${LIB_DEPENDS} ${RUN_DEPENDS}
+_LIB_RUN_DEPENDS=	${LIB_DEPENDS_ALL} ${RUN_DEPENDS_ALL}
 PACKAGE-DEPENDS-LIST?= \
 	if [ "${CHILD_DEPENDS}" ]; then \
 		installed=$$(${PKG_INFO} -qO ${PKGORIGIN} 2>/dev/null || \
@@ -4322,6 +4326,17 @@ ACTUAL-PACKAGE-DEPENDS?= \
 	done ; \
 	${SETENV} PKG_BIN="${PKG_BIN}" ${SH} ${SCRIPTSDIR}/actual-package-depends.sh $${depfiles} ${RUN_DEPENDS:C/(.*)\:.*/"\1"/}
 
+ACTUAL-PACKAGE-DEPENDS.${PKGBASE}= ${ACTUAL-PACKAGE-DEPENDS}
+
+.for p in ${SUBPACKAGES}
+ACTUAL-PACKAGE-DEPENDS.${PKGBASE}-${p}?= \
+	depfiles="" ; \
+	for lib in ${LIB_DEPENDS_${p}:C/\:.*//}; do \
+		depfiles="$$depfiles `${SETENV} LIB_DIRS="${LIB_DIRS}" LOCALBASE="${LOCALBASE}" ${SH} ${SCRIPTSDIR}/find-lib.sh $${lib}`" ; \
+	done ; \
+	${SETENV} PKG_BIN="${PKG_BIN}" ${SH} ${SCRIPTSDIR}/actual-package-depends.sh $${depfiles} ${RUN_DEPENDS_${p}:C/(.*)\:.*/"\1"/}
+.endfor
+
 PKG_NOTES_ENV?=
 .for note in ${PKG_NOTES}
 PKG_NOTES_ENV+=	dp_PKG_NOTE_${note}=${PKG_NOTE_${note}:Q}
@@ -4331,41 +4346,41 @@ PKG_NOTES_ENV+=	dp_PKG_NOTE_${note}=${PKG_NOTE_${note}:Q}
 create-manifest: create-manifest.${p}
 create-manifest.${p}:
 	@${SETENV} \
-			dp_SCRIPTSDIR='${SCRIPTSDIR}'                         \
-			dp_ACTUAL_PACKAGE_DEPENDS='${ACTUAL-PACKAGE-DEPENDS}' \
-			dp_CATEGORIES='${CATEGORIES:u:S/$/,/}'                \
-			dp_COMMENT=${COMMENT.${p}:Q}                          \
-			dp_COMPLETE_OPTIONS_LIST='${COMPLETE_OPTIONS_LIST}'   \
-			dp_DEPRECATED=${DEPRECATED:Q}                         \
-			dp_DESCR='${DESCR.${p}}'                              \
-			dp_EXPIRATION_DATE='${EXPIRATION_DATE}'               \
-			dp_GROUPS='${GROUPS:u:S/$/,/}'                        \
-			dp_LICENSE='${LICENSE:u:S/$/,/}'                      \
-			dp_LICENSE_COMB='${LICENSE_COMB}'                     \
-			dp_MAINTAINER='${MAINTAINER}'                         \
-			dp_METADIR='${METADIR}.${p}'                          \
-			dp_NO_ARCH='${NO_ARCH}'                               \
-			dp_PKGBASE='${p}'                                     \
-			dp_PKGDEINSTALL='${PKGDEINSTALL.${p}}'                \
-			dp_PKGINSTALL='${PKGINSTALL.${p}}'                    \
-			dp_PKGMESSAGES='${_PKGMESSAGES.${p}}'                 \
-			dp_PKGORIGIN='${PKGORIGIN}'                           \
-			dp_PKGPOSTDEINSTALL='${PKGPOSTDEINSTALL.${p}}'        \
-			dp_PKGPOSTINSTALL='${PKGPOSTINSTALL.${p}}'            \
-			dp_PKGPOSTUPGRADE='${PKGPOSTUPGRADE.${p}}'            \
-			dp_PKGPREDEINSTALL='${PKGPREDEINSTALL.${p}}'          \
-			dp_PKGPREINSTALL='${PKGPREINSTALL.${p}}'              \
-			dp_PKGPREUPGRADE='${PKGPREUPGRADE.${p}}'              \
-			dp_PKGUPGRADE='${PKGUPGRADE.${p}}'                    \
-			dp_PKGVERSION='${PKGVERSION}'                         \
-			dp_PKG_BIN='${PKG_BIN}'                               \
-			dp_PKG_IGNORE_DEPENDS='${PKG_IGNORE_DEPENDS}'         \
-			dp_PKG_NOTES='${PKG_NOTES}'                           \
-			dp_PORT_OPTIONS='${PORT_OPTIONS}'                     \
-			dp_PREFIX='${PREFIX}'                                 \
-			dp_USERS='${USERS:u:S/$/,/}'                          \
-			dp_WWW='${WWW}'                                       \
-			${PKG_NOTES_ENV}                                      \
+			dp_SCRIPTSDIR='${SCRIPTSDIR}'                              \
+			dp_ACTUAL_PACKAGE_DEPENDS='${ACTUAL-PACKAGE-DEPENDS.${p}}' \
+			dp_CATEGORIES='${CATEGORIES:u:S/$/,/}'                     \
+			dp_COMMENT=${COMMENT.${p}:Q}                               \
+			dp_COMPLETE_OPTIONS_LIST='${COMPLETE_OPTIONS_LIST}'        \
+			dp_DEPRECATED=${DEPRECATED:Q}                              \
+			dp_DESCR='${DESCR.${p}}'                                   \
+			dp_EXPIRATION_DATE='${EXPIRATION_DATE}'                    \
+			dp_GROUPS='${GROUPS:u:S/$/,/}'                             \
+			dp_LICENSE='${LICENSE:u:S/$/,/}'                           \
+			dp_LICENSE_COMB='${LICENSE_COMB}'                          \
+			dp_MAINTAINER='${MAINTAINER}'                              \
+			dp_METADIR='${METADIR}.${p}'                               \
+			dp_NO_ARCH='${NO_ARCH}'                                    \
+			dp_PKGBASE='${p}'                                          \
+			dp_PKGDEINSTALL='${PKGDEINSTALL.${p}}'                     \
+			dp_PKGINSTALL='${PKGINSTALL.${p}}'                         \
+			dp_PKGMESSAGES='${_PKGMESSAGES.${p}}'                      \
+			dp_PKGORIGIN='${PKGORIGIN}'                                \
+			dp_PKGPOSTDEINSTALL='${PKGPOSTDEINSTALL.${p}}'             \
+			dp_PKGPOSTINSTALL='${PKGPOSTINSTALL.${p}}'                 \
+			dp_PKGPOSTUPGRADE='${PKGPOSTUPGRADE.${p}}'                 \
+			dp_PKGPREDEINSTALL='${PKGPREDEINSTALL.${p}}'               \
+			dp_PKGPREINSTALL='${PKGPREINSTALL.${p}}'                   \
+			dp_PKGPREUPGRADE='${PKGPREUPGRADE.${p}}'                   \
+			dp_PKGUPGRADE='${PKGUPGRADE.${p}}'                         \
+			dp_PKGVERSION='${PKGVERSION}'                              \
+			dp_PKG_BIN='${PKG_BIN}'                                    \
+			dp_PKG_IGNORE_DEPENDS='${PKG_IGNORE_DEPENDS}'              \
+			dp_PKG_NOTES='${PKG_NOTES}'                                \
+			dp_PORT_OPTIONS='${PORT_OPTIONS}'                          \
+			dp_PREFIX='${PREFIX}'                                      \
+			dp_USERS='${USERS:u:S/$/,/}'                               \
+			dp_WWW='${WWW}'                                            \
+			${PKG_NOTES_ENV}                                           \
 			${SH} ${SCRIPTSDIR}/create-manifest.sh
 .endfor
 
@@ -4377,6 +4392,12 @@ package-depends:
 
 actual-package-depends:
 	@${ACTUAL-PACKAGE-DEPENDS}
+
+.for p in ${SUBPACKAGES}
+actual-package-depends.${PKGBASE}-${p}:
+	@${ACTUAL-PACKAGE-DEPENDS.${PKGBASE}-${p}}
+.endfor
+
 
 # Build packages for port and dependencies
 
@@ -4423,12 +4444,12 @@ install-missing-packages:
 # first to avoid gratuitous breakage.
 
 . if !target(describe)
-_EXTRACT_DEPENDS=${EXTRACT_DEPENDS:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
-_PATCH_DEPENDS=${PATCH_DEPENDS:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
-_FETCH_DEPENDS=${FETCH_DEPENDS:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
-_LIB_DEPENDS=${LIB_DEPENDS:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
-_BUILD_DEPENDS=${BUILD_DEPENDS:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,} ${_LIB_DEPENDS}
-_RUN_DEPENDS=${RUN_DEPENDS:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,} ${_LIB_DEPENDS}
+_EXTRACT_DEPENDS=${EXTRACT_DEPENDS_ALL:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
+_PATCH_DEPENDS=${PATCH_DEPENDS_ALL:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
+_FETCH_DEPENDS=${FETCH_DEPENDS_ALL:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
+_LIB_DEPENDS=${LIB_DEPENDS_ALL:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,}
+_BUILD_DEPENDS=${BUILD_DEPENDS_ALL:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,} ${_LIB_DEPENDS}
+_RUN_DEPENDS=${RUN_DEPENDS_ALL:C/^[^ :]+:([^ :@]+)(@[^ :]+)?(:[^ :]+)?/\1/:O:u:C,(^[^/]),${PORTSDIR}/\1,} ${_LIB_DEPENDS}
 . if exists(${DESCR})
 _DESCR=${DESCR}
 . else
