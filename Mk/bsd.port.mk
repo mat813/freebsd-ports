@@ -3476,14 +3476,18 @@ do-package: ${_EXTRA_PACKAGE_TARGET_DEP} ${WRKDIR}/pkg
 
 .if !target(delete-package)
 delete-package:
-	@${ECHO_MSG} "===>  Deleting package for ${PKGNAME}"
+. for p in ${_PKGS}
+	@${ECHO_MSG} "===>  Deleting package for ${p}"
 # When staging, the package may only be in the workdir if not root
-	@${RM} ${PKGFILE} ${WRKDIR_PKGFILE} 2>/dev/null || :
+	@${RM} ${${p}_PKGFILE} ${${p}_WRKDIR_PKGFILE} 2>/dev/null || :
+. endfor
 .endif
 
 .if !target(delete-package-list)
 delete-package-list:
-	@${ECHO_CMD} "[ -f ${PKGFILE} ] && (${ECHO_CMD} deleting ${PKGFILE}; ${RM} ${PKGFILE})"
+. for p in ${_PKGS}
+	@${ECHO_CMD} "[ -f ${${p}_PKGFILE} ] && (${ECHO_CMD} deleting ${${p}_PKGFILE}; ${RM} ${${p}_PKGFILE})"
+. endfor
 .endif
 
 # Used by scripts and users to install a package from local repository.
@@ -3495,13 +3499,16 @@ _INSTALL_PKG_ARGS=	-f
 .if defined(INSTALLS_DEPENDS)
 _INSTALL_PKG_ARGS+=	-A
 .endif
-install-package:
-	@if [ -f "${WRKDIR}/pkg/${PKGNAME}${PKG_SUFX}" ]; then \
-	    _pkgfile="${WRKDIR_PKGFILE}"; \
+.for p in ${_PKGS}
+install-package: install-package.${p}
+install-package.${p}:
+	@if [ -f "${${p}_WRKDIR_PKGFILE}" ]; then \
+	    _pkgfile="${${p}_WRKDIR_PKGFILE}"; \
 	else \
-	    _pkgfile="${PKGFILE}"; \
+	    _pkgfile="${${p}_PKGFILE}"; \
 	fi; \
 	${PKG_ADD} ${_INSTALL_PKG_ARGS} $${_pkgfile}
+.endfor
 .endif
 
 
@@ -3761,14 +3768,16 @@ deinstall:
 		${SU_CMD} "${MAKE} ${.TARGET}"
 	@${ECHO_MSG} "===>  Returning to user credentials"
 .else
-	@${ECHO_MSG} "===>  Deinstalling for ${PKGBASE}"
-	@if ${PKG_INFO} -e ${PKGBASE}; then \
-		p=`${PKG_INFO} -q -O ${PKGBASE}`; \
+.for _p in ${_PKGS} 
+	@${ECHO_MSG} "===>  Deinstalling for ${_p}"
+	@if ${PKG_INFO} -e ${_p}; then \
+		p=`${PKG_INFO} -q -O ${_p}`; \
 		${ECHO_MSG} "===>   Deinstalling $${p}"; \
-		${PKG_DELETE} -f ${PKGBASE} ; \
+		${PKG_DELETE} -f ${_p} ; \
 	else \
-		${ECHO_MSG} "===>   ${PKGBASE} not installed, skipping"; \
+		${ECHO_MSG} "===>   ${_p} not installed, skipping"; \
 	fi
+.endfor
 	@${RM} ${INSTALL_COOKIE} ${PACKAGE_COOKIE}
 .endif
 .endif
