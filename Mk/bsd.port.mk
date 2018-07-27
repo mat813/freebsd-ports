@@ -2622,6 +2622,22 @@ _PKGS=	${PKGBASE}
 _PKGS+=	${PKGBASE}-${p}
 .endfor
 
+.if !empty(SUBPACKAGES) && !defined(_DID_SUBPACKAGES_HELPERS)
+_DID_SUBPACKAGES_HELPERS=	yes
+_SUBPACKAGE_HELPERS_FILE=	DESCR PKGINSTALL PKGDEINSTALL PKGMESSAGE \
+			PKGPREINSTALL PKGPOSTINSTALL PKGPREDEINSTALL PKGPOSTDEINSTALL \
+			PKGPREUPGRADE PKGPOSTUPGRADE PKGUPGRADE
+
+. for p in ${SUBPACKAGES}
+# These overwrite the current value
+.  for v in ${_SUBPACKAGE_HELPERS_FILE}
+${v}.${p}?=	${$v}.$p
+.  endfor
+_PKGMESSAGES.${p}=		${PKGMESSAGE}.${p}
+. endfor
+.endif
+
+
 .if exists(${PACKAGES})
 -PACKAGES:=	${PACKAGES:S/:/\:/g}
 _HAVE_PACKAGES=	yes
@@ -4292,6 +4308,11 @@ PKG_NOTES_ENV+=	dp_PKG_NOTE_${note}=${PKG_NOTE_${note}:Q}
 .endfor
 
 .for p in ${_PKGS}
+. if ${p} == ${PKGBASE}
+_VAR_SUFX=
+.else
+_VAR_SUFX=		.${p:S/${PKGBASE}-//}
+. endif
 create-manifest: create-manifest.${p}
 create-manifest.${p}:
 	@${SETENV} \
@@ -4301,7 +4322,7 @@ create-manifest.${p}:
 			dp_COMMENT=${COMMENT:Q}                               \
 			dp_COMPLETE_OPTIONS_LIST='${COMPLETE_OPTIONS_LIST}'   \
 			dp_DEPRECATED=${DEPRECATED:Q}                         \
-			dp_DESCR='${DESCR}'                                   \
+			dp_DESCR='${DESCR${_VAR_SUFX}}'                       \
 			dp_EXPIRATION_DATE='${EXPIRATION_DATE}'               \
 			dp_GROUPS='${GROUPS:u:S/$/,/}'                        \
 			dp_LICENSE='${LICENSE:u:S/$/,/}'                      \
@@ -4310,17 +4331,17 @@ create-manifest.${p}:
 			dp_METADIR='${METADIR}.${p}'                          \
 			dp_NO_ARCH='${NO_ARCH}'                               \
 			dp_PKGBASE='${p}'                                     \
-			dp_PKGDEINSTALL='${PKGDEINSTALL}'                     \
-			dp_PKGINSTALL='${PKGINSTALL}'                         \
-			dp_PKGMESSAGES='${_PKGMESSAGES}'                      \
+			dp_PKGDEINSTALL='${PKGDEINSTALL${_VAR_SUFX}}'         \
+			dp_PKGINSTALL='${PKGINSTALL${_VAR_SUFX}}'             \
+			dp_PKGMESSAGES='${_PKGMESSAGES${_VAR_SUFX}}'          \
 			dp_PKGORIGIN='${PKGORIGIN}'                           \
-			dp_PKGPOSTDEINSTALL='${PKGPOSTDEINSTALL}'             \
-			dp_PKGPOSTINSTALL='${PKGPOSTINSTALL}'                 \
-			dp_PKGPOSTUPGRADE='${PKGPOSTUPGRADE}'                 \
-			dp_PKGPREDEINSTALL='${PKGPREDEINSTALL}'               \
-			dp_PKGPREINSTALL='${PKGPREINSTALL}'                   \
-			dp_PKGPREUPGRADE='${PKGPREUPGRADE}'                   \
-			dp_PKGUPGRADE='${PKGUPGRADE}'                         \
+			dp_PKGPOSTDEINSTALL='${PKGPOSTDEINSTALL${_VAR_SUFX}}' \
+			dp_PKGPOSTINSTALL='${PKGPOSTINSTALL${_VAR_SUFX}}'     \
+			dp_PKGPOSTUPGRADE='${PKGPOSTUPGRADE${_VAR_SUFX}}'     \
+			dp_PKGPREDEINSTALL='${PKGPREDEINSTALL${_VAR_SUFX}}'   \
+			dp_PKGPREINSTALL='${PKGPREINSTALL${_VAR_SUFX}}'       \
+			dp_PKGPREUPGRADE='${PKGPREUPGRADE${_VAR_SUFX}}'       \
+			dp_PKGUPGRADE='${PKGUPGRADE${_VAR_SUFX}}'             \
 			dp_PKGVERSION='${PKGVERSION}'                         \
 			dp_PKG_BIN='${PKG_BIN}'                               \
 			dp_PKG_IGNORE_DEPENDS='${PKG_IGNORE_DEPENDS}'         \
