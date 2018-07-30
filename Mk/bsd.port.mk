@@ -2620,6 +2620,7 @@ PKGLATESTFILE=		${PKGLATESTREPOSITORY}/${PKGBASE}${PKG_SUFX}
 _PKGS=	${PKGBASE}
 .for p in ${SUBPACKAGES}
 _PKGS+=	${PKGBASE}-${p}
+_P.${PKGBASE}-${p}= .${p}
 .endfor
 
 .if !defined(_DID_SUBPACKAGES_HELPERS)
@@ -2628,23 +2629,18 @@ _SUBPACKAGE_HELPERS_FILE=	DESCR PKGINSTALL PKGDEINSTALL PKGMESSAGE \
 			PKGPREINSTALL PKGPOSTINSTALL PKGPREDEINSTALL PKGPOSTDEINSTALL \
 			PKGPREUPGRADE PKGPOSTUPGRADE PKGUPGRADE
 
-. for v in ${_SUBPACKAGE_HELPERS_FILE}
-${v}.${PKGBASE}=	${$v}
-. endfor
-COMMENT.${PKGBASE}=	${COMMENT}
-
 . for p in ${SUBPACKAGES}
 # These overwrite the current value
 .  for v in ${_SUBPACKAGE_HELPERS_FILE}
-${v}.${PKGBASE}-${p}?=	${$v}.$p
+${v}.${p}?=	${$v}.$p
 .  endfor
 _PKGMESSAGES.${p}=		${PKGMESSAGE}.${p}
 # XXX: for testing, and maybe kept afterwards
-.  if !exists(${DESCR.${PKGBASE}-${p}})
-DESCR.${PKGBASE}-${p}=		${DESCR}
+.  if !exists(${DESCR.${p}})
+DESCR.${p}=		${DESCR}
 .  endif
 # XXX: Thoughts?
-COMMENT.${PKGBASE}-${p}?=	${COMMENT} (subpkg: ${p})
+COMMENT.${p}?=	${COMMENT} (subpkg: ${p})
 . endfor
 .endif
 
@@ -2657,13 +2653,11 @@ _PKGDIR=	${PKGREPOSITORY}
 _PKGDIR=	${.CURDIR}
 .endif
 .  for p in ${_PKGS}
-${p}_PKGFILE=	${_PKGDIR}/${p}-${PKGVERSION}${PKG_SUFX}
-# FIXME: This should go away at one point
-PKGFILE?=		${${p}_PKGFILE}
+PKGFILE${_P.${p}}=	${_PKGDIR}/${p}-${PKGVERSION}${PKG_SUFX}
 .  endfor
 _EXTRA_PACKAGE_TARGET_DEP+=	${_PKGDIR}
 .for p in ${_PKGS}
-${p}_WRKDIR_PKGFILE=	${WRKDIR}/pkg/${p}-${PKGVERSION}${PKG_SUFX}
+WRKDIR_PKGFILE${_P.${p}}=	${WRKDIR}/pkg/${p}-${PKGVERSION}${PKG_SUFX}
 .endfor
 
 CONFIGURE_SCRIPT?=	configure
@@ -3455,26 +3449,26 @@ ${PKGLATESTFILE}: ${PKGFILE} ${PKGLATESTREPOSITORY}
 
 .for p in ${_PKGS}
 ${_PLIST}.${p}: ${TMPPLIST}
-	@if [ "${PKGBASE}" = "${.TARGET:T:S/.PLIST.//}" ]; then \
+	@if [ "${PKGBASE}" = "${p}" ]; then \
 		${GREP} -Fv -e"@comment " -e"@@" ${TMPPLIST} > ${.TARGET} ; \
 	else \
-		${SED} -n "s/@@${.TARGET:T:S/.PLIST.${PKGBASE}-//}@@//p" ${TMPPLIST} > ${.TARGET} ; \
+		${SED} -n "s/@@${p:S/${PKGBASE}-//}@@//p" ${TMPPLIST} > ${.TARGET} ; \
 	fi
 
-${${p}_WRKDIR_PKGFILE}: ${_PLIST}.${p} create-manifest.${p} ${WRKDIR}/pkg
+${WRKDIR_PKGFILE${_P.${p}}}: ${_PLIST}.${p} create-manifest.${p} ${WRKDIR}/pkg
 	@echo "===>    Building ${p}-${PKGVERSION}"
 	@if ! ${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CREATE} ${PKG_CREATE_ARGS} -m ${METADIR}.${p} -p ${_PLIST}.${p} -f ${PKG_SUFX:S/.//} -o ${WRKDIR}/pkg ${PKGNAME}; then \
 		cd ${.CURDIR} && eval ${MAKE} delete-package >/dev/null; \
 		exit 1; \
 	fi
 
-_EXTRA_PACKAGE_TARGET_DEP+=	${${p}_WRKDIR_PKGFILE}
+_EXTRA_PACKAGE_TARGET_DEP+=	${WRKDIR_PKGFILE${_P.${p}}}
 
-${${p}_PKGFILE}: ${${p}_WRKDIR_PKGFILE}
-	@${LN} -f ${${p}_WRKDIR_PKGFILE} ${${p}_PKGFILE} 2>/dev/null \
-		|| ${CP} -f ${${p}_WRKDIR_PKGFILE} ${${p}_PKGFILE}
+${PKGFILE${_P.${p}}}: ${WRKDIR_PKGFILE${_P.${p}}}
+	@${LN} -f ${WRKDIR_PKGFILE${_P.${p}}} ${PKGFILE${_P.${p}}} 2>/dev/null \
+		|| ${CP} -f ${WRKDIR_PKGFILE${_P.${p}}} ${PKGFILE${_P.${p}}}
 
-_EXTRA_PACKAGE_TARGET_DEP+=	${${p}_PKGFILE}
+_EXTRA_PACKAGE_TARGET_DEP+=	${PKGFILE${_P.${p}}}
 .endfor
 
 .if !target(do-package)
@@ -3490,14 +3484,14 @@ delete-package:
 . for p in ${_PKGS}
 	@${ECHO_MSG} "===>  Deleting package for ${p}"
 # When staging, the package may only be in the workdir if not root
-	@${RM} ${${p}_PKGFILE} ${${p}_WRKDIR_PKGFILE} 2>/dev/null || :
+	@${RM} ${PKGFILE${_P.${p}}} ${WRKDIR_PKGFILE${_P.${p}}} 2>/dev/null || :
 . endfor
 .endif
 
 .if !target(delete-package-list)
 delete-package-list:
 . for p in ${_PKGS}
-	@${ECHO_CMD} "[ -f ${${p}_PKGFILE} ] && (${ECHO_CMD} deleting ${${p}_PKGFILE}; ${RM} ${${p}_PKGFILE})"
+	@${ECHO_CMD} "[ -f ${PKGFILE${_P.${p}}} ] && (${ECHO_CMD} deleting ${PKGFILE${_P.${p}}}; ${RM} ${PKGFILE${_P.${p}}})"
 . endfor
 .endif
 
@@ -3513,10 +3507,10 @@ _INSTALL_PKG_ARGS+=	-A
 .for p in ${_PKGS}
 install-package: install-package.${p}
 install-package.${p}:
-	@if [ -f "${${p}_WRKDIR_PKGFILE}" ]; then \
-	    _pkgfile="${${p}_WRKDIR_PKGFILE}"; \
+	@if [ -f "${WRKDIR_PKGFILE${_P.${p}}}" ]; then \
+	    _pkgfile="${WRKDIR_PKGFILE${_P.${p}}}"; \
 	else \
-	    _pkgfile="${${p}_PKGFILE}"; \
+	    _pkgfile="${PKGFILE${_P.${p}}}"; \
 	fi; \
 	${PKG_ADD} ${_INSTALL_PKG_ARGS} $${_pkgfile}
 .endfor
@@ -4042,9 +4036,8 @@ package-noinstall: package
 depends: pkg-depends extract-depends patch-depends lib-depends fetch-depends build-depends run-depends
 
 .for deptype in PKG EXTRACT PATCH FETCH BUILD LIB RUN TEST
-${deptype}_DEPENDS_ALL=	${${deptype}_DEPENDS}
-.for p in ${SUBPACKAGES}
-${deptype}_DEPENDS_ALL+=	${${deptype}_DEPENDS_${p}}
+.for p in ${_PKGS}
+${deptype}_DEPENDS_ALL+=	${${deptype}_DEPENDS${_P.${p}}}
 .endfor
 ${deptype:tl}-depends:
 .if !empty(${deptype}_DEPENDS_ALL) && !defined(NO_DEPENDS)
@@ -4319,22 +4312,13 @@ PACKAGE-DEPENDS-LIST?= \
 		fi; \
 	done
 
-ACTUAL-PACKAGE-DEPENDS?= \
+.for p in ${_PKGS}
+ACTUAL-PACKAGE-DEPENDS${_P.${p}}?= \
 	depfiles="" ; \
-	for lib in ${LIB_DEPENDS:C/\:.*//}; do \
+	for lib in ${LIB_DEPENDS${_P.${p}}:C/\:.*//}; do \
 		depfiles="$$depfiles `${SETENV} LIB_DIRS="${LIB_DIRS}" LOCALBASE="${LOCALBASE}" ${SH} ${SCRIPTSDIR}/find-lib.sh $${lib}`" ; \
 	done ; \
-	${SETENV} PKG_BIN="${PKG_BIN}" ${SH} ${SCRIPTSDIR}/actual-package-depends.sh $${depfiles} ${RUN_DEPENDS:C/(.*)\:.*/"\1"/}
-
-ACTUAL-PACKAGE-DEPENDS.${PKGBASE}= ${ACTUAL-PACKAGE-DEPENDS}
-
-.for p in ${SUBPACKAGES}
-ACTUAL-PACKAGE-DEPENDS.${PKGBASE}-${p}?= \
-	depfiles="" ; \
-	for lib in ${LIB_DEPENDS_${p}:C/\:.*//}; do \
-		depfiles="$$depfiles `${SETENV} LIB_DIRS="${LIB_DIRS}" LOCALBASE="${LOCALBASE}" ${SH} ${SCRIPTSDIR}/find-lib.sh $${lib}`" ; \
-	done ; \
-	${SETENV} PKG_BIN="${PKG_BIN}" ${SH} ${SCRIPTSDIR}/actual-package-depends.sh $${depfiles} ${RUN_DEPENDS_${p}:C/(.*)\:.*/"\1"/}
+	${SETENV} PKG_BIN="${PKG_BIN}" ${SH} ${SCRIPTSDIR}/actual-package-depends.sh $${depfiles} ${RUN_DEPENDS${_P.${p}}:C/(.*)\:.*/"\1"/}
 .endfor
 
 PKG_NOTES_ENV?=
@@ -4347,12 +4331,12 @@ create-manifest: create-manifest.${p}
 create-manifest.${p}:
 	@${SETENV} \
 			dp_SCRIPTSDIR='${SCRIPTSDIR}'                              \
-			dp_ACTUAL_PACKAGE_DEPENDS='${ACTUAL-PACKAGE-DEPENDS.${p}}' \
+			dp_ACTUAL_PACKAGE_DEPENDS='${ACTUAL-PACKAGE-DEPENDS${_P.${p}}}' \
 			dp_CATEGORIES='${CATEGORIES:u:S/$/,/}'                     \
-			dp_COMMENT=${COMMENT.${p}:Q}                               \
+			dp_COMMENT=${COMMENT${_P.${p}}:Q}                               \
 			dp_COMPLETE_OPTIONS_LIST='${COMPLETE_OPTIONS_LIST}'        \
 			dp_DEPRECATED=${DEPRECATED:Q}                              \
-			dp_DESCR='${DESCR.${p}}'                                   \
+			dp_DESCR='${DESCR${_P.${p}}}'                                   \
 			dp_EXPIRATION_DATE='${EXPIRATION_DATE}'                    \
 			dp_GROUPS='${GROUPS:u:S/$/,/}'                             \
 			dp_LICENSE='${LICENSE:u:S/$/,/}'                           \
@@ -4361,17 +4345,17 @@ create-manifest.${p}:
 			dp_METADIR='${METADIR}.${p}'                               \
 			dp_NO_ARCH='${NO_ARCH}'                                    \
 			dp_PKGBASE='${p}'                                          \
-			dp_PKGDEINSTALL='${PKGDEINSTALL.${p}}'                     \
-			dp_PKGINSTALL='${PKGINSTALL.${p}}'                         \
-			dp_PKGMESSAGES='${_PKGMESSAGES.${p}}'                      \
+			dp_PKGDEINSTALL='${PKGDEINSTALL${_P.${p}}}'                     \
+			dp_PKGINSTALL='${PKGINSTALL${_P.${p}}}'                         \
+			dp_PKGMESSAGES='${_PKGMESSAGES${_P.${p}}}'                      \
 			dp_PKGORIGIN='${PKGORIGIN}'                                \
-			dp_PKGPOSTDEINSTALL='${PKGPOSTDEINSTALL.${p}}'             \
-			dp_PKGPOSTINSTALL='${PKGPOSTINSTALL.${p}}'                 \
-			dp_PKGPOSTUPGRADE='${PKGPOSTUPGRADE.${p}}'                 \
-			dp_PKGPREDEINSTALL='${PKGPREDEINSTALL.${p}}'               \
-			dp_PKGPREINSTALL='${PKGPREINSTALL.${p}}'                   \
-			dp_PKGPREUPGRADE='${PKGPREUPGRADE.${p}}'                   \
-			dp_PKGUPGRADE='${PKGUPGRADE.${p}}'                         \
+			dp_PKGPOSTDEINSTALL='${PKGPOSTDEINSTALL${_P.${p}}}'             \
+			dp_PKGPOSTINSTALL='${PKGPOSTINSTALL${_P.${p}}}'                 \
+			dp_PKGPOSTUPGRADE='${PKGPOSTUPGRADE${_P.${p}}}'                 \
+			dp_PKGPREDEINSTALL='${PKGPREDEINSTALL${_P.${p}}}'               \
+			dp_PKGPREINSTALL='${PKGPREINSTALL${_P.${p}}}'                   \
+			dp_PKGPREUPGRADE='${PKGPREUPGRADE${_P.${p}}}'                   \
+			dp_PKGUPGRADE='${PKGUPGRADE${_P.${p}}}'                         \
 			dp_PKGVERSION='${PKGVERSION}'                              \
 			dp_PKG_BIN='${PKG_BIN}'                                    \
 			dp_PKG_IGNORE_DEPENDS='${PKG_IGNORE_DEPENDS}'              \
@@ -4390,12 +4374,9 @@ create-manifest.${p}:
 package-depends:
 	@${PACKAGE-DEPENDS-LIST} | ${AWK} '{print $$1":"$$3}'
 
-actual-package-depends:
-	@${ACTUAL-PACKAGE-DEPENDS}
-
-.for p in ${SUBPACKAGES}
-actual-package-depends.${PKGBASE}-${p}:
-	@${ACTUAL-PACKAGE-DEPENDS.${PKGBASE}-${p}}
+.for p in ${_PKGS}
+actual-package-depends${_P.${p}}:
+	@${ACTUAL-PACKAGE-DEPENDS${_P.${p}}}
 .endfor
 
 
@@ -4582,9 +4563,9 @@ generate-plist: ${WRKDIR}
 	@for file in ${PLIST_FILES}; do \
 		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} >> ${TMPPLIST}; \
 	done
-.for p in ${SUBPACKAGES}
-	@for file in ${PLIST_FILES.${p}}; do \
-		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's/^/@@${p}@@/' >> ${TMPPLIST}; \
+.for p in ${_PKGS}
+	@for file in ${PLIST_FILES.${_P.${p}}}; do \
+		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's/^/@@${_P.${p}}@@/' >> ${TMPPLIST}; \
 	done
 .endfor
 .if !empty(PLIST)
@@ -4599,9 +4580,9 @@ generate-plist: ${WRKDIR}
 	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@dir ,' >> ${TMPPLIST}
 .endfor
 
-.for p in ${SUBPACKAGES}
-.for dir in ${PLIST_DIRS.${p}}
-	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@@${p}@@@dir ,' >> ${TMPPLIST}
+.for p in ${_PKGS}
+.for dir in ${PLIST_DIRS.${_P.${p}}}
+	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@@${_P.${p}}@@@dir ,' >> ${TMPPLIST}
 .endfor
 .endfor
 .endif
