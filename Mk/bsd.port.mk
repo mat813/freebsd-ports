@@ -4582,6 +4582,11 @@ generate-plist: ${WRKDIR}
 	@for file in ${PLIST_FILES}; do \
 		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} >> ${TMPPLIST}; \
 	done
+.for p in ${SUBPACKAGES}
+	@for file in ${PLIST_FILES.${p}}; do \
+		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's/^/@@${p}@@/' >> ${TMPPLIST}; \
+	done
+.endfor
 .if !empty(PLIST)
 .for f in ${PLIST}
 	@if [ -f "${f}" ]; then \
@@ -4594,6 +4599,11 @@ generate-plist: ${WRKDIR}
 	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@dir ,' >> ${TMPPLIST}
 .endfor
 
+.for p in ${SUBPACKAGES}
+.for dir in ${PLIST_DIRS.${p}}
+	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@@${p}@@@dir ,' >> ${TMPPLIST}
+.endfor
+.endfor
 .endif
 
 ${TMPPLIST}:
