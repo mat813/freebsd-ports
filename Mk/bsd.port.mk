@@ -4325,18 +4325,19 @@ PACKAGE-DEPENDS-LIST?= \
 		fi; \
 	done
 
-# FIXME:
-# Not sure if all sub-packages should depend on the main package
-# or something else.
 .for p in ${_PKGS}
 ACTUAL-PACKAGE-DEPENDS${_P.${p}}?= \
 	depfiles="" ; \
 	for lib in ${LIB_DEPENDS${_P.${p}}:C/\:.*//}; do \
 		depfiles="$$depfiles `${SETENV} LIB_DIRS="${LIB_DIRS}" LOCALBASE="${LOCALBASE}" ${SH} ${SCRIPTSDIR}/find-lib.sh $${lib}`" ; \
 	done ; \
-	if [ -n "${_P.${p}}" ]; then \
-		printf "\"%s\": {origin: \"%s\", version: \"%s\"}\n" ${PKGBASE} ${PKGORIGIN} ${PKGVERSION}; \
-	fi ; \
+	for self in ${SELF_DEPENDS${_P.${p}}}; do \
+		if [ "$$self" = "main" ]; then \
+			printf "\"%s\": {origin: \"%s\", version: \"%s\"}\n" ${PKGBASE} ${PKGORIGIN} ${PKGVERSION}; \
+		else \
+			printf "\"%s-%s\": {origin: \"%s\", version: \"%s\"}\n" ${PKGBASE} $$self ${PKGORIGIN} ${PKGVERSION}; \
+		fi ; \
+	done ; \
 	${SETENV} PKG_BIN="${PKG_BIN}" ${SH} ${SCRIPTSDIR}/actual-package-depends.sh $${depfiles} ${RUN_DEPENDS${_P.${p}}:C/(.*)\:.*/"\1"/}
 .endfor
 
