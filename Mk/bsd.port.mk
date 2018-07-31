@@ -2618,6 +2618,19 @@ PKGBASE?=			${PKGNAMEPREFIX}${PORTNAME}${PKGNAMESUFFIX}
 PKGLATESTFILE=		${PKGLATESTREPOSITORY}/${PKGBASE}${PKG_SUFX}
 
 _PKGS=	${PKGBASE}
+.if defined(SUBPACKAGES)
+.  if ${SUBPACKAGES:Mmain}
+DEV_ERROR+=		"SUBPACKAGES cannot contain 'main', it is a reserved value"
+.  endif
+.  for f in ${SUBPACKAGES}
+.    if ${f:C/[[:lower:][:digit:]_]//g}
+_BAD_SUBPACKAGE_NAMES+=		${f}
+.    endif
+.  endfor
+.  if !empty(_BAD_SUBPACKAGE_NAMES)
+DEV_ERROR+=		"SUBPACKAGES contains flavors that are not all [a-z0-9_]: ${_BAD_SUBPACKAGE_NAMES}"
+.  endif
+.endif
 .for p in ${SUBPACKAGES}
 _PKGS+=	${PKGBASE}-${p}
 _P.${PKGBASE}-${p}= .${p}
