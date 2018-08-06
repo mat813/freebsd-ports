@@ -1354,9 +1354,6 @@
     SUBDIR += pglogd
     SUBDIR += phalcon
     SUBDIR += phalcon4
-    SUBDIR += php72-opcache
-    SUBDIR += php72-session
-    SUBDIR += php72-tidy
     SUBDIR += php73-opcache
     SUBDIR += php73-session
     SUBDIR += php73-tidy

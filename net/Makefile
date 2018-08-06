@@ -953,8 +953,6 @@
     SUBDIR += pen
     SUBDIR += pfinger
     SUBDIR += php72-ldap
-    SUBDIR += php72-soap
-    SUBDIR += php72-sockets
     SUBDIR += php72-xmlrpc
     SUBDIR += php73-ldap
     SUBDIR += php73-soap

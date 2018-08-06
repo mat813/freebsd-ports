@@ -595,8 +595,6 @@
     SUBDIR += php72-dba
     SUBDIR += php72-interbase
     SUBDIR += php72-mysqli
-    SUBDIR += php72-odbc
-    SUBDIR += php72-pdo
     SUBDIR += php72-pdo_dblib
     SUBDIR += php72-pdo_firebird
     SUBDIR += php72-pdo_mysql

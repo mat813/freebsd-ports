@@ -1,14 +1,14 @@
-%%CLI%%bin/php
-%%CGI%%bin/php-cgi
+%%CLI%%@@cli@@bin/php
+%%CGI%%@@cgi@@bin/php-cgi
 bin/php-config
-%%PHPDBG%%bin/phpdbg
+%%PHPDBG%%@@phpdbg@@bin/phpdbg
 bin/phpize
-%%FPM%%sbin/php-fpm
+%%FPM%%@@fpm@@sbin/php-fpm
 etc/php.conf
 etc/php.ini-development
 etc/php.ini-production
-%%FPM%%@sample etc/php-fpm.conf.default etc/php-fpm.conf
-%%FPM%%@sample etc/php-fpm.d/www.conf.default etc/php-fpm.d/www.conf
+%%FPM%%@@fpm@@@sample etc/php-fpm.conf.default etc/php-fpm.conf
+%%FPM%%@@fpm@@@sample etc/php-fpm.d/www.conf.default etc/php-fpm.d/www.conf
 include/php/TSRM/TSRM.h
 include/php/TSRM/readdir.h
 include/php/TSRM/tsrm_config.h
@@ -234,9 +234,9 @@ include/php/main/streams/php_stream_plain_wrapper.h
 include/php/main/streams/php_stream_transport.h
 include/php/main/streams/php_stream_userspace.h
 include/php/main/streams/php_streams_int.h
-%%CLI%%include/php/sapi/cli/cli.h
-%%EMBED%%include/php/sapi/embed/php_embed.h
-%%EMBED%%lib/libphp7.so
+%%CLI%%@@cli@@include/php/sapi/cli/cli.h
+%%EMBED%%@@embed@@include/php/sapi/embed/php_embed.h
+%%EMBED%%@@embed@@lib/libphp7.so
 lib/php/build/Makefile.global
 lib/php/build/ax_check_compile_flag.m4
 lib/php/build/acinclude.m4
@@ -249,10 +249,10 @@ lib/php/build/phpize.m4
 lib/php/build/run-tests.php
 lib/php/build/scan_makefile_in.awk
 lib/php/build/shtool
-%%CGI%%man/man1/php-cgi.1.gz
+%%CGI%%@@cgi@@man/man1/php-cgi.1.gz
 man/man1/php-config.1.gz
-%%CLI%%man/man1/php.1.gz
-%%PHPDBG%%man/man1/phpdbg.1.gz
+%%CLI%%@@cli@@man/man1/php.1.gz
+%%PHPDBG%%@@phpdbg@@man/man1/phpdbg.1.gz
 man/man1/phpize.1.gz
-%%FPM%%man/man8/php-fpm.8.gz
-%%FPM%%share/php/fpm/status.html
+%%FPM%%@@fpm@@man/man8/php-fpm.8.gz
+%%FPM%%@@fpm@@share/php/fpm/status.html
