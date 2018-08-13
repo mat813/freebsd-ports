@@ -4585,8 +4585,8 @@ generate-plist: ${WRKDIR}
 		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} >> ${TMPPLIST}; \
 	done
 .for p in ${_PKGS}
-	@for file in ${PLIST_FILES.${_P.${p}}}; do \
-		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's/^/@@${_P.${p}}@@/' >> ${TMPPLIST}; \
+	@for file in ${PLIST_FILES${_P.${p}}}; do \
+		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's/^/@@${_P.${p}:S/^.//}@@/' >> ${TMPPLIST}; \
 	done
 .endfor
 .if !empty(PLIST)
