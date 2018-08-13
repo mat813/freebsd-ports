@@ -4783,7 +4783,7 @@ STAGE_ARGS=		-i ${STAGEDIR}
 .if !defined(NO_PKG_REGISTER)
 . for p in ${_PKGS}
 fake-pkg: fake-pkg.${p}
-fake-pkg.${p}:
+fake-pkg.${p}: ${_PLIST}.${p} ${METADIR}.${p}
 .if defined(INSTALLS_DEPENDS)
 	@${ECHO_MSG} "===>   Registering installation for ${PKGNAME} as automatic"
 	@${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_REGISTER} -d ${STAGE_ARGS} -m ${METADIR}.${p} -f ${_PLIST}.${p}
