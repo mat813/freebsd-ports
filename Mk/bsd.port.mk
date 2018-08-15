@@ -4584,7 +4584,7 @@ generate-plist: ${WRKDIR}
 	@for file in ${PLIST_FILES}; do \
 		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} >> ${TMPPLIST}; \
 	done
-.for p in ${_PKGS}
+.for p in ${_PKGS:[2..-1]}
 	@for file in ${PLIST_FILES${_P.${p}}}; do \
 		${ECHO_CMD} $${file} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's/^/@@${_P.${p}:S/^.//}@@/' >> ${TMPPLIST}; \
 	done
@@ -4601,9 +4601,9 @@ generate-plist: ${WRKDIR}
 	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@dir ,' >> ${TMPPLIST}
 .endfor
 
-.for p in ${_PKGS}
-.for dir in ${PLIST_DIRS.${_P.${p}}}
-	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@@${_P.${p}}@@@dir ,' >> ${TMPPLIST}
+.for p in ${_PKGS:[2..-1]}
+.for dir in ${PLIST_DIRS${_P.${p}}}
+	@${ECHO_CMD} ${dir} | ${SED} ${PLIST_SUB:S/$/!g/:S/^/ -e s!%%/:S/=/%%!/} -e 's,^,@@${_P.${p}:S/^.//}@@@dir ,' >> ${TMPPLIST}
 .endfor
 .endfor
 .endif
