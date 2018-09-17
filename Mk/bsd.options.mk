@@ -506,6 +506,17 @@ MESON_ARGS+=		${${opt}_MESON_NO:C/.*/-D&=no/}
 .    for configure in CONFIGURE CMAKE MESON QMAKE
 .      if defined(${opt}_${configure}_ON)
 ${configure}_ARGS+=	${${opt}_${configure}_ON}
+.        if !defined(${opt}_${configure}_OFF)
+.          if ${configure:MCONFIGURE}
+DEV_WARNING+=	"You have ${opt}_${configure}_ON defined but ${opt}_${configure}_OFF is not, make sure the feature cannot be auto-activated, or maybe use ${opt}_${configure}_WITH or ${opt}_${configure}_ENABLE"
+.          elsif ${configure:MCMAKE}
+DEV_WARNING+=	"You have ${opt}_${configure}_ON defined but ${opt}_${configure}_OFF is not, make sure the feature cannot be auto-activated, or maybe use ${opt}_${configure}_BOOL or ${opt}_${configure}_BOOL_OFF"
+.          elsif ${configure:MMESON}
+DEV_WARNING+=	"You have ${opt}_${configure}_ON defined but ${opt}_${configure}_OFF is not, make sure the feature cannot be auto-activated, or maybe use ${opt}_${configure}_TRUE/FALSE/YES/NO"
+.          else
+DEV_WARNING+=	"You have ${opt}_${configure}_ON defined but ${opt}_${configure}_OFF is not, make sure the feature cannot be auto-activated"
+.          endif
+.        endif
 .      endif
 .    endfor
 .    for flags in ${_OPTIONS_FLAGS}
@@ -568,6 +579,17 @@ MESON_ARGS+=		${${opt}_MESON_NO:C/.*/-D&=yes/}
 .    for configure in CONFIGURE CMAKE MESON QMAKE
 .      if defined(${opt}_${configure}_OFF)
 ${configure}_ARGS+=	${${opt}_${configure}_OFF}
+.        if !defined(${opt}_${configure}_ON)
+.          if ${configure:MCONFIGURE}
+DEV_WARNING+=	"You have ${opt}_${configure}_OFF defined but ${opt}_${configure}_ON is not, make sure the feature cannot be auto-activated, or maybe use ${opt}_${configure}_WITH or ${opt}_${configure}_ENABLE"
+.          elsif ${configure:MCMAKE}
+DEV_WARNING+=	"You have ${opt}_${configure}_OFF defined but ${opt}_${configure}_ON is not, make sure the feature cannot be auto-activated, or maybe use ${opt}_${configure}_BOOL or ${opt}_${configure}_BOOL_OFF"
+.          elsif ${configure:MMESON}
+DEV_WARNING+=	"You have ${opt}_${configure}_OFF defined but ${opt}_${configure}_ON is not, make sure the feature cannot be auto-activated, or maybe use ${opt}_${configure}_TRUE/FALSE/YES/NO"
+.          else
+DEV_WARNING+=	"You have ${opt}_${configure}_OFF defined but ${opt}_${configure}_ON is not, make sure the feature cannot be auto-activated"
+.          endif
+.        endif
 .      endif
 .    endfor
 .    for flags in ${_OPTIONS_FLAGS}
