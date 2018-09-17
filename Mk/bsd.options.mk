@@ -301,13 +301,19 @@ NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
 .    if !empty(COMPLETE_OPTIONS_LIST:M${opt})
 PORT_OPTIONS+=	${opt}
 NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
+.    else
+WARNING+=	"${OPTIONS_NAME}_SET contains ${opt} but it is not a valid option for this port"
 .    endif
 .  endfor
 
 ## Unset the options excluded per-port (set by user in make.conf)
 .  for opt in ${${OPTIONS_NAME}_UNSET}
+.    if !empty(COMPLETE_OPTIONS_LIST:M${opt})
 PORT_OPTIONS:=	${PORT_OPTIONS:N${opt}}
 NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
+.    else
+WARNING+=	"${OPTIONS_NAME}_UNSET contains ${opt} but it is not a valid option for this port"
+.    endif
 .  endfor
 
 ## options files (from dialog)
@@ -329,12 +335,18 @@ WARNING+=	"${OPTIONS_NAME}_${_k}=	${${_OPTIONS_UNIQUENAME}_${_k}}"
 .    if !empty(COMPLETE_OPTIONS_LIST:M${opt})
 PORT_OPTIONS+=	${opt}
 NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
+.    else
+WARNING+=	"The options file contains ${opt} but it is not a valid option for this port, maybe re-run make config"
 .    endif
 .  endfor
 
 .for opt in ${OPTIONS_FILE_UNSET}
+.    if !empty(COMPLETE_OPTIONS_LIST:M${opt})
 PORT_OPTIONS:=	${PORT_OPTIONS:N${opt}}
 NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
+.    else
+WARNING+=	"The options file contains ${opt} but it is not a valid option for this port, maybe re-run make config"
+.    endif
 .endfor
 
 .endif
@@ -359,13 +371,19 @@ NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
 .    if !empty(COMPLETE_OPTIONS_LIST:M${opt})
 PORT_OPTIONS+=	${opt}
 NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
+.    else
+WARNING+=	"${OPTIONS_NAME}_FORCE_SET contains ${opt} but it is not a valid option for this port"
 .    endif
 .  endfor
 
 ## Unset the options excluded per-port (set by user in make.conf)
 .  for opt in ${${OPTIONS_NAME}_UNSET_FORCE}
+.    if !empty(COMPLETE_OPTIONS_LIST:M${opt})
 PORT_OPTIONS:=	${PORT_OPTIONS:N${opt}}
 NEW_OPTIONS:=	${NEW_OPTIONS:N${opt}}
+.    else
+WARNING+=	"${OPTIONS_NAME}_FORCE_UNSET contains ${opt} but it is not a valid option for this port"
+.    endif
 .  endfor
 
 
