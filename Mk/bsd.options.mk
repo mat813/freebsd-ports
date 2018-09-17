@@ -263,7 +263,11 @@ PORT_OPTIONS+=	${_opt}
 
 # Remove options the port maintainer doesn't want, part 2
 .for opt in ${_ALL_EXCLUDE:O:u}
+.  if !empty(COMPLETE_OPTIONS_LIST:M${opt})
 PORT_OPTIONS:=		${PORT_OPTIONS:N${opt}}
+.  else
+DEV_WARNING+=	"One of OPTIONS_EXCLUDE* contains ${opt} but it is not a valid option for this port"
+.  endif
 .endfor
 
 ## Now create the list of activated options
@@ -414,7 +418,13 @@ _PORT_OPTIONS+=	$d
 .endfor
 
 # Finally, add options required by slave ports
-PORT_OPTIONS+=	${OPTIONS_SLAVE}
+.for opt in ${OPTIONS_SLAVE}
+.  if !empty(COMPLETE_OPTIONS_LIST:M${opt})
+PORT_OPTIONS+=	${opt}
+.  else
+DEV_WARNING+=	"OPTIONS_SLAVE contains ${opt} but it is not a valid option for this port"
+.  endif
+.endfor
 
 # Sort options and eliminate duplicates
 PORT_OPTIONS:=	${PORT_OPTIONS:O:u}
