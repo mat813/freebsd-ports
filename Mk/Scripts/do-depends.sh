@@ -141,6 +141,11 @@ for _line in ${dp_RAWDEPENDS} ; do
 		export FLAVOR="${origin##*@}"
 		origin=${origin%@*}
 		;;
+	*~*/*)	;; # Ignore ~ in the path which would not be a subpackage
+	*~*)
+		subpkg=${origin##*~}
+		origin=${origin%~*}
+		;;
 	esac
 
 	depends_args="${dp_DEPENDS_ARGS}"
