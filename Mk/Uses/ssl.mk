@@ -41,6 +41,12 @@ _SSL_BUILD_DEP=	1
 _SSL_RUN_DEP=	1
 .endif
 
+.for _v in BROKEN IGNORE
+.if defined(${_v}_SSL) && ${${_v}_SSL:Mopenssl11} && !${${_v}_SSL:Mbase} && ${OSVERSION} >= 1200085
+${_v}_SSL+=	base
+${_v}_SSL_REASON_base=	${${_v}_SSL_REASON_openssl111}
+.endif
+
 .if defined(BROKEN_SSL) && ${BROKEN_SSL:M${SSL_DEFAULT}}
 .  if defined(BROKEN_SSL_REASON_${SSL_DEFAULT})
 BROKEN=	does not build with DEFAULT_VERSIONS+=ssl=${SSL_DEFAULT}: ${BROKEN_SSL_REASON_${SSL_DEFAULT}}
