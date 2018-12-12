@@ -17,16 +17,16 @@ USES=		metaport python pyqt:4
 USE_PYTHON=	concurrent flavors py3kplist
 
 # Keep these synchronized with _USE_PYQT_ALL / _USE_PYQT4_ONLY in Mk/Use/pyqt.mk
-OPTIONS_DEFINE=		assistant core dbus dbussupport declarative \
-			demo designer designerplugin doc gui help \
-			multimedia network opengl phonon qscintilla2 \
-			script scripttools sql svg test webkit xml \
-			xmlpatterns
+OPTIONS_DEFINE=		ASSISTANT CORE DBUS DBUSSUPPORT DECLARATIVE \
+			DEMO DESIGNER DESIGNERPLUGIN DOC GUI HELP \
+			MULTIMEDIA NETWORK OPENGL PHONON QSCINTILLA2 \
+			SCRIPT SCRIPTTOOLS SQL SVG TEST WEBKIT XML \
+			XMLPATTERNS
 OPTIONS_DEFAULT=	${OPTIONS_DEFINE}
 
 .for opt in ${OPTIONS_DEFINE}
-${opt}_USE=	PYQT=${opt}_run
-${opt}_DESC=	${py-${opt}_DESC}
+${opt}_USE=	PYQT=${opt:tl}_run
+${opt}_DESC=	${py-${opt:tl}_DESC}
 .endfor
 
 .include <bsd.port.mk>
