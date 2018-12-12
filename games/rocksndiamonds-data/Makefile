@@ -54,24 +54,24 @@ LEVELS_BD_FANS=	42_Steps Alexanders_Levels Arcade_Levels Be_a_bug \
 		Time_Gate_Rush
 
 OPTIONS_SINGLE=	SYMLINK
-OPTIONS_SINGLE_SYMLINK=	RnD RnD_jue
+OPTIONS_SINGLE_SYMLINK=	RND RND_JUE
 
-OPTIONS_DEFAULT=	RnD_jue
+OPTIONS_DEFAULT=	RND_JUE
 
-RnD_DESC=	Levels default for Rocks'n'Diamonds
-RnD_jue_DESC=	Levels default for R'n'D jue
+RND_DESC=	Levels default for Rocks'n'Diamonds
+RND_JUE_DESC=	Levels default for R'n'D jue
 
 PREFIX=		/usr/local
 
 .include <bsd.port.options.mk>
 
-.if ${PORT_OPTIONS:MRnD}
+.if ${PORT_OPTIONS:MRND}
 RUN_DEPENDS+=	rocksndiamonds:games/rocksndiamonds
 DATADIR=	${PREFIX}/share/rocksndiamonds
 DATADIR1=	${PREFIX}/share/rnd_jue
 .endif
 
-.if ${PORT_OPTIONS:MRnD_jue}
+.if ${PORT_OPTIONS:MRND_JUE}
 RUN_DEPENDS+=	rnd_jue:games/rnd_jue
 DATADIR=	${PREFIX}/share/rnd_jue
 DATADIR1=	${PREFIX}/share/rocksndiamonds
@@ -114,7 +114,7 @@ do-install:
 		-type f >> ${TMPPLIST}
 
 # Symlink Levels which can use Rocks'n'Diamonds and R'n'D jue
-.if exists(${PREFIX}/share/rocksndiamonds) && ${PORT_OPTIONS:MRnD_jue}
+.if exists(${PREFIX}/share/rocksndiamonds) && ${PORT_OPTIONS:MRND_JUE}
 .for l in ${LEVELS_ARTSOFT} ${LEVELS_BD_FANS} Alans_Random_Levels \
 	Gavin_Davidson_2006 Puzzles Veysi_Orak_2006
 		@${LN} -sf ${DATADIR}/levels/${l} \
@@ -122,7 +122,7 @@ do-install:
 .endfor
 .endif
 
-.if exists(${PREFIX}/share/rnd_jue) && ${PORT_OPTIONS:MRnD}
+.if exists(${PREFIX}/share/rnd_jue) && ${PORT_OPTIONS:MRND}
 .for l in ${LEVELS_ARTSOFT} ${LEVELS_BD_FANS} Alans_Random_Levels \
 		 Gavin_Davidson_2006 Puzzles Veysi_Orak_2006
 		@${LN} -sf ${DATADIR}/levels/${l} \
