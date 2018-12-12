@@ -2,17 +2,17 @@
 # pre/postprocessing driver variables
 
 # dmprt specific
-.if ${PORT_OPTIONS:MGS_dmprt}
+.if ${PORT_OPTIONS:MGS_DMPRT}
 .include "${MASTERDIR}/files/Makefile.dmprt"
 .endif
 
 # epag specific
-.if ${PORT_OPTIONS:MGS_epag}
+.if ${PORT_OPTIONS:MGS_EPAG}
 .include "${MASTERDIR}/files/Makefile.epag"
 .endif
 
 # pcl3 specific
-.if ${PORT_OPTIONS:MGS_pcl3}
+.if ${PORT_OPTIONS:MGS_PCL3}
 .include "${MASTERDIR}/files/Makefile.pcl3"
 .endif
 
@@ -21,11 +21,11 @@ VGA_DEVS= lvga256 vgalib
 .undef _VGA_DEVS
 
 .for D in ${VGA_DEVS}
-.if ${PORT_OPTIONS:MGS_${D}}
+.if ${PORT_OPTIONS:MGS_${D:tu}}
 .if ${ARCH:Mamd64} || ${ARCH:Mi386}
 _VGA_DEVS+= ${D}
 .else
-OPTIONS_UNSET+=	${PORT_OPTIONS:MGS_${D}}
+OPTIONS_UNSET+=	${PORT_OPTIONS:MGS_${D:tu}}
 .endif
 .endif
 .endfor
@@ -34,133 +34,133 @@ OPTIONS_UNSET+=	${PORT_OPTIONS:MGS_${D}}
 LIB_DEPENDS+=	libvga.so:graphics/svgalib
 .endif
 
-.if ${PORT_OPTIONS:MGS_cdj670} || \
-	${PORT_OPTIONS:MGS_cdj850} || \
-	${PORT_OPTIONS:MGS_cdj880} || \
-	${PORT_OPTIONS:MGS_cdj890} || \
-	${PORT_OPTIONS:MGS_cdj1600}
+.if ${PORT_OPTIONS:MGS_CDJ670} || \
+	${PORT_OPTIONS:MGS_CDJ850} || \
+	${PORT_OPTIONS:MGS_CDJ880} || \
+	${PORT_OPTIONS:MGS_CDJ890} || \
+	${PORT_OPTIONS:MGS_CDJ1600}
 .include "${MASTERDIR}/files/Makefile.cdj880"
 .endif
-.if ${PORT_OPTIONS:MGS_cdj970}
+.if ${PORT_OPTIONS:MGS_CDJ970}
 .include "${MASTERDIR}/files/Makefile.cdj970"
 .endif
 
 .include "${MASTERDIR}/files/Makefile.gprint"
 
-.if ${PORT_OPTIONS:MGS_md2k} || \
-	${PORT_OPTIONS:MGS_md5k}
+.if ${PORT_OPTIONS:MGS_MD2K} || \
+	${PORT_OPTIONS:MGS_MD5K}
 .include "${MASTERDIR}/files/Makefile.md2k"
 .endif
 
-.if ${PORT_OPTIONS:MGS_md50Mono} || \
-	${PORT_OPTIONS:MGS_md50Eco} || \
-	${PORT_OPTIONS:MGS_md1xMono}
+.if ${PORT_OPTIONS:MGS_MD50MONO} || \
+	${PORT_OPTIONS:MGS_MD50ECO} || \
+	${PORT_OPTIONS:MGS_MD1XMONO}
 .include "${MASTERDIR}/files/Makefile.alps"
 .endif
 
-.if ${PORT_OPTIONS:MGS_bj10v} || \
+.if ${PORT_OPTIONS:MGS_BJ10V} || \
 	${PORT_OPTIONS:Mbj10vh}
 .include "${MASTERDIR}/files/Makefile.bj10v"
 .endif
 
-.if ${PORT_OPTIONS:MGS_bjccmyk} || \
-	${PORT_OPTIONS:MGS_bjccolor} || \
-	${PORT_OPTIONS:MGS_bjcgray} || \
-	${PORT_OPTIONS:MGS_bjcmono}
+.if ${PORT_OPTIONS:MGS_BJCCMYK} || \
+	${PORT_OPTIONS:MGS_BJCCOLOR} || \
+	${PORT_OPTIONS:MGS_BJCGRAY} || \
+	${PORT_OPTIONS:MGS_BJCMONO}
 .include "${MASTERDIR}/files/Makefile.bjc250"
 .endif
 
-.if ${PORT_OPTIONS:MGS_lbp1310} || \
-	${PORT_OPTIONS:MGS_lbp1510} || \
-	${PORT_OPTIONS:MGS_lbp1610} || \
-	${PORT_OPTIONS:MGS_lbp1710} || \
-	${PORT_OPTIONS:MGS_lbp1810} || \
-	${PORT_OPTIONS:MGS_lbp1910}
+.if ${PORT_OPTIONS:MGS_LBP1310} || \
+	${PORT_OPTIONS:MGS_LBP1510} || \
+	${PORT_OPTIONS:MGS_LBP1610} || \
+	${PORT_OPTIONS:MGS_LBP1710} || \
+	${PORT_OPTIONS:MGS_LBP1810} || \
+	${PORT_OPTIONS:MGS_LBP1910}
 .include "${MASTERDIR}/files/Makefile.cpca"
 .endif
 
-.if ${PORT_OPTIONS:MGS_lips2p} || \
-	${PORT_OPTIONS:MGS_lips3} || \
-	${PORT_OPTIONS:MGS_lips4} || \
-	${PORT_OPTIONS:MGS_bjc880j} || \
-	${PORT_OPTIONS:MGS_lips4v} || \
-	${PORT_OPTIONS:MGS_escpage} || \
-	${PORT_OPTIONS:MGS_lp2000} || \
-	${PORT_OPTIONS:MGS_npdl} || \
-	${PORT_OPTIONS:MGS_rpdl}
+.if ${PORT_OPTIONS:MGS_LIPS2P} || \
+	${PORT_OPTIONS:MGS_LIPS3} || \
+	${PORT_OPTIONS:MGS_LIPS4} || \
+	${PORT_OPTIONS:MGS_BJC880J} || \
+	${PORT_OPTIONS:MGS_LIPS4V} || \
+	${PORT_OPTIONS:MGS_ESCPAGE} || \
+	${PORT_OPTIONS:MGS_LP2000} || \
+	${PORT_OPTIONS:MGS_NPDL} || \
+	${PORT_OPTIONS:MGS_RPDL}
 .include "${MASTERDIR}/files/Makefile.lips"
 .endif
 
-.if ${PORT_OPTIONS:MGS_alc8600} || \
-	${PORT_OPTIONS:MGS_alc8500} || \
-	${PORT_OPTIONS:MGS_alc2000} || \
-	${PORT_OPTIONS:MGS_alc4000} || \
-	${PORT_OPTIONS:MGS_alc1900} || \
-	${PORT_OPTIONS:MGS_alc4100} || \
-	${PORT_OPTIONS:MGS_lp9800c} || \
-	${PORT_OPTIONS:MGS_lp9000c} || \
-	${PORT_OPTIONS:MGS_lp9500c} || \
-	${PORT_OPTIONS:MGS_lp8800c} || \
-	${PORT_OPTIONS:MGS_lp8300c} || \
-	${PORT_OPTIONS:MGS_lp8500c} || \
-	${PORT_OPTIONS:MGS_lp3000c} || \
-	${PORT_OPTIONS:MGS_lp8200c} || \
-	${PORT_OPTIONS:MGS_lp8000c} || \
-	${PORT_OPTIONS:MGS_epl6100} || \
-	${PORT_OPTIONS:MGS_epl5900} || \
-	${PORT_OPTIONS:MGS_epl5800} || \
-	${PORT_OPTIONS:MGS_epl2050} || \
-	${PORT_OPTIONS:MGS_epl2050p} || \
-	${PORT_OPTIONS:MGS_epl2120} || \
-	${PORT_OPTIONS:MGS_epl2500} || \
-	${PORT_OPTIONS:MGS_epl2750} || \
-	${PORT_OPTIONS:MGS_lp9000b} || \
-	${PORT_OPTIONS:MGS_lp2500} || \
-	${PORT_OPTIONS:MGS_lp9100} || \
-	${PORT_OPTIONS:MGS_lp7900} || \
-	${PORT_OPTIONS:MGS_lp7500} || \
-	${PORT_OPTIONS:MGS_lp2400} || \
-	${PORT_OPTIONS:MGS_lp2200} || \
-	${PORT_OPTIONS:MGS_lp9400} || \
-	${PORT_OPTIONS:MGS_lp8900} || \
-	${PORT_OPTIONS:MGS_lp8700} || \
-	${PORT_OPTIONS:MGS_lp8100} || \
-	${PORT_OPTIONS:MGS_lp7700} || \
-	${PORT_OPTIONS:MGS_lp8600f} || \
-	${PORT_OPTIONS:MGS_lp8400f} || \
-	${PORT_OPTIONS:MGS_lp8300f} || \
-	${PORT_OPTIONS:MGS_lp1900} || \
-	${PORT_OPTIONS:MGS_lp9600s} || \
-	${PORT_OPTIONS:MGS_lp9300} || \
-	${PORT_OPTIONS:MGS_lp9600} || \
-	${PORT_OPTIONS:MGS_lp8600} || \
-	${PORT_OPTIONS:MGS_lp1800}
+.if ${PORT_OPTIONS:MGS_ALC8600} || \
+	${PORT_OPTIONS:MGS_ALC8500} || \
+	${PORT_OPTIONS:MGS_ALC2000} || \
+	${PORT_OPTIONS:MGS_ALC4000} || \
+	${PORT_OPTIONS:MGS_ALC1900} || \
+	${PORT_OPTIONS:MGS_ALC4100} || \
+	${PORT_OPTIONS:MGS_LP9800C} || \
+	${PORT_OPTIONS:MGS_LP9000C} || \
+	${PORT_OPTIONS:MGS_LP9500C} || \
+	${PORT_OPTIONS:MGS_LP8800C} || \
+	${PORT_OPTIONS:MGS_LP8300C} || \
+	${PORT_OPTIONS:MGS_LP8500C} || \
+	${PORT_OPTIONS:MGS_LP3000C} || \
+	${PORT_OPTIONS:MGS_LP8200C} || \
+	${PORT_OPTIONS:MGS_LP8000C} || \
+	${PORT_OPTIONS:MGS_EPL6100} || \
+	${PORT_OPTIONS:MGS_EPL5900} || \
+	${PORT_OPTIONS:MGS_EPL5800} || \
+	${PORT_OPTIONS:MGS_EPL2050} || \
+	${PORT_OPTIONS:MGS_EPL2050P} || \
+	${PORT_OPTIONS:MGS_EPL2120} || \
+	${PORT_OPTIONS:MGS_EPL2500} || \
+	${PORT_OPTIONS:MGS_EPL2750} || \
+	${PORT_OPTIONS:MGS_LP9000B} || \
+	${PORT_OPTIONS:MGS_LP2500} || \
+	${PORT_OPTIONS:MGS_LP9100} || \
+	${PORT_OPTIONS:MGS_LP7900} || \
+	${PORT_OPTIONS:MGS_LP7500} || \
+	${PORT_OPTIONS:MGS_LP2400} || \
+	${PORT_OPTIONS:MGS_LP2200} || \
+	${PORT_OPTIONS:MGS_LP9400} || \
+	${PORT_OPTIONS:MGS_LP8900} || \
+	${PORT_OPTIONS:MGS_LP8700} || \
+	${PORT_OPTIONS:MGS_LP8100} || \
+	${PORT_OPTIONS:MGS_LP7700} || \
+	${PORT_OPTIONS:MGS_LP8600F} || \
+	${PORT_OPTIONS:MGS_LP8400F} || \
+	${PORT_OPTIONS:MGS_LP8300F} || \
+	${PORT_OPTIONS:MGS_LP1900} || \
+	${PORT_OPTIONS:MGS_LP9600S} || \
+	${PORT_OPTIONS:MGS_LP9300} || \
+	${PORT_OPTIONS:MGS_LP9600} || \
+	${PORT_OPTIONS:MGS_LP8600} || \
+	${PORT_OPTIONS:MGS_LP1800}
 .include "${MASTERDIR}/files/Makefile.eplaser"
 .endif
 
-.if ${PORT_OPTIONS:MGS_mjc180} || \
-	${PORT_OPTIONS:MGS_mjc360} || \
-	${PORT_OPTIONS:MGS_mjc720} || \
-	${PORT_OPTIONS:MGS_mj500c}
+.if ${PORT_OPTIONS:MGS_MJC180} || \
+	${PORT_OPTIONS:MGS_MJC360} || \
+	${PORT_OPTIONS:MGS_MJC720} || \
+	${PORT_OPTIONS:MGS_MJ500C}
 .include "${MASTERDIR}/files/Makefile.mjc"
 .endif
 
-.if ${PORT_OPTIONS:MGS_gdi}
+.if ${PORT_OPTIONS:MGS_GDI}
 .include "${MASTERDIR}/files/Makefile.gdi"
 .endif
 
-.if ${PORT_OPTIONS:MGS_lxm3200}
+.if ${PORT_OPTIONS:MGS_LXM3200}
 .include "${MASTERDIR}/files/Makefile.lxm3200"
 .endif
 
-.if ${PORT_OPTIONS:MGS_lx5000}
+.if ${PORT_OPTIONS:MGS_LX5000}
 .include "${MASTERDIR}/files/Makefile.lx5000"
 .endif
 
-.if ${PORT_OPTIONS:MGS_lex2050} || \
-	${PORT_OPTIONS:MGS_lex3200} || \
-	${PORT_OPTIONS:MGS_lex5700} || \
-	${PORT_OPTIONS:MGS_lex7000}
+.if ${PORT_OPTIONS:MGS_LEX2050} || \
+	${PORT_OPTIONS:MGS_LEX3200} || \
+	${PORT_OPTIONS:MGS_LEX5700} || \
+	${PORT_OPTIONS:MGS_LEX7000}
 .include "${MASTERDIR}/files/Makefile.lex7000"
 .endif
 

@@ -76,7 +76,7 @@ PLIST_SUB+=	GS_${D}="@comment "
 .endif
 .endfor
 
-.if ${PORT_OPTIONS:MGS_pcl3}
+.if ${PORT_OPTIONS:MGS_PCL3}
 ALL_TARGET+=	pcl3opts
 .endif
 
@@ -93,12 +93,11 @@ pre-build-drivers.mak:
 .for N in ${DEVS_LIST}
 	@${ECHO_CMD} 'DEVICE_${N}=' >> ${WRKSRC}/src/drivers.mak
 .endfor
-.for D in ${OPTIONS_DEFINE:MGS_*:S/^GS_//} \
-	${OPTIONS_MULTI_X11:MGS_*:S/^GS_//} \
-	${OPTIONS_GROUP_SVGALIB:MGS_*:S/^GS_//}
+.for D in ${ALL_OPTS} \
+	${SVGALIB}
 .for N in ${DEVS_LIST}
-.if ${PORT_OPTIONS:MGS_${D}}
-.if !defined(OPTIONS_UNSET) || !${OPTIONS_UNSET:MGS_${D}}
+.if ${PORT_OPTIONS:MGS_${D:tu}}
+.if !defined(OPTIONS_UNSET) || !${OPTIONS_UNSET:MGS_${D:tu}}
 .for X in ${DEVICE_${N}:M${D}.dev}
 	@${ECHO_CMD} 'DEVICE_${N}+= $$(DD)${D}.dev'  >> ${WRKSRC}/src/drivers.mak
 .endfor
