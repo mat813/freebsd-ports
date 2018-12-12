@@ -110,12 +110,12 @@ pre-build-drivers.mak:
 .for N in ${DEVS_LIST}
 	@${ECHO_CMD} '${N:S/^/DEVICE_/:S/^DEVICE_DISPLAY_DEV/DISPLAY_DEV/}=' >> ${WRKSRC}/base/drivers.mak
 .endfor
-.for D in ${OPTIONS_DEFINE:MGS_*:S/^GS_//} \
-	${OPTIONS_GROUP_ICONV:MGS_*:S/^GS_//} \
-	${OPTIONS_GROUP_SVGALIB:MGS_*:S/^GS_//}
+.for D in ${ALL_OPTS} \
+	${ICONV} \
+	${SVGALIB}
 .for N in ${DEVS_LIST}
-.if ${PORT_OPTIONS:MGS_${D}}
-.if !defined(OPTIONS_UNSET) || !${OPTIONS_UNSET:MGS_${D}}
+.if ${PORT_OPTIONS:MGS_${D:tu}}
+.if !defined(OPTIONS_UNSET) || !${OPTIONS_UNSET:MGS_${D:tu}}
 .for X in ${${N:S/^/DEVICE_/:S/^DEVICE_DISPLAY_DEV/DISPLAY_DEV/}:M${D}.dev}
 	@${ECHO_CMD} '${N:S/^/DEVICE_/:S/^DEVICE_DISPLAY_DEV/DISPLAY_DEV/}+= $$(DD)${D}.dev'  >> ${WRKSRC}/base/drivers.mak
 .endfor

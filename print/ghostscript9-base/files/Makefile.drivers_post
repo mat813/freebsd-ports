@@ -2,12 +2,12 @@
 # pre/postprocessing driver variables
 
 # dmprt specific
-.if ${PORT_OPTIONS:MGS_dmprt}
+.if ${PORT_OPTIONS:MGS_DMPRT}
 .include "${MASTERDIR}/files/Makefile.dmprt"
 .endif
 
 # epag specific
-.if ${PORT_OPTIONS:MGS_epag}
+.if ${PORT_OPTIONS:MGS_EPAG}
 .include "${MASTERDIR}/files/Makefile.epag"
 .endif
 
@@ -23,7 +23,7 @@ post-extract-epag:
 post-extract: post-extract-epag
 
 # pcl3 specific
-.if ${PORT_OPTIONS:MGS_pcl3}
+.if ${PORT_OPTIONS:MGS_PCL3}
 .include "${MASTERDIR}/files/Makefile.pcl3"
 .endif
 
@@ -32,10 +32,10 @@ CUPS_DEVS= cups
 .undef _CUPS_DEVS
 
 .for D in ${CUPS_DEVS}
-.if ${PORT_OPTIONS:MCUPS} && ${PORT_OPTIONS:MGS_${D}}
+.if ${PORT_OPTIONS:MCUPS} && ${PORT_OPTIONS:MGS_${D:tu}}
 _CUPS_DEVS+= ${D}
 .else
-PORT_OPTIONS:=	${PORT_OPTIONS:NGS_${D}}
+PORT_OPTIONS:=	${PORT_OPTIONS:NGS_${D:tu}}
 .endif
 .endfor
 
@@ -51,11 +51,11 @@ VGA_DEVS= lvga256 vgalib
 .undef _VGA_DEVS
 
 .for D in ${VGA_DEVS}
-.if ${PORT_OPTIONS:MGS_${D}}
+.if ${PORT_OPTIONS:MGS_${D:tu}}
 .if ${ARCH:Mamd64} || ${ARCH:Mi386}
 _VGA_DEVS+= ${D}
 .else
-OPTIONS_UNSET+=	${PORT_OPTIONS:MGS_${D}}
+OPTIONS_UNSET+=	${PORT_OPTIONS:MGS_${D:tu}}
 .endif
 .endif
 .endfor
@@ -69,10 +69,10 @@ ICONV_DEVS= oprp opvp
 .undef _ICONV_DEVS
 
 .for D in ${ICONV_DEVS}
-.if ${PORT_OPTIONS:MICONV} && ${PORT_OPTIONS:MGS_${D}}
+.if ${PORT_OPTIONS:MICONV} && ${PORT_OPTIONS:MGS_${D:tu}}
 _ICONV_DEVS+= ${D}
 .else
-PORT_OPTIONS:=	${PORT_OPTIONS:NGS_${D}}
+PORT_OPTIONS:=	${PORT_OPTIONS:NGS_${D:tu}}
 .endif
 .endfor
 
