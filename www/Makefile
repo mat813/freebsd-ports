@@ -1356,6 +1356,8 @@
     SUBDIR += pear-twig
     SUBDIR += pecl-http
     SUBDIR += pecl-solr
+    SUBDIR += pecl-sphinx
+    SUBDIR += pecl-twig
     SUBDIR += pecl-yaf
     SUBDIR += pecl-yar
     SUBDIR += perlbal
