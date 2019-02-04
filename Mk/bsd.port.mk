@@ -2652,6 +2652,7 @@ _PKGMESSAGES.${p}=		${PKGMESSAGE}.${p}
 # XXX: for testing, and maybe kept afterwards
 .  if !exists(${DESCR.${p}})
 DESCR.${p}=		${DESCR}
+DEV_WARNING+=	"DESCR.${p} needs to point to an existing file."
 .  endif
 # XXX: Thoughts?
 COMMENT.${p}?=	${COMMENT} (subpkg: ${p})
