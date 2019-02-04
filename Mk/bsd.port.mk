@@ -2629,7 +2629,7 @@ _BAD_SUBPACKAGE_NAMES+=		${f}
 .    endif
 .  endfor
 .  if !empty(_BAD_SUBPACKAGE_NAMES)
-DEV_ERROR+=		"SUBPACKAGES contains flavors that are not all [a-z0-9_]: ${_BAD_SUBPACKAGE_NAMES}"
+DEV_ERROR+=		"SUBPACKAGES contains subpackages that are not all [a-z0-9_]: ${_BAD_SUBPACKAGE_NAMES}"
 .  endif
 .endif
 .for p in ${SUBPACKAGES}
