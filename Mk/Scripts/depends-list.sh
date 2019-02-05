@@ -118,7 +118,7 @@ check_dep() {
 			show_dep=0
 		fi
 		[ ${show_dep} -eq 1 ] && echo "${port_display}"
-		if [ ${recursive} -eq 1 ] || ( [ ${requires_wrkdir} -eq 1 ] && [ ${show_dep} -eq 1 ] ); then
+		if [ ${recursive} -eq 1 ] || { [ ${requires_wrkdir} -eq 1 ] && [ ${show_dep} -eq 1 ] ; }; then
 			# shellcheck disable=SC2068
 			# Do not add quotes, we want to split the string here.
 			check_dep $@

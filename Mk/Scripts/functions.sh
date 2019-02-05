@@ -213,7 +213,7 @@ distinfo_data() {
 	alg=$1
 	file=$2
 
-	if ( [ -n "${dp_DISABLE_SIZE}" ] && [ -n "${dp_NO_CHECKSUM}" ] ) || [ ! -f "${dp_DISTINFO_FILE}" ]; then
+	if { [ -n "${dp_DISABLE_SIZE}" ] && [ -n "${dp_NO_CHECKSUM}" ] ; } || [ ! -f "${dp_DISTINFO_FILE}" ]; then
 		exit
 	fi
 	awk -v alg="$alg" -v file="${file}" \
