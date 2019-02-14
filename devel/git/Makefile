@@ -17,6 +17,11 @@ COMMENT?=	Distributed source code management tool
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+SELF_DEPENDS.perl=	main
+SELF_DEPENDS.gitweb=	perl
+SELF_DEPENDS.send-email=	perl
+SELF_DEPENDS.subversion=	perl
+
 USES=		autoreconf gmake iconv shebangfix ssl tar:xz
 
 CONFLICTS_INSTALL?=	git-gui-[0-9]* git-lite-[0-9]*
@@ -59,6 +64,10 @@ OPTIONS_DEFAULT=	CONTRIB P4 CVS PERL GITWEB ICONV CURL SEND_EMAIL PCRE \
 			SUBTREE SVN
 OPTIONS_SUB=	yes
 
+.if defined(PACKAGE_BUILDING)
+OPTIONS_DEFAULT+=	SVN
+.endif
+
 CONTRIB_DESC=	Install contributed scripts
 CURL_DESC=	Install curl support (provides HTTPS transport)
 CVS_DESC=	Enable CVS support
@@ -74,12 +83,14 @@ NLS_MAKE_ARGS_OFF=	NO_GETTEXT=yes
 
 PERL_USES=		perl5
 PERL_CONFIGURE_WITH=	perl=${PERL}
-PERL_BUILD_DEPENDS=	p5-Error>=0:lang/p5-Error
-PERL_RUN_DEPENDS=	p5-Error>=0:lang/p5-Error
+PERL_BUILD_DEPENDS.perl=	p5-Error>=0:lang/p5-Error
+PERL_RUN_DEPENDS.perl=	p5-Error>=0:lang/p5-Error
 PERL_MAKE_ARGS_OFF=	NO_PERL=1
+PERL_SUBPACKAGES=	perl
 
 GITWEB_IMPLIES=		PERL
-GITWEB_RUN_DEPENDS=	p5-CGI>=0:www/p5-CGI
+GITWEB_RUN_DEPENDS.gitweb=	p5-CGI>=0:www/p5-CGI
+GITWEB_SUBPACKAGES=	gitweb
 
 PCRE_LIB_DEPENDS=	libpcre.so:devel/pcre
 PCRE_CONFIGURE_WITH=	libpcre1
@@ -88,8 +99,9 @@ PCRE2_LIB_DEPENDS=	libpcre2-8.so:devel/pcre2
 PCRE2_CONFIGURE_WITH=	libpcre
 
 SEND_EMAIL_IMPLIES=	PERL
-SEND_EMAIL_RUN_DEPENDS=	p5-Authen-SASL>=0:security/p5-Authen-SASL \
+SEND_EMAIL_RUN_DEPENDS.send-email=	p5-Authen-SASL>=0:security/p5-Authen-SASL \
 			p5-IO-Socket-SSL>=0:security/p5-IO-Socket-SSL
+SEND_EMAIL_SUBPACKAGES=	send_email
 
 ICONV_MAKE_ARGS_OFF=	NO_ICONV=1
 
@@ -110,8 +122,10 @@ GUI_MAKE_ARGS_OFF=	NO_TCLTK=yes
 # to have git use devel/subversion18 it will be brought in through
 # devel/p5-subversion if you set WITH_SUBVERSION_VER=18. Otherwise
 # devel/subversion will be brought in.
-SVN_RUN_DEPENDS=	p5-Term-ReadKey>=0:devel/p5-Term-ReadKey \
+SVN_IMPLIES=		PERL
+SVN_RUN_DEPENDS.subversion=	p5-Term-ReadKey>=0:devel/p5-Term-ReadKey \
 			p5-subversion>=0:devel/p5-subversion
+SVN_SUBPACKAGES=	subversion
 
 SUBTREE_BUILD_DEPENDS=	asciidoctor:textproc/rubygem-asciidoctor\
 			xmlto:textproc/xmlto

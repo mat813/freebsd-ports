@@ -16,16 +16,16 @@ etc/bash_completion.d/git-completion.bash
 %%PERL%%%%SITE_PERL%%/Git/LoadCPAN/Error.pm
 %%PERL%%%%SITE_PERL%%/Git/LoadCPAN/Mail/Address.pm
 %%PERL%%%%SITE_PERL%%/Git/Packet.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Editor.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Fetcher.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/GlobSpec.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Log.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Memoize/YAML.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Migration.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Prompt.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Ra.pm
-%%PERL%%%%SITE_PERL%%/Git/SVN/Utils.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Editor.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Fetcher.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/GlobSpec.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Log.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Memoize/YAML.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Migration.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Prompt.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Ra.pm
+%%SVN%%@@subversion@@%%SITE_PERL%%/Git/SVN/Utils.pm
 libexec/git-core/git
 libexec/git-core/git-add
 libexec/git-core/git-add--interactive
@@ -160,7 +160,7 @@ libexec/git-core/git-rev-list
 libexec/git-core/git-rev-parse
 libexec/git-core/git-revert
 libexec/git-core/git-rm
-%%SEND_EMAIL%%libexec/git-core/git-send-email
+%%SEND_EMAIL%%@@send_email@@libexec/git-core/git-send-email
 libexec/git-core/git-send-pack
 libexec/git-core/git-sh-i18n
 libexec/git-core/git-sh-i18n--envsubst
@@ -179,7 +179,7 @@ libexec/git-core/git-stripspace
 libexec/git-core/git-submodule
 libexec/git-core/git-submodule--helper
 %%SUBTREE%%libexec/git-core/git-subtree
-%%SVN%%libexec/git-core/git-svn
+%%SVN%%@@subversion@@libexec/git-core/git-svn
 libexec/git-core/git-switch
 libexec/git-core/git-symbolic-ref
 libexec/git-core/git-tag
@@ -342,7 +342,7 @@ man/man1/git-rev-list.1.gz
 man/man1/git-rev-parse.1.gz
 man/man1/git-revert.1.gz
 man/man1/git-rm.1.gz
-%%SEND_EMAIL%%man/man1/git-send-email.1.gz
+%%SEND_EMAIL%%@@send_email@@man/man1/git-send-email.1.gz
 man/man1/git-send-pack.1.gz
 man/man1/git-sh-i18n--envsubst.1.gz
 man/man1/git-sh-i18n.1.gz
@@ -360,7 +360,7 @@ man/man1/git-status.1.gz
 man/man1/git-stripspace.1.gz
 man/man1/git-submodule.1.gz
 %%SUBTREE%%man/man1/git-subtree.1.gz
-%%SVN%%man/man1/git-svn.1.gz
+%%SVN%%@@subversion@@man/man1/git-svn.1.gz
 man/man1/git-switch.1.gz
 man/man1/git-symbolic-ref.1.gz
 man/man1/git-tag.1.gz
@@ -1021,8 +1021,8 @@ man/man7/gitworkflows.7.gz
 %%HTMLDOCS%%%%DOCSDIR%%/git-revert.txt
 %%HTMLDOCS%%%%DOCSDIR%%/git-rm.html
 %%HTMLDOCS%%%%DOCSDIR%%/git-rm.txt
-%%SEND_EMAIL%%%%HTMLDOCS%%%%DOCSDIR%%/git-send-email.html
-%%SEND_EMAIL%%%%HTMLDOCS%%%%DOCSDIR%%/git-send-email.txt
+%%SEND_EMAIL%%@@send_email@@%%HTMLDOCS%%%%DOCSDIR%%/git-send-email.html
+%%SEND_EMAIL%%@@send_email@@%%HTMLDOCS%%%%DOCSDIR%%/git-send-email.txt
 %%HTMLDOCS%%%%DOCSDIR%%/git-send-pack.html
 %%HTMLDOCS%%%%DOCSDIR%%/git-send-pack.txt
 %%HTMLDOCS%%%%DOCSDIR%%/git-sh-i18n--envsubst.html
@@ -1192,12 +1192,12 @@ man/man7/gitworkflows.7.gz
 %%HTMLDOCS%%%%DOCSDIR%%/user-manual.txt
 share/emacs/site-lisp/git/git-blame.el
 share/emacs/site-lisp/git/git.el
-%%GITWEB%%@sample %%ETCDIR%%/gitweb.conf.sample
-%%GITWEB%%%%EXAMPLESDIR%%/gitweb/gitweb.cgi
-%%GITWEB%%%%EXAMPLESDIR%%/gitweb/static/git-favicon.png
-%%GITWEB%%%%EXAMPLESDIR%%/gitweb/static/git-logo.png
-%%GITWEB%%%%EXAMPLESDIR%%/gitweb/static/gitweb.css
-%%GITWEB%%%%EXAMPLESDIR%%/gitweb/static/gitweb.js
+%%GITWEB%%@@gitweb@@@sample %%ETCDIR%%/gitweb.conf.sample
+%%GITWEB%%@@gitweb@@%%EXAMPLESDIR%%/gitweb/gitweb.cgi
+%%GITWEB%%@@gitweb@@%%EXAMPLESDIR%%/gitweb/static/git-favicon.png
+%%GITWEB%%@@gitweb@@%%EXAMPLESDIR%%/gitweb/static/git-logo.png
+%%GITWEB%%@@gitweb@@%%EXAMPLESDIR%%/gitweb/static/gitweb.css
+%%GITWEB%%@@gitweb@@%%EXAMPLESDIR%%/gitweb/static/gitweb.js
 %%CONTRIB%%share/git-core/contrib/README
 %%CONTRIB%%share/git-core/contrib/buildsystems/Generators.pm
 %%CONTRIB%%share/git-core/contrib/buildsystems/Generators/QMake.pm
