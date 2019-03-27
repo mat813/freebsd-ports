@@ -470,22 +470,18 @@ SUB_LIST:=	${SUB_LIST} ${opt}="@comment " NO_${opt}=""
 .  endif
 
 .  if ${PORT_OPTIONS:M${opt}}
-.    if defined(${opt}_USE)
-.      for option in ${${opt}_USE:C/=.*//:O:u}
+.    for option in ${${opt}_USE:C/=.*//:O:u}
 _u=		${option}
 USE_${_u:tu}+=	${${opt}_USE:M${option}=*:C/.*=//g:C/,/ /g}
-.      endfor
-.    endif
-.    if defined(${opt}_VARS)
-.      for var in ${${opt}_VARS:C/=.*//:O:u}
+.    endfor
+.    for var in ${${opt}_VARS:C/=.*//:O:u}
 _u=			${var}
-.        if ${_u:M*+}
+.      if ${_u:M*+}
 ${_u:C/.$//:tu}+=	${${opt}_VARS:M${var}=*:C/[^+]*\+=//:C/^"(.*)"$$/\1/}
-.        else
+.      else
 ${_u:tu}=		${${opt}_VARS:M${var}=*:C/[^=]*=//:C/^"(.*)"$$/\1/}
-.        endif
-.      endfor
-.    endif
+.      endif
+.    endfor
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_ENABLE:S/^/--enable-/}
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_WITH:S/^/--with-/}
 CMAKE_ARGS+=		${${opt}_CMAKE_BOOL:C/.*/-D&:BOOL=true/}
@@ -512,22 +508,18 @@ _type=		${target:C/.*://}
 _OPTIONS_${_target}:=	${_OPTIONS_${_target}} ${_prio}:${_type}-${_target}-${opt}-on
 .    endfor
 .  else
-.    if defined(${opt}_USE_OFF)
-.      for option in ${${opt}_USE_OFF:C/=.*//:O:u}
+.    for option in ${${opt}_USE_OFF:C/=.*//:O:u}
 _u=		${option}
 USE_${_u:tu}+=	${${opt}_USE_OFF:M${option}=*:C/.*=//g:C/,/ /g}
-.      endfor
-.    endif
-.    if defined(${opt}_VARS_OFF)
-.      for var in ${${opt}_VARS_OFF:C/=.*//:O:u}
+.    endfor
+.    for var in ${${opt}_VARS_OFF:C/=.*//:O:u}
 _u=			${var}
-.        if ${_u:M*+}
+.      if ${_u:M*+}
 ${_u:C/.$//:tu}+=	${${opt}_VARS_OFF:M${var}=*:C/[^+]*\+=//:C/^"(.*)"$$/\1/}
-.        else
+.      else
 ${_u:tu}=		${${opt}_VARS_OFF:M${var}=*:C/[^=]*=//:C/^"(.*)"$$/\1/}
-.        endif
-.      endfor
-.    endif
+.      endif
+.    endfor
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_ENABLE:S/^/--disable-/:C/=.*//}
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_WITH:S/^/--without-/:C/=.*//}
 CMAKE_ARGS+=		${${opt}_CMAKE_BOOL:C/.*/-D&:BOOL=false/}
