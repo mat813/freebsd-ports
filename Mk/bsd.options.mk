@@ -486,50 +486,24 @@ ${_u:tu}=		${${opt}_VARS:M${var}=*:C/[^=]*=//:C/^"(.*)"$$/\1/}
 .        endif
 .      endfor
 .    endif
-.    if defined(${opt}_CONFIGURE_ENABLE)
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_ENABLE:S/^/--enable-/}
-.    endif
-.    if defined(${opt}_CONFIGURE_WITH)
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_WITH:S/^/--with-/}
-.    endif
-.    if defined(${opt}_CMAKE_BOOL)
 CMAKE_ARGS+=		${${opt}_CMAKE_BOOL:C/.*/-D&:BOOL=true/}
-.    endif
-.    if defined(${opt}_CMAKE_BOOL_OFF)
 CMAKE_ARGS+=		${${opt}_CMAKE_BOOL_OFF:C/.*/-D&:BOOL=false/}
-.    endif
-.    if defined(${opt}_MESON_TRUE)
 MESON_ARGS+=		${${opt}_MESON_TRUE:C/.*/-D&=true/}
-.    endif
-.    if defined(${opt}_MESON_FALSE)
 MESON_ARGS+=		${${opt}_MESON_FALSE:C/.*/-D&=false/}
-.    endif
-.    if defined(${opt}_MESON_YES)
 MESON_ARGS+=		${${opt}_MESON_YES:C/.*/-D&=yes/}
-.    endif
-.    if defined(${opt}_MESON_NO)
 MESON_ARGS+=		${${opt}_MESON_NO:C/.*/-D&=no/}
-.    endif
-.    if defined(${opt}_MESON_ENABLED)
 MESON_ARGS+=		${${opt}_MESON_ENABLED:C/.*/-D&=enabled/}
-.    endif
-.    if defined(${opt}_MESON_DISABLED)
 MESON_ARGS+=		${${opt}_MESON_DISABLED:C/.*/-D&=disabled/}
-.    endif
 .    for configure in CONFIGURE CMAKE MESON QMAKE
-.      if defined(${opt}_${configure}_ON)
 ${configure}_ARGS+=	${${opt}_${configure}_ON}
-.      endif
 .    endfor
 .    for flags in ${_OPTIONS_FLAGS}
-.      if defined(${opt}_${flags})
 ${flags}+=	${${opt}_${flags}}
-.      endif
 .    endfor
 .    for deptype in ${_OPTIONS_DEPENDS}
-.      if defined(${opt}_${deptype}_DEPENDS)
 ${deptype}_DEPENDS+=	${${opt}_${deptype}_DEPENDS}
-.      endif
 .    endfor
 .    for target in ${_OPTIONS_TARGETS}
 _target=	${target:C/:.*//}
@@ -554,50 +528,24 @@ ${_u:tu}=		${${opt}_VARS_OFF:M${var}=*:C/[^=]*=//:C/^"(.*)"$$/\1/}
 .        endif
 .      endfor
 .    endif
-.    if defined(${opt}_CONFIGURE_ENABLE)
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_ENABLE:S/^/--disable-/:C/=.*//}
-.    endif
-.    if defined(${opt}_CONFIGURE_WITH)
 CONFIGURE_ARGS+=	${${opt}_CONFIGURE_WITH:S/^/--without-/:C/=.*//}
-.    endif
-.    if defined(${opt}_CMAKE_BOOL)
 CMAKE_ARGS+=		${${opt}_CMAKE_BOOL:C/.*/-D&:BOOL=false/}
-.    endif
-.    if defined(${opt}_CMAKE_BOOL_OFF)
 CMAKE_ARGS+=		${${opt}_CMAKE_BOOL_OFF:C/.*/-D&:BOOL=true/}
-.    endif
-.    if defined(${opt}_MESON_TRUE)
 MESON_ARGS+=		${${opt}_MESON_TRUE:C/.*/-D&=false/}
-.    endif
-.    if defined(${opt}_MESON_FALSE)
 MESON_ARGS+=            ${${opt}_MESON_FALSE:C/.*/-D&=true/}
-.    endif
-.    if defined(${opt}_MESON_YES)
 MESON_ARGS+=		${${opt}_MESON_YES:C/.*/-D&=no/}
-.    endif
-.    if defined(${opt}_MESON_NO)
 MESON_ARGS+=		${${opt}_MESON_NO:C/.*/-D&=yes/}
-.    endif
-.    if defined(${opt}_MESON_ENABLED)
 MESON_ARGS+=		${${opt}_MESON_ENABLED:C/.*/-D&=disabled/}
-.    endif
-.    if defined(${opt}_MESON_DISABLED)
 MESON_ARGS+=		${${opt}_MESON_DISABLED:C/.*/-D&=enabled/}
-.    endif
 .    for configure in CONFIGURE CMAKE MESON QMAKE
-.      if defined(${opt}_${configure}_OFF)
 ${configure}_ARGS+=	${${opt}_${configure}_OFF}
-.      endif
 .    endfor
 .    for flags in ${_OPTIONS_FLAGS}
-.      if defined(${opt}_${flags}_OFF)
 ${flags}+=	${${opt}_${flags}_OFF}
-.      endif
 .    endfor
 .    for deptype in ${_OPTIONS_DEPENDS}
-.      if defined(${opt}_${deptype}_DEPENDS_OFF)
 ${deptype}_DEPENDS+=	${${opt}_${deptype}_DEPENDS_OFF}
-.      endif
 .    endfor
 .    for target in ${_OPTIONS_TARGETS}
 _target=	${target:C/:.*//}
