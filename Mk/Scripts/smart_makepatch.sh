@@ -32,6 +32,7 @@ if [ -z "${PATCHDIR}" -o -z "${PATCH_WRKSRC}" -o -z "${WRKDIR}" ]; then
 fi
 
 WORKAREA=${WRKDIR}/.makepatch-tmp
+STRIPMAP=${WORKAREA}/strip.map
 PATCHMAP=${WORKAREA}/pregen.map
 COMMENTS=${WORKAREA}/comments
 REGENNED=${WORKAREA}/regenerated
@@ -46,10 +47,14 @@ esac
 
 strip_path() {
 	local raw_name=$1
-	if [ "${STRIP_COMPONENTS}" = "0" ]; then
+	strip=$2
+	if [ -z "$strip" ]; then
+		strip=${STRIP_COMPONENTS}
+	fi
+	if [ "${strip}" = "0" ]; then
 		echo ${raw_name}
 	else
-		echo ${raw_name} | awk -v sc=${STRIP_COMPONENTS} -F "/" \
+		echo ${raw_name} | awk -v sc=${strip} -F "/" \
 		'{ for (x = sc + 1; x <= NF; x++) {
 			slash = (x>sc+1) ? "/" : "";
 			printf ("%s%s", slash, $x);
@@ -61,21 +66,28 @@ std_patch_filename() {
 	local sans_cwd
 	local raw_name
 	sans_cwd=$(echo $1 | sed 's|^\.\/||')
-	raw_name=$(strip_path ${sans_cwd})
+	raw_name=$(strip_path ${sans_cwd} $2)
 	echo "patch-$(echo ${raw_name} | sed -e 's|_|&&|g; s|/|_|g')"
 }
 
 patchdir_files_list() {
+	local i
+	: > ${STRIPMAP}
 	if [ -d "${PATCHDIR}" ]; then
 		(cd ${PATCHDIR} && \
 			find ./* -type f -name "patch-*" -maxdepth 0 \
 			2>/dev/null | sed -e 's,^\./,,; /\.orig$/d'
+		)
 		for i in ${EXTRA_PATCHES}; do
-			if [ -f ${i##*/} ]; then
-				echo ${i##*/}
+			file=${i%:-p*}
+			if [ -f "${file}" ]; then
+				echo "${file}"
+			fi
+			strip=${i##*:-p}
+			if [ -n "${strip}" ]; then
+				echo "${file}	${strip}" >> ${STRIPMAP}
 			fi
 		done
-		)
 	fi;
 }
 
@@ -97,7 +109,6 @@ valid_name() {
 }
 
 map_existing_patches() {
-	mkdir -p ${WORKAREA}
 	: > ${PATCHMAP}
 	local target
 	local future_name
@@ -118,7 +129,7 @@ map_existing_patches() {
 				future_name=${P}
 				break;
 			fi
-			std_target=$(std_patch_filename ${t})
+			std_target=$(std_patch_filename ${t} $(get_patch_strip "${P}"))
 			# If the file is not named `patch-*` it is an extra
 			# patch, so use the current name, even if it is a
 			# single patch.
@@ -131,7 +142,7 @@ map_existing_patches() {
 			fi
 		done
 		for t in ${target}; do
-			std_target=$(std_patch_filename ${t})
+			std_target=$(std_patch_filename ${t} $(get_patch_strip "${P}"))
 			echo "${future_name}	${std_target}" >> ${PATCHMAP}
 		done
 	done
@@ -223,6 +234,10 @@ get_patch_name() {
 	END { if (!done) print name }' ${PATCHMAP}
 }
 
+get_patch_strip() {
+	awk -v name="$1" '$1 == name { print $2 }' ${STRIPMAP}
+}
+
 stage_patches() {
 	mkdir -p ${DESTDIR}
 	rm -f ${DESTDIR}/*
@@ -297,6 +312,8 @@ install_regenerated_patches() {
 		find ${DESTDIR} -type f -exec mv {} ${PATCHDIR}/ \;
 	fi
 }
+
+mkdir -p ${WORKAREA}
 
 old_patch_list=$(patchdir_files_list)
 

@@ -55,7 +55,7 @@ ETCDIR=		${PREFIX}/etc/namedb
 
 .if defined(BIND_TOOLS_SLAVE)
 CONFIGURE_ARGS+=	--disable-shared
-EXTRA_PATCHES=	${PATCHDIR}/extrapatch-bind-tools
+EXTRA_PATCHES=	${PATCHDIR}/extrapatch-bind-tools:-p1
 .else
 USE_RC_SUBR=	named
 SUB_FILES=	pkg-message named.conf
