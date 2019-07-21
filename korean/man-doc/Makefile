@@ -5,8 +5,7 @@ PORTNAME=	man
 PORTVERSION=	021120
 PORTREVISION=	3
 CATEGORIES=	korean
-MASTER_SITES=	LOCAL/perky \
-		http://people.freebsd.org/~perky/distfiles/
+MASTER_SITES=	LOCAL/perky
 PKGNAMESUFFIX=	-doc
 DISTNAME=	ko-man-doc-${PORTVERSION}
 

@@ -5,8 +5,7 @@ PORTNAME=	vmdktool
 PORTVERSION=	1.4
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.Awfulhak.org/vmdktool/ \
-		ftp://ftp.Awfulhak.org/pub/vmdktool/ \
-		http://people.FreeBSD.org/~brian/vmdktool/
+		ftp://ftp.Awfulhak.org/pub/vmdktool/
 
 MAINTAINER=	garga@FreeBSD.org
 COMMENT=	Convert VMDK files to/from raw disk images

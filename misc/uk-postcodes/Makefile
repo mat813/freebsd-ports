@@ -4,8 +4,7 @@
 PORTNAME=	uk-postcodes
 PORTVERSION=	2.2
 CATEGORIES=	misc
-MASTER_SITES=	ftp://ftp.Awfulhak.org/pub/uk-postcodes/ \
-		http://people.FreeBSD.org/~brian/uk-postcodes/
+MASTER_SITES=	ftp://ftp.Awfulhak.org/pub/uk-postcodes/
 EXTRACT_SUFX=	.gz
 
 MAINTAINER=	ports@FreeBSD.org

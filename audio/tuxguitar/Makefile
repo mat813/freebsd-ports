@@ -7,7 +7,6 @@ PORTREVISION=	13
 CATEGORIES=	audio java
 MASTER_SITES=	SF/${PORTNAME}/TuxGuitar/TuxGuitar-${PORTVERSION}:src \
 		LOCAL/gahr/:fluid \
-		http://people.freebsd.org/~gahr/distfiles/:fluid \
 		http://www.alsa-project.org/~james/sound-fonts/:fluid
 DISTNAME=	${PORTNAME}-src-${DISTVERSION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:src \

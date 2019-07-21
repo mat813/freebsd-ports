@@ -5,8 +5,7 @@ PORTNAME=	uartlirc
 PORTVERSION=	0.3
 PORTREVISION=	2
 CATEGORIES=	comms
-MASTER_SITES=	LOCAL/nox \
-		http://people.freebsd.org/~nox/tmp/
+MASTER_SITES=	LOCAL/nox
 DISTNAME=	${PORTNAME}-preliminary-003
 EXTRACT_SUFX=	.shar
 

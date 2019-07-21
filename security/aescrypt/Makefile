@@ -7,8 +7,7 @@ PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}.0
 
-PATCH_SITES=	http://devel.ringlet.net/security/aescrypt/patches/ \
-		http://people.FreeBSD.org/~roam/ports/patches/security/aescrypt/
+PATCH_SITES=	http://devel.ringlet.net/security/aescrypt/patches/
 PATCHFILES=	aescrypt-0.7-roam-whopper-01.patch.gz
 
 MAINTAINER=	ports@FreeBSD.org

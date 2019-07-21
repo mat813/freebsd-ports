@@ -3,8 +3,7 @@
 PORTNAME=	cytoscape
 DISTVERSION=	3.6.1
 CATEGORIES=	biology java
-MASTER_SITES=	LOCAL/yuri/:maven \
-		http://people.freebsd.org/~yuri/:maven
+MASTER_SITES=	LOCAL/yuri/:maven
 DISTFILES=	FreeBSD-${PORTNAME}-${PORTVERSION}-maven-repository.tar.gz:maven
 
 MAINTAINER=	yuri@FreeBSD.org

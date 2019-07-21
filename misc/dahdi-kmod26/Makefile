@@ -5,8 +5,7 @@ PORTNAME=	dahdi-kmod26
 PORTVERSION=	${DAHDI_VERSION:S/-/./g}
 PORTREVISION=	1
 CATEGORIES=	misc
-MASTER_SITES=	LOCAL/fjoe \
-		http://people.freebsd.org/~fjoe/dahdi/\
+MASTER_SITES=	LOCAL/fjoe
 		http://downloads.digium.com/pub/telephony/firmware/releases/:firmware
 DISTNAME=	dahdi-freebsd-${DAHDI_VERSION}
 DISTFILES=	${DISTNAME}.tar.bz2\

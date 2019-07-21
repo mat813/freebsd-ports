@@ -4,8 +4,7 @@
 PORTNAME=	libmtrie
 PORTVERSION=	1.0.3
 CATEGORIES=	devel
-MASTER_SITES=	http://rodrigo.osorio.free.fr/freebsd/distfiles/ \
-		http://people.freebsd.org/~alfred/sources/${PORTNAME}/
+MASTER_SITES=	http://rodrigo.osorio.free.fr/freebsd/distfiles/
 
 MAINTAINER=	rodrigo@FreeBSD.org
 COMMENT=	Library to build an IP-netmask based mtrie

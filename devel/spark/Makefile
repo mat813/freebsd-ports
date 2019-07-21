@@ -6,8 +6,7 @@ PORTVERSION=	2.1.1
 PORTREVISION=	1
 CATEGORIES=	devel java
 MASTER_SITES=	APACHE/${PORTNAME}/${PORTNAME}-${PORTVERSION} \
-		LOCAL/demon/:maven \
-		http://people.freebsd.org/~demon/:maven
+		LOCAL/demon/:maven
 PKGNAMEPREFIX=	apache-
 DISTFILES=	${PORTNAME}-${PORTVERSION}.tgz FreeBSD-${PORTNAME}-${PORTVERSION}-maven-repository.tar.gz:maven
 DIST_SUBDIR=	hadoop

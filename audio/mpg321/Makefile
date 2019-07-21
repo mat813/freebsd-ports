@@ -26,7 +26,6 @@ SCROBBLER_DESC=	Last.fm Audioscrobbler support
 
 SCROBBLER_RUN_DEPENDS=	scrobbler-helper:audio/p5-Audio-Scrobbler
 SCROBBLER_PATCHFILES=	mpg321-0.2.10-scrobbler-01.patch:scrobbler
-SCROBBLER_PATCH_SITES=	http://people.FreeBSD.org/~roam/ports/audio/:scrobbler \
-		http://devel.ringlet.net/audio/mpg321-scrobbler/:scrobbler
+SCROBBLER_PATCH_SITES=	http://devel.ringlet.net/audio/mpg321-scrobbler/:scrobbler
 
 .include <bsd.port.mk>

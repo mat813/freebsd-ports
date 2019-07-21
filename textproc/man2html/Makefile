@@ -6,8 +6,7 @@ PORTVERSION=	3.0.1
 PORTREVISION=	2
 CATEGORIES=	textproc
 MASTER_SITES=	http://hydra.nac.uci.edu/indiv/ehood/tar/ \
-		ftp://ftp.cpan.org/pub/CPAN/modules/by-authors/Earl_Hood/ \
-		http://people.freebsd.org/~demon/
+		ftp://ftp.cpan.org/pub/CPAN/modules/by-authors/Earl_Hood/
 DISTNAME=	${PORTNAME}${PORTVERSION}
 
 MAINTAINER=	demon@FreeBSD.org

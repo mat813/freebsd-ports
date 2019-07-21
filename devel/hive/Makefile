@@ -5,8 +5,7 @@ PORTNAME=	hive
 PORTVERSION=	2.0.0
 CATEGORIES=	devel java
 MASTER_SITES=	APACHE/${PORTNAME}/stable-2 \
-		LOCAL/demon/:maven \
-		http://people.freebsd.org/~demon/:maven
+		LOCAL/demon/:maven
 DISTFILES=	apache-${PORTNAME}-${PORTVERSION}-src${EXTRACT_SUFX} FreeBSD-${PORTNAME}-${PORTVERSION}-maven-repository.tar.gz:maven
 DIST_SUBDIR=	hadoop
 

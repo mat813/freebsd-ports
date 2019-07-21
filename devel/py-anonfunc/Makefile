@@ -5,8 +5,7 @@ PORTNAME=	anonfunc
 PORTVERSION=	1.0
 PORTREVISION=	1
 CATEGORIES=	devel python
-MASTER_SITES=	LOCAL/perky \
-		http://people.freebsd.org/~perky/distfiles/
+MASTER_SITES=	LOCAL/perky
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	ports@FreeBSD.org

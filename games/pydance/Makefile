@@ -5,8 +5,7 @@ PORTNAME=	pydance
 PORTVERSION=	1.1.0
 PORTREVISION=	8
 CATEGORIES=	games
-MASTER_SITES=	http://people.freebsd.org/~sylvio/pydance/ \
-		http://icculus.org/pyddr/ \
+MASTER_SITES=	http://icculus.org/pyddr/ \
 		http://www.informatik.uni-frankfurt.de/~polzer/distfiles/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${SONGS}
 DIST_SUBDIR=	pydance

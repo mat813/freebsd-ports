@@ -57,13 +57,11 @@ XRENDER_USE=	XORG=xrender
 XRENDER_CONFIGURE_ENABLE=	xrender
 
 # http://fluxbox.org/docbook/en/tarballs/
-DOCHTML_MASTER_SITES=	LOCAL/mezz:html \
-			http://people.freebsd.org/~mezz/distfiles/:html
+DOCHTML_MASTER_SITES=	LOCAL/mezz:html
 DOCHTML_DISTFILES=	fb-doc-mfhtml-${DOCSVERSION}.tgz:html
 DOCHTML_EXTRACT_ONLY=	fb-doc-mfhtml-${DOCSVERSION}.tgz
 # http://fluxbox.org/docbook/en/pdf/
-PDFDOCS_MASTER_SITES=	LOCAL/mezz:pdf \
-			http://people.freebsd.org/~mezz/distfiles/:pdf
+PDFDOCS_MASTER_SITES=	LOCAL/mezz:pdf
 PDFDOCS_DISTFILES=	fluxbook-${DOCSVERSION}.pdf:pdf
 
 post-patch:

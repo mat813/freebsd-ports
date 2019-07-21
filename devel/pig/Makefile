@@ -6,7 +6,6 @@ PORTVERSION=	0.15.0
 CATEGORIES=	devel java
 MASTER_SITES=	APACHE/${PORTNAME}/${PORTNAME}-${PORTVERSION} \
 		LOCAL/demon/:ant \
-		http://people.freebsd.org/~demon/:ant \
 		http://central.maven.org/maven2/org/apache/ivy/ivy/2.2.0/:ivy
 DISTFILES=	${DISTNAME}-src${EXTRACT_SUFX} FreeBSD-${PORTNAME}-${PORTVERSION}-ant-repository.tar.gz:ant ivy-2.2.0.jar:ivy
 DIST_SUBDIR=	hadoop

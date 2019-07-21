@@ -5,8 +5,7 @@ PORTNAME=	freebsd
 PORTVERSION=	0.9.3
 PORTREVISION=	8
 CATEGORIES=	devel python
-MASTER_SITES=	LOCAL/perky \
-		http://people.freebsd.org/~perky/distfiles/
+MASTER_SITES=	LOCAL/perky
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	py-freebsd-${PORTVERSION}
 

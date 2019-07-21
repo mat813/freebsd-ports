@@ -5,8 +5,7 @@ PORTNAME=	safecat
 PORTVERSION=	1.13
 CATEGORIES=	sysutils mail
 MASTER_SITES=	http://www.jeenyus.net/linux/software/safecat/ \
-		LOCAL/roam/sysutils/safecat \
-		http://people.FreeBSD.org/~roam/ports/sysutils/safecat/
+		LOCAL/roam/sysutils/safecat
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Safely write data to maildir directory
