@@ -484,8 +484,10 @@ DISTNAME_${_group}:=	${GH_ACCOUNT_${_group}}-${GH_PROJECT_${_group}}-${GH_TAGNAM
 DISTFILE_${_group}:=	${DISTNAME_${_group}}_GH${_GITHUB_REV}${_GITHUB_EXTRACT_SUFX}
 DISTFILES:=	${DISTFILES} ${DISTFILE_${_group}}:${_group}
 MASTER_SITES:=	${MASTER_SITES} ${MASTER_SITE_GITHUB:S@%SUBDIR%@${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}/tar.gz/${GH_TAGNAME_${_group}}?dummy=/:${_group}@}
+.      if empty(GH_SUBDIR_${_group})
 WRKSRC_${_group}:=	${WRKDIR}/${GH_PROJECT_${_group}}-${GH_TAGNAME_${_group}_EXTRACT}
-.      if !empty(GH_SUBDIR_${_group})
+.      else
+WRKSRC_${_group}:=	${WRKSRC}/${GH_SUBDIR_${_group}}
 # In order to sort the subdir extraction so that foo/bar is moved in before
 # foo/bar/baz, we count the number of / in the path and use it to order the
 # targets.  This handles up to 9 levels.  The max as of r463123 is 4.
@@ -493,8 +495,7 @@ _SITES_extract:=	${_SITES_extract} 69${GH_SUBDIR_${_group}:C=[^/]+= =g:[#]}:post
 post-extract-gh-${_group}:
 	@${RMDIR} ${WRKSRC}/${GH_SUBDIR_${_group}} 2>/dev/null || :
 	@${MKDIR} ${WRKSRC}/${GH_SUBDIR_${_group}:H} 2>/dev/null || :
-	@${MV} ${WRKSRC_${_group}} ${WRKSRC}/${GH_SUBDIR_${_group}}
-	@${LN} -s ${WRKSRC:T}/${GH_SUBDIR_${_group}} ${WRKSRC_${_group}}
+	@${MV} ${WRKDIR}/${GH_PROJECT_${_group}}-${GH_TAGNAME_${_group}_EXTRACT} ${WRKSRC}/${GH_SUBDIR_${_group}}
 .      endif
 git-clone: git-clone-${_group}
 git-clone-${_group}: ${_GITHUB_CLONE_DIR}
@@ -619,14 +620,15 @@ DISTNAME_${_group}:=	${GL_ACCOUNT_${_group}}-${GL_PROJECT_${_group}}-${GL_COMMIT
 DISTFILE_${_group}:=	${DISTNAME_${_group}}${_GITLAB_EXTRACT_SUFX}
 DISTFILES:=	${DISTFILES} ${DISTFILE_${_group}}:${_group}
 MASTER_SITES:=	${MASTER_SITES} ${GL_SITE_${_group}}/${GL_ACCOUNT_${_group}}/${GL_PROJECT_${_group}}/repository/${GL_COMMIT_${_group}}/archive.tar.gz?dummy=/:${_group}
+.      if empty(GL_SUBDIR_${_group})
 WRKSRC_${_group}:=	${WRKDIR}/${GL_PROJECT_${_group}}-${GL_COMMIT_${_group}}-${GL_COMMIT_${_group}}
-.      if !empty(GL_SUBDIR_${_group})
+.      else
+WRKSRC_${_group}:=	${WRKSRC}/${GL_SUBDIR_${_group}}
 _SITES_extract:=	${_SITES_extract} 690:post-extract-gl-${_group}
 post-extract-gl-${_group}:
 	@${RMDIR} ${WRKSRC}/${GL_SUBDIR_${_group}} 2>/dev/null || :
 	@${MKDIR} ${WRKSRC}/${GL_SUBDIR_${_group}:H} 2>/dev/null || :
-	@${MV} ${WRKSRC_${_group}} ${WRKSRC}/${GL_SUBDIR_${_group}}
-	@${LN} -s ${WRKSRC:T}/${GL_SUBDIR_${_group}} ${WRKSRC_${_group}}
+	@${MV} ${WRKDIR}/${GL_PROJECT_${_group}}-${GL_COMMIT_${_group}}-${GL_COMMIT_${_group}} ${WRKSRC}/${GL_SUBDIR_${_group}}
 .      endif
 git-clone: git-clone-${_group}
 git-clone-${_group}: ${_GITLAB_CLONE_DIR}
