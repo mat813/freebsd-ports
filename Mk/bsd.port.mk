@@ -3465,7 +3465,7 @@ ${PKGLATESTFILE}: ${PKGFILE} ${PKGLATESTREPOSITORY}
 .for p in ${_PKGS}
 ${_PLIST}.${p}: ${TMPPLIST}
 	@if [ "${PKGBASE}" = "${p}" ]; then \
-		${GREP} -Fv -e"@comment " -e"@@" ${TMPPLIST} > ${.TARGET} ; \
+		${SED} "/^@comment /d; /@@/d" ${TMPPLIST} > ${.TARGET} ; \
 	else \
 		${SED} -n "s/@@${p:S/${PKGBASE}-//}@@//p" ${TMPPLIST} > ${.TARGET} ; \
 	fi
