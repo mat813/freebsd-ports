@@ -2633,8 +2633,13 @@ DEV_ERROR+=		"SUBPACKAGES contains subpackages that are not all [a-z0-9_]: ${_BA
 .  endif
 .endif
 .for p in ${SUBPACKAGES}
-_PKGS+=	${PKGBASE}-${p}
-_P.${PKGBASE}-${p}= .${p}
+# If a FRAMEWORK generated package needs to override its subpackage package
+# name, it can do so with this mechanism.
+.if !defined(_PKGS.${p})
+_PKGS.${p}=	${PKGBASE}-${p}
+.endif
+_PKGS+=	${_PKGS.${p}}
+_P.${_PKGS.${p}}= .${p}
 .endfor
 
 .if !defined(_DID_SUBPACKAGES_HELPERS)
@@ -4327,6 +4332,9 @@ PACKAGE-DEPENDS-LIST?= \
 		fi; \
 	done
 
+# FIXME: SELF_DEPENDS can only be used to depend on sub packages whose package
+# name has not been overrided by the framework, otherwise the assumption made
+# bellow that the package name is "PKGBASE-$$self" is broken.
 .for p in ${_PKGS}
 ACTUAL-PACKAGE-DEPENDS${_P.${p}}?= \
 	depfiles="" ; \

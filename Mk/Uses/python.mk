@@ -94,6 +94,11 @@
 #	noflavors	- Disable automatic creation of flavors if they would
 #			  otherwise be created and they are not wanted.
 #
+#	nometapkg	- Disable automatic generic meta package generation.
+#			  This is used when flavors are enabled to generate a
+#			  py-foo meta package that always installs the default
+#			  version.
+#
 #	allflavors 	- Generate flavors for all possible versions and not
 #			  simply the default ones.  Only to be used for py-*
 #			  ports that are part of the Python distribution, but
@@ -257,8 +262,8 @@ _PYTHON_RELPORTDIR=		lang/python
 
 # List all valid USE_PYTHON features here
 _VALID_PYTHON_FEATURES=	allflavors autoplist concurrent cython cython_run \
-			distutils flavors noegginfo noflavors optsuffix \
-			py3kplist pythonprefix
+			distutils flavors noegginfo noflavors nometapkg \
+			optsuffix py3kplist pythonprefix
 _INVALID_PYTHON_FEATURES=
 .for var in ${USE_PYTHON}
 .  if empty(_VALID_PYTHON_FEATURES:M${var})
@@ -514,6 +519,22 @@ BUILD_DEPENDS+=	cython-${PYTHON_VER}:lang/cython@${PY_FLAVOR}
 
 .if defined(_PYTHON_FEATURE_CYTHON_RUN)
 RUN_DEPENDS+=	cython-${PYTHON_VER}:lang/cython@${PY_FLAVOR}
+.endif
+
+# So:
+# - we are doing flavors
+# - we want the metapkg
+# - we are doing the default flavor
+# - our PKGNAMEPREFIX matches PYTHON_PKGNAMEPREFIX
+.if defined(_PYTHON_FEATURE_FLAVORS) && \
+	!defined(_PYTHON_FEATURE_NOMETAPKG) && \
+	${FLAVOR} == ${FLAVORS:[1]} && \
+	!empty(PKGNAMEPREFIX:M${PYTHON_PKGNAMEPREFIX}*)
+SUBPACKAGES+=	py_meta
+_PKGS.py_meta=	${PKGBASE:S/${PYTHON_PKGNAMEPREFIX}/py-/}
+DESCR.py_meta=	${DESCR}
+SELF_DEPENDS.py_meta=	main
+COMMENT.py_meta=	${COMMENT} (default version)
 .endif
 
 .if defined(_PYTHON_FEATURE_CONCURRENT)
