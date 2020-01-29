@@ -2673,11 +2673,12 @@ _PKGDIR=	${PKGREPOSITORY}
 _PKGDIR=	${.CURDIR}
 .endif
 .  for p in ${_PKGS}
-PKGFILE${_P.${p}}=	${_PKGDIR}/${p}-${PKGVERSION}${PKG_SUFX}
+PKGNAME${_P.${p}}=	${p}-${PKGVERSION}
+PKGFILE${_P.${p}}=	${_PKGDIR}/${PKGNAME${_P.${p}}}${PKG_SUFX}
 .  endfor
 _EXTRA_PACKAGE_TARGET_DEP+=	${_PKGDIR}
 .for p in ${_PKGS}
-WRKDIR_PKGFILE${_P.${p}}=	${WRKDIR}/pkg/${p}-${PKGVERSION}${PKG_SUFX}
+WRKDIR_PKGFILE${_P.${p}}=	${WRKDIR}/pkg/${PKGNAME${_P.${p}}}${PKG_SUFX}
 .endfor
 
 CONFIGURE_SCRIPT?=	configure
@@ -3476,7 +3477,7 @@ ${_PLIST}.${p}: ${TMPPLIST}
 	fi
 
 ${WRKDIR_PKGFILE${_P.${p}}}: ${_PLIST}.${p} create-manifest.${p} ${WRKDIR}/pkg
-	@echo "===>    Building ${p}-${PKGVERSION}"
+	@echo "===>    Building ${PKGNAME${_P.${p}}}"
 	@if ! ${SETENV} ${PKG_ENV} FORCE_POST="${_FORCE_POST_PATTERNS}" ${PKG_CREATE} ${PKG_CREATE_ARGS} -m ${METADIR}.${p} -p ${_PLIST}.${p} -f ${PKG_SUFX:S/.//} -o ${WRKDIR}/pkg ${PKGNAME}; then \
 		cd ${.CURDIR} && eval ${MAKE} delete-package >/dev/null; \
 		exit 1; \
