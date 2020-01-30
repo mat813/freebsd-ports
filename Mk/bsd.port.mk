@@ -2674,6 +2674,7 @@ _PKGDIR=	${.CURDIR}
 .endif
 .  for p in ${_PKGS}
 PKGNAME${_P.${p}}=	${p}-${PKGVERSION}
+PKGNAMES+=	${PKGNAME${_P.${p}}}
 PKGFILE${_P.${p}}=	${_PKGDIR}/${PKGNAME${_P.${p}}}${PKG_SUFX}
 .  endfor
 _EXTRA_PACKAGE_TARGET_DEP+=	${_PKGDIR}
