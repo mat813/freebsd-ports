@@ -13,7 +13,6 @@
 # Sort by mentee login name.
 
 # Mentee	Mentor		Optional comment
-ericbsd		bapt		Co-mentor: wg
 pfg		thierry
 gnn		skreuzer
 hselasky	pi
