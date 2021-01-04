@@ -13,9 +13,9 @@
 # Sort by mentee login name.
 
 # Mentee	Mentor		Optional comment
-pfg		thierry
 hselasky	pi
 loader		koobs
-samm		krion
-rhurlin		tcberner	Co-mentor: arrowd
 otis		osa		Co-mentor: swills
+pfg		thierry
+rhurlin		tcberner	Co-mentor: arrowd
+samm		krion
