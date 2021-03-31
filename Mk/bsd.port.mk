@@ -1121,6 +1121,11 @@ makepatch:
 # Get the default maintainer
 MAINTAINER?=	ports@FreeBSD.org
 
+# Keep sync'ed with TARGETS from /usr/src/Makefile
+# DO NOT REMOVE archs from this list without making sure it is not used
+# anywhere in the tree.
+ALL_ARCHS=	amd64 arm arm64 i386 mips powerpc riscv
+
 # Get the architecture
 .if !defined(ARCH)
 ARCH!=	${UNAME} -p

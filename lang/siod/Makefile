@@ -56,11 +56,6 @@ post-build:
 .include <bsd.port.options.mk>
 MODULES+=	${SELECTED_OPTIONS:NDOCS:tl}
 
-# XXX This should not be necessary:
-.if ${ARCH} != i386
-PLIST_SUB+=	SQL_ORACLE="@comment "
-.endif
-
 do-configure:
 	${MKDIR} ${WRKSRC}/lib
 	${LN} -sf ${FILESDIR}/BSDmakefile.lib ${WRKSRC}/lib/BSDmakefile
