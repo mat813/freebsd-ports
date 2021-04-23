@@ -53,6 +53,31 @@ if [ ${missing} -eq 1 ]; then
 	existing=$(${dp_PKG_INFO} -aoq|paste -d ' ' -s -)
 fi
 
+process_flavors() {
+	local flavor
+
+	directory=${1}
+	case "${directory}" in
+	*@*/*)
+		return 1 # Ignore @ in the path which would not be a flavor
+		;;
+	*@*)
+		flavor=${directory##*@}
+		directory=${directory%@*}
+		;;
+	*)
+		return 1
+		;;
+	esac
+	if [ -f ${directory}/Makefile ]; then
+		if [ -n ${flavor} ]; then
+			export FLAVOR=${flavor}
+		fi
+		return 0
+	fi
+	return 1
+}
+
 check_dep() {
 	local _dep wrkdir show_dep
 
@@ -64,24 +89,16 @@ check_dep() {
 		IFS=${myifs}
 
 		case "${2}" in
-		/*) directory=${2} ;;
-		*) for overlay in ${dp_OVERLAYS} ${PORTSDIR}; do
-			directory=${overlay}/${2}
-			flavor=
-			case "${directory}" in
-			*@*/*) ;; # Ignore @ in the path which would not be a flavor
-			*@*)
-				flavor=${directory##*@}
-				directory=${directory%@*}
-				;;
-			esac
-			if [ -f ${directory}/Makefile ]; then
-				if [ -n $flavor ]; then
-					export FLAVOR=$flavor
+		/*)
+			process_flavors ${2} || true ;;
+		*)
+			for overlay in ${dp_OVERLAYS} ${PORTSDIR}; do
+				if process_flavors ${overlay}/${2}
+				then
+					break
 				fi
-				break
-			fi
-		done
+			done
+			;;
 		esac
 
 		if [ ${flavors} -eq 1 -a -n "${FLAVOR:-}" ]; then
