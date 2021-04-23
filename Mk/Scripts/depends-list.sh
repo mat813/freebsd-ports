@@ -64,20 +64,20 @@ check_dep() {
 		IFS=${myifs}
 
 		case "${2}" in
-		/*) d=${2} ;;
+		/*) directory=${2} ;;
 		*) for overlay in ${dp_OVERLAYS} ${PORTSDIR}; do
-			d=${overlay}/${2}
-			f=
-			case "${d}" in
+			directory=${overlay}/${2}
+			flavor=
+			case "${directory}" in
 			*@*/*) ;; # Ignore @ in the path which would not be a flavor
 			*@*)
-				f=${d##*@}
-				d=${d%@*}
+				flavor=${directory##*@}
+				directory=${directory%@*}
 				;;
 			esac
-			if [ -f ${d}/Makefile ]; then
-				if [ -n $f ]; then
-					export FLAVOR=$f
+			if [ -f ${directory}/Makefile ]; then
+				if [ -n $flavor ]; then
+					export FLAVOR=$flavor
 				fi
 				break
 			fi
@@ -85,17 +85,17 @@ check_dep() {
 		esac
 
 		if [ ${flavors} -eq 1 -a -n "${FLAVOR:-}" ]; then
-			port_display="${d}@${FLAVOR}"
+			port_display="${directory}@${FLAVOR}"
 		else
-			port_display="${d}"
+			port_display="${directory}"
 		fi
 
 		case " ${checked} " in
-			*\ ${d}\ *) continue ;; # Already checked
+			*\ ${directory}\ *) continue ;; # Already checked
 		esac
-		checked="${checked} ${d}"
+		checked="${checked} ${directory}"
 		# Check if the dependency actually exists or skip otherwise.
-		if [ ! -d "${d}" ]; then
+		if [ ! -d "${directory}" ]; then
 			echo "${dp_PKGNAME}: \"${port_display}\" non-existent -- dependency list incomplete" >&2
 			continue
 		fi
@@ -103,7 +103,7 @@ check_dep() {
 		# If only looking for missing, show if missing
 		if [ ${missing} -eq 1 ]; then
 			case " ${existing} " in
-				*\ ${d#${PORTSDIR}/}\ *) continue ;; # We have it, nothing to see
+				*\ ${directory#${PORTSDIR}/}\ *) continue ;; # We have it, nothing to see
 			esac
 		fi
 
@@ -112,13 +112,13 @@ check_dep() {
 		if [ ${requires_wrkdir} -eq 1 ]; then
 			# shellcheck disable=SC2046
 			# We want word splitting here.
-			set -- $(${dp_MAKE} -C ${d} -VWRKDIR -V_UNIFIED_DEPENDS)
+			set -- $(${dp_MAKE} -C ${directory} -VWRKDIR -V_UNIFIED_DEPENDS)
 			wrkdir="$1"
 			shift
 		elif [ ${recursive} -eq 1 ]; then
 			# shellcheck disable=SC2046
 			# We want word splitting here.
-			set -- $(${dp_MAKE} -C ${d} -V_UNIFIED_DEPENDS)
+			set -- $(${dp_MAKE} -C ${directory} -V_UNIFIED_DEPENDS)
 		fi
 
 		# If a WRKDIR is required to show the dependency, check for it.
